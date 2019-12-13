@@ -132,13 +132,14 @@ create table proveedor_producto_sucursal(
 create table inventario (
 	id_stock int primary key auto_increment,
    --  id_pro_esp int, 
-    id_sucursal int,
+   id_prov_prod_suc int
+  --   id_sucursal int,
     cant_disponible int, 
     cant_entrada int,
     precio_unitario decimal(12,5),
     estado int(1) not null default 0,
     -- constraint fk_sto_proesp foreign key (id_pro_esp) references producto_especialidad(id_pro_esp),
-    constraint fk_sto_suc foreign key (id_sucursal) references sucursal(id_sucursal)
+   --  constraint fk_sto_suc foreign key (id_sucursal) references sucursal(id_sucursal)
 );
 
 create table venta(
