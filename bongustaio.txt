@@ -1,4 +1,4 @@
-drop database bongustaio;
+
 
 CREATE DATABASE bongustaio;
 USE bongustaio;
@@ -25,6 +25,24 @@ tipoempleado varchar(25) not null,
 estado int(1) not null default 1
 )ENGINE InnoDB;
 
+CREATE TABLE tiposucursal(
+idtiposucursal int(11) not null primary key auto_increment,
+tipo varchar(50) not null,
+estado int(1) not null default 1
+)ENGINE InnoDB;
+
+
+CREATE TABLE sucursal(
+idsucursal int(11) not null primary key auto_increment,
+idtipo int(11) not null,
+nombre varchar(60) not null,
+telefono varchar(10) not null,
+direccion varchar(100) not null,
+estado int(1) not null default 0,
+CONSTRAINT FOREIGN KEY (idtipo) REFERENCES tiposucursal(idtiposucursal)
+ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE InnoDB;
+
 create table empleado(
 idempleado int(11) not null primary key auto_increment,
 nombres varchar(60) not null,
@@ -38,25 +56,11 @@ idusuario int(11) not null,
 estado int(1) not null default 1,
 constraint foreign key (idtipoempleado) references tipoempleado(idtipoempleado) on delete cascade on update cascade,
 constraint foreign key (idsucursal) references sucursal(idsucursal) on delete cascade on update cascade,
-constraint foreign key (idusuario) references usuarios(idusuario) on delete cascade on update cascade
+constraint foreign key (idusuario) references usuarios(Idusuario) on delete cascade on update cascade
 )ENGINE InnoDB;
 
-CREATE TABLE tiposucursal(
-idtiposucursal int(11) not null primary key auto_increment,
-tipo varchar(50) not null,
-estado int(1) not null default 1
-)ENGINE InnoDB;
 
-CREATE TABLE sucursal(
-idsucursal int(11) not null primary key auto_increment,
-idtipo int(11) not null,
-nombre varchar(60) not null,
-telefono varchar(10) not null,
-direccion varchar(100) not null,
-estado int(1) not null default 0,
-CONSTRAINT FOREIGN KEY (idtipo) REFERENCES tiposucursal(idtiposucursal)
-ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE InnoDB;
+
 
 
 CREATE TABLE proveedor(
