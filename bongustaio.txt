@@ -10,7 +10,7 @@ estado int(1) not null default 1
 )ENGINE InnoDB;
 
 CREATE TABLE usuarios(
-Idusuario int(11) not null primary key,
+idusuario int(11) not null primary key,
 usuario varchar(60) not null,
 clave varchar(60) not null,
 idtipo int(11) not null,
