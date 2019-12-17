@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Bongustaio</title>
+        <h:outputStylesheet  library="css" name="estilos.css" />
+         <link rel="icon" href="img/core-img/restaurantes.png" />
+
+        <!-- Core Stylesheet -->
+        <link href="../style.css" rel="stylesheet" />
+
+        <!-- Responsive CSS -->
+        <link href="../css/responsive/responsive.css" rel="stylesheet" />
+    </h:head>
+    <h:body>
+         <!-- ****** Superficie Principal de login y iconos ****** -->
+        <div class="top_header_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-5 col-sm-6">
+                        <!--  Top Social bar start -->
+                        <div class="top_social_bar">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <!-- Nombre de Usuario -->
+                    <div class="col-7 col-sm-6">
+                        <div class="signup-search-area d-flex align-items-center justify-content-end">
+                            <div class="login_register_area d-flex">
+                                <div class="login">
+                                    <a class="btn-outline-dark" href="#">Bienvenido :Nathalia</a>
+                                </div>
+                                <div class="register">
+                                    <a class="btn-outline-primary" href="#">Sing up</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ****** Fin Superficie Principal de login y iconos ****** -->
+        <h:form>  
+            <p:outputPanel>
+                
+                <br/>
+                <div class="ui-g centrar-texto">
+                    <div class="ui-g-4"></div>
+                    <div class="ui-g-4">
+                        <p:panelGrid columns="2" styleClass="centrar-contenido">
+                            <p:outputLabel value="USUARIOS"/>
+                            <h:link value=">" outcome="/Mantenimientos/usuarios" />
+                           
+                            
+                            <p:outputLabel value="ROLES"/>
+                            <p:commandButton value=">"/>
+                            
+                            <p:outputLabel value="PROVEEDORES"/>
+                            <p:commandButton value=">" />
+                            
+                            <p:outputLabel value="SUCURSALES"/>
+                            <p:commandButton value=">"/>
+                        </p:panelGrid>
+                    </div>
+                    <div class="ui-g-4"></div>
+                </div>
+            </p:outputPanel>
+        </h:form>
+    </h:body>
+    
+    <!-- ****** Importaciones de JavaScript ****** -->
+
+    <!-- Jquery-2.2.4 js -->
+    <script src="../js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="../js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap-4 js -->
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins JS -->
+    <script src="../js/others/plugins.js"></script>
+    <!-- Active JS -->
+    <script src="../js/active.js"></script>
+</html>
+
