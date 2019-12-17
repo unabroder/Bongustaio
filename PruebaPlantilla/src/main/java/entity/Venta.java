@@ -2,6 +2,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,6 +36,104 @@ public class Venta implements Serializable{
     private Date fecha=new Date();
     
     @Column(name="subtotal")
-    private Decimal
+    private DecimalFormat subtotal;
+    
+    @Column(name="total")
+    private DecimalFormat total;
+    
+    @Column(name="estado")
+    private int estado;
+
+//  =======================================================================================================================
+//  =======================================================================================================================
+    public int getIdventa() {
+        return idventa;
+    }
+
+    public void setIdventa(int idventa) {
+        this.idventa = idventa;
+    }
+
+    public Empleado getIdempleado() {
+        return idempleado;
+    }
+
+    public void setIdempleado(Empleado idempleado) {
+        this.idempleado = idempleado;
+    }
+
+    public Menu getIdmenu() {
+        return idmenu;
+    }
+
+    public void setIdmenu(Menu idmenu) {
+        this.idmenu = idmenu;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public DecimalFormat getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(DecimalFormat subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public DecimalFormat getTotal() {
+        return total;
+    }
+
+    public void setTotal(DecimalFormat total) {
+        this.total = total;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+//  =======================================================================================================================
+//  =======================================================================================================================
+    @Override
+    public String toString() {
+        return "Venta{" + "idventa=" + idventa + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 73 * hash + this.idventa;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Venta other = (Venta) obj;
+        if (this.idventa != other.idventa) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 }
