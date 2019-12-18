@@ -24,23 +24,18 @@ public class Bitacora implements Serializable {
     
     @Temporal(TemporalType.DATE)
     @Column( name ="fecha")
-    private Date fecha;
+    private Date fecha=new Date();
     
-    @ManyToOne
-    @JoinColumn(name="usuario", referencedColumnName = "idusuario" ) 
-    private Usuarios usuario;
+    
+    @Column( name = "usuario")
+    private String usuario;
     
     @Column( name = "accion")
     private String accion;
-<<<<<<< HEAD
+
    
     @Column(name="estado")
     private int estado=1;
-=======
-    
-    @Column( name = "estado")
-    private int estado =1;
->>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
 
     public int getIdbitacora() {
         return idbitacora;
@@ -58,11 +53,11 @@ public class Bitacora implements Serializable {
         this.fecha = fecha;
     }
 
-    public Usuarios getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuarios usuario) {
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
@@ -74,11 +69,7 @@ public class Bitacora implements Serializable {
         this.accion = accion;
     }
 
-<<<<<<< HEAD
-    public int  getEstado() {
-=======
     public int getEstado() {
->>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
         return estado;
     }
 
@@ -89,7 +80,7 @@ public class Bitacora implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + this.idbitacora;
+        hash = 79 * hash + this.idbitacora;
         return hash;
     }
 
@@ -115,7 +106,10 @@ public class Bitacora implements Serializable {
     public String toString() {
         return "Bitacora{" + "idbitacora=" + idbitacora + '}';
     }
+
     
+
+
     
     
 }
