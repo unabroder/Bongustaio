@@ -2,35 +2,12 @@ package entity;
 
 import entity.Sucursal;
 import entity.TipoEmpleado;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import entity.Usuario;
->>>>>>> 886011ffd5753541bfe75d7e3c447521db0e716e
->>>>>>> efb1911fb6bd4ac0694e9b7f60ebc30853844c23
-=======
 import entity.Usuarios;
->>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-12-18T14:01:38")
-=======
-<<<<<<< HEAD
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-12-18T09:28:02")
-@StaticMetamodel(Empleado.class)
-public class Empleado_ { 
-
-    public static volatile SingularAttribute<Empleado, Integer> idempleado;
-=======
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-12-18T10:41:24")
->>>>>>> efb1911fb6bd4ac0694e9b7f60ebc30853844c23
-=======
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-12-18T15:30:04")
->>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-12-18T15:44:17")
 @StaticMetamodel(Empleado.class)
 public class Empleado_ { 
 
@@ -43,15 +20,6 @@ public class Empleado_ {
     public static volatile SingularAttribute<Empleado, String> telefono;
     public static volatile SingularAttribute<Empleado, Integer> idempleado;
     public static volatile SingularAttribute<Empleado, String> nombres;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public static volatile SingularAttribute<Empleado, ? extends Object> idusuario;
-=======
-    public static volatile SingularAttribute<Empleado, Usuario> idusuario;
->>>>>>> 886011ffd5753541bfe75d7e3c447521db0e716e
->>>>>>> efb1911fb6bd4ac0694e9b7f60ebc30853844c23
-=======
     public static volatile SingularAttribute<Empleado, Usuarios> idusuario;
->>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
 
 }
