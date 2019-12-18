@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Sucursal.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\UsuarioFacade.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Venta.java
@@ -11,3 +12,6 @@ C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\en
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\AbstractFacade.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\EmpleadoFacadeLocal.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\EmpleadoFacade.java
+=======
+C:\Users\josue.vasquezusam\Documents\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Roles.java
+>>>>>>> 34528c599b4de51573d47375daa4a84a4f84ba37
