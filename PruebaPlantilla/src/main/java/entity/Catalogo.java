@@ -23,9 +23,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "catalogo")
-@NamedQueries({
-@NamedQuery(name = "verCatalogo",query = "SELECT x FROM Catalogo x")
-})
 public class Catalogo implements Serializable{
     
   @Id  

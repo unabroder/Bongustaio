@@ -23,4 +23,5 @@ public interface SucursalFacadeLocal {
     List<Sucursal> findRange(int[] range);
     int count();
     List<Sucursal> findAllActivo();
+    void removeEstado(Sucursal sucursal);
 }
