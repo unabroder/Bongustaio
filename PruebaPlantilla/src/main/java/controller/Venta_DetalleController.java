@@ -5,8 +5,10 @@
  */
 package controller;
 
+import ejb.CatalogoFacadeLocal;
 import ejb.VentaFacadeLocal;
 import ejb.Venta_DetalleFacadeLocal;
+import entity.Catalogo;
 import entity.Venta;
 import entity.Venta_Detalle;
 import javax.inject.Named;
@@ -38,8 +40,8 @@ public class Venta_DetalleController implements Serializable {
 
     @EJB
     private CatalogoFacadeLocal catalogoEJB;
-    private Catalago catalogo;
-    private List<Catalago> listacatalogo;
+    private Catalogo catalogo;
+    private List<Catalogo> listacatalogo;
 
     public Venta_Detalle getVdetalle() {
         return vdetalle;
@@ -97,8 +99,8 @@ public class Venta_DetalleController implements Serializable {
 
     public void insertar() {
         try {
-            venta.setIdventa(venta);
-            catalogo.setCatalogo(catalogo);
+            vdetalle.setIdventa(venta);
+            vdetalle.setIdcatalogo(catalogo);
 
             vdetalleEJB.create(vdetalle);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);

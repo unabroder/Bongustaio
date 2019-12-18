@@ -8,19 +8,12 @@ public abstract class AbstractFacade<T> {
 
     private Class<T> entityClass;
 
-<<<<<<< HEAD
-    
-    
-=======
->>>>>>> 886011ffd5753541bfe75d7e3c447521db0e716e
+
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 886011ffd5753541bfe75d7e3c447521db0e716e
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {

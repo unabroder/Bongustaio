@@ -8,7 +8,7 @@ import javax.ejb.Local;
 @Local
 public interface Venta_DetalleFacadeLocal {
     
-    void create(Venta_Detalle vdetalle);
+     void create(Venta_Detalle vdetalle);
     
     void edit(Venta_Detalle vdetalle);
     
