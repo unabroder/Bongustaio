@@ -148,15 +148,23 @@ constraint foreign key (idempleado) references empleado(idempleado) on delete ca
 constraint foreign key (idmenu) references menu_del_dia(idmenu) on delete cascade on update cascade
 )ENGINE InnoDB;
 
+create table menu_del_dia(
+idmenu int(11) not null primary key auto_increment,
+descuento decimal(10,2) not null,
+estado int(1) not null default 1,
+)ENGINE InnoDB;
 
 create table venta_detalle(
 idventa_detalle int(11) not null primary key auto_increment,
 idventa int(11) not null,
 idcatalogo int(11) not null,
+idventa_detalle int(11) not null,
 cantidad int(11) not null,
 estado int(1) not null default 1,
 constraint foreign key (idventa) references venta(idventa) on delete cascade on update cascade,
-constraint foreign key (idcatalogo) references catalogo(idcatalogo) on delete cascade on update cascade
+constraint foreign key (idcatalogo) references catalogo(idcatalogo) on delete cascade on update cascade,
+constraint foreign key (idventa_detalle) references venta_detalle(idventa_detalle) 
+on delete cascade on update cascade
 )ENGINE InnoDB;
 
 
@@ -170,11 +178,4 @@ estado int(1) not null default 1,
 constraint foreign key (usuario) references usuarios(idusuario) on delete cascade on update cascade
 )ENGINE InnoDB;
 
-create table menu_del_dia(
-idmenu int(11) not null primary key auto_increment,
-idventa_detalle int(11) not null,
-descuento decimal(10,2) not null,
-estado int(1) not null default 1,
-constraint foreign key (idventa_detalle) references venta_detalle(idventa_detalle) 
-on delete cascade on update cascade
-)ENGINE InnoDB;
+
