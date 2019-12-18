@@ -31,7 +31,7 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
         Tipoproducto tipo=null;
         String sql;
         try {
-            sql="SELECT x FROM tipoproducto x where x.estado=1";
+            sql="SELECT * FROM tipoproducto x where x.estado=1";
             
         } catch (Exception e) {
         }

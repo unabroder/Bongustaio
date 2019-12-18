@@ -10,11 +10,7 @@ public abstract class AbstractFacade<T> {
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> fcc97373ab7a73e333f88f5236f28fde5be254ae
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {
