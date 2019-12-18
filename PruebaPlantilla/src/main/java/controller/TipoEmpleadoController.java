@@ -69,4 +69,11 @@ public class TipoEmpleadoController implements Serializable {
         }
     }
 
+    public void listaTP() {
+        try {
+            lista = tipoEmpleadoEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
 }
