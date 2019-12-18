@@ -30,13 +30,13 @@ public class Venta implements Serializable{
     @Column(name="fecha")
     private Date fecha=new Date();
     
-    @Column(name="subtotal")
+    @Column(name="subtotal",nullable = false)
     private Double subtotal;
     
-    @Column(name="total")
+    @Column(name="total",nullable=false)
     private Double total;
     
-    @Column(name="estado")
+    @Column(name="estado",nullable=false)
     private int estado;
 
 //  =======================================================================================================================
