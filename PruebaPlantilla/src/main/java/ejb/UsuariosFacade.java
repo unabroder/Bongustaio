@@ -36,7 +36,7 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> implements Usuarios
         Usuarios user = null;
         String sql;
         try {
-            sql = "SELECT u FROM usuarios u WHERE u.usuario = ?1 and  u.clave = ?2";
+            sql = "SELECT u FROM Usuarios u WHERE u.usuario = ?1 and  u.clave = ?2";
             Query query = em.createQuery(sql);
             
             query.setParameter(1, us.getUsuario());

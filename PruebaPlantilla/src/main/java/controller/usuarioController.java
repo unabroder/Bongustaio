@@ -37,6 +37,8 @@ public class usuarioController implements Serializable {
     public void setListausuario(List<Usuarios> listausuario) {
         this.listausuario = listausuario;
     }
+
+    
     
     @PostConstruct
     public void inti(){
@@ -51,13 +53,17 @@ public class usuarioController implements Serializable {
             if (us != null) {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", us);
                 redireccion = "modulos?faces-redirect=true";
+               
             }else{
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
+            
             }
             
         } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"+e));
+           
         }
         return redireccion;
+       
     }
 }
