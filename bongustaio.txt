@@ -8,13 +8,14 @@ estado int(1) not null default 1
 )ENGINE InnoDB;
 
 CREATE TABLE usuarios(
-idusuario int(11) not null primary key,
+idusuario int(11) not null primary key auto_increment,
 usuario varchar(60) not null,
 clave varchar(60) not null,
 idtipo int(11) not null,
+idempleado int(11) not null,
 Estado int(1) not null default 0,
-CONSTRAINT FOREIGN KEY (idtipo) REFERENCES roles(idrol)
-ON DELETE CASCADE ON UPDATE CASCADE
+CONSTRAINT FOREIGN KEY (idtipo) REFERENCES roles(idrol) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT FOREIGN KEY (idempleado) REFERENCES empleado(idempleado) ON DELETE CASCADE ON UPDATE CASCADE,
 )ENGINE InnoDB;
 
 create table tipoempleado(
