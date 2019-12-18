@@ -1,4 +1,3 @@
-
 package ejb;
 
 import entity.Bitacora;
@@ -7,7 +6,8 @@ import javax.ejb.Local;
 
 @Local
 public interface BitacoraFacadeLocal {
-     void create(Bitacora bitacora);
+
+    void create(Bitacora bitacora);
 
     void edit(Bitacora bitacora);
 
