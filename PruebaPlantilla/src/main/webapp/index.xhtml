@@ -5,9 +5,10 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
+
     </h:head>
-     <h:outputStylesheet  library="css" name="estilos.css" />
-     <h:body styleClass="body-login">
+    <h:outputStylesheet  library="css" name="estilos.css" />
+    <h:body styleClass="body-login">
         <p:outputPanel>
             <div class="ui-g centrar-texto">
                 <div class="ui-g-12 text-size-40">
@@ -17,17 +18,21 @@
             <div class="ui-g margin-top-100">
                 <div class="ui-g-4"></div>
                 <div class="ui-g-4">
+
                     <h:form>
+                        <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                        </p:messages>
                         <p:panelGrid columns="2" styleClass="centrar-contenido">
                             <p:outputLabel value="Usuario:" />
-                            <p:inputText />
+                            <p:inputText value="#{usuarioController.usuarios.usuario}" required="true"/>
 
                             <p:outputLabel value="Password:" />
-                            <p:inputText />
+                            <p:inputText value="#{usuarioController.usuarios.clave}" required="true" />
 
                             <h:column/>
-                            <p:commandButton icon="ui-icon-key" value="Login"/>
-                            <h:link outcome="modulos" value="Modulos" />
+                            <p:commandButton action="#{usuarioController.login()}" value="Login"/>
+                           
                         </p:panelGrid>
                     </h:form>
                 </div>
@@ -39,7 +44,7 @@
             </div>
         </p:outputPanel>
         <br />
-        
+
     </h:body>
 </html>
 

@@ -80,6 +80,7 @@ public class CatalogoController implements Serializable{
     
     public void consultarTipoproducto(){
         try {
+<<<<<<< HEAD
             listaTipoproducto= tipoproductoEJB.findAll();
         } catch (Exception e) {
         }
@@ -129,7 +130,11 @@ public class CatalogoController implements Serializable{
         try {
             catalogoEJB.remove(catalogo);
             listaCatalogo = catalogoEJB.findAll();
+=======
+
+>>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
             listaTipoproducto = tipoproductoEJB.findAll();
+
         } catch (Exception e) {
         }
     }

@@ -11,7 +11,10 @@ import javax.ejb.Local;
 
 /**
  *
- * @author juan.ruizusam
+ * <<<<<<< HEAD
+ * @a
+ *
+ * uthor josue.vasquezusam
  */
 @Local
 public interface SucursalFacadeLocal {
@@ -33,4 +36,5 @@ public interface SucursalFacadeLocal {
     List<Sucursal> findAllActivo();
 
     void removeEstado(Sucursal sucursal);
-}
+
+    }

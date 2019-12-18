@@ -7,19 +7,33 @@ package ejb;
 
 import entity.Tiposucursal;
 import java.util.List;
+import javax.ejb.Local;
 
 /**
  *
- * @author juan.ruizusam
+ * @author josue.vasquezusam
  */
+
+
+@Local
 public interface TiposucursalFacadeLocal {
+
     void create(Tiposucursal tsucursal);
+
     void edit(Tiposucursal tsucursal);
+
     void remove(Tiposucursal tsucursal);
+
     Tiposucursal find(Object id);
+
     List<Tiposucursal> findAll();
+
     List<Tiposucursal> findRange(int[] range);
+
     int count();
+
     List<Tiposucursal> findAllActivo();
+
     void removeEstado(Tiposucursal tsucursal);
+
 }

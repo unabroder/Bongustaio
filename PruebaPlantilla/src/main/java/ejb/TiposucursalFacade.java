@@ -12,6 +12,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+/**
+ *
+ * @author josue.vasquezusam
+ */
 @Stateless
 public class TiposucursalFacade extends AbstractFacade<Tiposucursal> implements TiposucursalFacadeLocal {
 
@@ -56,4 +60,5 @@ public class TiposucursalFacade extends AbstractFacade<Tiposucursal> implements 
             throw e;
         }
     }
+
 }

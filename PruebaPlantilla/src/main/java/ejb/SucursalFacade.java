@@ -1,4 +1,3 @@
-
 package ejb;
 
 import entity.Sucursal;
@@ -10,34 +9,34 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 @Stateless
-public class SucursalFacade extends AbstractFacade<Sucursal> implements SucursalFacadeLocal{
-    
+public class SucursalFacade extends AbstractFacade<Sucursal> implements SucursalFacadeLocal {
+
     @PersistenceContext(unitName = "bongustaio")
     private EntityManager em;
-    
+
     @Override
-    protected EntityManager getEntityManager(){
-    return em;
+    protected EntityManager getEntityManager() {
+        return em;
     }
-    
-    public SucursalFacade(){
-    super(Sucursal.class);
+
+    public SucursalFacade() {
+        super(Sucursal.class);
     }
-    
-    public void removeEstado(Sucursal sucursal){
-    String sql;
-    
+
+    public void removeEstado(Sucursal sucursal) {
+        String sql;
+
         try {
-            sql="UPDATE sucursal s set estado=0 WHERE idsucursal=?1";
-            Query query=em.createQuery(sql);
+            sql = "UPDATE sucursal s set estado=0 WHERE idsucursal=?1";
+            Query query = em.createQuery(sql);
             query.setParameter(1, sucursal.getIdsucursal());
-            
+
         } catch (Exception e) {
-        throw e;
+            throw e;
         }
-    
+
     }
-    
+
     @Override
     public List<Sucursal> findAllActivo() {
 
@@ -53,6 +52,7 @@ public class SucursalFacade extends AbstractFacade<Sucursal> implements Sucursal
             throw e;
         }
         return lista;
+
     }
-    
+
 }
