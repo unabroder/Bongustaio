@@ -25,6 +25,7 @@ public class Venta implements Serializable{
     @ManyToOne
     @JoinColumn(name="idempleado", referencedColumnName = "idempleado")
     private Empleado idempleado;
+
        
     @Temporal(TemporalType.DATE)
     @Column(name="fecha")
@@ -120,7 +121,8 @@ public class Venta implements Serializable{
         }
         return true;
     }
+
+   
     
-    
-    
+
 }

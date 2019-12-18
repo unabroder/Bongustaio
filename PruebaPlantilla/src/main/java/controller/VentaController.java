@@ -1,7 +1,9 @@
 
 package controller;
 
+import ejb.EmpleadoFacadeLocal;
 import ejb.VentaFacadeLocal;
+import entity.Empleado;
 import entity.Venta;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
