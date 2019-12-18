@@ -31,5 +31,6 @@ public interface TipoproductoFacadeLocal {
     List<Tipoproducto> findRange(int[] range);
 
     int count();
-
+    
+    void removerEstado(Tipoproducto tipo);
 }

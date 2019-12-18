@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless
 public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements TipoproductoFacadeLocal {
@@ -30,7 +31,31 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
 
     @Override
     public List<Tipoproducto> findActivos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        List<Tipoproducto> lista = null;
+        String sql;
+        try {
+
+            sql = "SELECT x FROM tipoproducto x WHERE estado=1";
+            Query query = em.createQuery(sql);
+            lista = query.getResultList();
+        } catch (Exception e) {
+            throw e;
+        }
+        return lista;
+    }
+
+    public void removerEstado(Tipoproducto tipo) {
+        String sql;
+        try {
+            sql = "UPDATE tipoproducto x SET estado=0 WHERE idtipoproducto=?1";
+            Query query = em.createQuery(sql);
+            query.setParameter(1, tipo.getIdtipoproducto());
+
+        } catch (Exception e) {
+            throw e;
+        }
+
     }
  
 }
