@@ -25,6 +25,12 @@ public class MenuDelDiaController implements Serializable {
     //Constructores
     public MenuDelDiaController() {
     }
+    
+     //PostConstruct
+    @PostConstruct
+    public void init(){
+        menuDelDia = new MenuDelDia();
+    }
 
     public MenuDelDiaFacadeLocal getMenuDelDiaEJB() {
         return menuDelDiaEJB;
@@ -50,11 +56,6 @@ public class MenuDelDiaController implements Serializable {
         this.listaMenuDelDia = listaMenuDelDia;
     }
     
-    //PostConstruct
-    @PostConstruct
-    public void init(){
-        menuDelDia = new MenuDelDia();
-    }
     
     //metodos 
     public void insertar(){
@@ -82,13 +83,6 @@ public class MenuDelDiaController implements Serializable {
     public void actualizar(){
         try {
             menuDelDiaEJB.edit(menuDelDia);
-        } catch (Exception e) {
-        }
-    }
-    
-    public void eliminar(){
-        try {
-            
         } catch (Exception e) {
         }
     }
