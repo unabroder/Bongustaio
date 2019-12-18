@@ -6,14 +6,15 @@
 package ejb;
 
 import entity.Bitacora;
+import entity.Producto;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class BitacoraFacade extends AbstractFacade<Bitacora> implements BitacoraFacadeLocal {
-
-    @PersistenceContext(unitName = "bongustaio")
+public class ProductoFacade extends AbstractFacade<Producto> implements ProductoFacadeLocal {
+    
+   @PersistenceContext(unitName = "bongustaio")
     private EntityManager em;
 
     @Override
@@ -22,9 +23,10 @@ public class BitacoraFacade extends AbstractFacade<Bitacora> implements Bitacora
         return em;
     }
 
-    public BitacoraFacade() {
+    public ProductoFacade() {
 
-        super(Bitacora.class);
+        super(Producto.class);
     }
 
+    
 }

@@ -1,28 +1,25 @@
-<<<<<<< HEAD
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\controller\BitacoraController.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\CatalogoFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Proveedor.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\controller\TipoproductoController.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\controller\CatalogoController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Sucursal.java
-C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Bitacora.java
-C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoproductoFacadeLocal.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Empleado.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Tipoproducto.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Roles.java
-C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Especialidad.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\controller\TipoEmpleadoController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacadeLocal.java
-C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\AbstractFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Tiposucursal.java
-=======
-<<<<<<< HEAD
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Sucursal.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\UsuarioFacade.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Venta.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Tiposucursal.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Usuario.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\controller\TipoEmpleadoController.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\controller\UsuarioController.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\TipoEmpleado.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\prueba.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Empleado.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\AbstractFacade.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\EmpleadoFacadeLocal.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\EmpleadoFacade.java
-=======
-C:\Users\josue.vasquezusam\Documents\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Roles.java
->>>>>>> 34528c599b4de51573d47375daa4a84a4f84ba37
->>>>>>> 886011ffd5753541bfe75d7e3c447521db0e716e
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoproductoFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Bitacora.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\EmpleadoFacadeLocal.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\CatalogoFacadeLocal.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Especialidad.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Producto.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\TipoEmpleado.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Venta.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\EmpleadoFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\AbstractFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Catalogo.java

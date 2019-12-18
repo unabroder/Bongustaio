@@ -5,26 +5,25 @@
  */
 package ejb;
 
-import entity.Bitacora;
+import entity.Catalogo;
+import ejb.CatalogoFacadeLocal;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class BitacoraFacade extends AbstractFacade<Bitacora> implements BitacoraFacadeLocal {
-
+public class CatalogoFacade extends AbstractFacade<Catalogo> implements CatalogoFacadeLocal{
+ 
     @PersistenceContext(unitName = "bongustaio")
     private EntityManager em;
-
+    
     @Override
-    protected EntityManager getEntityManager() {
-
-        return em;
+    protected EntityManager getEntityManager(){
+    return em;        
     }
-
-    public BitacoraFacade() {
-
-        super(Bitacora.class);
+    public CatalogoFacade(){
+    super(Catalogo.class);
     }
-
+    
+    
 }

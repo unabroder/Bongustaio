@@ -5,26 +5,36 @@
  */
 package ejb;
 
-import entity.Bitacora;
+import entity.Tipoproducto;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
-public class BitacoraFacade extends AbstractFacade<Bitacora> implements BitacoraFacadeLocal {
+public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements TipoproductoFacadeLocal {
 
     @PersistenceContext(unitName = "bongustaio")
     private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {
-
         return em;
     }
 
-    public BitacoraFacade() {
+    public TipoproductoFacade() {
+        super(Tipoproducto.class);
+    }
 
-        super(Bitacora.class);
+    @Override
+    public List<Tipoproducto> findActivos() {
+        Tipoproducto tipo = null;
+        String sql;
+        try {
+            sql = "SELECT * FROM tipoproducto x where x.estado=1";
+
+        } catch (Exception e) {
+        }
     }
 
 }
