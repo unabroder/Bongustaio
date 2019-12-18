@@ -1,3 +1,4 @@
+
 package entity;
 
 import java.io.Serializable;
@@ -8,30 +9,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "bitacora")
-
+@Table (name ="bitacora")
 public class Bitacora implements Serializable {
-
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int idbitacora;
-
-
-    @Column(name = "fecha")
-    private Date fecha = new Date();
     
-      @Column(name="usuario")
-    private String usuario;
+    @Temporal(TemporalType.DATE)
+    @Column( name ="fecha")
+    private Date fecha;
     
-    @Column(name="accion")
+    @ManyToOne
+    @JoinColumn(name="usuario", referencedColumnName = "idusuario" ) 
+    private Usuarios usuario;
+    
+    @Column( name = "accion")
     private String accion;
+<<<<<<< HEAD
    
     @Column(name="estado")
     private int estado=1;
+=======
+    
+    @Column( name = "estado")
+    private int estado =1;
+>>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
 
     public int getIdbitacora() {
         return idbitacora;
@@ -49,11 +58,11 @@ public class Bitacora implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getUsuario() {
+    public Usuarios getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(String usuario) {
+    public void setUsuario(Usuarios usuario) {
         this.usuario = usuario;
     }
 
@@ -65,7 +74,11 @@ public class Bitacora implements Serializable {
         this.accion = accion;
     }
 
+<<<<<<< HEAD
     public int  getEstado() {
+=======
+    public int getEstado() {
+>>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
         return estado;
     }
 
@@ -73,12 +86,10 @@ public class Bitacora implements Serializable {
         this.estado = estado;
     }
 
-    
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + this.idbitacora;
+        int hash = 3;
+        hash = 97 * hash + this.idbitacora;
         return hash;
     }
 
@@ -106,5 +117,5 @@ public class Bitacora implements Serializable {
     }
     
     
-
+    
 }

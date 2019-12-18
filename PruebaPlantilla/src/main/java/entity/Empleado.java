@@ -44,7 +44,7 @@ public class Empleado implements Serializable {
     private Sucursal idsucursal;
     @ManyToOne
     @JoinColumn(name = "idusuario", referencedColumnName = "idusuario")
-    private Usuario idusuario;
+    private Usuarios idusuario;
     @Column(name = "estado")
     private int estado = 1;
 
@@ -112,11 +112,11 @@ public class Empleado implements Serializable {
         this.idsucursal = idsucursal;
     }
 
-    public Usuario getIdusuario() {
+    public Usuarios getIdusuario() {
         return idusuario;
     }
 
-    public void setIdusuario(Usuario idusuario) {
+    public void setIdusuario(Usuarios idusuario) {
         this.idusuario = idusuario;
     }
 

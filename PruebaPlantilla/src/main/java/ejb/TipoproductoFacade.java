@@ -11,6 +11,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ *
+ * @author josue.vasquezusam
+ */
 @Stateless
 public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements TipoproductoFacadeLocal {
 
@@ -28,14 +32,7 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
 
     @Override
     public List<Tipoproducto> findActivos() {
-        Tipoproducto tipo = null;
-        String sql;
-        try {
-            sql = "SELECT * FROM tipoproducto x where x.estado=1";
-
-        } catch (Exception e) {
-        }
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
