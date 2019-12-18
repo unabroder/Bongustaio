@@ -23,7 +23,6 @@ public class Tiposucursal implements Serializable {
     @Column(name = "estado", nullable = false)
     private int estado;
 
-   
 
     @Override
     public int hashCode() {

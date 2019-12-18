@@ -2,7 +2,9 @@
 package controller;
 
 import ejb.InventarioFacadeLocal;
+import ejb.ProductoProveedorFacadeLocal;
 import entity.Inventario;
+import entity.ProductoProveedor;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -21,7 +23,10 @@ public class InventarioController implements Serializable{
     private Inventario inventario;
     private List<Inventario> listaInventario;
 
-    
+    @EJB
+    private ProductoProveedorFacadeLocal productoProveedorFacadeLocalEJB;
+    private ProductoProveedor productoProveedor;
+    private List<ProductoProveedor> listaProductoProveedores;
     
     
     //contrustores
@@ -32,6 +37,7 @@ public class InventarioController implements Serializable{
     @PostConstruct
     public void init(){
         inventario = new Inventario();
+        productoProveedor = new ProductoProveedor();
     }
 
     
@@ -60,6 +66,32 @@ public class InventarioController implements Serializable{
     public void setListaInventario(List<Inventario> listaInventario) {
         this.listaInventario = listaInventario;
     }
+
+    public ProductoProveedorFacadeLocal getProductoProveedorFacadeLocalEJB() {
+        return productoProveedorFacadeLocalEJB;
+    }
+
+    public void setProductoProveedorFacadeLocalEJB(ProductoProveedorFacadeLocal productoProveedorFacadeLocalEJB) {
+        this.productoProveedorFacadeLocalEJB = productoProveedorFacadeLocalEJB;
+    }
+
+    public ProductoProveedor getProductoProveedor() {
+        return productoProveedor;
+    }
+
+    public void setProductoProveedor(ProductoProveedor productoProveedor) {
+        this.productoProveedor = productoProveedor;
+    }
+
+    public List<ProductoProveedor> getListaProductoProveedores() {
+        return listaProductoProveedores;
+    }
+
+    public void setListaProductoProveedores(List<ProductoProveedor> listaProductoProveedores) {
+        this.listaProductoProveedores = listaProductoProveedores;
+    }
+    
+    
     
     //metodos 
     public void insertar(){

@@ -6,10 +6,13 @@
 package ejb;
 
 import entity.Tipoproducto;
-import entity.Tipoproducto;
 import java.util.List;
 import javax.ejb.Local;
 
+/**
+ *
+ * @author josue.vasquezusam
+ */
 @Local
 public interface TipoproductoFacadeLocal {
 
@@ -21,12 +24,13 @@ public interface TipoproductoFacadeLocal {
 
     Tipoproducto find(Object id);
 
-    List<Tipoproducto> findActivos();
-
     List<Tipoproducto> findAll();
+
+    List<Tipoproducto> findActivos();
 
     List<Tipoproducto> findRange(int[] range);
 
     int count();
-
+    
+    void removerEstado(Tipoproducto tipo);
 }

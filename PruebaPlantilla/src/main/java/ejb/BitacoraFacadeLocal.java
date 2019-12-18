@@ -1,4 +1,3 @@
-
 package ejb;
 
 import entity.Bitacora;
@@ -7,7 +6,8 @@ import javax.ejb.Local;
 
 @Local
 public interface BitacoraFacadeLocal {
-     void create(Bitacora bitacora);
+
+    void create(Bitacora bitacora);
 
     void edit(Bitacora bitacora);
 
@@ -16,4 +16,9 @@ public interface BitacoraFacadeLocal {
     Bitacora find(Object id);
 
     List<Bitacora> findAll();
+
+    List<Bitacora> findRange(int[] range);
+
+    int count();
+
 }
