@@ -21,14 +21,19 @@ public class Inventario implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "idprod_prov", referencedColumnName = "producto_producto")
+<<<<<<< HEAD
    // private ProductoProveedor idprod_prov;
     
+=======
+    //private ProductoProveedor idprod_prov;
+
+>>>>>>> 834b7e889e6e5267a489ea9c45e1f676672f23b2
     @Column(name = "cant_entrada")
     private int cant_entrada;
-    
+
     @Column(name = "cant_disponible")
     private int cant_disponible;
-    
+
     @Column(name = "estado")
     private int estado;
 
@@ -68,14 +73,22 @@ public class Inventario implements Serializable {
         this.idinventario = idinventario;
     }
 
+<<<<<<< HEAD
  /*   public ProductoProveedor getIdprod_prov() {
+=======
+    /* public ProductoProveedor getIdprod_prov() {
+>>>>>>> 834b7e889e6e5267a489ea9c45e1f676672f23b2
         return idprod_prov;
     }
 
     public void setIdprod_prov(ProductoProveedor idprod_prov) {
         this.idprod_prov = idprod_prov;
+<<<<<<< HEAD
     }  */
 
+=======
+    }*/
+>>>>>>> 834b7e889e6e5267a489ea9c45e1f676672f23b2
     public int getCant_entrada() {
         return cant_entrada;
     }
@@ -100,13 +113,19 @@ public class Inventario implements Serializable {
         this.estado = estado;
     }
 
+<<<<<<< HEAD
 /*
+=======
+>>>>>>> 834b7e889e6e5267a489ea9c45e1f676672f23b2
     @Override
     public String toString() {
-        return "Inventario{" + "idinventario=" + idinventario + ", idprod_prov=" + idprod_prov + ", cant_entrada=" + cant_entrada + ", cant_disponible=" + cant_disponible + ", estado=" + estado + '}';
+        return "Inventario{" + "idinventario=" + idinventario + ", cant_entrada=" + cant_entrada + ", cant_disponible=" + cant_disponible + ", estado=" + estado + '}';
     }
+<<<<<<< HEAD
     
     */
     
+=======
+>>>>>>> 834b7e889e6e5267a489ea9c45e1f676672f23b2
 
 }

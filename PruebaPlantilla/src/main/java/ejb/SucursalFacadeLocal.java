@@ -11,16 +11,30 @@ import javax.ejb.Local;
 
 /**
  *
- * @author juan.ruizusam
+ * <<<<<<< HEAD
+ * @a
+ *
+ * uthor josue.vasquezusam
  */
 @Local
 public interface SucursalFacadeLocal {
+
     void create(Sucursal sucursal);
+
     void edit(Sucursal sucursal);
+
     void remove(Sucursal sucursal);
+
     Sucursal find(Object id);
+
     List<Sucursal> findAll();
+
     List<Sucursal> findRange(int[] range);
+
     int count();
+
     List<Sucursal> findAllActivo();
-}
+
+    void removeEstado(Sucursal sucursal);
+
+    }
