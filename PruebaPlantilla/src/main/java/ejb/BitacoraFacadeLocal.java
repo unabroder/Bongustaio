@@ -16,4 +16,9 @@ public interface BitacoraFacadeLocal {
     Bitacora find(Object id);
 
     List<Bitacora> findAll();
+
+    List<Bitacora> findRange(int[] range);
+
+    int count();
+
 }
