@@ -38,6 +38,8 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
         }
         return lista;
     }
+    
+    
    
     
 }

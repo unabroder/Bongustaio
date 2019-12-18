@@ -27,7 +27,7 @@ public class Venta implements Serializable{
     private Empleado idempleado;
 
        
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="fecha")
     private Date fecha=new Date();
     
