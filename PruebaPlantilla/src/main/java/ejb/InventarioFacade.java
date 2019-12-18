@@ -5,14 +5,17 @@
  */
 package ejb;
 
-import entity.Tipoproducto;
-import java.util.List;
+import entity.Inventario;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ *
+ * @author mirian.floresusam
+ */
 @Stateless
-public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements TipoproductoFacadeLocal {
+public class InventarioFacade extends AbstractFacade<Inventario> implements InventarioFacadeLocal {
 
     @PersistenceContext(unitName = "bongustaio")
     private EntityManager em;
@@ -22,20 +25,8 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
         return em;
     }
 
-    public TipoproductoFacade() {
-        super(Tipoproducto.class);
+    public InventarioFacade() {
+        super(Inventario.class);
     }
-
-    @Override
-    public List<Tipoproducto> findActivos() {
-        Tipoproducto tipo = null;
-        String sql;
-        try {
-            sql = "SELECT x FROM tipoproducto x where x.estado=1";
-
-        } catch (Exception e) {
-        }
-        
-    }
-
+    
 }
