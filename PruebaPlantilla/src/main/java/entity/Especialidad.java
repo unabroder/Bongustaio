@@ -20,7 +20,7 @@ public class Especialidad implements Serializable{
     private String nombre;
     
     @Column(name="estado")
-    private int estado;
+    private int estado=1;
 
     public int getIdespecialidad() {
         return idespecialidad;
@@ -48,8 +48,8 @@ public class Especialidad implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + this.idespecialidad;
+        int hash = 3;
+        hash = 97 * hash + this.idespecialidad;
         return hash;
     }
 
@@ -75,8 +75,7 @@ public class Especialidad implements Serializable{
     public String toString() {
         return "Especialidad{" + "idespecialidad=" + idespecialidad + '}';
     }
-    
-    
+
     
     
     

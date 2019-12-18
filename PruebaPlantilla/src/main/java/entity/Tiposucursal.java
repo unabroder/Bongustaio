@@ -23,9 +23,7 @@ public class Tiposucursal implements Serializable {
     @Column(name = "estado", nullable = false)
     private int estado;
 
-    public Tiposucursal(int idtiposucursal) {
-        this.idtiposucursal = idtiposucursal;
-    }
+   
 
     @Override
     public int hashCode() {

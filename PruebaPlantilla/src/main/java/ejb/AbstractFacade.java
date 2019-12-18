@@ -11,6 +11,7 @@ public abstract class AbstractFacade<T> {
         this.entityClass = entityClass;
     }
 
+
     protected abstract EntityManager getEntityManager();
 
     public void create(T entity) {

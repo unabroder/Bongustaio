@@ -2,6 +2,7 @@ C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantill
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\CatalogoFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Proveedor.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\controller\TipoproductoController.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProveedorFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\controller\CatalogoController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Sucursal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoproductoFacadeLocal.java
@@ -10,12 +11,18 @@ C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantill
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Roles.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\controller\TipoEmpleadoController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacadeLocal.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProductoFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Tiposucursal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoproductoFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\TiposucursalFacadeLocal.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProductoFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Bitacora.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\EmpleadoFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\CatalogoFacadeLocal.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\SucursalFacadeLocal.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\TiposucursalFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Especialidad.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProveedorFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Producto.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\TipoEmpleado.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacade.java
