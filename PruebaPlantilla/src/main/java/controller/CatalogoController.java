@@ -78,7 +78,7 @@ public class CatalogoController implements Serializable{
     
     public void consultarTipoproducto(){
         try {
-            listaTipoproducto= listaTipoproducto.
+            listaTipoproducto = tipoproductoEJB.findAll();
         } catch (Exception e) {
         }
     }

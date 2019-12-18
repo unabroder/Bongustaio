@@ -35,6 +35,7 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
 
         } catch (Exception e) {
         }
+        
     }
 
 }
