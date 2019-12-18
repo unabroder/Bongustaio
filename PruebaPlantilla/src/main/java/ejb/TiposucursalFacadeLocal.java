@@ -13,14 +13,16 @@ import javax.ejb.Local;
  *
  * @author josue.vasquezusam
  */
+
+
 @Local
 public interface TiposucursalFacadeLocal {
 
-    void create(Tiposucursal tiposucursal);
+    void create(Tiposucursal tsucursal);
 
-    void edit(Tiposucursal tiposucursal);
+    void edit(Tiposucursal tsucursal);
 
-    void remove(Tiposucursal tiposucursal);
+    void remove(Tiposucursal tsucursal);
 
     Tiposucursal find(Object id);
 
@@ -29,5 +31,9 @@ public interface TiposucursalFacadeLocal {
     List<Tiposucursal> findRange(int[] range);
 
     int count();
-    
+
+    List<Tiposucursal> findAllActivo();
+
+    void removeEstado(Tiposucursal tsucursal);
+
 }

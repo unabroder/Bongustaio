@@ -7,21 +7,11 @@ rol varchar(50) not null,
 estado int(1) not null default 1
 )ENGINE InnoDB;
 
-CREATE TABLE usuarios(
-idusuario int(11) not null primary key,
-usuario varchar(60) not null,
-clave varchar(60) not null,
-idtipo int(11) not null,
-Estado int(1) not null default 0,
-CONSTRAINT FOREIGN KEY (idtipo) REFERENCES roles(idrol)
-ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE InnoDB;
-
 create table tipoempleado(
 idtipoempleado int(11) not null primary key auto_increment,
 tipoempleado varchar(25) not null,
 estado int(1) not null default 1
-)ENGINE InnoDB;
+)ENGINE InnoDB; 
 
 CREATE TABLE tiposucursal(
 idtiposucursal int(11) not null primary key auto_increment,
@@ -49,11 +39,20 @@ correo varchar(70) not null,
 telefono varchar(10) not null,
 idtipoempleado int(11) not null,
 idsucursal int(11) not null,
-idusuario int(11) not null,
 estado int(1) not null default 1,
 constraint foreign key (idtipoempleado) references tipoempleado(idtipoempleado) on delete cascade on update cascade,
-constraint foreign key (idsucursal) references sucursal(idsucursal) on delete cascade on update cascade,
-constraint foreign key (idusuario) references usuarios(Idusuario) on delete cascade on update cascade
+constraint foreign key (idsucursal) references sucursal(idsucursal) on delete cascade on update cascade
+)ENGINE InnoDB;
+
+CREATE TABLE usuarios(
+idusuario int(11) not null primary key auto_increment,
+usuario varchar(60) not null,
+clave varchar(60) not null,
+idtipo int(11) not null,
+idempleado int(11) not null,
+Estado int(1) not null default 0,
+CONSTRAINT FOREIGN KEY (idtipo) REFERENCES roles(idrol) ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT FOREIGN KEY (idempleado) REFERENCES empleado(idempleado) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE InnoDB;
 
 CREATE TABLE proveedor(
@@ -133,7 +132,17 @@ fecha timestamp not null,
 subtotal decimal(10,2) not null,
 total decimal(10,2) not null,
 estado int(1) not null default 1,
-constraint foreign key (idempleado) references empleado(idempleado) on delete cascade on update cascade,
+constraint foreign key (idempleado) references empleado(idempleado) on delete cascade on update cascade
+)ENGINE InnoDB;
+
+create table venta_detalle(
+idventa_detalle int(11) not null primary key auto_increment,
+idventa int(11) not null,
+idcatalogo int(11) not null,
+cantidad int(11) not null,
+estado int(1) not null default 1,
+constraint foreign key (idventa) references venta(idventa) on delete cascade on update cascade,
+constraint foreign key (idcatalogo) references catalogo(idcatalogo) on delete cascade on update cascade
 )ENGINE InnoDB;
 
 create table menu_del_dia(
@@ -145,16 +154,6 @@ constraint foreign key (idventa_detalle) references venta_detalle(idventa_detall
 on delete cascade on update cascade
 )ENGINE InnoDB;
 
-create table venta_detalle(
-idventa_detalle int(11) not null primary key auto_increment,
-idventa int(11) not null,
-idcatalogo int(11) not null,
-cantidad int(11) not null,
-estado int(1) not null default 1,
-constraint foreign key (idventa) references venta(idventa) on delete cascade on update cascade,
-constraint foreign key (idcatalogo) references catalogo(idcatalogo) on delete cascade on update cascade,
-)ENGINE InnoDB;
-
 create table bitacora(
 idbitacora int(11) not null primary key auto_increment,
 fecha timestamp not null,
@@ -163,3 +162,4 @@ accion varchar(200) not null,
 estado int(1) not null default 1,
 constraint foreign key (usuario) references usuarios(idusuario) on delete cascade on update cascade
 )ENGINE InnoDB;
+

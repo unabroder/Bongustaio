@@ -6,6 +6,7 @@
 package ejb;
 
 import entity.Tipoproducto;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,5 +29,10 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
     public TipoproductoFacade() {
         super(Tipoproducto.class);
     }
-    
+
+    @Override
+    public List<Tipoproducto> findActivos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

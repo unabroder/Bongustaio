@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 controller\usuarioController.class
 entity\Empleado.class
 ejb\CatalogoFacadeLocal.class
@@ -39,3 +40,5 @@ entity\Venta_.class
 entity\Sucursal.class
 entity\Empleado_.class
 entity\Tipoproducto_.class
+=======
+>>>>>>> efb1911fb6bd4ac0694e9b7f60ebc30853844c23

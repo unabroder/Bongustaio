@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ejb;
 
 import entity.Sucursal;
+import entity.Tiposucursal;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-/**
- *
- * @author josue.vasquezusam
- */
 @Stateless
 public class SucursalFacade extends AbstractFacade<Sucursal> implements SucursalFacadeLocal {
 
@@ -28,5 +22,37 @@ public class SucursalFacade extends AbstractFacade<Sucursal> implements Sucursal
     public SucursalFacade() {
         super(Sucursal.class);
     }
-    
+
+    public void removeEstado(Sucursal sucursal) {
+        String sql;
+
+        try {
+            sql = "UPDATE sucursal s set estado=0 WHERE idsucursal=?1";
+            Query query = em.createQuery(sql);
+            query.setParameter(1, sucursal.getIdsucursal());
+
+        } catch (Exception e) {
+            throw e;
+        }
+
+    }
+
+    @Override
+    public List<Sucursal> findAllActivo() {
+
+        List<Sucursal> lista = null;
+        String sql;
+
+        try {
+            sql = "SELECT s FROM sucursal s WHERE estado=1";
+            Query query = em.createQuery(sql);
+            lista = query.getResultList();
+
+        } catch (Exception e) {
+            throw e;
+        }
+        return lista;
+
+    }
+
 }
