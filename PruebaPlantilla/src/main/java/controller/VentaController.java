@@ -95,5 +95,33 @@ public class VentaController implements Serializable {
             } catch (Exception e) {
             }
         }
+        
+        public void leerid(Venta vent){
+            try {
+                this.venta=vent;
+            } catch (Exception e) {
+            }
+        }
+        
+        public void modificar(){
+            try {
+                ventaEJB.edit(venta);
+            } catch (Exception e) {
+            }
+        }
+        
+        public void eliminar(Venta vent){
+            this.venta=vent;
+            try {
+                ventaEJB.remove(venta);
+                listaventa=ventaEJB.findAll();
+            } catch (Exception e) {
+            }
+        }
+        
+        public void CargarVenta(Venta vent){
+            this.empleado.setIdempleado(vent.getIdempleado().getIdempleado());
+            this.venta=vent;
+        }
     
 }

@@ -35,18 +35,6 @@ public class Bitacora implements Serializable {
    
     @Column(name="estado")
     private int estado=1;
-    @Column(name = "fecha")
-    private Date fecha;
-
-    @ManyToOne
-    @JoinColumn(name = "usuario", referencedColumnName = "idusuario")
-    private Usuarios usuario;
-
-    @Column(name = "accion")
-    private String accion;
-
-    @Column(name = "estado")
-    private int estado = 1;
 
     public int getIdbitacora() {
         return idbitacora;

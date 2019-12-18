@@ -115,5 +115,34 @@ public class Venta_DetalleController implements Serializable {
         } catch (Exception e) {
         }
     }
+    
+    public void leerid(Venta_Detalle vdeta){
+        try {
+            this.vdetalle=vdeta;
+        } catch (Exception e) {
+        }
+    }
+    
+    public void modificar(){
+        try {
+            vdetalleEJB.edit(vdetalle);
+        } catch (Exception e) {
+        }
+    }
+    
+    public void eliminar(Venta_Detalle vdeta){
+        this.vdetalle=vdeta;
+        try {
+            vdetalleEJB.remove(vdetalle);
+            listavdetalle=vdetalleEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+    
+    public void CargarVDetalle(Venta_Detalle vdeta){
+        this.venta.setIdventa(vdeta.getIdventa().getIdventa());
+        this.catalogo.setIdcatalogo(vdeta.getIdcatalogo().getIdcatalogo());
+        this.vdetalle=vdeta;
+    }
 
 }

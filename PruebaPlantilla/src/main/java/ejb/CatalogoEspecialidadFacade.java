@@ -14,6 +14,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class CatalogoEspecialidadFacade extends AbstractFacade<CatalogoEspecialidad> implements CatalogoEspecialidadFacadeLocal{
+    
     @PersistenceContext(unitName = "bongustaio")
     private EntityManager em;
     

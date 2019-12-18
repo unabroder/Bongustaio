@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/*
+
 
 @Entity
 @Table(name = "catalogo_especialidad")
@@ -94,4 +94,4 @@ public class CatalogoEspecialidad {
     
     
 }
- */
+ 
