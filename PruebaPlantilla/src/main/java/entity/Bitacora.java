@@ -1,4 +1,3 @@
-
 package entity;
 
 import java.io.Serializable;
@@ -15,32 +14,26 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table (name ="bitacora")
+@Table(name = "bitacora")
 public class Bitacora implements Serializable {
-    
+
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idbitacora;
-    
+
     @Temporal(TemporalType.DATE)
-    @Column( name ="fecha")
+    @Column(name = "fecha")
     private Date fecha;
-    
+
     @ManyToOne
-    @JoinColumn(name="usuario", referencedColumnName = "idusuario" ) 
+    @JoinColumn(name = "usuario", referencedColumnName = "idusuario")
     private Usuarios usuario;
-    
-    @Column( name = "accion")
+
+    @Column(name = "accion")
     private String accion;
-<<<<<<< HEAD
-   
-    @Column(name="estado")
-    private int estado=1;
-=======
-    
-    @Column( name = "estado")
-    private int estado =1;
->>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
+
+    @Column(name = "estado")
+    private int estado = 1;
 
     public int getIdbitacora() {
         return idbitacora;
@@ -74,11 +67,8 @@ public class Bitacora implements Serializable {
         this.accion = accion;
     }
 
-<<<<<<< HEAD
-    public int  getEstado() {
-=======
     public int getEstado() {
->>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
+
         return estado;
     }
 
@@ -115,7 +105,5 @@ public class Bitacora implements Serializable {
     public String toString() {
         return "Bitacora{" + "idbitacora=" + idbitacora + '}';
     }
-    
-    
-    
+
 }

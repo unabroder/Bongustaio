@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 
 @Named(value = "menuDelDia")
@@ -93,7 +95,10 @@ public class MenuDelDiaController implements Serializable {
     //metodos 
     public void insertar(){
         try {
+            menuDelDia.setIdventa_detalle(venta_Detalle);
             menuDelDiaEJB.create(menuDelDia);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
     }
@@ -120,15 +125,15 @@ public class MenuDelDiaController implements Serializable {
         }
     }
     
-    public void eliminar(MenuDelDia mDD){
-        this.menuDelDia = mDD;
+    public void eliminar(){
         try {
+            menuDelDia.setIdventa_detalle(venta_Detalle);
             menuDelDiaEJB.remove(menuDelDia);
-            listaMenuDelDia = menuDelDiaEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue eliminado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
-       
-    
     }
+    
     
 }

@@ -11,6 +11,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 
 @Named(value = "inventarioController")
@@ -29,7 +31,7 @@ public class InventarioController implements Serializable{
     private List<ProductoProveedor> listaProductoProveedores;
     
     
-    //contrustores
+    //constructores
     public InventarioController() {
     }
     
@@ -39,7 +41,6 @@ public class InventarioController implements Serializable{
         inventario = new Inventario();
         productoProveedor = new ProductoProveedor();
     }
-
     
     //Getters y Setters
     
@@ -96,7 +97,10 @@ public class InventarioController implements Serializable{
     //metodos 
     public void insertar(){
         try {
+            inventario.setIdprod_prov(productoProveedor);
             inventarioEJB.create(inventario);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
     }
@@ -123,14 +127,13 @@ public class InventarioController implements Serializable{
         }
     }
     
-    public void eliminar(Inventario inven){
-        this.inventario = inven;
+    public void eliminar(){
         try {
+            inventario.setIdprod_prov(productoProveedor);
             inventarioEJB.remove(inventario);
-            listaInventario = inventarioEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue eliminado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
-       
-    
     }
 }
