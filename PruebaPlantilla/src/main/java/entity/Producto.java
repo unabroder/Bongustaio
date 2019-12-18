@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import static jdk.nashorn.internal.runtime.Debug.id;
 
 @Entity
@@ -29,6 +31,7 @@ public class Producto implements Serializable {
     @Column(name="cantidad")
     private int cantidad;
     
+    @Temporal( TemporalType.DATE)
     @Column(name="fechavence")
     private Date fechavence=new Date();
     

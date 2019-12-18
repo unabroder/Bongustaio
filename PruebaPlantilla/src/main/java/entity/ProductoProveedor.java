@@ -9,18 +9,20 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author claudia.santosusam
  */
-@Named(value = "producto_proveedor")
-@SessionScoped
+@Entity
+@Table( name ="producto_proveedor")
 public class ProductoProveedor implements Serializable {
 
     @Id

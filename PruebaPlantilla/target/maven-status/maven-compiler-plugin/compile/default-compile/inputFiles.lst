@@ -1,7 +1,6 @@
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\RolesFacade.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\Venta_DetalleFacade.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Inventario.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\controller\BitacoraController.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\CatalogoFacade.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\CatalogoEspecialidadFacade.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\controller\TipoEmpleadoController.java
@@ -30,11 +29,9 @@ C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ej
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Usuarios.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\CatalogoFacadeLocal.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProductoProveedorFacadeLocal.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacadeLocal.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\SucursalFacade.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\VentaFacade.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\Venta_DetalleFacadeLocal.java
-C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Bitacora.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoEmpleadoFacadeLocal.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Producto.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\UsuariosFacade.java

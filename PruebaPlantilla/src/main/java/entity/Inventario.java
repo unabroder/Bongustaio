@@ -20,7 +20,7 @@ public class Inventario implements Serializable {
     private int idinventario;
 
     @ManyToOne
-    @JoinColumn(name = "idprod_prov", referencedColumnName = "producto_producto")
+    @JoinColumn(name = "idprod_prov", referencedColumnName = "idprod_prov")
     private ProductoProveedor idprod_prov;
 
     @Column(name = "cant_entrada")

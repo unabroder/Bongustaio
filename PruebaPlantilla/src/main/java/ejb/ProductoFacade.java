@@ -5,7 +5,6 @@
  */
 package ejb;
 
-import entity.Bitacora;
 import entity.Producto;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

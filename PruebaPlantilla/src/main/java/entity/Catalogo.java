@@ -39,7 +39,7 @@ public class Catalogo implements Serializable{
    private int cantidad;
    
    @ManyToOne
-   @JoinColumn(name = "idtipoproduc", referencedColumnName = "idtipoproduc")
+   @JoinColumn(name = "idtipoproduc", referencedColumnName = "idtipoproducto")
    private Tipoproducto idtipoproduc;
 
     public int getIdcatalogo() {

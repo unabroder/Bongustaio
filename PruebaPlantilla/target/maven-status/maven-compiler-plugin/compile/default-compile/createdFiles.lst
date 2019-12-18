@@ -22,7 +22,6 @@ ejb\Venta_DetalleFacade.class
 controller\CatalogoController.class
 ejb\CatalogoFacade.class
 entity\Roles_.class
-ejb\BitacoraFacadeLocal.class
 controller\EmpleadoController.class
 entity\Producto.class
 controller\TipoproductoController.class
@@ -49,14 +48,12 @@ controller\ProductoController.class
 controller\MenuDelDiaController.class
 ejb\CatalogoFacadeLocal.class
 entity\CatalogoEspecialidad_.class
-entity\Bitacora_.class
 ejb\ProveedorFacade.class
 entity\Proveedor_.class
 entity\CatalogoEspecialidad.class
 controller\TiposucursalController.class
 ejb\SucursalFacadeLocal.class
 entity\Venta_Detalle.class
-controller\BitacoraController.class
 ejb\VentaFacadeLocal.class
 ejb\ProductoFacade.class
 entity\Especialidad.class
@@ -72,7 +69,6 @@ entity\MenuDelDia.class
 entity\ProductoProveedor.class
 ejb\CatalogoEspecialidadFacade.class
 controller\ProveedorController.class
-entity\Bitacora.class
 ejb\TipoproductoFacade.class
 ejb\EmpleadoFacadeLocal.class
 ejb\AbstractFacade.class
