@@ -26,15 +26,6 @@ public class Venta implements Serializable{
     @JoinColumn(name="idempleado", referencedColumnName = "idempleado")
     private Empleado idempleado;
     
-    @ManyToOne
-    @JoinColumn(name="idmenu", referencedColumnName = "idmenu")
-    private Menu idmenu;
-    
-    @Temporal(TemporalType.DATE)
-    @Column(name="fecha")
-    private Date fecha=new Date();
-    
-    @Column(name="subtotal")
-    private Decimal
+
     
 }
