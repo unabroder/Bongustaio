@@ -22,6 +22,21 @@ public class Bitacora implements Serializable {
     private int idbitacora;
 
     @Temporal(TemporalType.DATE)
+
+    @Column( name ="fecha")
+    private Date fecha=new Date();
+    
+    
+    @Column( name = "usuario")
+    private String usuario;
+    
+    @Column( name = "accion")
+    private String accion;
+
+   
+    @Column(name="estado")
+    private int estado=1;
+
     @Column(name = "fecha")
     private Date fecha;
 
@@ -34,6 +49,7 @@ public class Bitacora implements Serializable {
 
     @Column(name = "estado")
     private int estado = 1;
+
 
     public int getIdbitacora() {
         return idbitacora;
@@ -51,11 +67,11 @@ public class Bitacora implements Serializable {
         this.fecha = fecha;
     }
 
-    public Usuarios getUsuario() {
+    public String getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuarios usuario) {
+    public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
 
@@ -79,7 +95,7 @@ public class Bitacora implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + this.idbitacora;
+        hash = 79 * hash + this.idbitacora;
         return hash;
     }
 
