@@ -1,5 +1,3 @@
-
-
 CREATE DATABASE bongustaio;
 USE bongustaio;
 
@@ -31,7 +29,6 @@ tipo varchar(50) not null,
 estado int(1) not null default 1
 )ENGINE InnoDB;
 
-
 CREATE TABLE sucursal(
 idsucursal int(11) not null primary key auto_increment,
 idtipo int(11) not null,
@@ -59,10 +56,6 @@ constraint foreign key (idsucursal) references sucursal(idsucursal) on delete ca
 constraint foreign key (idusuario) references usuarios(Idusuario) on delete cascade on update cascade
 )ENGINE InnoDB;
 
-
-
-
-
 CREATE TABLE proveedor(
 idproveedor int(11) not null primary key auto_increment,
 nombre varchar(70) not null,
@@ -72,14 +65,11 @@ correo varchar(50),
 estado int(1) not null default 1
 )ENGINE InnoDB;
 
-
 CREATE TABLE tipoproducto(
 idtipoproducto int(11) not null primary key auto_increment,
 tipoproducto varchar(60) not null,
 estado int(1) not null default 1
 )ENGINE InnoDB;
-
-
 
 CREATE TABLE catalogo(
 idcatalogo int(11) not null primary key auto_increment,
@@ -136,25 +126,24 @@ constraint foreign key (idprod_prov) references producto_proveedor(idprod_prov)
 on delete cascade on update cascade
 )ENGINE InnoDB;
 
-create table menu_del_dia(
-idmenu int(11) not null primary key auto_increment,
-idprod_esp int(11) not null,
-descuento decimal(10,2) not null,
-estado int(1) not null default 1
-)ENGINE InnoDB;
-
 create table venta(
 idventa int(11) not null primary key auto_increment,
 idempleado int(11) not null,
-idmenu int(11) not null,
 fecha timestamp not null,
 subtotal decimal(10,2) not null,
 total decimal(10,2) not null,
 estado int(1) not null default 1,
 constraint foreign key (idempleado) references empleado(idempleado) on delete cascade on update cascade,
-constraint foreign key (idmenu) references menu_del_dia(idmenu) on delete cascade on update cascade
 )ENGINE InnoDB;
 
+create table menu_del_dia(
+idmenu int(11) not null primary key auto_increment,
+descuento decimal(10,2) not null,
+idventa_detalle int(11) not null,
+estado int(1) not null default 1,
+constraint foreign key (idventa_detalle) references venta_detalle(idventa_detalle) 
+on delete cascade on update cascade
+)ENGINE InnoDB;
 
 create table venta_detalle(
 idventa_detalle int(11) not null primary key auto_increment,
@@ -163,10 +152,8 @@ idcatalogo int(11) not null,
 cantidad int(11) not null,
 estado int(1) not null default 1,
 constraint foreign key (idventa) references venta(idventa) on delete cascade on update cascade,
-constraint foreign key (idcatalogo) references catalogo(idcatalogo) on delete cascade on update cascade
+constraint foreign key (idcatalogo) references catalogo(idcatalogo) on delete cascade on update cascade,
 )ENGINE InnoDB;
-
-
 
 create table bitacora(
 idbitacora int(11) not null primary key auto_increment,
