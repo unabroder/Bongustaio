@@ -171,7 +171,7 @@ function ponerTema(x, y, z, p, n, b) {
         obCl("ui-dialog ui-widget")[q].style.backgroundColor = "rgba(255,255,255," + b + ")";
     }
     for (var q = 0; q < obCl("ui-outputlabel").length; q++) {
-        obCl("ui-outputlabel")[q].style.color = x;
+        obCl("ui-outputlabel")[q].style.color = "black";
         obCl("ui-outputlabel")[q].style.textShadow = "none";
     }
     for (var q = 0; q < obCl("center").length; q++) {
