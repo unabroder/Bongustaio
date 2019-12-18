@@ -2,7 +2,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,20 +25,16 @@ public class Venta implements Serializable{
     @ManyToOne
     @JoinColumn(name="idempleado", referencedColumnName = "idempleado")
     private Empleado idempleado;
-    
-    @ManyToOne
-    @JoinColumn(name="idmenu", referencedColumnName = "idmenu")
-    private Menu idmenu;
-    
+       
     @Temporal(TemporalType.DATE)
     @Column(name="fecha")
     private Date fecha=new Date();
     
     @Column(name="subtotal")
-    private DecimalFormat subtotal;
+    private Double subtotal;
     
     @Column(name="total")
-    private DecimalFormat total;
+    private Double total;
     
     @Column(name="estado")
     private int estado;
@@ -62,14 +57,6 @@ public class Venta implements Serializable{
         this.idempleado = idempleado;
     }
 
-    public Menu getIdmenu() {
-        return idmenu;
-    }
-
-    public void setIdmenu(Menu idmenu) {
-        this.idmenu = idmenu;
-    }
-
     public Date getFecha() {
         return fecha;
     }
@@ -78,19 +65,19 @@ public class Venta implements Serializable{
         this.fecha = fecha;
     }
 
-    public DecimalFormat getSubtotal() {
+    public Double getSubtotal() {
         return subtotal;
     }
 
-    public void setSubtotal(DecimalFormat subtotal) {
+    public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
     }
 
-    public DecimalFormat getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(DecimalFormat total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
 

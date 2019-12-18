@@ -1,0 +1,11 @@
+ejb\VentaFacadeLocal.class
+entity\Empleado.class
+entity\Usuario.class
+ejb\UsuarioFacade.class
+controller\UsuarioController.class
+ejb\AbstractFacade.class
+ejb\VentaFacade.class
+entity\prueba.class
+entity\Venta.class
+entity\Venta_.class
+entity\Empleado_.class
