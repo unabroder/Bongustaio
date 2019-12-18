@@ -19,12 +19,14 @@ import javax.inject.Named;
  */
 @Named(value = "empleadoController")
 @SessionScoped
-public class EmpleadoController implements Serializable{
-@EJB
-private EmpleadoFacadeLocal empleadoEJB;
-private Empleado empleado;
-private List<Empleado> listaEmpleado;
+public class EmpleadoController implements Serializable {
 
-@EJB
+    @EJB
+    private EmpleadoFacadeLocal empleadoEJB;
+    private Empleado empleado;
+    private List<Empleado> listaEmpleado;
+
+
+
 
 }
