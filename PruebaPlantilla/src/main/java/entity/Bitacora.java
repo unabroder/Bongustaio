@@ -31,7 +31,7 @@ public class Bitacora implements Serializable {
     private String accion;
    
     @Column(name="estado")
-    private String estado;
+    private int estado=1;
 
     public int getIdbitacora() {
         return idbitacora;
@@ -65,11 +65,11 @@ public class Bitacora implements Serializable {
         this.accion = accion;
     }
 
-    public String getEstado() {
+    public int  getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 
