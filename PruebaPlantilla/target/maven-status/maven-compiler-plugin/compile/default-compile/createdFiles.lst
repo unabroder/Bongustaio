@@ -1,0 +1,17 @@
+entity\Usuarios_.class
+entity\Sucursal_.class
+entity\Roles.class
+ejb\SucursalFacade.class
+ejb\SucursalFacadeLocal.class
+entity\Usuarios.class
+ejb\UsuariosFacadeLocal.class
+entity\Tiposucursal.class
+ejb\TiposucursalFacade.class
+ejb\UsuariosFacade.class
+entity\Tiposucursal_.class
+ejb\RolesFacade.class
+entity\Roles_.class
+ejb\AbstractFacade.class
+ejb\RolesFacadeLocal.class
+ejb\TiposucursalFacadeLocal.class
+entity\Sucursal.class
