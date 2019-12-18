@@ -1,4 +1,14 @@
 <<<<<<< HEAD
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Sucursal.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Bitacora.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Roles.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Especialidad.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacadeLocal.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\ejb\AbstractFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\PruebaPlantilla\src\main\java\entity\Tiposucursal.java
+=======
+<<<<<<< HEAD
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Sucursal.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ejb\UsuarioFacade.java
 C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\entity\Venta.java
@@ -15,3 +25,4 @@ C:\Users\roberto.alferesusam\Desktop\Bongustaio\PruebaPlantilla\src\main\java\ej
 =======
 C:\Users\josue.vasquezusam\Documents\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Roles.java
 >>>>>>> 34528c599b4de51573d47375daa4a84a4f84ba37
+>>>>>>> 886011ffd5753541bfe75d7e3c447521db0e716e
