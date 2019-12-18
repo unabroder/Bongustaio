@@ -129,6 +129,7 @@ public class CatalogoController implements Serializable{
         try {
             catalogoEJB.remove(catalogo);
             listaCatalogo = catalogoEJB.findAll();
+            listaTipoproducto = tipoproductoEJB.findAll();
         } catch (Exception e) {
         }
     }

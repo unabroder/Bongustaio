@@ -3,13 +3,16 @@ package ejb;
 import java.util.List;
 import javax.persistence.EntityManager;
 
+
 public abstract class AbstractFacade<T> {
 
     private Class<T> entityClass;
 
+
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
+
 
     protected abstract EntityManager getEntityManager();
 
@@ -44,12 +47,16 @@ public abstract class AbstractFacade<T> {
         return q.getResultList();
     }
 
-    public int count() {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
+    
+    public int count(){
+        javax.persistence.criteria.CriteriaQuery cq=getEntityManager().getCriteriaBuilder().createQuery();
+        javax.persistence.criteria.Root<T> rt= cq.from(entityClass);
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
+        
     }
+
+    
 
 }

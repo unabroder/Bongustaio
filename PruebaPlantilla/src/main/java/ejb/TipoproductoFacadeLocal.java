@@ -29,7 +29,5 @@ public interface TipoproductoFacadeLocal {
 
     int count();
     
-    List<Tipoproducto> consultarAll();
-    
-    List<Tipoproducto> consultar();
+    void removerEstado(Tipoproducto tipo);
 }

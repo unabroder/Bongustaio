@@ -65,7 +65,7 @@ public class TipoproductoController implements Serializable{
     
     public void consultar(){
         try {
-            listaTipoproducto=tipoproductoEJB.consultarAll();
+            listaTipoproducto=tipoproductoEJB.findAll();
         } catch (Exception e) {
         }
     }
@@ -100,4 +100,13 @@ public class TipoproductoController implements Serializable{
         } catch (Exception e) {
         }
     }
+    
+    public void consultarActivos(){
+        try {
+            listaTipoproducto=tipoproductoEJB.findActivos();
+        } catch (Exception e) {
+        }
+    }
+    
+
 }

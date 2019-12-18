@@ -25,8 +25,4 @@ public interface CatalogoFacadeLocal {
     List<Catalogo> findRange(int[] range);
 
     int count();
-
-    List<Catalogo> consultar();
-
-    List<Catalogo> consultarAll();
 }

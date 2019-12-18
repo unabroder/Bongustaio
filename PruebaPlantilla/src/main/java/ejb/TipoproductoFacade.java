@@ -29,14 +29,28 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
 
     @Override
     public List<Tipoproducto> findActivos() {
-        String sql = "SELECT tipo FROM tipoproducto tipo WHERE estado=?";
+        List<Tipoproducto> lista=null;
+        String sql;
         try {
-            Query query = em.createQuery(sql);
-            List<Tipoproducto> lista=query.getResultList();
-         
+            sql="SELECT x FROM tipoproducto x WHERE estado=1";
+            Query query=em.createQuery(sql);
+            lista= query.getResultList();
         } catch (Exception e) {
             throw e;
         }
         return lista;
     }
+    
+    public void removerEstado(Tipoproducto tipo){
+    String sql;
+        try {
+            sql="UPDATE tipoproducto x SET estado=0 WHERE idtipoproducto=?1";
+            Query query=em.createQuery(sql);
+            query.setParameter(1, tipo.getIdtipoproducto());
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+  
 }
