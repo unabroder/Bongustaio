@@ -21,6 +21,9 @@ public class InventarioController implements Serializable{
     private Inventario inventario;
     private List<Inventario> listaInventario;
 
+    
+    
+    
     //contrustores
     public InventarioController() {
     }
