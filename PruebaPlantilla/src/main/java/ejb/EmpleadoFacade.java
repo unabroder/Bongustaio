@@ -5,26 +5,28 @@
  */
 package ejb;
 
-import entity.Bitacora;
+import entity.Empleado;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ *
+ * @author roberto.alferesusam
+ */
 @Stateless
-public class BitacoraFacade extends AbstractFacade<Bitacora> implements BitacoraFacadeLocal {
+public class EmpleadoFacade extends AbstractFacade<Empleado> implements EmpleadoFacadeLocal {
 
-    @PersistenceContext(unitName = "conexionPU")
+    @PersistenceContext(unitName = "bongustaio")
     private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {
-
         return em;
     }
 
-    public BitacoraFacade() {
-
-        super(Bitacora.class);
+    public EmpleadoFacade() {
+        super(Empleado.class);
     }
 
 }

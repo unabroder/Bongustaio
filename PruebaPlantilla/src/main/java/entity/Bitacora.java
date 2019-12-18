@@ -20,11 +20,12 @@ public class Bitacora implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idbitacora;
 
-    @OneToOne
-    @JoinColumn(name = "id_usuario", referencedColumnName = "idusuario")
 
     @Column(name = "fecha")
     private Date fecha = new Date();
+    
+      @Column(name="usuario")
+    private String usuario;
     
     @Column(name="accion")
     private String accion;
@@ -48,6 +49,14 @@ public class Bitacora implements Serializable {
         this.fecha = fecha;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
     public String getAccion() {
         return accion;
     }
@@ -63,6 +72,8 @@ public class Bitacora implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    
 
     @Override
     public int hashCode() {
