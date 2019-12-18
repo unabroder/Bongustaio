@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless
 public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements TipoproductoFacadeLocal {
@@ -28,13 +29,14 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
 
     @Override
     public List<Tipoproducto> findActivos() {
-        Tipoproducto tipo = null;
-        String sql;
+        String sql = "SELECT tipo FROM tipoproducto tipo WHERE estado=?";
         try {
-            sql = "SELECT * FROM tipoproducto x where x.estado=1";
-
+            Query query = em.createQuery(sql);
+            List<Tipoproducto> lista=query.getResultList();
+         
         } catch (Exception e) {
+            throw e;
         }
+        return lista;
     }
-
 }

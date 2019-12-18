@@ -21,8 +21,12 @@ public interface CatalogoFacadeLocal {
     Catalogo find(Object id);
 
     List<Catalogo> findAll();
-    
+
     List<Catalogo> findRange(int[] range);
-    
+
     int count();
+
+    List<Catalogo> consultar();
+
+    List<Catalogo> consultarAll();
 }

@@ -28,5 +28,8 @@ public interface TipoproductoFacadeLocal {
     List<Tipoproducto> findRange(int[] range);
 
     int count();
-
+    
+    List<Tipoproducto> consultarAll();
+    
+    List<Tipoproducto> consultar();
 }
