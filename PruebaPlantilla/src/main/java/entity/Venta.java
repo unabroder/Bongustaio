@@ -1,4 +1,3 @@
-
 package entity;
 
 import java.io.Serializable;
@@ -15,29 +14,28 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="venta")
-public class Venta implements Serializable{
-    
+@Table(name = "venta")
+public class Venta implements Serializable {
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idventa;
-    
+
     @ManyToOne
-    @JoinColumn(name="idempleado", referencedColumnName = "idempleado")
+    @JoinColumn(name = "idempleado", referencedColumnName = "idempleado")
     private Empleado idempleado;
 
-       
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="fecha")
-    private Date fecha=new Date();
-    
-    @Column(name="subtotal",nullable = false)
+    @Column(name = "fecha")
+    private Date fecha = new Date();
+
+    @Column(name = "subtotal", nullable = false)
     private Double subtotal;
-    
-    @Column(name="total",nullable=false)
+
+    @Column(name = "total", nullable = false)
     private Double total;
-    
-    @Column(name="estado",nullable=false)
+
+    @Column(name = "estado", nullable = false)
     private int estado;
 
 //  =======================================================================================================================
@@ -121,8 +119,5 @@ public class Venta implements Serializable{
         }
         return true;
     }
-
-   
-    
 
 }
