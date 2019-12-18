@@ -21,7 +21,7 @@ public class Inventario implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "idprod_prov", referencedColumnName = "producto_producto")
-    private  ProductoProveedor idprod_prov;
+   // private ProductoProveedor idprod_prov;
     
     @Column(name = "cant_entrada")
     private int cant_entrada;
@@ -68,13 +68,13 @@ public class Inventario implements Serializable {
         this.idinventario = idinventario;
     }
 
-    public ProductoProveedor getIdprod_prov() {
+ /*   public ProductoProveedor getIdprod_prov() {
         return idprod_prov;
     }
 
     public void setIdprod_prov(ProductoProveedor idprod_prov) {
         this.idprod_prov = idprod_prov;
-    }
+    }  */
 
     public int getCant_entrada() {
         return cant_entrada;
@@ -100,13 +100,13 @@ public class Inventario implements Serializable {
         this.estado = estado;
     }
 
-
+/*
     @Override
     public String toString() {
         return "Inventario{" + "idinventario=" + idinventario + ", idprod_prov=" + idprod_prov + ", cant_entrada=" + cant_entrada + ", cant_disponible=" + cant_disponible + ", estado=" + estado + '}';
     }
     
-    
+    */
     
 
 }

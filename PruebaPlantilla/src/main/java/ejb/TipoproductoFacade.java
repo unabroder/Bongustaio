@@ -10,7 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+/*
 @Stateless
 public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements TipoproductoFacadeLocal {
 
@@ -25,6 +25,8 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
     public TipoproductoFacade() {
         super(Tipoproducto.class);
     }
+    
+    
 
     @Override
     public List<Tipoproducto> findActivos() {
@@ -37,5 +39,6 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
         }
         
     }
-
+ 
 }
+*/
