@@ -22,21 +22,19 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
         return em;
     }
 
-    public TipoproductoFacade(){
-    super(Tipoproducto.class);
+    public TipoproductoFacade() {
+        super(Tipoproducto.class);
     }
 
     @Override
     public List<Tipoproducto> findActivos() {
-        Tipoproducto tipo=null;
+        Tipoproducto tipo = null;
         String sql;
         try {
-            sql="SELECT * FROM tipoproducto x where x.estado=1";
-            
+            sql = "SELECT * FROM tipoproducto x where x.estado=1";
+
         } catch (Exception e) {
         }
     }
-
- 
 
 }
