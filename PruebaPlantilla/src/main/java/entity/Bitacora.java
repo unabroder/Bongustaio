@@ -22,6 +22,10 @@ public class Bitacora implements Serializable {
     private int idbitacora;
 
     @Temporal(TemporalType.DATE)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8aa6d2503cac992c66370156735b7bea2d4cbe2c
     @Column( name ="fecha")
     private Date fecha=new Date();
     
@@ -35,6 +39,23 @@ public class Bitacora implements Serializable {
    
     @Column(name="estado")
     private int estado=1;
+<<<<<<< HEAD
+=======
+
+    @Column(name = "fecha")
+    private Date fecha;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario", referencedColumnName = "idusuario")
+    private Usuarios usuario;
+
+    @Column(name = "accion")
+    private String accion;
+
+    @Column(name = "estado")
+    private int estado = 1;
+
+>>>>>>> 8aa6d2503cac992c66370156735b7bea2d4cbe2c
 
     public int getIdbitacora() {
         return idbitacora;
@@ -107,9 +128,12 @@ public class Bitacora implements Serializable {
         return "Bitacora{" + "idbitacora=" + idbitacora + '}';
     }
 
+<<<<<<< HEAD
     
 
 
     
     
+=======
+>>>>>>> 8aa6d2503cac992c66370156735b7bea2d4cbe2c
 }

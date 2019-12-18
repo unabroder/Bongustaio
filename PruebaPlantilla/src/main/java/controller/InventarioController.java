@@ -2,13 +2,17 @@
 package controller;
 
 import ejb.InventarioFacadeLocal;
+import ejb.ProductoProveedorFacadeLocal;
 import entity.Inventario;
+import entity.ProductoProveedor;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 
 @Named(value = "inventarioController")
@@ -21,7 +25,13 @@ public class InventarioController implements Serializable{
     private Inventario inventario;
     private List<Inventario> listaInventario;
 
-    //contrustores
+    @EJB
+    private ProductoProveedorFacadeLocal productoProveedorFacadeLocalEJB;
+    private ProductoProveedor productoProveedor;
+    private List<ProductoProveedor> listaProductoProveedores;
+    
+    
+    //constructores
     public InventarioController() {
     }
     
@@ -29,8 +39,8 @@ public class InventarioController implements Serializable{
     @PostConstruct
     public void init(){
         inventario = new Inventario();
+        productoProveedor = new ProductoProveedor();
     }
-
     
     //Getters y Setters
     
@@ -57,11 +67,40 @@ public class InventarioController implements Serializable{
     public void setListaInventario(List<Inventario> listaInventario) {
         this.listaInventario = listaInventario;
     }
+
+    public ProductoProveedorFacadeLocal getProductoProveedorFacadeLocalEJB() {
+        return productoProveedorFacadeLocalEJB;
+    }
+
+    public void setProductoProveedorFacadeLocalEJB(ProductoProveedorFacadeLocal productoProveedorFacadeLocalEJB) {
+        this.productoProveedorFacadeLocalEJB = productoProveedorFacadeLocalEJB;
+    }
+
+    public ProductoProveedor getProductoProveedor() {
+        return productoProveedor;
+    }
+
+    public void setProductoProveedor(ProductoProveedor productoProveedor) {
+        this.productoProveedor = productoProveedor;
+    }
+
+    public List<ProductoProveedor> getListaProductoProveedores() {
+        return listaProductoProveedores;
+    }
+
+    public void setListaProductoProveedores(List<ProductoProveedor> listaProductoProveedores) {
+        this.listaProductoProveedores = listaProductoProveedores;
+    }
+    
+    
     
     //metodos 
     public void insertar(){
         try {
+            inventario.setIdprod_prov(productoProveedor);
             inventarioEJB.create(inventario);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
     }
@@ -88,14 +127,13 @@ public class InventarioController implements Serializable{
         }
     }
     
-    public void eliminar(Inventario inven){
-        this.inventario = inven;
+    public void eliminar(){
         try {
+            inventario.setIdprod_prov(productoProveedor);
             inventarioEJB.remove(inventario);
-            listaInventario = inventarioEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue eliminado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
-       
-    
     }
 }
