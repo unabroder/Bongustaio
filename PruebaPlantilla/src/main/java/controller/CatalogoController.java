@@ -14,17 +14,19 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 @Named(value = "catalogoController")
 @SessionScoped
-public class CatalogoController implements Serializable{
-    
+public class CatalogoController implements Serializable {
+
     @EJB
     private CatalogoFacadeLocal catalogoEJB;
     private Catalogo catalogo;
     private List<Catalogo> listaCatalogo;
-    
+
     @EJB
     private TipoproductoFacadeLocal tipoproductoEJB;
     private Tipoproducto tipoproducto;
@@ -61,34 +63,73 @@ public class CatalogoController implements Serializable{
     public void setListaTipoproducto(List<Tipoproducto> listaTipoproducto) {
         this.listaTipoproducto = listaTipoproducto;
     }
-    
-    
+
     @PostConstruct
-    private void init(){
+    private void init() {
         catalogo = new Catalogo();
         tipoproducto = new Tipoproducto();
     }
-    
-    public void consultarCatalogo(){
+
+    public void consultarCatalogo() {
         try {
             listaCatalogo = catalogoEJB.findAll();
         } catch (Exception e) {
         }
     }
-    
-    public void consultarTipoproducto(){
+
+    public void consultarTipoproducto() {
         try {
-<<<<<<< HEAD
-<<<<<<< HEAD
-            listaTipoproducto= tipoproductoEJB.findAll();
-=======
-            listaTipoproducto = tipoproductoEJB.findAll();
->>>>>>> efb1911fb6bd4ac0694e9b7f60ebc30853844c23
-=======
 
             listaTipoproducto = tipoproductoEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
 
->>>>>>> 8e77e18ca5acd9c41ed761bfd6cef9c3843f767f
+    public void insertar() {
+        try {
+            catalogo.setIdtipoproduc(tipoproducto);
+            catalogoEJB.create(catalogo);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se guardo correctamente", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+        }
+    }
+
+    public void consultar() {
+        try {
+            listaCatalogo = catalogoEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void listar() {
+        try {
+            listaCatalogo = catalogoEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void leerid(Catalogo cata) {
+        try {
+            this.catalogo = cata;
+        } catch (Exception e) {
+        }
+    }
+
+    public void modificar() {
+        try {
+            catalogoEJB.edit(catalogo);
+            listaCatalogo = catalogoEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void eliminar(Catalogo cata) {
+        this.catalogo = cata;
+        try {
+            catalogoEJB.remove(catalogo);
+            listaCatalogo = catalogoEJB.findAll();
+
         } catch (Exception e) {
         }
     }

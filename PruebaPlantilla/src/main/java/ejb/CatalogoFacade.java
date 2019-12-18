@@ -7,6 +7,7 @@ package ejb;
 
 import entity.Catalogo;
 import ejb.CatalogoFacadeLocal;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -24,6 +25,8 @@ public class CatalogoFacade extends AbstractFacade<Catalogo> implements Catalogo
     public CatalogoFacade(){
     super(Catalogo.class);
     }
+
+   
     
     
 }

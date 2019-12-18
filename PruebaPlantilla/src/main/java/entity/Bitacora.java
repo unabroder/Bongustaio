@@ -1,4 +1,3 @@
-
 package entity;
 
 import java.io.Serializable;
@@ -15,14 +14,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table (name ="bitacora")
+@Table(name = "bitacora")
 public class Bitacora implements Serializable {
-    
+
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idbitacora;
-    
+
     @Temporal(TemporalType.DATE)
+<<<<<<< HEAD
     @Column( name ="fecha")
     private Date fecha=new Date();
     
@@ -36,6 +36,20 @@ public class Bitacora implements Serializable {
    
     @Column(name="estado")
     private int estado=1;
+=======
+    @Column(name = "fecha")
+    private Date fecha;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario", referencedColumnName = "idusuario")
+    private Usuarios usuario;
+
+    @Column(name = "accion")
+    private String accion;
+
+    @Column(name = "estado")
+    private int estado = 1;
+>>>>>>> 8f83e49ba85a5c5fed3be2cdd85f0f5537b33b86
 
     public int getIdbitacora() {
         return idbitacora;
@@ -70,6 +84,10 @@ public class Bitacora implements Serializable {
     }
 
     public int getEstado() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f83e49ba85a5c5fed3be2cdd85f0f5537b33b86
         return estado;
     }
 
@@ -107,9 +125,12 @@ public class Bitacora implements Serializable {
         return "Bitacora{" + "idbitacora=" + idbitacora + '}';
     }
 
+<<<<<<< HEAD
     
 
 
     
     
+=======
+>>>>>>> 8f83e49ba85a5c5fed3be2cdd85f0f5537b33b86
 }
