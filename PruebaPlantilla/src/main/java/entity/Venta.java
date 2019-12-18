@@ -25,7 +25,104 @@ public class Venta implements Serializable{
     @ManyToOne
     @JoinColumn(name="idempleado", referencedColumnName = "idempleado")
     private Empleado idempleado;
+
+       
+    @Temporal(TemporalType.DATE)
+    @Column(name="fecha")
+    private Date fecha=new Date();
+    
+    @Column(name="subtotal",nullable = false)
+    private Double subtotal;
+    
+    @Column(name="total",nullable=false)
+    private Double total;
+    
+    @Column(name="estado",nullable=false)
+    private int estado;
+
+//  =======================================================================================================================
+//  =======================================================================================================================
+    public int getIdventa() {
+        return idventa;
+    }
+
+    public void setIdventa(int idventa) {
+        this.idventa = idventa;
+    }
+
+    public Empleado getIdempleado() {
+        return idempleado;
+    }
+
+    public void setIdempleado(Empleado idempleado) {
+        this.idempleado = idempleado;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public Double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(Double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+//  =======================================================================================================================
+//  =======================================================================================================================
+    @Override
+    public String toString() {
+        return "Venta{" + "idventa=" + idventa + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 73 * hash + this.idventa;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Venta other = (Venta) obj;
+        if (this.idventa != other.idventa) {
+            return false;
+        }
+        return true;
+    }
+
+   
     
 
-    
 }
