@@ -12,10 +12,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-/**
- *
- * @author josue.vasquezusam
- */
 @Stateless
 public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements TipoproductoFacadeLocal {
 
@@ -30,6 +26,8 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
     public TipoproductoFacade() {
         super(Tipoproducto.class);
     }
+    
+    
 
     @Override
     public List<Tipoproducto> findActivos() {
@@ -59,5 +57,5 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
         }
 
     }
-
+ 
 }

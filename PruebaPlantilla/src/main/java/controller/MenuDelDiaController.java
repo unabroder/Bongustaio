@@ -2,13 +2,17 @@
 package controller;
 
 import ejb.MenuDelDiaFacadeLocal;
+import ejb.Venta_DetalleFacadeLocal;
 import entity.MenuDelDia;
+import entity.Venta_Detalle;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 
 @Named(value = "menuDelDia")
@@ -22,6 +26,12 @@ public class MenuDelDiaController implements Serializable {
     private MenuDelDia menuDelDia;
     private List<MenuDelDia> listaMenuDelDia;
     
+    @EJB
+    private Venta_DetalleFacadeLocal venta_DetalleFacadeLocalEJB;
+    private Venta_Detalle venta_Detalle;
+    private List<Venta_Detalle> listaVentaDetalle;
+    
+    
     //Constructores
     public MenuDelDiaController() {
     }
@@ -30,6 +40,7 @@ public class MenuDelDiaController implements Serializable {
     @PostConstruct
     public void init(){
         menuDelDia = new MenuDelDia();
+        venta_Detalle = new Venta_Detalle();
     }
 
     public MenuDelDiaFacadeLocal getMenuDelDiaEJB() {
@@ -55,12 +66,39 @@ public class MenuDelDiaController implements Serializable {
     public void setListaMenuDelDia(List<MenuDelDia> listaMenuDelDia) {
         this.listaMenuDelDia = listaMenuDelDia;
     }
+
+    public Venta_DetalleFacadeLocal getVenta_DetalleFacadeLocalEJB() {
+        return venta_DetalleFacadeLocalEJB;
+    }
+
+    public void setVenta_DetalleFacadeLocalEJB(Venta_DetalleFacadeLocal venta_DetalleFacadeLocalEJB) {
+        this.venta_DetalleFacadeLocalEJB = venta_DetalleFacadeLocalEJB;
+    }
+
+    public Venta_Detalle getVenta_Detalle() {
+        return venta_Detalle;
+    }
+
+    public void setVenta_Detalle(Venta_Detalle venta_Detalle) {
+        this.venta_Detalle = venta_Detalle;
+    }
+
+    public List<Venta_Detalle> getListaVentaDetalle() {
+        return listaVentaDetalle;
+    }
+
+    public void setListaVentaDetalle(List<Venta_Detalle> listaVentaDetalle) {
+        this.listaVentaDetalle = listaVentaDetalle;
+    }
     
     
     //metodos 
     public void insertar(){
         try {
+            menuDelDia.setIdventa_detalle(venta_Detalle);
             menuDelDiaEJB.create(menuDelDia);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
     }
@@ -87,15 +125,15 @@ public class MenuDelDiaController implements Serializable {
         }
     }
     
-    public void eliminar(MenuDelDia mDD){
-        this.menuDelDia = mDD;
+    public void eliminar(){
         try {
+            menuDelDia.setIdventa_detalle(venta_Detalle);
             menuDelDiaEJB.remove(menuDelDia);
-            listaMenuDelDia = menuDelDiaEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue eliminado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
-       
-    
     }
+    
     
 }

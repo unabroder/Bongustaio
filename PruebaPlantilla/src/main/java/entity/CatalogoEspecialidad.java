@@ -9,13 +9,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author joqtan.marmolusam
- */
+
+
 @Entity
 @Table(name = "catalogo_especialidad")
 public class CatalogoEspecialidad {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_cat_esp;
@@ -95,3 +94,4 @@ public class CatalogoEspecialidad {
     
     
 }
+ 
