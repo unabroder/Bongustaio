@@ -117,12 +117,31 @@ public class ProductoProveedorController implements Serializable {
         producto = new Producto();
 
     }
-    
-    public void actualizar(){
+
+    public void consultarProvedor() {
         try {
-            
+            listaProveedor = proveedorEJB.findAll();
         } catch (Exception e) {
         }
+
+    }
+
+    public void consultarSucursal() {
+        try {
+            listaSucursal = sucursalEJB.findAll();
+        } catch (Exception e) {
+        }
+
+    }
+
+    public void consultarProducto() {
+        listaproducto= productoEJB.findAll();
+    }
+    
+    
+    public void insertar(){
+    
+    
     
     }
 
