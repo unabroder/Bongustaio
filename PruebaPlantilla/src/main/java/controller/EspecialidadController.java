@@ -46,7 +46,7 @@ public class EspecialidadController implements Serializable{
     public void inti(){
         especialidad = new Especialidad();
     }
- public void insertar() {      // metodo para inserrtar 
+ public void insertar() {      // metodo para insertar 
         try {
             especialidadEJB.create(especialidad);
         } catch (Exception e) {
@@ -54,7 +54,7 @@ public class EspecialidadController implements Serializable{
     }
  
  
-     public void listar() {      // metodo para inserrtar 
+     public void listar() {      // metodo para insertar 
         try {
             listaEspecialidad = especialidadEJB.findAll();
         } catch (Exception e) {

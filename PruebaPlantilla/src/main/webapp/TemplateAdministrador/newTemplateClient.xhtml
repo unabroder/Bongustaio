@@ -28,6 +28,7 @@
                 <p:ajax event="close" update=":da" />
                 <h:form id='da'>
                     <p:panelGrid columns="2" >
+                        
                         <p:outputLabel value="Nombre" for="txtNombre"/>
                         <p:inputText id="txtNombre" />
                         <p:outputLabel value="Apellido" for="txtApellido"/>
@@ -36,13 +37,12 @@
                         <p:inputText id="txtEmail" />
                         <p:outputLabel value="Telefono" for="txtTelefono"/>
                         <p:inputText id="txtTelefono" required="true"/>
+                        
                         <p:commandButton value="Guardar" 
                                          update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
-
                                          onclick="reiniciarTema();editarMSJ()"/>
                         <p:commandButton value="Editar"
                                          update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
-
                                          onclick="reiniciarTema();editarMSJ()"/>
 
                     </p:panelGrid>
