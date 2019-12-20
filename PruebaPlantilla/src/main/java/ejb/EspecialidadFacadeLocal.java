@@ -9,13 +9,7 @@ import entity.Especialidad;
 import java.util.List;
 import javax.ejb.Local;
 
-/**
- *
- * <<<<<<< HEAD
- * @a
- *
- * uthor claudia.santosusam
- */
+
 @Local
 public interface EspecialidadFacadeLocal {
 
