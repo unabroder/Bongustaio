@@ -51,22 +51,14 @@
 
             <h:form id="Datos">
 
-                <p:dataTable  var="p">
+                <p:dataTable  value="#{especialidadController.listar()}" var="e">
                     <p:column headerText="ID">
-                        <h:outputText  />
+                        <h:outputText value="#{e.idespecialidad}"   />
                     </p:column>
-                    <p:column headerText="Nombre">
-                        <h:outputText />
+                    <p:column headerText="Nombre Especialidad">
+                        <h:outputText value="#{e.nombre}" />
                     </p:column>
-                    <p:column headerText="Apellido">
-                        <h:outputText />
-                    </p:column>
-                    <p:column headerText="Email">
-                        <h:outputText />
-                    </p:column>
-                    <p:column headerText="Telefono">
-                        <h:outputText />
-                    </p:column>
+                 
                     <p:column headerText="Editar">
                         <p:commandButton value="Modificar" 
                                          update=":da" oncomplete="PF('categoria').show()" styleClass="btnEditar" 

@@ -6,6 +6,7 @@
 package ejb;
 
 import entity.ProductoProveedor;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -13,6 +14,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author claudia.santosusam
  */
+@Stateless
 public class ProductoProveedorFacade extends AbstractFacade<ProductoProveedor> implements ProductoProveedorFacadeLocal{
    
     

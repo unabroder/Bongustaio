@@ -10,8 +10,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-
-
 @Stateless
 public class EspecialidadFacade extends AbstractFacade<Especialidad> implements EspecialidadFacadeLocal {
 
@@ -23,8 +21,9 @@ public class EspecialidadFacade extends AbstractFacade<Especialidad> implements 
         return em;
     }
 
+
     public EspecialidadFacade() {
         super(Especialidad.class);
     }
-    
+
 }

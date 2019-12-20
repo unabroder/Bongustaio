@@ -25,5 +25,5 @@ public interface EspecialidadFacadeLocal {
     List<Especialidad> findRange(int[] range);
 
     int count();
-    
+
 }
