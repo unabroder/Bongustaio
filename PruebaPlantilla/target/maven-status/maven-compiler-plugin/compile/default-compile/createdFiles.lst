@@ -5,7 +5,6 @@ entity\Empleado.class
 entity\Producto_.class
 controller\SucursalController.class
 ejb\InventarioFacadeLocal.class
-controller\CatalogoEspecialidadController.class
 ejb\ProductoFacadeLocal.class
 entity\Proveedor.class
 ejb\Venta_DetalleFacadeLocal.class
