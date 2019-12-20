@@ -27,12 +27,11 @@
 }
 
 .navbar{
-    height: 50px;
-    background-color: yellow;
+ 
 }
 
 .menu{
-    background-color:  rgba(242, 125, 15 , 0.7);
+/*    background-color:  rgba(242, 125, 15 , 0.7);*/
 }
 .imnemu{
     height: 400%;
