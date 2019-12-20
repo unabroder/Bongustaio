@@ -38,7 +38,7 @@ public class VentaController implements Serializable {
     }
 
     public List<Venta> getListaventa() {
-        listaventa=ventaEJB.findAll();
+        this.listaventa=ventaEJB.findAll();
         return listaventa;
     }
 
@@ -62,9 +62,6 @@ public class VentaController implements Serializable {
         this.listaempleado = listaempleado;
     }
     
-    
-    
-    
         @PostConstruct
         private void init(){
             venta =new Venta();
@@ -73,7 +70,7 @@ public class VentaController implements Serializable {
         
         public void consultarEmpleado(){
             try {
-                listaempleado=empleadoEJB.findAll();
+                this.listaempleado=empleadoEJB.findAll();
             } catch (Exception e) {
             }
         }
@@ -95,5 +92,37 @@ public class VentaController implements Serializable {
             } catch (Exception e) {
             }
         }
+        
+        public void leerId(Venta vent){
+            try {
+                this.empleado.setIdempleado(vent.getIdempleado().getIdempleado());
+                this.venta=vent;
+            } catch (Exception e) {
+            }
+        }
+        
+        public void modificar(){
+            try {
+                venta.setIdempleado(empleado);
+                ventaEJB.edit(venta);
+            } catch (Exception e) {
+            }
+        }
+        
+        public void eliminar(Venta vent){
+            this.venta=vent;
+            try {
+                ventaEJB.remove(venta);
+                listaventa=ventaEJB.findAll();
+            } catch (Exception e) {
+            }
+        }
+        
+        public void limpiar(){
+             venta =new Venta();
+            empleado = new Empleado();
+        }
+        
+        
     
 }
