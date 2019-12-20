@@ -17,6 +17,7 @@ C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\Pru
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoproductoFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\RolesFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProveedorFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\EspecialidadFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProductoProveedorFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\InventarioFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\EmpleadoController.java
@@ -57,7 +58,10 @@ C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\Pru
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Venta_Detalle.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\InventarioController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\ProductoController.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\EspecialidadController.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\EspecialidadFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\SucursalController.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\ProductoProveedorController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\CatalogoEspecialidad.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoEmpleadoFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Inventario.java
