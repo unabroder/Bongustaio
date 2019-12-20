@@ -46,11 +46,8 @@ public class ProveedorController implements Serializable{
         proveedor = new Proveedor();
     }
     
-    public void consultarProveedor(){
-        try {
-            listaProveedor = proveedorEJB.findAll();
-        } catch (Exception e) {
-        }
+    public void consultarProveedor(Proveedor p){
+           this.proveedor = p;
     }
     
     public void insertar(){
@@ -62,10 +59,29 @@ public class ProveedorController implements Serializable{
         }
     }
     
+    public void editar(){
+        try {
+            proveedorEJB.edit(proveedor);
+        } catch (Exception e) {
+        }
+    }
+    
+    public void eliminar(Proveedor prov){
+        try {
+            proveedor = prov;
+            proveedorEJB.remove(proveedor);
+        } catch (Exception e) {
+        }
+    }
+    
     public void consultar(){
         try {
             listaProveedor = proveedorEJB.findAll();
         } catch (Exception e) {
         }
+    }
+    
+    public void limpiar(){
+        this.proveedor = new Proveedor();
     }
 }
