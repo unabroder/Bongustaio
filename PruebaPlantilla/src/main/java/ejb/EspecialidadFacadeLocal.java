@@ -19,7 +19,6 @@ public interface EspecialidadFacadeLocal {
 
     void remove(Especialidad especialidad);
 
-
     Especialidad find(Object id);
 
     List<Especialidad> findAll();

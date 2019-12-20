@@ -9,6 +9,7 @@ import entity.ProductoProveedor;
 import java.util.List;
 import javax.ejb.Local;
 
+
 /**
  *
  * @author claudia.santosusam
@@ -16,11 +17,11 @@ import javax.ejb.Local;
 @Local
 public interface ProductoProveedorFacadeLocal {
     
-    void create(ProductoProveedor productoproveedor);
+    void create(ProductoProveedor proprov);
     
-    void edit  (ProductoProveedor productoproveedor);
+    void edit(ProductoProveedor proprov);
     
-    void remove(ProductoProveedor productoproveedor);
+    void remove(ProductoProveedor proprov);
     
     ProductoProveedor find(Object id);
     
