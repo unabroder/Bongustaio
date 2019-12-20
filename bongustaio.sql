@@ -66,7 +66,7 @@ Estado int(1) not null default 0,
 CONSTRAINT FOREIGN KEY (idtipo) REFERENCES roles(idrol) ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT FOREIGN KEY (idempleado) REFERENCES empleado(idempleado) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE InnoDB;
-insert into usuarios(usuario,clave,idtipo,idempleado) values ('josue','123',1,2);
+insert into usuarios(usuario,clave,idtipo,idempleado) values ('josue','123',1,1);
 select*from usuarios;
 
 CREATE TABLE proveedor(
