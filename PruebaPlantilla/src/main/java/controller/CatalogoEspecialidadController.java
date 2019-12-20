@@ -2,8 +2,10 @@ package controller;
 
 import ejb.CatalogoEspecialidadFacadeLocal;
 import ejb.CatalogoFacadeLocal;
+import ejb.EspecialidadFacadeLocal;
 import entity.Catalogo;
 import entity.CatalogoEspecialidad;
+import entity.Especialidad;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
