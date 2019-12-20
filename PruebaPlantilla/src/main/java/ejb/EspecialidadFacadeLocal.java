@@ -9,21 +9,7 @@ import entity.Especialidad;
 import java.util.List;
 import javax.ejb.Local;
 
-/**
- *
-<<<<<<< HEAD
- * @author claudia.santosusam
- */
-@Local
-public interface EspecialidadFacadeLocal {
-     void create(Especialidad especialidad);
 
-    void edit   (Especialidad especialidad);
-
-    void remove (Especialidad especialidad);
-=======
- * @author josue.vasquezusam
- */
 @Local
 public interface EspecialidadFacadeLocal {
 
@@ -32,7 +18,7 @@ public interface EspecialidadFacadeLocal {
     void edit(Especialidad especialidad);
 
     void remove(Especialidad especialidad);
->>>>>>> 5217dee804590ed8bdceda5231868ff3fbf5bc28
+
 
     Especialidad find(Object id);
 
@@ -41,9 +27,5 @@ public interface EspecialidadFacadeLocal {
     List<Especialidad> findRange(int[] range);
 
     int count();
-    
-<<<<<<< HEAD
-    
-=======
->>>>>>> 5217dee804590ed8bdceda5231868ff3fbf5bc28
+
 }
