@@ -5,6 +5,7 @@ entity\Empleado.class
 entity\Producto_.class
 controller\SucursalController.class
 ejb\InventarioFacadeLocal.class
+controller\CatalogoEspecialidadController.class
 ejb\ProductoFacadeLocal.class
 entity\Proveedor.class
 ejb\Venta_DetalleFacadeLocal.class
@@ -24,6 +25,7 @@ ejb\CatalogoFacade.class
 entity\Roles_.class
 controller\EmpleadoController.class
 entity\Producto.class
+controller\EspecialidadController.class
 controller\TipoproductoController.class
 controller\VentaController.class
 ejb\MenuDelDiaFacade.class
@@ -56,6 +58,7 @@ controller\TiposucursalController.class
 ejb\SucursalFacadeLocal.class
 entity\Venta_Detalle.class
 ejb\VentaFacadeLocal.class
+ejb\EspecialidadFacadeLocal.class
 ejb\ProductoFacade.class
 entity\Especialidad.class
 entity\Especialidad_.class
@@ -73,6 +76,7 @@ controller\ProveedorController.class
 ejb\TipoproductoFacade.class
 ejb\EmpleadoFacadeLocal.class
 ejb\AbstractFacade.class
+ejb\EspecialidadFacade.class
 ejb\RolesFacadeLocal.class
 entity\Catalogo.class
 entity\Inventario.class
