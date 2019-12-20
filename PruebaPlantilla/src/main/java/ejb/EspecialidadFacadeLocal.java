@@ -9,10 +9,7 @@ import entity.Especialidad;
 import java.util.List;
 import javax.ejb.Local;
 
-/**
- *
- * @author josue.vasquezusam
- */
+
 @Local
 public interface EspecialidadFacadeLocal {
 
@@ -29,5 +26,5 @@ public interface EspecialidadFacadeLocal {
     List<Especialidad> findRange(int[] range);
 
     int count();
-    
+
 }
