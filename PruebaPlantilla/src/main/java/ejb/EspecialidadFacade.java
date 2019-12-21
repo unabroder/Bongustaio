@@ -15,13 +15,13 @@ import javax.persistence.PersistenceContext;
 public class EspecialidadFacade extends AbstractFacade<Especialidad> implements EspecialidadFacadeLocal {
 
     @PersistenceContext(unitName = "bongustaio")
-
     private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
+
 
     public EspecialidadFacade() {
         super(Especialidad.class);
