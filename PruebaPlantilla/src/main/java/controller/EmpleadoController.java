@@ -94,9 +94,17 @@ public class EmpleadoController implements Serializable {
     @PostConstruct
     public void init() {
         empleado = new Empleado();
+        this.tipoEmp = new TipoEmpleado();
+        this.sucursal = new Sucursal();
+        this.listaEmpleado = empleadoEJB.findAll();
+        this.listSucursal = sucursalEJB.findAll();
+        this.lsTipoEmp = this.tipoEmpEJB.findAll();
     }
 
-    
+    public void leerId(Empleado emp) {
+        empleado = emp;
+    }
+
     public void insertar() {
         try {
             empleado.setIdsucursal(sucursal);
