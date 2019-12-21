@@ -7,14 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import static jdk.nashorn.internal.runtime.Debug.id;
+
+
 
 @Entity
-@Table(name = "producto")
+@Table(name ="producto")
 public class Producto implements Serializable {
 
     @Id
@@ -32,8 +32,8 @@ public class Producto implements Serializable {
     private int cantidad;
     
     @Temporal( TemporalType.DATE)
-    @Column(name="fechavence")
-    private Date fechavence=new Date();
+    @Column(name="fechavenc")
+    private Date fechavenc=new Date();
     
     @Column(name="estado")
     private int estado=1;
@@ -70,12 +70,12 @@ public class Producto implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public Date getFechavence() {
-        return fechavence;
+    public Date getFechavenc() {
+        return fechavenc;
     }
 
-    public void setFechavence(Date fechavence) {
-        this.fechavence = fechavence;
+    public void setFechavenc(Date fechavenc) {
+        this.fechavenc = fechavenc;
     }
 
     public int getEstado() {
@@ -88,8 +88,8 @@ public class Producto implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.idproducto;
+        int hash = 7;
+        hash = 61 * hash + this.idproducto;
         return hash;
     }
 
@@ -110,12 +110,15 @@ public class Producto implements Serializable {
         }
         return true;
     }
+    
+    
 
     @Override
     public String toString() {
         return "Producto{" + "idproducto=" + idproducto + '}';
     }
-    
+
+  
     
     
 }

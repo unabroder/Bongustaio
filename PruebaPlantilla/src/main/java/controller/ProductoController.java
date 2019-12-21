@@ -12,19 +12,22 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
  *
  * @author claudia.santosusam
  */
-@Named(value="productoController")
+@Named(value = "productoController")
 @SessionScoped
-public class ProductoController implements Serializable{
+public class ProductoController implements Serializable {
+
     @EJB
     private ProductoFacadeLocal productoEJB;
     private Producto producto;
-    private     List<Producto> listaproducto;
+    private List<Producto> listaproducto;
 
     public Producto getProducto() {
         return producto;
@@ -35,56 +38,70 @@ public class ProductoController implements Serializable{
     }
 
     public List<Producto> getListaproducto() {
+        this.listaproducto = productoEJB.findAll();
         return listaproducto;
     }
 
     public void setListaproducto(List<Producto> listaproducto) {
         this.listaproducto = listaproducto;
     }
-    
+
     @PostConstruct
-    public void init(){
-        producto=new Producto();
-    
+    public void init() {
+        producto = new Producto();
+
     }
-    
-    public void insertar(){
+
+    public void insertar() {
         try {
             productoEJB.create(producto);
+            FacesMessage MSJ = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
+            FacesContext.getCurrentInstance().addMessage(null, MSJ);
         } catch (Exception e) {
+             FacesMessage MSJ = new FacesMessage(FacesMessage.SEVERITY_INFO, "Surgio un error al guardado", null);
+            FacesContext.getCurrentInstance().addMessage(null, MSJ);
         }
+        
     }
-    
-    public void listar(){
+
+    public void listar() {
         try {
-            listaproducto=productoEJB.findAll();
+            this.listaproducto = productoEJB.findAll();
+            
         } catch (Exception e) {
+           
         }
-    
+      
     }
-    public void leerid(Producto prod){
+
+    public void leerid(Producto prod) {
         try {
-            this.producto=prod;
+            this.producto = prod;
         } catch (Exception e) {
         }
-    
+
     }
-    public void modificar(){
+
+    public void modificar() {
         try {
-           productoEJB.edit(producto);
+            productoEJB.edit(producto);
         } catch (Exception e) {
         }
-    
+
     }
-    
-    public void eliminar(Producto prod){
-    this.producto=prod;
+
+    public void eliminar(Producto prod) {
+        this.producto = prod;
         try {
-           productoEJB.remove(producto);
-           listaproducto=productoEJB.findAll();
+            productoEJB.remove(producto);
+            listaproducto = productoEJB.findAll();
         } catch (Exception e) {
         }
+
+    }
+    public void limpiar(){
+    producto=new Producto();
     
     }
-    
+
 }
