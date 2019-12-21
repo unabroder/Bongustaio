@@ -94,6 +94,15 @@ CONSTRAINT FOREIGN KEY (idtipoproduc) REFERENCES tipoproducto(idtipoproducto)
 ON DELETE CASCADE ON UPDATE CASCADE 
 )ENGINE InnoDB;
 
+create table menu_del_dia(
+idmenu int(11) not null primary key auto_increment,
+descuento decimal(10,2) not null,
+idcatalogo int(11) not null,
+estado int(1) not null default 1,
+constraint foreign key (idcatalogo) references catalogo(idcatalogo) 
+on delete cascade on update cascade
+)ENGINE InnoDB;
+
 CREATE TABLE especialidad(
 idespecialidad int(11) not null primary key auto_increment,
 nombre varchar(50) not null,
@@ -157,15 +166,6 @@ cantidad int(11) not null,
 estado int(1) not null default 1,
 constraint foreign key (idventa) references venta(idventa) on delete cascade on update cascade,
 constraint foreign key (idcatalogo) references catalogo(idcatalogo) on delete cascade on update cascade
-)ENGINE InnoDB;
-
-create table menu_del_dia(
-idmenu int(11) not null primary key auto_increment,
-descuento decimal(10,2) not null,
-idventa_detalle int(11) not null,
-estado int(1) not null default 1,
-constraint foreign key (idventa_detalle) references venta_detalle(idventa_detalle) 
-on delete cascade on update cascade
 )ENGINE InnoDB;
 
 create table bitacora(

@@ -16,13 +16,13 @@
 
         <h:form id="d">
             <p:panelGrid columns="3">
-                <p:commandButton  icon="fa fa-fw fa-plus" value="Agregar" oncomplete="PF('categoria').show()" 
+                <p:commandButton  icon="fa fa-fw fa-plus" value="Agregar" oncomplete="PF('tpEmpleado').show()" 
                                   styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()" style="margin-right:  99%;"/>
             </p:panelGrid>
         </h:form>
 
         <!---->
-        <p:dialog style="margin-top: 10; " widgetVar="categoria" modal="false" showEffect="clip" resizable="false" header="Categoria">
+        <p:dialog style="margin-top: 10; " widgetVar="tpEmpleado" modal="false" showEffect="clip" resizable="false" header="Tipo Empleado">
             <p:ajax event="close" update=":da" />
             <h:form id='da'>
                 <p:panelGrid columns="2" >
@@ -37,6 +37,7 @@
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
                                      rendered="#{tipoEmpleadoController.tipoEmpleado.idtipoempleado != 0}"
                                      onclick="reiniciarTema();editarMSJ()"/>
+                 
 
                 </p:panelGrid>
             </h:form>
