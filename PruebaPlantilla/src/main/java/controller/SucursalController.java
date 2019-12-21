@@ -45,6 +45,7 @@ public class SucursalController implements Serializable {
     }
     
     public List<Sucursal> getListaSucursal() {
+
         return listaSucursal;
     }
     
@@ -76,6 +77,7 @@ public class SucursalController implements Serializable {
     
     public void insertar() {
         try {
+            sucursal.setEstado(1);
             sucursal.setIdtipo(tsucursal);
             sucursalEJB.create(sucursal);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
@@ -86,6 +88,7 @@ public class SucursalController implements Serializable {
     
     public void actualizar() {
         try {
+            sucursal.setEstado(1);
             sucursal.setIdtipo(tsucursal);
             sucursalEJB.edit(sucursal);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
@@ -95,7 +98,7 @@ public class SucursalController implements Serializable {
     }
     public void eliminar() {
         try {
-            
+            sucursal.setIdtipo(tsucursal);
             sucursalEJB.removeEstado(sucursal);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -111,19 +114,26 @@ public class SucursalController implements Serializable {
         
     }
     
-    public void consultar(){
+    public List<Sucursal>  consultar(){
+        
+        
+           this.listaSucursal = sucursalEJB.findAll();
+            return listaSucursal;
+       
+       
+    }
+    
+    public void consultarById(Sucursal sucursal){
         try {
-            listaSucursal=sucursalEJB.findAll();
+            this.sucursal = sucursal;
         } catch (Exception e) {
         }
         
     }
     
-    public void consultarById(){
-        try {
-            sucursal=sucursalEJB.find(sucursal);
-        } catch (Exception e) {
-        }
-        
+    public void limpiar(){
+    
+        sucursal = new Sucursal();
+        tsucursal = new Tiposucursal();
     }
 }

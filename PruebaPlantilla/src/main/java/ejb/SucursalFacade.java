@@ -27,7 +27,7 @@ public class SucursalFacade extends AbstractFacade<Sucursal> implements Sucursal
         String sql;
 
         try {
-            sql = "UPDATE sucursal s set estado=0 WHERE idsucursal=?1";
+            sql = "UPDATE sucursal s set s.estado=0 WHERE s.idsucursal=?1";
             Query query = em.createQuery(sql);
             query.setParameter(1, sucursal.getIdsucursal());
 

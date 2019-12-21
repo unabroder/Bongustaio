@@ -74,7 +74,7 @@
                                 </p:submenu>
                                 <p:submenu label="Sucursales">
                                     <p:menuitem value="Proveedores" action="#{menuView.save}" />
-                                    <p:menuitem value="Sucursales" action="#{menuView.save}" />
+                                    <p:menuitem value="Sucursales" actionListener="#{sucursalController.consultar()}"  />
 
 
                                 </p:submenu>
