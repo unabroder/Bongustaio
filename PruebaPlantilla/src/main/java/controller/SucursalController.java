@@ -96,12 +96,14 @@ public class SucursalController implements Serializable {
         } catch (Exception e) {
         }
     }
-    public void eliminar() {
+    public void eliminar(Sucursal sucu) {
+         
         try {
-            sucursal.setIdtipo(tsucursal);
-            sucursalEJB.removeEstado(sucursal);
+            sucursalEJB.removeEstado(sucu);
+            listaSucursal=sucursalEJB.findAllActivo();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
+            
         } catch (Exception e) {
         }
     }

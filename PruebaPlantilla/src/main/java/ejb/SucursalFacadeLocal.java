@@ -9,13 +9,7 @@ import entity.Sucursal;
 import java.util.List;
 import javax.ejb.Local;
 
-/**
- *
- * <<<<<<< HEAD
- * @a
- *
- * uthor josue.vasquezusam
- */
+
 @Local
 public interface SucursalFacadeLocal {
 

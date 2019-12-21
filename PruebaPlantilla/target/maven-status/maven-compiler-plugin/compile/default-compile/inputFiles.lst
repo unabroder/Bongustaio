@@ -23,6 +23,7 @@ C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlan
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\AbstractFacade.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\entity\Empleado.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\CatalogoFacadeLocal.java
+C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacadeLocal.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\EmpleadoFacade.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\controller\MenuDelDiaController.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\EspecialidadFacade.java
@@ -47,12 +48,14 @@ C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlan
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoproductoFacade.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\entity\Sucursal.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProveedorFacade.java
+C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\entity\Bitacora.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\controller\InventarioController.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\controller\CatalogoController.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\SucursalFacadeLocal.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\entity\Catalogo.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\UsuariosFacadeLocal.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\controller\EmpleadoController.java
+C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacade.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\CatalogoFacade.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoEmpleadoFacade.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\entity\Proveedor.java
@@ -66,3 +69,4 @@ C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlan
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\entity\Tiposucursal.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProveedorFacadeLocal.java
 C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\ejb\EmpleadoFacadeLocal.java
+C:\Users\juan.ruizusam\Documents\NetBeansProjects\jsf proy\Bongustaio\PruebaPlantilla\src\main\java\controller\BitacoraController.java
