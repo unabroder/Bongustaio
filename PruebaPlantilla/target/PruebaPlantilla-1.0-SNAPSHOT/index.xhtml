@@ -8,7 +8,7 @@
 
     </h:head>
     <h:outputStylesheet  library="css" name="estilos.css" />
-    
+
     <h:body styleClass="body-login">
         <p:outputPanel>
             <div class="ui-g centrar-texto">
@@ -32,7 +32,7 @@
                             <p:inputText value="#{usuarioController.usuarios.clave}" type="password" required="true" />
 
                             <h:column/>
-                            <p:commandButton action="#{usuarioController.login()}" value="Login"/>
+                            <p:commandButton action="#{usuarioController.login()}" value="Login" />
 
                         </p:panelGrid>
                     </h:form>

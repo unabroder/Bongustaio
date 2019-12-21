@@ -9,7 +9,6 @@ import entity.Especialidad;
 import java.util.List;
 import javax.ejb.Local;
 
-
 @Local
 public interface EspecialidadFacadeLocal {
 

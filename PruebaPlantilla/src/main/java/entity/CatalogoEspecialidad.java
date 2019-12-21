@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "catalogo_especialidad")
-public class CatalogoEspecialidad {
+public class CatalogoEspecialidad implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_cat_esp;

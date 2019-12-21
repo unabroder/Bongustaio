@@ -51,6 +51,7 @@ public class EmpleadoController implements Serializable {
     }
 
     public List<Empleado> getListaEmpleado() {
+        this.listaEmpleado = empleadoEJB.findAll();
         return listaEmpleado;
     }
 
@@ -95,6 +96,7 @@ public class EmpleadoController implements Serializable {
         empleado = new Empleado();
     }
 
+    
     public void insertar() {
         try {
             empleado.setIdsucursal(sucursal);

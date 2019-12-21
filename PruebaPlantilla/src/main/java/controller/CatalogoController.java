@@ -41,7 +41,11 @@ public class CatalogoController implements Serializable {
     }
 
     public List<Catalogo> getListaCatalogo() {
+<<<<<<< HEAD
         listaCatalogo = catalogoEJB.findAll();
+=======
+        listaCatalogo=catalogoEJB.findAll();
+>>>>>>> 7882404778a757888167502a14771bf1b4d52e46
         return listaCatalogo;
     }
 

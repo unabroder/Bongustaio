@@ -21,6 +21,10 @@ public class EspecialidadFacade extends AbstractFacade<Especialidad> implements 
         return em;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7882404778a757888167502a14771bf1b4d52e46
     public EspecialidadFacade() {
         super(Especialidad.class);
     }
