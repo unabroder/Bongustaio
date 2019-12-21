@@ -20,10 +20,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author rene.linaresusam
- */
+
 @Named(value = "venta_DetalleController")
 @SessionScoped
 public class Venta_DetalleController implements Serializable {
@@ -43,6 +40,9 @@ public class Venta_DetalleController implements Serializable {
     private Catalogo catalogo;
     private List<Catalogo> listacatalogo;
 
+    
+    
+    
     public Venta_Detalle getVdetalle() {
         return vdetalle;
     }
@@ -75,6 +75,26 @@ public class Venta_DetalleController implements Serializable {
     public void setListaventa(List<Venta> listaventa) {
         this.listaventa = listaventa;
     }
+
+    public Catalogo getCatalogo() {
+        return catalogo;
+    }
+
+    public void setCatalogo(Catalogo catalogo) {
+        this.catalogo = catalogo;
+    }
+
+    public List<Catalogo> getListacatalogo() {
+        return listacatalogo;
+    }
+
+    public void setListacatalogo(List<Catalogo> listacatalogo) {
+        this.listacatalogo = listacatalogo;
+    }
+
+  
+    
+    
 
     @PostConstruct
     private void init() {
@@ -114,6 +134,40 @@ public class Venta_DetalleController implements Serializable {
             listavdetalle = vdetalleEJB.findAll();
         } catch (Exception e) {
         }
+    }
+
+    public void leerId(Venta_Detalle vdeta) {
+        try {
+            this.catalogo.setIdcatalogo(vdeta.getIdcatalogo().getIdcatalogo());
+            this.venta.setIdventa(vdeta.getIdventa().getIdventa());
+            this.vdetalle = vdeta;
+        } catch (Exception e) {
+        }
+    }
+
+    public void modificar() {
+        try {
+            vdetalle.setIdventa(venta);
+            vdetalle.setIdcatalogo(catalogo);
+
+            vdetalleEJB.edit(vdetalle);
+        } catch (Exception e) {
+        }
+    }
+    
+    public void eliminar(Venta_Detalle vdeta){
+        this.vdetalle=vdeta;
+        try {
+            vdetalleEJB.remove(vdetalle);
+            listavdetalle=vdetalleEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void limpiar() {
+        vdetalle = new Venta_Detalle();
+        venta = new Venta();
+        catalogo = new Catalogo();
     }
 
 }

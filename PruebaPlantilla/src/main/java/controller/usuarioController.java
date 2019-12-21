@@ -1,6 +1,8 @@
 package controller;
 
+import ejb.BitacoraFacadeLocal;
 import ejb.UsuariosFacadeLocal;
+import entity.Bitacora;
 import entity.Usuarios;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -19,6 +21,27 @@ public class usuarioController implements Serializable {
     private UsuariosFacadeLocal usuariofacade;
     private Usuarios usuarios;
     private List<Usuarios> listausuario;
+
+    @EJB
+    private BitacoraFacadeLocal bitacoraEJB;
+    private Bitacora bitacora;
+    private List<Bitacora> lsBitacora;
+
+    public Bitacora getBitacora() {
+        return bitacora;
+    }
+
+    public void setBitacora(Bitacora bitacora) {
+        this.bitacora = bitacora;
+    }
+
+    public List<Bitacora> getLsBitacora() {
+        return lsBitacora;
+    }
+
+    public void setLsBitacora(List<Bitacora> lsBitacora) {
+        this.lsBitacora = lsBitacora;
+    }
 
     public Usuarios getUsuarios() {
         return usuarios;
@@ -39,6 +62,7 @@ public class usuarioController implements Serializable {
     @PostConstruct
     public void inti() {
         usuarios = new Usuarios();
+        bitacora = new Bitacora();
     }
 
     public String login() {
@@ -46,23 +70,37 @@ public class usuarioController implements Serializable {
         String redireccion = null;
         try {
             us = usuariofacade.Sesion(usuarios);
+
             if (us != null) {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", us);
+                String accion = "inicio de sesion por " + usuarios.getUsuario();
+                bitacora.setAccion(accion);
+                bitacora.setUsuario(us);
+                bitacoraEJB.create(bitacora);
                 redireccion = "modulos?faces-redirect=true";
+<<<<<<< HEAD
 
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
 
+=======
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
+>>>>>>> e8c9fb5eb982136be79dc0a40e462c6ba3b7a71e
             }
 
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error" + e));
+<<<<<<< HEAD
 
+=======
+>>>>>>> e8c9fb5eb982136be79dc0a40e462c6ba3b7a71e
         }
         return redireccion;
 
     }
 
+<<<<<<< HEAD
     public String cerrar() {
         Usuarios us;
         String redireccion = null;
@@ -77,5 +115,14 @@ public class usuarioController implements Serializable {
         }
         return redireccion;
 
+=======
+    public void guardar() {
+        try {
+            bitacora.setAccion("Acaba de iniciar sesion");
+            bitacora.setUsuario(usuarios);
+            bitacoraEJB.create(bitacora);
+        } catch (Exception e) {
+        }
+>>>>>>> e8c9fb5eb982136be79dc0a40e462c6ba3b7a71e
     }
 }

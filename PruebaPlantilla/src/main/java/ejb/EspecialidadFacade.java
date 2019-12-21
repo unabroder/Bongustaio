@@ -11,16 +11,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 
-    
-@PersistenceContext(unitName = "bongustaio")
-
-
-
 @Stateless
 public class EspecialidadFacade extends AbstractFacade<Especialidad> implements EspecialidadFacadeLocal {
 
     @PersistenceContext(unitName = "bongustaio")
-
     private EntityManager em;
 
     @Override
@@ -29,15 +23,8 @@ public class EspecialidadFacade extends AbstractFacade<Especialidad> implements 
     }
 
 
-    
-
-
-
     public EspecialidadFacade() {
         super(Especialidad.class);
     }
-    
-
-
 
 }

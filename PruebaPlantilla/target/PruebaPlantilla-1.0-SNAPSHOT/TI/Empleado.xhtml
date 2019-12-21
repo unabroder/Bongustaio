@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./newTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">  
+    <ui:define name="content">
+        <p:growl id="MSJ"/>
+        <h:form id="d">
+            <p:panelGrid columns="3">
+                <p:commandButton  icon="fa fa-fw fa-plus" value="Agregar" oncomplete="PF('empleado').show()" 
+                                  styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()" style="margin-right:  99%;"/>
+            </p:panelGrid>
+        </h:form>
+        <!---->
+        <p:dialog style="margin-top: 10; " widgetVar="empleado" modal="false" showEffect="clip" resizable="false" header="Empleado">
+            <p:ajax event="close" update=":da" />
+            <h:form id='da'>
+                <p:panelGrid columns="2" >
+                    <p:outputLabel value="Nombres" for="txtNombres"/>
+                    <p:inputText id="txt" value="#{empleadoController.empleado.nombres}"/>
+                    <p:outputLabel value="Apellidos" for="txtApellidos"/>
+                    <p:inputText id="txt" value="#{empleadoController.empleado.apellidos}"/>
+                    <p:outputLabel value="DUI" for="txtDUI"/>
+                    <p:inputText id="txt" value="#{empleadoController.empleado.dui}"/>
+                    <p:outputLabel value="Correo" for="txtCorreo"/>
+                    <p:inputText id="email1" value="#{customValidationView.text}">
+                        <f:validator validatorId="custom.emailValidator" />
+                    </p:inputText>
+                  
+
+
+
+
+
+
+
+
+
+
+
+                    <p:commandButton value="Guardar" actionListener="#{tipoEmpleadoController.insertar()}"
+                                     update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
+                                     rendered="#{tipoEmpleadoController.tipoEmpleado.idtipoempleado == 0}"
+                                     onclick="reiniciarTema();editarMSJ()"/>
+                    <p:commandButton value="Editar"
+                                     update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
+                                     rendered="#{tipoEmpleadoController.tipoEmpleado.idtipoempleado != 0}"
+                                     onclick="reiniciarTema();editarMSJ()"/>
+
+
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+
+        <h:form id="Datos">
+
+            <p:dataTable  var="p" value="#{tipoEmpleadoController.lista}">
+                <p:column headerText="ID">
+                    <h:outputText  value="#{p.idtipoempleado}"/>
+                </p:column>
+                <p:column headerText="Tipo Empleado">
+                    <h:outputText value="#{p.tipoempleado}"/>
+                </p:column>
+                <p:column headerText="Editar">
+                    <p:commandButton value="Modificar"  actionListener="#{tipoEmpleadoController.LeerId(p)}"
+                                     update=":da" oncomplete="PF('categoria').show()" styleClass="btnEditar" 
+                                     onclick="reiniciarTema();editarMSJ()" />
+                </p:column>
+                <p:column headerText="Eliminar">
+                    <p:commandButton value="Eliminar" actionListener="#{tipoEmpleadoController.eliminar(p)}"
+                                     update=":Datos" 
+                                     onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+
+
