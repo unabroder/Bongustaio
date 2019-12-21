@@ -1,4 +1,3 @@
-
 package controller;
 
 import ejb.UsuariosFacadeLocal;
@@ -11,7 +10,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-
 
 @Named(value = "usuarioController")
 @SessionScoped
@@ -38,14 +36,12 @@ public class usuarioController implements Serializable {
         this.listausuario = listausuario;
     }
 
-    
-    
     @PostConstruct
-    public void inti(){
+    public void inti() {
         usuarios = new Usuarios();
     }
-    
-    public String login(){
+
+    public String login() {
         Usuarios us;
         String redireccion = null;
         try {
@@ -53,17 +49,33 @@ public class usuarioController implements Serializable {
             if (us != null) {
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", us);
                 redireccion = "modulos?faces-redirect=true";
-               
-            }else{
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
-            
+
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
+
             }
-            
+
         } catch (Exception e) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"+e));
-           
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error" + e));
+
         }
         return redireccion;
-       
+
+    }
+
+    public String cerrar() {
+        Usuarios us;
+        String redireccion = null;
+        try {
+            us = usuariofacade.Sesion(usuarios);
+            if (us != null) {
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", us);
+                FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+                redireccion = "index?faces-redirect=true";
+            }
+        } catch (Exception e) {
+        }
+        return redireccion;
+
     }
 }
