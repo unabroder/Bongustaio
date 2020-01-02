@@ -3,10 +3,111 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./newTemplate.xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:define name="content">
-        content
-    </ui:define>
+       <ui:define name="content"  >
+       
+       
+            <p:growl id="MSJ"/>
+           
+            <h:form id="d">
 
+                <p:panelGrid columns="3">
+                   
+                    <p:commandButton  value="+" oncomplete="PF('categoria').show()" 
+                                      styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()" style="margin-right:  99%"/>
+
+                </p:panelGrid>
+            </h:form>
+            
+            <!---->
+            <p:dialog widgetVar="categoria" modal="false" showEffect="clip" resizable="false" header="Categoria">
+                <p:ajax event="close"  listener="#{productoproveedorController.limpiar()}"  update=":da" />
+                <h:form id='da'>
+                    
+                    <p:panelGrid columns="2" >
+                        
+                         <p:outputLabel value="Selecione el proveedor " for="cmbProveedor"/>
+                         <p:selectOneMenu id="cmbProveedor" value="#{productoproveedorController.proveedor.idproveedor}">
+                        <f:selectItem itemLabel="seleccione el proveedor" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{ProveedorController.listaProveedor}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.idproveedor}" />
+                    </p:selectOneMenu>
+                    
+                          <p:outputLabel value="selecione la sucursal" for="cmbSucursal"/>
+                          <p:selectOneMenu id="cmbSucursal" value="#{productoproveedorController.sucursal.idsucursal}">
+                        <f:selectItem itemLabel="seleccione la sucursal " itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{sucursalController.listaSucursal}" var="su" itemLabel="#{su.nombre}" itemValue="#{su.idsucursal}" />
+                    </p:selectOneMenu>
+                    
+                          
+                           <p:outputLabel value="selecione el producto" for="cmbProducto"/>
+                           <p:selectOneMenu id="cmbProducto" value="#{productoproveedorController.producto.idproducto}">
+                        <f:selectItem itemLabel="seleccione el producto" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{productoController.listaproducto}" var="pro" itemLabel="#{pro.nombre}" itemValue="#{pro.idproducto}" />
+                    </p:selectOneMenu>
+                    
+                       
+                         
+                     
+                        
+                        
+                         <p:commandButton value="Guardar" actionListener="#{productoproveedorController.insertar()}"
+                                          rendered="#{productoproveedorController.proprov.idprod_prov ==0}"
+                                         update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
+                                          onclick="reiniciarTema();editarMSJ()"/>
+
+                                         
+                         <p:commandButton value="Editar" actionListener="#{productoproveedorController.modificar()}"
+                                          rendered="#{productoproveedorController.proprov.idprod_prov !=0}"
+                                         update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
+                                         onclick="reiniciarTema();editarMSJ()"/>
+
+                    </p:panelGrid>
+                </h:form>
+            </p:dialog>
+
+            <h:form id="Datos">
+
+                <p:dataTable  value="#{productoproveedorController.listaproprov}" var="prov">
+                    <p:column headerText="ID">
+                        <h:outputText value="#{prov.idprod_prov}" />
+                    </p:column>
+                    <p:column headerText="Nombre Proveedor">
+                        <h:outputText value="#{prov.idproveedor.nombre}" />
+                    </p:column>
+                    
+                    <p:column headerText="Nombre Sucursal">
+                        <h:outputText value="#{prov.idsucursal.nombre}" />
+                    </p:column>
+                    
+                    <p:column headerText="Nombre Producto">
+                        <h:outputText value="#{prov.idproducto.nombre}" />
+                    </p:column>
+                 
+                 
+                 
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Modificar" actionListener="#{productoproveedorController.leerid(prov)}"
+                                         update=":da" oncomplete="PF('categoria').show()" styleClass="btnEditar" 
+                                         onclick="reiniciarTema();editarMSJ()" />
+                    </p:column>
+                    <p:column headerText="Eliminar">
+                        <p:commandButton value="Eliminar" actionListener="#{productoproveedorController.eliminar(prov)}"
+                                         update=":Datos"
+                                         onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+
+
+       
+        </ui:define>
+    
+    
+    
+    
+    
+    
 </ui:composition>

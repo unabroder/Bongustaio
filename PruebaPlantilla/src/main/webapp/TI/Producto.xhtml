@@ -43,6 +43,7 @@
                                          update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
 
                                          onclick="reiniciarTema();editarMSJ()"/>
+                        
                         <p:commandButton value="Editar" actionListener="#{productoController.modificar()}"
                                          rendered="#{productoController.producto.idproducto !=0}"
                                          update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 

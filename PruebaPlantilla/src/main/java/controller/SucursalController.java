@@ -45,6 +45,8 @@ public class SucursalController implements Serializable {
     }
     
     public List<Sucursal> getListaSucursal() {
+        
+        listaSucursal=sucursalEJB.findAll();
         return listaSucursal;
     }
     
