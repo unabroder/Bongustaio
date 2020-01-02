@@ -151,4 +151,8 @@ public class EmpleadoController implements Serializable {
         } catch (Exception e) {
         }
     }
+
+    public void limpiar() {
+        empleado = new Empleado();
+    }
 }
