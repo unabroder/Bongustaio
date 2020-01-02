@@ -78,17 +78,44 @@ public class usuarioController implements Serializable {
                 bitacora.setUsuario(us);
                 bitacoraEJB.create(bitacora);
                 redireccion = "modulos?faces-redirect=true";
+<<<<<<< HEAD
+
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
+
+=======
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
+>>>>>>> e8c9fb5eb982136be79dc0a40e462c6ba3b7a71e
             }
 
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error" + e));
+<<<<<<< HEAD
+
+=======
+>>>>>>> e8c9fb5eb982136be79dc0a40e462c6ba3b7a71e
         }
         return redireccion;
 
     }
 
+<<<<<<< HEAD
+    public String cerrar() {
+        Usuarios us;
+        String redireccion = null;
+        try {
+            us = usuariofacade.Sesion(usuarios);
+            if (us != null) {
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", us);
+                FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+                redireccion = "index?faces-redirect=true";
+            }
+        } catch (Exception e) {
+        }
+        return redireccion;
+
+=======
     public void guardar() {
         try {
             bitacora.setAccion("Acaba de iniciar sesion");
@@ -96,5 +123,6 @@ public class usuarioController implements Serializable {
             bitacoraEJB.create(bitacora);
         } catch (Exception e) {
         }
+>>>>>>> e8c9fb5eb982136be79dc0a40e462c6ba3b7a71e
     }
 }
