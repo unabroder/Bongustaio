@@ -31,10 +31,12 @@ public class EmpleadoController implements Serializable {
     private Empleado empleado;
     private List<Empleado> listaEmpleado;
 
+    @EJB
     private SucursalFacadeLocal sucursalEJB;
     private Sucursal sucursal;
     private List<Sucursal> listSucursal;
 
+    @EJB
     private TipoEmpleadoFacadeLocal tipoEmpEJB;
     private TipoEmpleado tipoEmp;
     private List<TipoEmpleado> lsTipoEmp;
@@ -68,6 +70,7 @@ public class EmpleadoController implements Serializable {
     }
 
     public List<Sucursal> getListSucursal() {
+        this.listSucursal = this.sucursalEJB.findAll();
         return listSucursal;
     }
 
@@ -84,6 +87,7 @@ public class EmpleadoController implements Serializable {
     }
 
     public List<TipoEmpleado> getLsTipoEmp() {
+        lsTipoEmp = tipoEmpEJB.findAll();
         return lsTipoEmp;
     }
 
@@ -93,12 +97,9 @@ public class EmpleadoController implements Serializable {
 
     @PostConstruct
     public void init() {
-        empleado = new Empleado();
+        this.empleado = new Empleado();
         this.tipoEmp = new TipoEmpleado();
         this.sucursal = new Sucursal();
-        this.listaEmpleado = empleadoEJB.findAll();
-        this.listSucursal = sucursalEJB.findAll();
-        this.lsTipoEmp = this.tipoEmpEJB.findAll();
     }
 
     public void leerId(Empleado emp) {
@@ -134,20 +135,6 @@ public class EmpleadoController implements Serializable {
     public void lisEmp() {
         try {
             listaEmpleado = empleadoEJB.findAll();
-        } catch (Exception e) {
-        }
-    }
-
-    public void lsSucursal() {
-        try {
-            listSucursal = sucursalEJB.findAll();
-        } catch (Exception e) {
-        }
-    }
-
-    public void lisTipoEmp() {
-        try {
-            lsTipoEmp = tipoEmpEJB.findAll();
         } catch (Exception e) {
         }
     }

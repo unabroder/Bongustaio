@@ -20,23 +20,25 @@
             <h:form id='da'>
                 <p:panelGrid columns="2" >
                     <p:outputLabel value="Nombres" for="txtNombres"/>
-                    <p:inputText id="txt" value="#{empleadoController.empleado.nombres}"/>
+                    <p:inputText id="txtNombres" value="#{empleadoController.empleado.nombres}"/>
                     <p:outputLabel value="Apellidos" for="txtApellidos"/>
-                    <p:inputText id="txt" value="#{empleadoController.empleado.apellidos}"/>
+                    <p:inputText id="txtApellidos" value="#{empleadoController.empleado.apellidos}"/>
                     <p:outputLabel value="DUI" for="txtDUI"/>
-                    <p:inputText id="txt" value="#{empleadoController.empleado.dui}"/>
+                    <p:inputText id="txtDUI" value="#{empleadoController.empleado.dui}"/>
                     <p:outputLabel value="Correo" for="txtCorreo"/>
-                    <p:inputText id="txt" value="#{empleadoController.empleado.correo}"/>
+                    <p:inputText id="txtCorreo" value="#{empleadoController.empleado.correo}"/>
                     <p:outputLabel value="Telefono" for="txtTel"/>
-                    <p:inputText id="txt" value="#{empleadoController.empleado.telefono}"/>
-                    <p:outputLabel value="Tipo Empleado" for="txtTP"/>
-                    <p:selectOneMenu value="#{empleadoController.empleado.idtipoempleado}">
+                    <p:inputText id="txtTel" value="#{empleadoController.empleado.telefono}"/>
+                    <p:outputLabel value="Tipo Empleado" />
+                    <p:selectOneMenu  value="#{empleadoController.tipoEmp.idtipoempleado}">
+                        <f:selectItem itemLabel="Seleccione un tipo de empleado"></f:selectItem>
                         <f:selectItems value="#{empleadoController.lsTipoEmp}" var="lsTP"
                                        itemValue="#{lsTP.idtipoempleado}" itemLabel="#{lsTP.tipoempleado}" >
                         </f:selectItems>
                     </p:selectOneMenu>
-                    <p:outputLabel value="Sucursal" for="txtSuc"/>
-                    <p:selectOneMenu value="#{empleadoController.empleado.idsucursal}">
+                    <p:outputLabel value="Sucursal" />
+                    <p:selectOneMenu  value="#{empleadoController.sucursal.idsucursal}">
+                        <f:selectItem itemLabel="Seleccione una sucursal"></f:selectItem>
                         <f:selectItems value="#{empleadoController.listSucursal}" var="lsSuc"
                                        itemValue="#{lsSuc.idsucursal}" itemLabel="#{lsSuc.nombre}" >
                         </f:selectItems>
@@ -45,7 +47,7 @@
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
                                      rendered="#{empleadoController.empleado.idempleado == 0}"
                                      onclick="reiniciarTema();editarMSJ()"/>
-                    <p:commandButton value="Editar"
+                    <p:commandButton value="Editar" actionListener="#{empleadoController.editar()}"
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
                                      rendered="#{empleadoController.empleado.idempleado != 0}"
                                      onclick="reiniciarTema();editarMSJ()"/>
@@ -72,7 +74,7 @@
                 </p:column>
                 <p:column headerText="Editar">
                     <p:commandButton value="Modificar"  actionListener="#{empleadoController.leerId(p)}"
-                                     update=":da" oncomplete="PF('categoria').show()" styleClass="btnEditar" 
+                                     update=":da" oncomplete="PF('empleado').show()" styleClass="btnEditar" 
                                      onclick="reiniciarTema();editarMSJ()" />
                 </p:column>
                 <p:column headerText="Eliminar">
