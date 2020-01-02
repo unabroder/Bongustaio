@@ -29,6 +29,6 @@ public interface SucursalFacadeLocal {
 
      List<Sucursal> findAllActivo();
 
-    void removeEstado(Sucursal sucursal);
+    void Estado(Sucursal sucursal);
 
     }

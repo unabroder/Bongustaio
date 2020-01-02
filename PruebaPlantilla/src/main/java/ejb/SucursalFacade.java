@@ -23,15 +23,17 @@ public class SucursalFacade extends AbstractFacade<Sucursal> implements Sucursal
         super(Sucursal.class);
     }
 
-    public void removeEstado(Sucursal sucursal) {
+    public void Estado(Sucursal sucursal) {
         String sql;
-        
+        System.out.println(sucursal.getIdsucursal());
         try {
-            sql = "UPDATE sucursal s set s.estado=0 WHERE s.idsucursal=?1";
+            sql = "UPDATE Sucursal s set s.estado=?1 WHERE s.idsucursal=?2";
             Query query = em.createQuery(sql);
-            query.setParameter(1, sucursal.getIdsucursal());
-
+            query.setParameter(1, sucursal.getEstado());
+            query.setParameter(2, sucursal.getIdsucursal());
+            query.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
             throw e;
         }
 
@@ -54,5 +56,7 @@ public class SucursalFacade extends AbstractFacade<Sucursal> implements Sucursal
         return lista;
 
     }
+
+  
 
 }

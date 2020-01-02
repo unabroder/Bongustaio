@@ -38,12 +38,12 @@
                     <p:inputText id="dirección"  value="#{sucursalController.sucursal.direccion}"/>
                     <p:outputLabel value="Telefono" for="txtTelefono"/>
                     <p:inputText id="txtTelefono" value="#{sucursalController.sucursal.telefono}" required="true"/>
-                 
+
                     <p:commandButton value="Guardar" 
                                      rendered="#{sucursalController.sucursal.idsucursal ==0}"
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()"  
                                      onclick="reiniciarTema();editarMSJ()"
-                                     action="#{sucursalController.insertar()}"/>
+                                     actionListener="#{sucursalController.insertar()}"/>
                     <p:commandButton value="Editar" 
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
                                      rendered="#{sucursalController.sucursal.idsucursal !=0}"
@@ -72,8 +72,8 @@
                 <p:column headerText="dirección">
                     <h:outputText value="#{p.direccion}" />
                 </p:column>
-                <p:column headerText="Estado">
-                    <h:outputText value="#{p.estado}" />
+                <p:column rendered="false"  headerText="Estado">
+                    <h:outputText rendered="false"  value="#{p.estado}" />
                 </p:column>
                 <p:column headerText="Editar">
                     <p:commandButton value="Modificar"  actionListener="#{sucursalController.consultarById(p)}"
@@ -81,9 +81,17 @@
                                      onclick="reiniciarTema();editarMSJ()" />
                 </p:column>
                 <p:column headerText="Eliminar">
-                    <p:commandButton value="Eliminar"
+                    <p:commandButton value="Desactivar"
+                                     update=":Datos da :MSJ"
+                                     rendered="#{p.estado ==1}"
                                      onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar"
-                                     action="#{sucursalController.eliminar(p)}"
+                                     actionListener="#{sucursalController.deshabilitar(p)}"
+                                     />
+                    <p:commandButton value="Activar"
+                                     update=":Datos da :MSJ"
+                                     rendered="#{p.estado ==0}"
+                                     onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar"
+                                     actionListener="#{sucursalController.habilitar(p)}"
                                      />
                 </p:column>
             </p:dataTable>
