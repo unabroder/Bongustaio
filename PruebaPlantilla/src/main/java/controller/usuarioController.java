@@ -78,15 +78,38 @@ public class usuarioController implements Serializable {
                 bitacora.setUsuario(us);
                 bitacoraEJB.create(bitacora);
                 redireccion = "modulos?faces-redirect=true";
+
+
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
-            }
+
+            } 
+            
 
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error" + e));
+
+
+
         }
         return redireccion;
 
+    }
+
+
+    public String cerrar() {
+        Usuarios us;
+        String redireccion = null;
+        try {
+            us = usuariofacade.Sesion(usuarios);
+            if (us != null) {
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", us);
+                FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+                redireccion = "index?faces-redirect=true";
+            }
+        } catch (Exception e) {
+        }
+        return redireccion;
     }
 
     public void guardar() {
@@ -96,5 +119,6 @@ public class usuarioController implements Serializable {
             bitacoraEJB.create(bitacora);
         } catch (Exception e) {
         }
+
     }
 }
