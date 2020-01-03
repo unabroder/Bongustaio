@@ -38,6 +38,7 @@ public class TiposucursalController implements Serializable {
     }
 
     public List<Tiposucursal> getListaTsucursal() {
+        this.listaTsucursal = tsucursalEJB.findAll();
         return listaTsucursal;
     }
 
@@ -48,6 +49,7 @@ public class TiposucursalController implements Serializable {
    @PostConstruct
    public void init(){
    tsucursal= new Tiposucursal();
+   this.listaTsucursal=tsucursalEJB.findAll();
    }
    
    public void consultarById(){
@@ -60,10 +62,9 @@ public class TiposucursalController implements Serializable {
    
    public void consultar(){
    
-       try {
-           listaTsucursal=tsucursalEJB.findAll();
-       } catch (Exception e) {
-       }
+
+           this.listaTsucursal=tsucursalEJB.findAll();
+       
    }
    
    public void consultarActivos(){

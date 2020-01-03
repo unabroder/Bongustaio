@@ -148,4 +148,12 @@ public class InventarioController implements Serializable {
         } catch (Exception e) {
         }
     }
+    
+    public void limpiar() {
+        try {
+            this.inventario = new Inventario();
+            this.productoProveedor = new ProductoProveedor();
+        } catch (Exception e) {
+        }
+    }
 }

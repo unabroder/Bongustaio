@@ -79,19 +79,34 @@ public class usuarioController implements Serializable {
                 bitacoraEJB.create(bitacora);
                 redireccion = "modulos?faces-redirect=true";
 
+
+<<<<<<< HEAD
+            }
+=======
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
 
-            }
+            } 
+            
+>>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
 
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error" + e));
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
         }
         return redireccion;
 
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
     public String cerrar() {
         try {
             SesionController.iniciarSesion(FacesContext.getCurrentInstance());
@@ -138,6 +153,7 @@ public class usuarioController implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+<<<<<<< HEAD
          return redireccion;
     }
      
@@ -174,6 +190,10 @@ public class usuarioController implements Serializable {
         
     }
     
+=======
+        return redireccion;
+    }
+>>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
 
     public void guardar() {
         try {

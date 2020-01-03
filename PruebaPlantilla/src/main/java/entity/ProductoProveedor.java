@@ -29,15 +29,15 @@ public class ProductoProveedor implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idprod_prov;
 
-    @JoinColumn(name = "id_proveedor", referencedColumnName = "idproveedor")
+    @JoinColumn(name = "idproveedor", referencedColumnName = "idproveedor")
     @ManyToOne
     private Proveedor idproveedor;
 
-    @JoinColumn(name = "id_sucursal", referencedColumnName = "idsucursal")
+    @JoinColumn(name = "idsucursal", referencedColumnName = "idsucursal")
     @ManyToOne
     private Sucursal idsucursal;
 
-    @JoinColumn(name = "id_producto", referencedColumnName = "idproducto")
+    @JoinColumn(name = "idproducto", referencedColumnName = "idproducto")
     @ManyToOne
     private Producto idproducto;
     
