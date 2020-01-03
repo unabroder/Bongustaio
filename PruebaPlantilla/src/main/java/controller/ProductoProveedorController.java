@@ -183,6 +183,9 @@ public class ProductoProveedorController implements Serializable {
 
     public void leerid(ProductoProveedor prov) {
         try {
+            this.proveedor.setIdproveedor(prov.getIdproveedor().getIdproveedor());
+            this.sucursal.setIdsucursal(prov.getIdsucursal().getIdsucursal());
+            this.producto.setIdproducto(prov.getIdproducto().getIdproducto());
             this.proprov = prov;
         } catch (Exception e) {
         }
