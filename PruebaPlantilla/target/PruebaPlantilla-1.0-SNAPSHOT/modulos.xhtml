@@ -4,6 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet  library="css" name="estilos.css" />
@@ -14,9 +16,13 @@
 
         <!-- Responsive CSS -->
         <link href="css/responsive/responsive.css" rel="stylesheet" />
+        <f:event type="preRenderView" listener="#{usuarioController.validacion2()}" />
+        <f:event type="preRenderView" listener="#{usuarioController.validacionRol()}" />
     </h:head>
+    
     <h:body>
           <!-- ****** Superficie Principal de login y iconos ****** -->
+          
         <div class="top_header_area">
             <div class="container">
                 <div class="row">
@@ -39,9 +45,9 @@
                                 </div>
                                 <br></br>
                                 <div class="login">
-                                    <a class="btn-outline-danger" href="#">Cerrar Seccion</a>
+                                   
                                     <h:form>
-                                    <h:commandButton value="Cerra Seccion" action="#{usuarioController.cerrar()}"/>
+                                        <h:commandButton value="Cerra Seccion" action="#{usuarioController.cerrar()}" styleClass="btn-outline-warning"/>
                                     </h:form>
                                 </div>
                             </div>
@@ -58,7 +64,6 @@
                 <br/>
                 <div class="ui-g centrar-texto">
                     <div class="ui-g-4 ">
-
 
                         <p:graphicImage styleClass="red-input" name="img/icono-mtto.png" />
                         <br/><br/>

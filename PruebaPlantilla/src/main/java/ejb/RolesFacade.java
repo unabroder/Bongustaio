@@ -6,9 +6,11 @@
 package ejb;
 
 import entity.Roles;
+import entity.Usuarios;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,7 @@ public class RolesFacade extends AbstractFacade<Roles> implements RolesFacadeLoc
     public RolesFacade() {
         super(Roles.class);
     }
+    
+    
     
 }

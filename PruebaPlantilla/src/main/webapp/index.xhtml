@@ -8,7 +8,7 @@
 
     </h:head>
     <h:outputStylesheet  library="css" name="estilos.css" />
-<<<<<<< HEAD
+
     <style type="text/css">
         /** Demo **/
         .ui-outputlabel {
@@ -20,8 +20,6 @@
         }
     </style>
 
-=======
->>>>>>> e8c9fb5eb982136be79dc0a40e462c6ba3b7a71e
 
     <h:body styleClass="body-login">
         
@@ -43,17 +41,13 @@
                         <p:panelGrid columns="2" columnClasses="ui-g-12 ui-md-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
                             <p:outputLabel  value="Usuario:"/>
                             <p:inputText value="#{usuarioController.usuarios.usuario}" required="true"/>
-
                             <p:outputLabel value="Password:" />
-                            <p:inputText value="#{usuarioController.usuarios.clave}" type="password" required="true" />
-                            
+                            <p:inputText value="#{usuarioController.usuarios.clave}" type="password" required="true" />                         
                             <h:column/>
-<<<<<<< HEAD
                             <p:commandButton  value="Login" action="#{usuarioController.login()}"/>
-=======
-                            <p:commandButton action="#{usuarioController.login()}" value="Login" />
+                           
 
->>>>>>> e8c9fb5eb982136be79dc0a40e462c6ba3b7a71e
+
                         </p:panelGrid>
                     </div>
                 </h:form>
