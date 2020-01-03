@@ -15,7 +15,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-@Named(value = "menuDelDia")
+@Named(value = "menuDelDiaController")
 @SessionScoped
 public class MenuDelDiaController implements Serializable {
 
@@ -44,6 +44,7 @@ public class MenuDelDiaController implements Serializable {
     }
 
     public List<MenuDelDia> getListaMenuDelDia() {
+        this.listaMenuDelDia=menuDelDiaEJB.findAll();
         return listaMenuDelDia;
     }
 
@@ -60,32 +61,25 @@ public class MenuDelDiaController implements Serializable {
     }
 
     public List<Catalogo> getListaCatalogo() {
+        this.listaCatalogo=catalogoEJB.findAll();
         return listaCatalogo;
     }
 
-    public void setListaCatalogo(List<Catalogo> listaCatalogo) {
+    public void setListaCatalogo(List<Catalogo> listaCatalogo) {      
         this.listaCatalogo = listaCatalogo;
-    }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
     }
 
     //PostConstruct
     @PostConstruct
     public void init() {
-        catalogo = new Catalogo();
-        menuDelDia = new MenuDelDia();
+        this.catalogo = new Catalogo();
+        this.menuDelDia = new MenuDelDia();
     }
 
     //metodos 
     public void obtenerTodos() {
         try {
-            listaMenuDelDia = menuDelDiaEJB.findAll();
+            this.listaMenuDelDia = menuDelDiaEJB.findAll();
         } catch (Exception e) {
         }
 
@@ -139,7 +133,7 @@ public class MenuDelDiaController implements Serializable {
     
     public void listarCatalogo(){
         try {
-            listaCatalogo = catalogoEJB.findAll();
+            this.listaCatalogo = catalogoEJB.findAll();
         } catch (Exception e) {
         }
     }

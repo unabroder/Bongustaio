@@ -41,11 +41,7 @@ public class CatalogoController implements Serializable {
     }
 
     public List<Catalogo> getListaCatalogo() {
-
-        listaCatalogo = catalogoEJB.findAll();
-
-        listaCatalogo=catalogoEJB.findAll();
-
+        this.listaCatalogo = catalogoEJB.findAll();
         return listaCatalogo;
     }
 
@@ -70,7 +66,7 @@ public class CatalogoController implements Serializable {
     }
 
     @PostConstruct
-    private void init() {
+    public void init() {
         catalogo = new Catalogo();
         tipoproducto = new Tipoproducto();
     }
