@@ -23,8 +23,8 @@ public class MenuDelDia implements Serializable{
     private double descuento;
     
     @ManyToOne
-    @JoinColumn(name = "idventa_detalle", referencedColumnName = "venta_detalle")
-    private Venta_Detalle idventa_detalle;
+    @JoinColumn(name = "idcatalogo", referencedColumnName = "idcatalogo")
+    private Catalogo catalogo;
     
     @Column(name = "estado")
     private int estado;
@@ -73,14 +73,14 @@ public class MenuDelDia implements Serializable{
         this.descuento = descuento;
     }
 
-    public Venta_Detalle getIdventa_detalle() {
-        return idventa_detalle;
+    public Catalogo getCatalogo() {
+        return catalogo;
     }
 
-    public void setIdventa_detalle(Venta_Detalle idventa_detalle) {
-        this.idventa_detalle = idventa_detalle;
+    public void setCatalogo(Catalogo catalogo) {
+        this.catalogo = catalogo;
     }
-
+    
     public int getEstado() {
         return estado;
     }

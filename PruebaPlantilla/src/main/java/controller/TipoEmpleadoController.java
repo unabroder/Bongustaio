@@ -5,7 +5,7 @@
  */
 package controller;
 
-import ejb.TipoEmpleadoFacade;
+import ejb.TipoEmpleadoFacadeLocal;
 import entity.TipoEmpleado;
 import java.io.Serializable;
 import java.util.List;
@@ -23,7 +23,7 @@ import javax.inject.Named;
 public class TipoEmpleadoController implements Serializable {
 
     @EJB
-    private TipoEmpleadoFacade tipoEmpleadoEJB;
+    private TipoEmpleadoFacadeLocal tipoEmpleadoEJB;
     private TipoEmpleado tipoEmpleado;
     List<TipoEmpleado> lista;
 
@@ -36,6 +36,7 @@ public class TipoEmpleadoController implements Serializable {
     }
 
     public List<TipoEmpleado> getLista() {
+        this.lista = tipoEmpleadoEJB.findAll();
         return lista;
     }
 
@@ -76,4 +77,15 @@ public class TipoEmpleadoController implements Serializable {
         }
     }
 
+    public void eliminar(TipoEmpleado tpEmp) {
+        try {
+            tipoEmpleado = tpEmp;
+            tipoEmpleadoEJB.remove(tipoEmpleado);
+        } catch (Exception e) {
+        }
+    }
+    
+    public void limpiar(){
+        tipoEmpleado = new TipoEmpleado();
+    }
 }

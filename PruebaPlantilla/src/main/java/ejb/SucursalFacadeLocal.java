@@ -9,13 +9,7 @@ import entity.Sucursal;
 import java.util.List;
 import javax.ejb.Local;
 
-/**
- *
- * <<<<<<< HEAD
- * @a
- *
- * uthor josue.vasquezusam
- */
+
 @Local
 public interface SucursalFacadeLocal {
 
@@ -33,8 +27,8 @@ public interface SucursalFacadeLocal {
 
     int count();
 
-    List<Sucursal> findAllActivo();
+     List<Sucursal> findAllActivo();
 
-    void removeEstado(Sucursal sucursal);
+    void Estado(Sucursal sucursal);
 
     }

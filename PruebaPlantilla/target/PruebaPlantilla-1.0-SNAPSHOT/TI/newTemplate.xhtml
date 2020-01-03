@@ -17,6 +17,7 @@
         <link href="../style.css" rel="stylesheet" />
         <!-- Responsive CSS -->
         <link href="../css/responsive/responsive.css" rel="stylesheet" />
+        <script src="emailValidator.js" type="text/javascript"></script>
     </h:head>
 
     <h:body >
@@ -73,8 +74,9 @@
 
                                 </p:submenu>
                                 <p:submenu label="Sucursales">
-                                    <p:menuitem value="Proveedores" action="#{menuView.save}" />
-                                    <p:menuitem value="Sucursales" action="#{menuView.save}" />
+                                    <p:menuitem value="Proveedores" actionListener="#{ProveedorController.consultar()}" />
+                                    <p:menuitem><p:link href="Sucursal.xhtml">Sucursales</p:link></p:menuitem>
+                                    
 
 
                                 </p:submenu>

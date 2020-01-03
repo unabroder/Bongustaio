@@ -34,7 +34,7 @@
                     <div class="col-7 col-sm-6">
                         <div class="signup-search-area d-flex align-items-center justify-content-end">
                             <div class="login_register_area d-flex">
-                                <div class="login">
+                                <div class="">
                                     <a class="btn-outline-dark" href="#">Bienvenido :Nathalia</a>
                                 </div>
                                 <div class="register">
@@ -58,13 +58,20 @@
                         <p:panelGrid columns="2" styleClass="centrar-contenido">
 
                             <p:outputLabel value="USUARIOS"/>
-                            <h:link value=">" outcome="/TemplateAdministrador/newTemplateClient" />
+                            <h:link value=">" outcome="/TI/newTemplateClient" />
 
+                            <p:outputLabel value="CATALOGO"/>
+
+                            <h:link value=">" outcome="/TI/Catalogo" />
                             <p:outputLabel value="VENTA"/>
-                            <h:link value=">" outcome="/Mantenimientos/Venta" />
+                            <h:link value=">" outcome="/TI/Venta" />
+
+
+                            <p:outputLabel value="VENTA DETALLE"/>
+                            <h:link value=">" outcome="/TI/Venta_Detalle" />
 
                             <p:outputLabel value="ROLES"/>
-                            <p:commandButton value=">"/>
+                            <h:link  value=">" />
 
                             <p:outputLabel value="PROVEEDORES"/>
                             <p:commandButton value=">" />
