@@ -129,4 +129,12 @@ public class CatalogoEspecialidadController implements Serializable{
         } catch (Exception e) {
         }
     }
+    
+    public void consultarCatalogoEspecialidad(CatalogoEspecialidad ce){
+        this.catalogoEspecialidad = ce;
+    }
+    
+    public void limpiar(){
+        this.catalogoEspecialidad = new CatalogoEspecialidad();
+    }
 }
