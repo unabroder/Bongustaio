@@ -1,7 +1,9 @@
 package controller;
 
+import ejb.CatalogoFacadeLocal;
 import ejb.MenuDelDiaFacadeLocal;
 import ejb.Venta_DetalleFacadeLocal;
+import entity.Catalogo;
 import entity.MenuDelDia;
 import entity.Venta_Detalle;
 import javax.inject.Named;
@@ -13,7 +15,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
-@Named(value = "menuDelDia")
+@Named(value = "menuDelDiaController")
 @SessionScoped
 public class MenuDelDiaController implements Serializable {
 
@@ -23,9 +25,9 @@ public class MenuDelDiaController implements Serializable {
     private MenuDelDia menuDelDia;
     private List<MenuDelDia> listaMenuDelDia;
 
-    private Venta_DetalleFacadeLocal ventaDetalleEJB;
-    private Venta_Detalle ventaDetalle;
-    private List<Venta_Detalle> listaVentaDetalle;
+    private CatalogoFacadeLocal catalogoEJB;
+    private Catalogo catalogo;
+    private List<Catalogo> listaCatalogo;
     
     String mensaje;
 
@@ -42,6 +44,7 @@ public class MenuDelDiaController implements Serializable {
     }
 
     public List<MenuDelDia> getListaMenuDelDia() {
+        this.listaMenuDelDia=menuDelDiaEJB.findAll();
         return listaMenuDelDia;
     }
 
@@ -49,49 +52,50 @@ public class MenuDelDiaController implements Serializable {
         this.listaMenuDelDia = listaMenuDelDia;
     }
 
-    public Venta_Detalle getVentaDetalle() {
-        return ventaDetalle;
+    public Catalogo getCatalogo() {
+        return catalogo;
     }
 
-    public void setVentaDetalle(Venta_Detalle ventaDetalle) {
-        this.ventaDetalle = ventaDetalle;
+    public void setCatalogo(Catalogo catalogo) {
+        this.catalogo = catalogo;
     }
 
-    public List<Venta_Detalle> getListaVentaDetalle() {
-        return listaVentaDetalle;
+    public List<Catalogo> getListaCatalogo() {
+        this.listaCatalogo=catalogoEJB.findAll();
+        return listaCatalogo;
     }
 
-    public void setListaVentaDetalle(List<Venta_Detalle> listaVentaDetalle) {
-        this.listaVentaDetalle = listaVentaDetalle;
+    public void setListaCatalogo(List<Catalogo> listaCatalogo) {      
+        this.listaCatalogo = listaCatalogo;
     }
 
     //PostConstruct
     @PostConstruct
     public void init() {
-        ventaDetalle = new Venta_Detalle();
-        menuDelDia = new MenuDelDia();
+        this.catalogo = new Catalogo();
+        this.menuDelDia = new MenuDelDia();
     }
 
     //metodos 
     public void obtenerTodos() {
         try {
-            listaMenuDelDia = menuDelDiaEJB.findAll();
+            this.listaMenuDelDia = menuDelDiaEJB.findAll();
         } catch (Exception e) {
         }
 
     }
 
-    public void obtenerUno(MenuDelDia idMenuDD) {
+    public void obtenerUno(MenuDelDia mdd) {
         try {
-            this.ventaDetalle.setIdventa_detalle(idMenuDD.getIdventa_detalle().getIdventa_detalle());
-            this.menuDelDia = idMenuDD;
+            this.catalogo.setIdcatalogo(mdd.getCatalogo().getIdcatalogo());
+            this.menuDelDia = mdd;
         } catch (Exception e) {
         }
     }
 
      public void insertar() {
         try {
-            this.menuDelDia.setIdventa_detalle(ventaDetalle);
+            this.menuDelDia.setCatalogo(catalogo);
             menuDelDiaEJB.create(menuDelDia);
             this.mensaje = "INSERTADO";
         } catch (Exception e) {
@@ -103,7 +107,7 @@ public class MenuDelDiaController implements Serializable {
     
     public void actualizar() {
         try {
-            this.menuDelDia.setIdventa_detalle(ventaDetalle);
+            
             menuDelDiaEJB.edit(menuDelDia);
             this.mensaje = "ACTUALIZADO";
         } catch (Exception e) {
@@ -113,10 +117,10 @@ public class MenuDelDiaController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
-    public void eliminar(MenuDelDia idMDD) {
-        this.menuDelDia = idMDD;
+    public void eliminar(MenuDelDia mdd) {
+        this.menuDelDia = mdd;
         try {
-            this.menuDelDia.setIdventa_detalle(ventaDetalle);
+            
             menuDelDiaEJB.remove(menuDelDia);
             this.mensaje = "ELIMINADO";
             listaMenuDelDia = menuDelDiaEJB.findAll();
@@ -127,9 +131,17 @@ public class MenuDelDiaController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
     
-    public void listarVentaDetalle(){
+    public void listarCatalogo(){
         try {
-            this.listaVentaDetalle = ventaDetalleEJB.findAll();
+            this.listaCatalogo = catalogoEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+    
+     public void limpiar() {
+        try {
+            this.menuDelDia= new MenuDelDia();
+            this.catalogo = new Catalogo();
         } catch (Exception e) {
         }
     }

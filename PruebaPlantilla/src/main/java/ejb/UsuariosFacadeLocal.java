@@ -5,6 +5,7 @@
  */
 package ejb;
 
+import entity.Roles;
 import entity.Usuarios;
 import java.util.List;
 import javax.ejb.Local;

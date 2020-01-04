@@ -1,28 +1,9 @@
-controller\usuarioController.class
-ejb\ProductoProveedorFacade.class
 entity\Inventario_.class
-entity\Empleado.class
 entity\Producto_.class
-controller\SucursalController.class
-ejb\InventarioFacadeLocal.class
-controller\CatalogoEspecialidadController.class
-ejb\ProductoFacadeLocal.class
-entity\Proveedor.class
-ejb\Venta_DetalleFacadeLocal.class
-ejb\SucursalFacade.class
-ejb\InventarioFacade.class
-entity\Usuarios.class
-entity\TipoEmpleado.class
-ejb\UsuariosFacadeLocal.class
-entity\Tipoproducto.class
-ejb\TiposucursalFacade.class
 entity\MenuDelDia_.class
 entity\ProductoProveedor_.class
-ejb\UsuariosFacade.class
-ejb\Venta_DetalleFacade.class
-controller\CatalogoController.class
-ejb\CatalogoFacade.class
 entity\Roles_.class
+<<<<<<< HEAD
 ejb\BitacoraFacadeLocal.class
 controller\EmpleadoController.class
 entity\Producto.class
@@ -33,22 +14,16 @@ ejb\MenuDelDiaFacade.class
 ejb\TipoEmpleadoFacadeLocal.class
 controller\InventarioController.class
 ejb\MenuDelDiaFacadeLocal.class
+=======
+>>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
 entity\Sucursal_.class
-entity\Roles.class
 entity\TipoEmpleado_.class
-entity\Tiposucursal.class
-ejb\TipoEmpleadoFacade.class
-ejb\TipoproductoFacadeLocal.class
-controller\ProductoProveedorController.class
-ejb\RolesFacade.class
-ejb\VentaFacade.class
-ejb\TiposucursalFacadeLocal.class
-entity\Venta.class
 entity\Venta_.class
 entity\Venta_Detalle_.class
-controller\Venta_DetalleController.class
 entity\Empleado_.class
+<<<<<<< HEAD
 controller\ProductoController.class
+controller\SesionController.class
 controller\MenuDelDiaController.class
 ejb\CatalogoFacadeLocal.class
 entity\CatalogoEspecialidad_.class
@@ -65,13 +40,16 @@ ejb\VentaFacadeLocal.class
 ejb\EspecialidadFacadeLocal.class
 ejb\ProductoFacade.class
 entity\Especialidad.class
+=======
+entity\CatalogoEspecialidad_.class
+entity\Bitacora_.class
+entity\Proveedor_.class
+>>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
 entity\Especialidad_.class
 entity\Tiposucursal_.class
-ejb\EmpleadoFacade.class
-ejb\ProveedorFacadeLocal.class
 entity\Catalogo_.class
-controller\TipoEmpleadoController.class
 entity\Usuarios_.class
+<<<<<<< HEAD
 ejb\CatalogoEspecialidadFacadeLocal.class
 entity\MenuDelDia.class
 entity\ProductoProveedor.class
@@ -87,4 +65,6 @@ entity\Catalogo.class
 entity\Inventario.class
 ejb\ProductoProveedorFacadeLocal.class
 entity\Sucursal.class
+=======
+>>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
 entity\Tipoproducto_.class
