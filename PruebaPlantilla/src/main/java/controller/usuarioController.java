@@ -79,12 +79,18 @@ public class usuarioController implements Serializable {
                 bitacoraEJB.create(bitacora);
                 redireccion = "modulos?faces-redirect=true";
 
+
+
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
-            }
+
+            } 
+            
+
 
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error" + e));
+
 
         }
         return redireccion;
@@ -113,5 +119,6 @@ public class usuarioController implements Serializable {
             bitacoraEJB.create(bitacora);
         } catch (Exception e) {
         }
+
     }
 }

@@ -23,6 +23,7 @@ tipo varchar(50) not null,
 estado int(1) not null default 1
 )ENGINE InnoDB;
 insert into tiposucursal(tipo) values('restaurante');
+insert into tiposucursal(tipo) values('snack');
 select * from tiposucursal; 
 
 CREATE TABLE sucursal(
