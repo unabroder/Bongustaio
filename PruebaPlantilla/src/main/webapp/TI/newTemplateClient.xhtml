@@ -12,11 +12,12 @@
                                   styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()" style="margin-right:  99%;"/>
             </p:panelGrid>
         </h:form>
-        <!---->
+        
         <p:dialog style="margin-top: 10; " widgetVar="categoria" modal="false" showEffect="clip" resizable="false" header="Categoria">
             <p:ajax event="close" update=":da" />
             <h:form id='da'>
                 <p:panelGrid columns="2" >
+
                     <p:outputLabel value="Nombre" for="txtNombre"/>
                     <p:inputText id="txtNombre" />
                     <p:outputLabel value="Apellido" for="txtApellido"/>
@@ -25,17 +26,18 @@
                     <p:inputText id="txtEmail" />
                     <p:outputLabel value="Telefono" for="txtTelefono"/>
                     <p:inputText id="txtTelefono" required="true"/>
+
                     <p:commandButton value="Guardar" 
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
                                      onclick="reiniciarTema();editarMSJ()"/>
                     <p:commandButton value="Editar"
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
                                      onclick="reiniciarTema();editarMSJ()"/>
+
                 </p:panelGrid>
             </h:form>
         </p:dialog>
-
-
+        
         <h:form id="Datos">
             <p:dataTable   var="p">
                 <p:column headerText="ID">

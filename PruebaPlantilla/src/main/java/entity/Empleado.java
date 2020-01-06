@@ -26,25 +26,30 @@ public class Empleado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idempleado;
+
     @Column(name = "nombres")
     private String nombres;
+
     @Column(name = "apellidos")
     private String apellidos;
+
     @Column(name = "dui")
     private String dui;
+
     @Column(name = "correo")
     private String correo;
+
     @Column(name = "telefono")
     private String telefono;
+
     @ManyToOne
     @JoinColumn(name = "idtipoempleado", referencedColumnName = "idtipoempleado")
     private TipoEmpleado idtipoempleado;
+
     @ManyToOne
     @JoinColumn(name = "idsucursal", referencedColumnName = "idsucursal")
     private Sucursal idsucursal;
-    
 
-    
     @Column(name = "estado")
     private int estado = 1;
 
@@ -111,7 +116,6 @@ public class Empleado implements Serializable {
     public void setIdsucursal(Sucursal idsucursal) {
         this.idsucursal = idsucursal;
     }
-
 
     public int getEstado() {
         return estado;

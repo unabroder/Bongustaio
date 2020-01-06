@@ -25,7 +25,7 @@ public class TipoEmpleadoController implements Serializable {
     @EJB
     private TipoEmpleadoFacadeLocal tipoEmpleadoEJB;
     private TipoEmpleado tipoEmpleado;
-    List<TipoEmpleado> lista;
+    private List<TipoEmpleado> lista;
 
     public TipoEmpleado getTipoEmpleado() {
         return tipoEmpleado;

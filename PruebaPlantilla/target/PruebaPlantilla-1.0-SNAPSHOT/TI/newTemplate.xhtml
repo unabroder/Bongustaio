@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -17,6 +18,9 @@
         <link href="../style.css" rel="stylesheet" />
         <!-- Responsive CSS -->
         <link href="../css/responsive/responsive.css" rel="stylesheet" />
+
+        <f:event type="preRenderView" listener="#{usuarioController.validacion1()}" />
+        <f:event type="preRenderView" listener="#{usuarioController.validacionRol()}" />
         <link href="../resources/css/menu.css" rel="stylesheet" type="text/css"/>
     </h:head>
 

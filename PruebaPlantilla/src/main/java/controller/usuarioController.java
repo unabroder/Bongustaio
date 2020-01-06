@@ -82,8 +82,9 @@ public class usuarioController implements Serializable {
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
             }
-            
-            }catch(Exception e) {
+
+        } catch (Exception e) {
+
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error" + e));
 
         }
@@ -118,7 +119,7 @@ public class usuarioController implements Serializable {
             Usuarios us = (Usuarios) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
             if (us == null) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("../index.xhtml");
-                redireccion = "../index?faces-redirect=true";
+                redireccion = "../../index?faces-redirect=true";
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -137,6 +138,7 @@ public class usuarioController implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return redireccion;
     }
 
@@ -170,6 +172,7 @@ public class usuarioController implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        //return redireccion;
 
     }
 

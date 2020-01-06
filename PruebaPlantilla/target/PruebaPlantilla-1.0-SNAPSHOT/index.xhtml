@@ -41,9 +41,10 @@
                             <p:outputLabel  value="Usuario:"/>
                             <p:inputText value="#{usuarioController.usuarios.usuario}" required="true"/>
                             <p:outputLabel value="Password:" />
-                            <p:inputText value="#{usuarioController.usuarios.clave}" type="password" required="true" />                         
+                            <p:inputText value="#{usuarioController.usuarios.clave}" type="password" required="true" />
                             <h:column/>
                             <p:commandButton  value="Login" action="#{usuarioController.login()}"/>
+                            <h:column/>
                         </p:panelGrid>
                     </div>
                 </h:form>
