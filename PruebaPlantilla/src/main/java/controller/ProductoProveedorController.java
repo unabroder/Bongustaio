@@ -61,6 +61,7 @@ public class ProductoProveedorController implements Serializable {
     }
 
     public List<ProductoProveedor> getListaproprov() {
+        listaproprov = proprovEJB.findAll();
         return listaproprov;
     }
 
@@ -122,7 +123,6 @@ public class ProductoProveedorController implements Serializable {
         proveedor = new Proveedor();
         sucursal = new Sucursal();
         producto = new Producto();
-
     }
 
     public void consultarProvedor() {
@@ -151,7 +151,7 @@ public class ProductoProveedorController implements Serializable {
             proprov.setIdsucursal(sucursal);
             proprov.setIdproducto(producto);
 
-            proveedorEJB.create(proveedor);
+            proprovEJB.create(proprov);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
 
@@ -160,7 +160,7 @@ public class ProductoProveedorController implements Serializable {
 
     }
 
-    public void consultar() {
+    public void listar() {
         try {
             listaproprov = proprovEJB.findAll();
 
@@ -169,7 +169,7 @@ public class ProductoProveedorController implements Serializable {
 
     }
 
-    public void editar() {
+    public void modificar() {
         try {
             proprov.setIdproveedor(proveedor);
             proprov.setIdsucursal(sucursal);
@@ -181,12 +181,28 @@ public class ProductoProveedorController implements Serializable {
 
     }
 
+    public void leerid(ProductoProveedor prov) {
+        try {
+            this.proveedor.setIdproveedor(prov.getIdproveedor().getIdproveedor());
+            this.sucursal.setIdsucursal(prov.getIdsucursal().getIdsucursal());
+            this.producto.setIdproducto(prov.getIdproducto().getIdproducto());
+            this.proprov = prov;
+        } catch (Exception e) {
+        }
+
+    }
+
     public void eliminar(ProductoProveedor prov) {
         try {
             proprov = prov;
             proprovEJB.remove(proprov);
         } catch (Exception e) {
         }
+
+    }
+
+    public void limpiar() {
+        this.proprov = new ProductoProveedor();
 
     }
 

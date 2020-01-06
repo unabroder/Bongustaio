@@ -29,21 +29,36 @@ public class ProductoProveedor implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idprod_prov;
 
-    @JoinColumn(name = "id_proveedor", referencedColumnName = "idproveedor")
+    @JoinColumn(name = "idproveedor", referencedColumnName = "idproveedor")
     @ManyToOne
     private Proveedor idproveedor;
 
-    @JoinColumn(name = "id_sucursal", referencedColumnName = "idsucursal")
+    @JoinColumn(name = "idsucursal", referencedColumnName = "idsucursal")
     @ManyToOne
     private Sucursal idsucursal;
 
-    @JoinColumn(name = "id_producto", referencedColumnName = "idproducto")
+    @JoinColumn(name = "idproducto", referencedColumnName = "idproducto")
     @ManyToOne
     private Producto idproducto;
     
     @Column(name = "estado")
     private int estado=1;
 
+    public ProductoProveedor(Proveedor idproveedor, Sucursal idsucursal, Producto idproducto) {
+        this.idproveedor = idproveedor;
+        this.idsucursal = idsucursal;
+        this.idproducto = idproducto;
+    }
+
+    
+
+    public ProductoProveedor() {
+        this.idproveedor = new Proveedor();
+        this.idsucursal = new Sucursal();
+        this.idproducto = new Producto();
+    }
+
+    
     public int getIdprod_prov() {
         return idprod_prov;
     }

@@ -2,8 +2,10 @@ package controller;
 
 import ejb.InventarioFacadeLocal;
 import ejb.ProductoProveedorFacadeLocal;
+import ejb.ProveedorFacadeLocal;
 import entity.Inventario;
 import entity.ProductoProveedor;
+import entity.Proveedor;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -22,7 +24,7 @@ public class InventarioController implements Serializable {
     private InventarioFacadeLocal inventarioEJB;
     private Inventario inventario;
     private List<Inventario> listaInventario;
-
+    @EJB
     private ProductoProveedorFacadeLocal productoProveedorEJB;
     private ProductoProveedor productoProveedor;
     private List<ProductoProveedor> listaProductoProveedores;
@@ -33,9 +35,7 @@ public class InventarioController implements Serializable {
     public InventarioController() {
     }
 
-    
     //Getters y Setters
-
     public Inventario getInventario() {
         return inventario;
     }
@@ -45,6 +45,7 @@ public class InventarioController implements Serializable {
     }
 
     public List<Inventario> getListaInventario() {
+        listaInventario = inventarioEJB.findAll();
         return listaInventario;
     }
 
@@ -75,17 +76,16 @@ public class InventarioController implements Serializable {
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-    
-    
-    //PostConstructores
+
+     //PostConstructores
     @PostConstruct
     public void init() {
         productoProveedor = new ProductoProveedor();
         inventario = new Inventario();
+        obtenerTodos();
     }
-
-    //metodos 
     
+    //metodos 
     public void obtenerTodos() {
         try {
             listaInventario = inventarioEJB.findAll();
@@ -94,30 +94,32 @@ public class InventarioController implements Serializable {
 
     }
 
-    public void obtenerUno(Inventario idInven) {
+    public void obtenerUno(Inventario inventario) {
         try {
-            this.productoProveedor.setIdprod_prov(idInven.getIdprod_prov().getIdprod_prov());
-            this.inventario = idInven;
+            
+            this.inventario.setEstado(inventario.getEstado());
+            this.inventario = inventario;
         } catch (Exception e) {
         }
     }
-    
+
     public void insertar() {
         try {
-            this.inventario.setIdprod_prov(productoProveedor);
+            this.inventario.setProductoProveedor(productoProveedor);
             inventarioEJB.create(inventario);
+
             this.mensaje = "INSERTADO";
         } catch (Exception e) {
             this.mensaje = "NO INSERTADO" + e.getMessage();
         }
         FacesMessage msj = new FacesMessage(this.mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msj);
-        
+
     }
 
     public void actualizar() {
         try {
-            this.inventario.setIdprod_prov(productoProveedor);
+            this.inventario.setProductoProveedor(productoProveedor);
             this.inventarioEJB.edit(inventario);
             this.mensaje = "ACTUALIZADO";
         } catch (Exception e) {
@@ -131,24 +133,24 @@ public class InventarioController implements Serializable {
     public void eliminar(Inventario idInven) {
         this.inventario = idInven;
         try {
-            this.inventario.setIdprod_prov(productoProveedor);
+            this.inventario.setProductoProveedor(productoProveedor);
             this.inventarioEJB.remove(idInven);
             this.mensaje = "ELIMINADO";
             listaInventario = inventarioEJB.findAll();
         } catch (Exception e) {
-            this.mensaje = "NO INSERTADO";
+            this.mensaje = "NO ELIMINADO";
         }
         FacesMessage msj = new FacesMessage(this.mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
-    
+
     public void listarproductoProveedor() {
         try {
             this.listaProductoProveedores = productoProveedorEJB.findAll();
         } catch (Exception e) {
         }
     }
-    
+
     public void limpiar() {
         try {
             this.inventario = new Inventario();

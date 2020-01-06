@@ -21,7 +21,7 @@ public class Inventario implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "idprod_prov", referencedColumnName = "idprod_prov")
-    private ProductoProveedor idprod_prov;
+    private ProductoProveedor productoProveedor;
 
     @Column(name = "cant_entrada")
     private int cant_entrada;
@@ -68,13 +68,15 @@ public class Inventario implements Serializable {
         this.idinventario = idinventario;
     }
 
-    public ProductoProveedor getIdprod_prov() {
-        return idprod_prov;
+    public ProductoProveedor getProductoProveedor() {
+        return productoProveedor;
     }
 
-    public void setIdprod_prov(ProductoProveedor idprod_prov) {
-        this.idprod_prov = idprod_prov;
+    public void setProductoProveedor(ProductoProveedor productoProveedor) {
+        this.productoProveedor = productoProveedor;
     }
+
+   
 
     public int getCant_entrada() {
         return cant_entrada;

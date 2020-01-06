@@ -16,44 +16,44 @@
 
             <p:panelGrid columns="3">
 
-                <p:commandButton  value="+" oncomplete="PF('categoria').show()" 
+                <p:commandButton  value="+" oncomplete="PF('menuDelDia').show()" 
                                   styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()" style="margin-right:  99%"/>
 
             </p:panelGrid>
         </h:form>
 
         <!---->
-        <p:dialog widgetVar="categoria" modal="false" showEffect="clip" resizable="false" header="Categoria">
+        <p:dialog widgetVar="menuDelDia" modal="false" showEffect="clip" resizable="false" header="Menu Del dia">
             <p:ajax event="close"  listener="#{menuDelDiaController.limpiar}"  update=":da" />
             <h:form id='da'>
 
                 <p:panelGrid columns="2" >
-                    <p:outputLabel value="Descuento" for="txtDescuento"/>
-                    <p:inputText id="txtDescuento"  value="#{menuDelDiaController.menuDelDia.descuento}"/>
 
-                    
-                     <p:outputLabel value="Selecione el catalogo " for="cmbMenuDelDia"/>
+                    <p:outputLabel value="Selecione el catalogo " for="cmbMenuDelDia"/>
                      <p:selectOneMenu id="cmbMenuDelDia" value="#{menuDelDiaController.catalogo.idcatalogo}">
                         <f:selectItem itemLabel="seleccione el menu" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{catalogoController.listaCatalogo}" var="catalogo" itemLabel="#{catalogo.nombre}" itemValue="#{catalogo.idcatalogo}" />
                     </p:selectOneMenu>
+                    
+                    <p:outputLabel value="Descuento" for="txtDescuento"/>
+                    <p:inputText id="txtDescuento"  value="#{menuDelDiaController.menuDelDia.descuento}"/>
 
                     <h:outputText value="Estado:" />
                     <p:selectOneMenu id="selEstado" value="#{menuDelDiaController.menuDelDia.estado}">
-                        <f:selectItem itemValue="0" itemLabel="Activo" />
-                        <f:selectItem itemValue="1" itemLabel="Inactivo" />
+                        <f:selectItem itemValue="1" itemLabel="Activo" />
+                        <f:selectItem itemValue="0" itemLabel="Inactivo" />
                     </p:selectOneMenu>          
 
 
 
                     <p:commandButton value="Guardar" actionListener="#{menuDelDiaController.insertar()}"
                                      rendered="#{menuDelDiaController.menuDelDia.idmenu == 0}"
-                                     update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
+                                     update=":Datos da :MSJ" oncomplete="PF('menuDelDia').hide()" icon="ui-icon-mail-open" 
 
                                      onclick="reiniciarTema();editarMSJ()"/>
                     <p:commandButton value="Editar" actionListener="#{menuDelDiaController.actualizar()}"
                                      rendered="#{menuDelDiaController.menuDelDia.idmenu !=0}"
-                                     update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
+                                     update=":Datos da :MSJ" oncomplete="PF('menuDelDia').hide()" 
 
                                      onclick="reiniciarTema();editarMSJ()"/>
 
@@ -80,7 +80,7 @@
                 </p:column>
                 <p:column headerText="Editar">
                     <p:commandButton value="Modificar" actionListener="#{menuDelDiaController.obtenerUno(menu)}"
-                                     update=":da" oncomplete="PF('categoria').show()" styleClass="btnEditar" 
+                                     update=":da" oncomplete="PF('menuDelDia').show()" styleClass="btnEditar" 
                                      onclick="reiniciarTema();editarMSJ()" />
                 </p:column>
                 <p:column headerText="Eliminar">

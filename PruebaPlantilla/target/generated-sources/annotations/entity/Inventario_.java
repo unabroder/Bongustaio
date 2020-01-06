@@ -5,7 +5,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-01-03T09:05:04")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-01-04T09:11:05")
 @StaticMetamodel(Inventario.class)
 public class Inventario_ { 
 
@@ -13,6 +13,6 @@ public class Inventario_ {
     public static volatile SingularAttribute<Inventario, Integer> estado;
     public static volatile SingularAttribute<Inventario, Integer> idinventario;
     public static volatile SingularAttribute<Inventario, Integer> cant_disponible;
-    public static volatile SingularAttribute<Inventario, ProductoProveedor> idprod_prov;
+    public static volatile SingularAttribute<Inventario, ProductoProveedor> productoProveedor;
 
 }
