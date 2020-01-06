@@ -70,6 +70,7 @@ entity\Especialidad_.class
 entity\Tiposucursal_.class
 ejb\EmpleadoFacade.class
 ejb\ProveedorFacadeLocal.class
+.netbeans_automatic_build
 entity\Catalogo_.class
 controller\TipoEmpleadoController.class
 entity\Usuarios_.class
