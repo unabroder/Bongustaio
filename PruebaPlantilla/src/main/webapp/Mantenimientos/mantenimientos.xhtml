@@ -8,12 +8,12 @@
         <title>Bongustaio</title>
         <h:outputStylesheet  library="css" name="estilos.css" />
         <link rel="icon" href="img/core-img/restaurantes.png" />
-
         <!-- Core Stylesheet -->
         <link href="../style.css" rel="stylesheet" />
-
         <!-- Responsive CSS -->
         <link href="../css/responsive/responsive.css" rel="stylesheet" />
+        <f:event type="preRenderView" listener="#{usuarioController.validacion2()}" />
+        <f:event type="preRenderView" listener="#{usuarioController.validacionRol()}" />
     </h:head>
     <h:body>
         <!-- ****** Superficie Principal de login y iconos ****** -->

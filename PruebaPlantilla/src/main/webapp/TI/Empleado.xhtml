@@ -43,8 +43,6 @@
                                        itemValue="#{lsSuc.idsucursal}" itemLabel="#{lsSuc.nombre}" >
                         </f:selectItems>
                     </p:selectOneMenu>
-                    <p:commandButton value="Guardar" actionListener="#{empleadoController.insertar()}"/>
-                        <p:inputText id="txtCorreo" value="#{empleadoController.empleado.correo}" />
                         <p:commandButton value="Guardar" actionListener="#{tipoEmpleadoController.insertar()}"
                                          update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
                                          rendered="#{empleadoController.empleado.idempleado == 0}"

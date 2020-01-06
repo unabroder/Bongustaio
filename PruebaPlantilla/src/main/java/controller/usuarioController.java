@@ -82,12 +82,13 @@ public class usuarioController implements Serializable {
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
             }
+
         } catch (Exception e) {
+
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error" + e));
 
         }
         return redireccion;
-
     }
 
     public String cerrar() {
@@ -167,10 +168,12 @@ public class usuarioController implements Serializable {
                         break;
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         //return redireccion;
+
     }
 
     public void guardar() {

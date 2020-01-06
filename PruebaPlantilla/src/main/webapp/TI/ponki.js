@@ -34,9 +34,9 @@ var horaFNC = {horaria: "", hora: "", minu: "", segu: "", };
 function desactivarHerramienta(x) {
     fechaFNCval = "";
     horaFNCval = "";
-    if(x == 0){
+    if (x == 0) {
         fechaFNC = {anio: "", mes: "", dia: "", };
-    }else{
+    } else {
         horaFNC = {horaria: "", hora: "", minu: "", segu: "", };
     }
     obId("ponkItool").setAttribute("style", "width:100%;height:100%;background-color:white;z-index:5000;posit" +
@@ -238,12 +238,12 @@ function seleccionEsta(x, y) {
         horaFNC.horaria = y;
     } else if (x == "sHO") {
         horaFNC.hora = y + 1;
-        if(horaFNC.horaria == 0){
+        if (horaFNC.horaria == 0) {
             horaFNC.hora < 10 ? horaFNC.hora = "0" + horaFNC.hora : horaFNC.hora = horaFNC.hora;
-        }else if(horaFNC.horaria == 1){
+        } else if (horaFNC.horaria == 1) {
             horaFNC.hora += 12;
             horaFNC.hora < 10 ? horaFNC.hora = "0" + horaFNC.hora : horaFNC.hora = horaFNC.hora;
-        }else{
+        } else {
             horaFNC.hora = "";
         }
     } else if (x == "sMI") {
@@ -270,7 +270,7 @@ function guardar(x) {
             desactivarHerramienta(1);
         }
     } else {
-        
+
     }
 }
 var validarFecha = function (c) {
@@ -425,6 +425,7 @@ var arreglarBoton = function (x, y, z) {
     z == "degradado.no" ? obEt("button")[x[0]].style.boxShadow = "none" :
             obEt("button")[x[0]].style.boxShadow = "0px 0px " + zz[2] + "px " + zz[3];
 }
+
 var arreglarBotonClase = function (x, y, z) {
     if (bandera == true) {
         ponerBC[ponerBC.length] = {

@@ -18,8 +18,10 @@
         <link href="../style.css" rel="stylesheet" />
         <!-- Responsive CSS -->
         <link href="../css/responsive/responsive.css" rel="stylesheet" />
+
         <f:event type="preRenderView" listener="#{usuarioController.validacion1()}" />
         <f:event type="preRenderView" listener="#{usuarioController.validacionRol()}" />
+        <link href="../resources/css/menu.css" rel="stylesheet" type="text/css"/>
     </h:head>
 
     <h:body >
@@ -30,25 +32,28 @@
                     <div class="top_header_area">
                         <div class="container">
                             <div class="row">
-                                <div class="col-5 col-sm-6">
+                                <div class="col-md-10"  >
                                     <!--  Top Social bar start -->
                                     <div class="top_social_bar">
-                                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                        <a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a>
-                                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                                        <i id="cambio">Bongustaio </i>
                                     </div>
                                 </div>
+                                
                                 <!-- Nombre de Usuario -->
-                                <div class="col-7 col-sm-6">
+                                <div class="col-md-1">
                                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                                         <div class="login_register_area d-flex">
-                                            <div class="login">
-                                                <a class="btn-outline-dark" href="#">Bienvenido :Nathalia</a>
+                                            <div class="login" id="cambioAlex2">
+                                                <a class="btn-outline-warning" href="#">Bienvenido:&nbsp;&nbsp;#{usuarioController.usuarios.usuario}</a>
+                                                
                                             </div>
-                                            <div class="register">
-                                                <a class="btn-outline-primary" href="#">Sing up</a>
+                                           
+                                            <i class="fa fa-user-circle" aria-hidden="true" id="tamanoAlex"></i>
+                                            <div class="login" id="cambioAlex">
+                                                
+                                                <h:form>
+                                                    <h:commandButton value="Cerra Seccion" action="#{usuarioController.cerrar2()}" styleClass="btn-outline-warning"/>
+                                                </h:form>
                                             </div>
                                         </div>
 
@@ -61,19 +66,19 @@
                 </ui:insert>
             </div>
             <div>
-                <div id="left" style="background-color: #c5e2f6">
+                <div id="left" style="background-color: #595C5E">
                     <ui:insert name="left">   
+
                         <h:form>  
                             <p:growl>
                                 <p:autoUpdate />
                             </p:growl>
 
-
-                            <p:panelMenu style="width: 110%; background-color: ">
-                                <p:submenu label="Usuarios">
+                            <!--
+                            <p:panelMenu styleClass="ulcls">
+                                <p:submenu label="Usuarios" style="licls">
                                     <p:menuitem value="usuarios" action="#{menuView.save}"  />
                                     <p:menuitem value="roles" action="#{menuView.save}" />
-
                                 </p:submenu>
                                 <p:submenu label="Sucursales">
                                     <p:menuitem value="Proveedores" actionListener="#{ProveedorController.consultar()}" />
@@ -95,8 +100,42 @@
 
                                 </p:submenu>
                             </p:panelMenu>
-
-
+                            -->
+                            <ul>
+                                <li class="block">
+                                    <input type="checkbox" name="item" id="item1" />   
+                                    <label for="item1"><i aria-hidden="true" class="icon-users"></i> Usuarios <span> </span></label>
+                                    <ul class="options">
+                                        <li> <h:link value="Usuarios" outcome="/TI/newTemplateClient" /></li>
+                                        
+                                    </ul>
+                                </li>
+                                <li class="block">
+                                    <input type="checkbox" name="item" id="item2" />   
+                                    <label for="item2"><i aria-hidden="true" class="icon-film"></i> Sucursales <span></span></label>
+                                    <ul class="options">
+                                        <li><h:link value="Proveedores" outcome="/TI/Proveedor" /></li>
+                                        <li><a href="#"><i aria-hidden="true" class="icon-download"></i> My Downloaded Videos <span>3</span></a></li>
+                                        <li><a href="#"><i aria-hidden="true" class="icon-warning"></i> My Well Dodgy Videos <span>1,024</span></a></li>
+                                    </ul>
+                                </li>
+                                
+                                <li class="block">
+                                    <input type="checkbox" name="item" id="item4" />   
+                                    <label for="item4"><i aria-hidden="true" class="icon-microphone"></i> Podcasts <span>1</span></label>
+                                    <ul class="options">
+                                        <li><a href="https://css-tricks.com/css-tricks-screencasts-now-on-itunes/" target="_blank"><i aria-hidden="true" class="icon-music"></i> CSS-Tricks</a></li>
+                                    </ul>
+                                </li>
+                                <li class="block">
+                                    <input type="checkbox" name="item" id="item5" />   
+                                    <label for="item5"><i aria-hidden="true" class="icon-android"></i> Robots <span>3</span></label>
+                                    <ul class="options">
+                                        <li><a href="http://en.wikipedia.org/wiki/HAL_9000" target="_blank"><i aria-hidden="true" class="icon-eye"></i> Hal 9000</a></li>
+                                        
+                                    </ul>
+                                </li>
+                            </ul>
 
                         </h:form>
                     </ui:insert>
@@ -105,9 +144,10 @@
                     <ui:insert name="content">Content</ui:insert>
                 </div>
             </div>
-            <div id="bottom">
-                <ui:insert name="bottom">prueba</ui:insert>
-            </div>
+
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom">prueba</ui:insert>
         </div>
     </h:body>
     <headscript>

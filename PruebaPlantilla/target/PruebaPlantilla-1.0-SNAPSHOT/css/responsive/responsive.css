@@ -48,7 +48,7 @@
 
     .post-author a,
     .top_header_area .top_social_bar > a {
-        margin-right: 15px;
+        margin-right: 0px;
     }
 
     .post-author a::after {
