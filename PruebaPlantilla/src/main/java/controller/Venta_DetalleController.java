@@ -56,11 +56,26 @@ public class Venta_DetalleController implements Serializable {
     public void setListavdetalle(List<Venta_Detalle> listavdetalle) {
         this.listavdetalle = listavdetalle;
     }
+    
+    public Plato_Completo getPcompleto() {
+        return pcompleto;
+    }
+
+    public void setPcompleto(Plato_Completo pcompleto) {
+        this.pcompleto = pcompleto;
+    }
+
+    public List<Plato_Completo> getListapcompleto() {
+        return listapcompleto;
+    }
+
+    public void setListapcompleto(List<Plato_Completo> listapcompleto) {
+        this.listapcompleto = listapcompleto;
+    }
+    
 
 //=======================================================================================================================
 //=======================================================================================================================
-    
-    
 
     @PostConstruct
     private void init() {
