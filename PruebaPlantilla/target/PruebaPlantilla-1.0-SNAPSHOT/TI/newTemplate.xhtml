@@ -32,6 +32,8 @@
                                     <!--  Top Social bar start -->
                                     <div class="top_social_bar">
                                         <i id="cambio">Bongustaio </i>
+                                        &nbsp; <a class="btn-outline-warning" href="#">Bienvenido:&nbsp;&nbsp;#{usuarioController.usuarios.usuario}</a>
+                                                
                                     </div>
                                 </div>
                                 
@@ -39,16 +41,15 @@
                                 <div class="col-md-1">
                                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                                         <div class="login_register_area d-flex">
-                                            <div class="login" id="cambioAlex2">
-                                                <a class="btn-outline-warning" href="#">Bienvenido:&nbsp;&nbsp;#{usuarioController.usuarios.usuario}</a>
+                                            <div class="login" >
                                                 
                                             </div>
                                            
-                                            <i class="fa fa-user-circle" aria-hidden="true" id="tamanoAlex"></i>
-                                            <div class="login" id="cambioAlex">
-                                                
+                                           
+                                            <div id="cambioAlex">
+                                              
                                                 <h:form>
-                                                    <h:commandButton value="Cerra Seccion" action="#{usuarioController.cerrar2()}" styleClass="btn-outline-warning"/>
+                                                    <h:commandButton value="Cerra Seccion" action="#{usuarioController.cerrar2()}" style="border-radius: 20px;"/>
                                                 </h:form>
                                             </div>
                                         </div>
