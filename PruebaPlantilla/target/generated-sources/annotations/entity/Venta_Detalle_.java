@@ -10,7 +10,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Venta_Detalle.class)
 public class Venta_Detalle_ { 
 
-    public static volatile SingularAttribute<Venta_Detalle, Venta> idventa;
+    public static volatile SingularAttribute<Venta_Detalle, Plato_Completo> idplato_completo;
     public static volatile SingularAttribute<Venta_Detalle, Integer> estado;
     public static volatile SingularAttribute<Venta_Detalle, Integer> idventa_detalle;
     public static volatile SingularAttribute<Venta_Detalle, Catalogo> idcatalogo;

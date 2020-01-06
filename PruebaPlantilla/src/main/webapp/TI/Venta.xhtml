@@ -30,6 +30,7 @@
                         <f:selectItem itemLabel="seleccione persona" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{empleadoController.listaEmpleado}" var="emp" itemLabel="#{emp.nombres}" itemValue="#{emp.idempleado}" />
                     </p:selectOneMenu>
+                    
                     <p:outputLabel value="Subtotal" for="txtSubtotal"/>
                     <p:inputText id="txtSubtotal" value="#{ventaController.venta.subtotal}" />
                     <p:outputLabel value="Total" for="txtTotal"/>

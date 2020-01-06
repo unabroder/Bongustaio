@@ -21,21 +21,17 @@
         <!---->
 
         <p:dialog style="margin-top: 10; " widgetVar="venta_detalle" modal="false" showEffect="clip" resizable="false" header="Venta_detalle">
-            <p:ajax event="close" update=":da" listener="#{ventaController.limpiar()}" />
+            <p:ajax event="close" update=":da" listener="#{venta_DetalleController.limpiar()}" />
             <h:form id='da'>
                 <p:panelGrid columns="2" >
 
-                    <p:outputLabel value="Ingrese codigo venta" for="cmbVenta"/>
-                    <p:selectOneMenu id="cmbVenta" value="#{venta_DetalleController.venta.idventa}">
-                        <f:selectItem itemLabel="seleccione # venta" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{ventaController.listaventa}" var="v" itemLabel="#{v.idventa}" itemValue="#{v.idventa}" />
+                    <p:outputLabel value="Ingrese el plato pedido" for="cmbPlato"/>
+                    <p:selectOneMenu id="cmbPlato" value="#{venta_DetalleController.plato_completo.idplato_completo}">
+                        <f:selectItem itemLabel="seleccione el plato" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{.lista}" var="v" itemLabel="#{v.idventa}" itemValue="#{v.idventa}" />
                     </p:selectOneMenu>
                     
-                    <p:outputLabel value="Ingrese Catalogo" for="cmbCatalogo"/>
-                    <p:selectOneMenu id="cmbCatalogo" value="#{venta_DetalleController.catalogo.idcatalogo}">
-                        <f:selectItem itemLabel="seleccione el catalogo" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{catalogoController.listaCatalogo}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idcatalogo}" />
-                    </p:selectOneMenu>
+                    
                     
                     <p:outputLabel value="Cantidad" for="txtCantidad"/>
                     <p:inputText id="txtCantidad" value="#{venta_DetalleController.vdetalle.cantidad}" />
