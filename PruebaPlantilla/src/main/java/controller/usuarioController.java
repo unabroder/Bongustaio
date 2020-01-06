@@ -79,45 +79,17 @@ public class usuarioController implements Serializable {
                 bitacoraEJB.create(bitacora);
                 redireccion = "modulos?faces-redirect=true";
 
-
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-            }
-=======
->>>>>>> a0fc2c68f4a4c6383888caff16574136bebd0a38
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
-
-            } 
-            
->>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
-
-
+            }
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error" + e));
 
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-=======
-
->>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
->>>>>>> a0fc2c68f4a4c6383888caff16574136bebd0a38
         }
         return redireccion;
 
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
->>>>>>> a0fc2c68f4a4c6383888caff16574136bebd0a38
     public String cerrar() {
         try {
             SesionController.iniciarSesion(FacesContext.getCurrentInstance());
@@ -128,7 +100,7 @@ public class usuarioController implements Serializable {
             throw e;
         }
     }
-    
+
     public String cerrar2() {
         try {
             SesionController.iniciarSesion(FacesContext.getCurrentInstance());
@@ -141,21 +113,22 @@ public class usuarioController implements Serializable {
     }
 
     public String validacion1() {
-          String redireccion = null;
-         try {
+        String redireccion = null;
+        try {
             Usuarios us = (Usuarios) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
             if (us == null) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("../index.xhtml");
-                redireccion = "../index?faces-redirect=true";
+                redireccion = "../../index?faces-redirect=true";
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-         return redireccion;
+        return redireccion;
     }
+
     public String validacion2() {
-          String redireccion = null;
-         try {
+        String redireccion = null;
+        try {
             Usuarios us = (Usuarios) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
             if (us == null) {
                 FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
@@ -164,47 +137,41 @@ public class usuarioController implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-<<<<<<< HEAD
-         return redireccion;
+
+        return redireccion;
     }
-     
-    public void validacionRol(){
-        Usuarios us; 
+
+    public void validacionRol() {
+        Usuarios us;
         try {
             us = usuariofacade.Sesion(usuarios);
-             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", us);
-             if(us != null){
-                 String cargo = us.getIdtipo().getRol();
-                 System.out.println(cargo);
-                switch(cargo){
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", us);
+            if (us != null) {
+                String cargo = us.getIdtipo().getRol();
+                System.out.println(cargo);
+                switch (cargo) {
                     case "Administrador":
 //                       FacesContext.getCurrentInstance().getExternalContext().redirect("modulos.xhtml");
-                    break;
+                        break;
                     case "TI":
 //                       FacesContext.getCurrentInstance().getExternalContext().redirect("modulos.xhtml");
-                    break;
+                        break;
                     case "Gerente":
-                       FacesContext.getCurrentInstance().getExternalContext().redirect("mantenimiento.xhtml?faces-redirect=true");
-                    break;
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("mantenimiento.xhtml?faces-redirect=true");
+                        break;
                     case "Vendedor":
                         FacesContext.getCurrentInstance().getExternalContext().redirect("Ventas/venta.xhtml");
-                    break;
+                        break;
                     default:
                         System.out.println("Ocurrio un error");
                         break;
                 }
-             }
-            
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+        //return redireccion;
     }
-    
-=======
-        return redireccion;
-    }
->>>>>>> ce1b63f3aad894ac6f75bdb1dfbe2e0828e3558f
 
     public void guardar() {
         try {

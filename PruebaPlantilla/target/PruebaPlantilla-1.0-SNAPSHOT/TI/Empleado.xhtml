@@ -26,7 +26,6 @@
                     <p:outputLabel value="DUI" for="txtDUI"/>
                     <p:inputText id="txtDUI" value="#{empleadoController.empleado.dui}"/>
                     <p:outputLabel value="Correo" for="txtCorreo"/>
-<<<<<<< HEAD
                     <p:inputText id="txtCorreo" value="#{empleadoController.empleado.correo}"/>
                     <p:outputLabel value="Telefono" for="txtTel"/>
                     <p:inputText id="txtTel" value="#{empleadoController.empleado.telefono}"/>
@@ -44,20 +43,16 @@
                                        itemValue="#{lsSuc.idsucursal}" itemLabel="#{lsSuc.nombre}" >
                         </f:selectItems>
                     </p:selectOneMenu>
-                    <p:commandButton value="Guardar" actionListener="#{empleadoController.insertar()}"
-=======
-                    <p:inputText id="txtCorreo" value="#{empleadoController.empleado.correo}" />
-                    <p:commandButton value="Guardar" actionListener="#{tipoEmpleadoController.insertar()}"
->>>>>>> a0fc2c68f4a4c6383888caff16574136bebd0a38
-                                     update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
-                                     rendered="#{empleadoController.empleado.idempleado == 0}"
-                                     onclick="reiniciarTema();editarMSJ()"/>
-                    <p:commandButton value="Editar" actionListener="#{empleadoController.editar()}"
-                                     update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
-                                     rendered="#{empleadoController.empleado.idempleado != 0}"
-                                     onclick="reiniciarTema();editarMSJ()"/>
-
-
+                    <p:commandButton value="Guardar" actionListener="#{empleadoController.insertar()}"/>
+                        <p:inputText id="txtCorreo" value="#{empleadoController.empleado.correo}" />
+                        <p:commandButton value="Guardar" actionListener="#{tipoEmpleadoController.insertar()}"
+                                         update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
+                                         rendered="#{empleadoController.empleado.idempleado == 0}"
+                                         onclick="reiniciarTema();editarMSJ()"/>
+                        <p:commandButton value="Editar" actionListener="#{empleadoController.editar()}"
+                                         update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
+                                         rendered="#{empleadoController.empleado.idempleado != 0}"
+                                         onclick="reiniciarTema();editarMSJ()"/>
                 </p:panelGrid>
             </h:form>
         </p:dialog>
