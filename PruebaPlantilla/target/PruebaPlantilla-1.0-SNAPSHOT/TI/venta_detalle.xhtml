@@ -28,7 +28,7 @@
                     <p:outputLabel value="Ingrese el plato pedido" for="cmbPlato"/>
                     <p:selectOneMenu id="cmbPlato" value="#{venta_DetalleController.plato_completo.idplato_completo}">
                         <f:selectItem itemLabel="seleccione el plato" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{plato_completoController.listapcompleto}" var="pc" itemLabel="#{pc.nombre}" itemValue="#{pc.idplato_completo}" />
+                        <f:selectItems value="#{plato_CompletoController.listapcompleto}" var="pc" itemLabel="#{pc.nombre}" itemValue="#{pc.idplato_completo}" />
                     </p:selectOneMenu>
                     
                     
@@ -58,11 +58,8 @@
                 <p:column headerText="ID">
                     <h:outputText value="#{vd.idventa_detalle}" />
                 </p:column>
-                <p:column headerText="# de venta">
-                    <h:outputText value="#{vd.idventa.idventa}" />
-                </p:column>
-                <p:column headerText="Catalogo">
-                    <h:outputText value="#{vd.idcatalogo.nombre}"/>
+                <p:column headerText="Plato Complemento">
+                    <h:outputText value="#{vd.idplato_completo.nombre}" />
                 </p:column>
                 <p:column headerText="Cantidad">
                     <h:outputText value="#{vd.cantidad}" />

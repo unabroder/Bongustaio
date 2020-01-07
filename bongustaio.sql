@@ -1,4 +1,5 @@
-CREATE DATABASE bongustaio;
+drop database bongustaio;
+create DATABASE bongustaio;
 USE bongustaio;
 
 CREATE TABLE proveedor(
@@ -10,7 +11,7 @@ correo varchar(50),
 estado int(1) not null default 1
 )ENGINE InnoDB;
 insert into proveedor(nombre,direccion,telefono,correo)
-values('Mario','Calle aledaña condomino #4','2290-2317','Mario9078@gmail.com');
+values('Mario','Calle aledaÃ±a condomino #4','2290-2317','Mario9078@gmail.com');
 select*from proveedor;
 
 create table producto(
@@ -50,29 +51,33 @@ insert into producto_proveedor(idproveedor,idproducto)
 values(1,1);
 select*from producto_proveedor;
 
+
+/*TIPO SUCURSAL DEBE ESTAR RELACIONADA CON SUCURSAL */
+CREATE TABLE tiposucursal(
+idtiposucursal int(11) not null primary key auto_increment,
+nombre varchar(50) not null,
+estado int(1) not null default 1
+)ENGINE InnoDB;
+
+select * from tiposucursal; 
+
 CREATE TABLE sucursal(
 idsucursal int(11) not null primary key auto_increment,
 idprod_prov int(11) not null,
+idtiposucursal int(11) not null,
 nombre varchar(60) not null,
 telefono varchar(10) not null,
 direccion varchar(100) not null,
 estado int(1) not null default 1,
 CONSTRAINT FOREIGN KEY (idprod_prov) REFERENCES producto_proveedor(idprod_prov)
+ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT FOREIGN KEY (idtiposucursal) REFERENCES tiposucursal(idtiposucursal)
 ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE InnoDB;
 insert into sucursal(idprod_prov,nombre,telefono,direccion)
 values(1,'bongustaio_Soyapango','2256-7890','bulevar del ejercito');
 select *from sucursal;
 
-
-CREATE TABLE tiposucursal(
-idtiposucursal int(11) not null primary key auto_increment,
-idsucursal int(11) not null,
-estado int(1) not null default 1,
-CONSTRAINT FOREIGN KEY (idsucursal) REFERENCES sucursal(idsucursal)
-)ENGINE InnoDB;
-insert into tiposucursal(idsucursal)values(1);
-select * from tiposucursal; 
 
 create table tipoempleado(
 idtipoempleado int(11) not null primary key auto_increment,
@@ -145,10 +150,11 @@ idespecialidad int(11) not null primary key auto_increment,
 nombre varchar(50) not null,
 estado int(1) not null default 1
 )ENGINE InnoDB;
-
+/*Se agrego el nombre*/
 CREATE TABLE tipoproducto(
 idtipoproducto int(11) not null primary key auto_increment,
 idtiposucursal int(11) not null,
+nombre varchar(50) not null,
 estado int(1) not null default 1,
 constraint foreign key (idtiposucursal) references tiposucursal(idtiposucursal) on delete cascade on update cascade
 )ENGINE InnoDB;
@@ -218,5 +224,3 @@ estado int(1) not null default 1,
 constraint foreign key (idempleado) references empleado(idempleado) on delete cascade on update cascade,
 constraint foreign key (idventaDetalle_complemento) references ventaDetalle_complemento(idventaDetalle_complemento) on delete cascade on update cascade
 )ENGINE InnoDB;
-
-
