@@ -32,10 +32,10 @@
                     <p:inputText id="txtDescuento"  value="#{menuDelDiaController.menuDelDia.descuento}"/>
 
                     
-                     <p:outputLabel value="Selecione el catalogo " for="cmbMenuDelDia"/>
-                     <p:selectOneMenu id="cmbMenuDelDia" value="#{menuDelDiaController.catalogo.idcatalogo}">
-                        <f:selectItem itemLabel="seleccione el menu" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{catalogoController.listaCatalogo}" var="catalogo" itemLabel="#{catalogo.nombre}" itemValue="#{catalogo.idcatalogo}" />
+                     <p:outputLabel value="Selecione el Plato Completo " for="cmbMenuDelDia"/>
+                     <p:selectOneMenu id="cmbMenuDelDia" value="#{menuDelDiaController.plato_completo.idplato_completo}">
+                        <f:selectItem itemLabel="seleccione" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{plato_CompletoController.listapcompleto}" var="plato" itemLabel="#{plato.nombre}" itemValue="#{plato.idcatalogo}" />
                     </p:selectOneMenu>
 
                     <h:outputText value="Estado:" />
@@ -72,7 +72,7 @@
                 </p:column>
 
                 <p:column headerText="Catalogo">
-                    <h:outputText value="#{menu.catalogo.nombre}" />
+                    <h:outputText value="#{menu.plato_Completo.nombre}" />
                 </p:column>
 
                 <p:column headerText="Estado">

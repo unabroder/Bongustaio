@@ -5,6 +5,7 @@ import ejb.MenuDelDiaFacadeLocal;
 import ejb.Venta_DetalleFacadeLocal;
 import entity.Catalogo;
 import entity.MenuDelDia;
+import entity.Plato_Completo;
 import entity.Venta_Detalle;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -25,9 +26,9 @@ public class MenuDelDiaController implements Serializable {
     private MenuDelDia menuDelDia;
     private List<MenuDelDia> listaMenuDelDia;
 
-    private CatalogoFacadeLocal catalogoEJB;
-    private Catalogo catalogo;
-    private List<Catalogo> listaCatalogo;
+    private Plato_Completo plato_CompletoEJB;
+    private Plato_Completo plato_completo;
+    private List<Plato_Completo> listaPlato_Completo;
     
     String mensaje;
 
@@ -52,27 +53,27 @@ public class MenuDelDiaController implements Serializable {
         this.listaMenuDelDia = listaMenuDelDia;
     }
 
-    public Catalogo getCatalogo() {
-        return catalogo;
+    public Plato_Completo getPlato_completo() {
+        return plato_completo;
     }
 
-    public void setCatalogo(Catalogo catalogo) {
-        this.catalogo = catalogo;
+    public void setPlato_completo(Plato_Completo plato_completo) {
+        this.plato_completo = plato_completo;
     }
 
-    public List<Catalogo> getListaCatalogo() {
-        this.listaCatalogo=catalogoEJB.findAll();
-        return listaCatalogo;
+    public List<Plato_Completo> getListaPlato_Completo() {
+        return listaPlato_Completo;
     }
 
-    public void setListaCatalogo(List<Catalogo> listaCatalogo) {      
-        this.listaCatalogo = listaCatalogo;
+    public void setListaPlato_Completo(List<Plato_Completo> listaPlato_Completo) {
+        this.listaPlato_Completo = listaPlato_Completo;
     }
+
 
     //PostConstruct
     @PostConstruct
     public void init() {
-        this.catalogo = new Catalogo();
+        this.plato_completo = new Plato_Completo();
         this.menuDelDia = new MenuDelDia();
     }
 
@@ -87,7 +88,7 @@ public class MenuDelDiaController implements Serializable {
 
     public void obtenerUno(MenuDelDia mdd) {
         try {
-            this.catalogo.setIdcatalogo(mdd.getCatalogo().getIdcatalogo());
+            this.plato_completo.setIdplato_completo(mdd.getPlato_Completo().getIdplato_completo());
             this.menuDelDia = mdd;
         } catch (Exception e) {
         }
@@ -95,7 +96,7 @@ public class MenuDelDiaController implements Serializable {
 
      public void insertar() {
         try {
-            this.menuDelDia.setCatalogo(catalogo);
+            this.menuDelDia.setPlato_Completo(plato_completo);
             menuDelDiaEJB.create(menuDelDia);
             this.mensaje = "INSERTADO";
         } catch (Exception e) {
@@ -131,9 +132,9 @@ public class MenuDelDiaController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
     
-    public void listarCatalogo(){
+    public void listarPlatoCompleto(){
         try {
-            this.listaCatalogo = catalogoEJB.findAll();
+           this.listaMenuDelDia = menuDelDiaEJB.findAll();
         } catch (Exception e) {
         }
     }
@@ -141,7 +142,7 @@ public class MenuDelDiaController implements Serializable {
      public void limpiar() {
         try {
             this.menuDelDia= new MenuDelDia();
-            this.catalogo = new Catalogo();
+            this.plato_completo = new Plato_Completo();
         } catch (Exception e) {
         }
     }
