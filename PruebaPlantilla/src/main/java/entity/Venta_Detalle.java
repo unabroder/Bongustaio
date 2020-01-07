@@ -20,12 +20,8 @@ public class Venta_Detalle implements Serializable{
     private int idventa_detalle;
     
     @ManyToOne
-    @JoinColumn(name="idventa", referencedColumnName = "idventa")
-    private Venta idventa;
-    
-    @ManyToOne
-    @JoinColumn(name = "idcatalogo", referencedColumnName = "idcatalogo")
-    private Catalogo idcatalogo;
+    @JoinColumn(name="idplato_completo", referencedColumnName = "idplato_completo")
+    private Plato_Completo idplato_completo;
     
     @Column(name="cantidad", nullable = false)
     private int cantidad;
@@ -44,20 +40,12 @@ public class Venta_Detalle implements Serializable{
         this.idventa_detalle = idventa_detalle;
     }
 
-    public Venta getIdventa() {
-        return idventa;
+    public Plato_Completo getIdplato_completo() {
+        return idplato_completo;
     }
 
-    public void setIdventa(Venta idventa) {
-        this.idventa = idventa;
-    }
-
-    public Catalogo getIdcatalogo() {
-        return idcatalogo;
-    }
-
-    public void setIdcatalogo(Catalogo idcatalogo) {
-        this.idcatalogo = idcatalogo;
+    public void setIdplato_completo(Plato_Completo idplato_completo) {
+        this.idplato_completo = idplato_completo;
     }
 
     public int getCantidad() {

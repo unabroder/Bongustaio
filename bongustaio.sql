@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+drop database bongustaio;
+create DATABASE bongustaio;
+=======
 ﻿create DATABASE bongustaio;
+>>>>>>> 328645d1e25083079688b013e106caad6e0f63ce
 USE bongustaio;
 
 CREATE TABLE proveedor(
@@ -62,6 +67,16 @@ insert into tiposucursal(nombre) values('restaurante');
 select * from tiposucursal; 
 
 
+
+/*TIPO SUCURSAL DEBE ESTAR RELACIONADA CON SUCURSAL */
+CREATE TABLE tiposucursal(
+idtiposucursal int(11) not null primary key auto_increment,
+nombre varchar(50) not null,
+estado int(1) not null default 1
+)ENGINE InnoDB;
+
+select * from tiposucursal; 
+
 CREATE TABLE sucursal(
 idsucursal int(11) not null primary key auto_increment,
 idorden_compra int(11) not null,
@@ -79,6 +94,10 @@ insert into sucursal(idorden_compra,idtiposucursal,nombre,telefono,direccion)
 values(1,1,'bongustaio_Soyapango','2256-7890','bulevar del ejercito');
 select *from sucursal;
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 328645d1e25083079688b013e106caad6e0f63ce
 create table tipoempleado(
 idtipoempleado int(11) not null primary key auto_increment,
 tipoempleado varchar(25) not null,

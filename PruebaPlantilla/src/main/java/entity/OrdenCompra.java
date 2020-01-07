@@ -25,11 +25,11 @@ public class OrdenCompra implements Serializable{
     
     @ManyToOne
     @JoinColumn(name = "idproveedor", referencedColumnName = "idproveedor")
-    private int idproveedor;
+    private Proveedor idproveedor;
     
     @ManyToOne
     @JoinColumn(name = "idproducto", referencedColumnName = "idproducto")
-    private int idproducto;
+    private Producto idproducto;
     
     @Column(name = "cantidad")
     private int cantidad;
@@ -46,19 +46,19 @@ public class OrdenCompra implements Serializable{
         this.idorden_compra = idorden_compra;
     }
 
-    public int getIdproveedor() {
+    public Proveedor getIdproveedor() {
         return idproveedor;
     }
 
-    public void setIdproveedor(int idproveedor) {
+    public void setIdproveedor(Proveedor idproveedor) {
         this.idproveedor = idproveedor;
     }
 
-    public int getIdproducto() {
+    public Producto getIdproducto() {
         return idproducto;
     }
 
-    public void setIdproducto(int idproducto) {
+    public void setIdproducto(Producto idproducto) {
         this.idproducto = idproducto;
     }
 
