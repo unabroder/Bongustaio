@@ -1,6 +1,6 @@
 package ejb;
 
-import entity.CatalogoEspecialidad;
+import entity.PlatoCompleto;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -13,7 +13,7 @@ import javax.persistence.Query;
  * @author joqtan.marmolusam
  */
 @Stateless
-public class CatalogoEspecialidadFacade extends AbstractFacade<CatalogoEspecialidad> implements CatalogoEspecialidadFacadeLocal{
+public class PlatoCompletoFacade extends AbstractFacade<PlatoCompleto> implements PlatoCompletoFacadeLocal{
     @PersistenceContext(unitName = "bongustaio")
     private EntityManager em;
     
@@ -22,13 +22,13 @@ public class CatalogoEspecialidadFacade extends AbstractFacade<CatalogoEspeciali
         return em;
     }
     
-    public CatalogoEspecialidadFacade(){
-        super(CatalogoEspecialidad.class);
+    public PlatoCompletoFacade(){
+        super(PlatoCompleto.class);
     }
 
-    public List<CatalogoEspecialidad> consulta(){
-        String sql = "select ce from catalogo_especialidad ce where ce.estado=1";
-        List<CatalogoEspecialidad> lista = new LinkedList<>();
+    public List<PlatoCompleto> consulta(){
+        String sql = "select ce from plato_completo ce where ce.estado=1";
+        List<PlatoCompleto> lista = new LinkedList<>();
         try {
             Query q = em.createQuery(sql);
             lista = q.getResultList();

@@ -15,11 +15,17 @@ import javax.persistence.Table;
  * @author joqtan.marmolusam
  */
 @Entity
-@Table(name = "catalogo_especialidad")
-public class CatalogoEspecialidad implements Serializable{
+@Table(name = "plato_completo")
+public class PlatoCompleto implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_cat_esp;
+    private int idplato_completo;
+    
+    @Column(name = "nombre")
+    private String nombre;
+    
+    @Column(name ="precio")
+    private double precio;
     
     @ManyToOne
     @JoinColumn(name = "idcatalogo", referencedColumnName = "idcatalogo")
@@ -32,12 +38,28 @@ public class CatalogoEspecialidad implements Serializable{
     @Column(name = "estado")
     private int estado;
 
-    public int getId_cat_esp() {
-        return id_cat_esp;
+    public int getIdplato_completo() {
+        return idplato_completo;
     }
 
-    public void setId_cat_esp(int id_cat_esp) {
-        this.id_cat_esp = id_cat_esp;
+    public void setIdplato_completo(int idplato_completo) {
+        this.idplato_completo = idplato_completo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public Catalogo getIdcatalogo() {
@@ -67,7 +89,7 @@ public class CatalogoEspecialidad implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + this.id_cat_esp;
+        hash = 79 * hash + this.idplato_completo;
         return hash;
     }
 
@@ -82,8 +104,8 @@ public class CatalogoEspecialidad implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final CatalogoEspecialidad other = (CatalogoEspecialidad) obj;
-        if (this.id_cat_esp != other.id_cat_esp) {
+        final PlatoCompleto other = (PlatoCompleto) obj;
+        if (this.idplato_completo != other.idplato_completo) {
             return false;
         }
         return true;
@@ -91,8 +113,7 @@ public class CatalogoEspecialidad implements Serializable{
 
     @Override
     public String toString() {
-        return "CatalogoEspecialidad{" + "id_cat_esp=" + id_cat_esp + '}';
+        return "PlatoCompleto{" + "idplato_completo=" + idplato_completo + '}';
     }
-    
     
 }

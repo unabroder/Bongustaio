@@ -1,10 +1,9 @@
 package controller;
 
-import ejb.CatalogoEspecialidadFacadeLocal;
 import ejb.CatalogoFacadeLocal;
 import ejb.EspecialidadFacadeLocal;
 import entity.Catalogo;
-import entity.CatalogoEspecialidad;
+import entity.PlatoCompleto;
 import entity.Especialidad;
 import java.io.Serializable;
 import java.util.List;
@@ -14,6 +13,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import ejb.PlatoCompletoFacadeLocal;
 
 /**
  *
@@ -21,11 +21,11 @@ import javax.inject.Named;
  */
 @Named(value = "catalogoEspecialidadController")
 @SessionScoped
-public class CatalogoEspecialidadController implements Serializable{
+public class PlatoCompletoController implements Serializable{
     @EJB
-    private CatalogoEspecialidadFacadeLocal catalogoEspecialidadEJB;
-    private CatalogoEspecialidad catalogoEspecialidad;
-    private List<CatalogoEspecialidad> listaCatalogoEspecialidad;
+    private PlatoCompletoFacadeLocal platoCompletoEJB;
+    private PlatoCompleto platoCompleto;
+    private List<PlatoCompleto> listaPlatoCompleto;
     
     @EJB
     private CatalogoFacadeLocal catalogoEJB;
@@ -37,21 +37,21 @@ public class CatalogoEspecialidadController implements Serializable{
     private Especialidad especialidad;
     private List<Especialidad> listaEspecialidad;
 
-    public CatalogoEspecialidad getCatalogoEspecialidad() {
-        return catalogoEspecialidad;
+    public PlatoCompleto getPlatoCompleto() {
+        return platoCompleto;
     }
 
-    public void setCatalogoEspecialidad(CatalogoEspecialidad catalogoEspecialidad) {
-        this.catalogoEspecialidad = catalogoEspecialidad;
+    public void setPlatoCompleto(PlatoCompleto platoCompleto) {
+        this.platoCompleto = platoCompleto;
     }
 
-    public List<CatalogoEspecialidad> getListaCatalogoEspecialidad() {
-        listaCatalogoEspecialidad = catalogoEspecialidadEJB.findAll();
-        return listaCatalogoEspecialidad;
+    public List<PlatoCompleto> getListaPlatoCompleto() {
+        listaPlatoCompleto = platoCompletoEJB.findAll();
+        return listaPlatoCompleto;
     }
 
-    public void setListaCatalogoEspecialidad(List<CatalogoEspecialidad> listaCatalogoEspecialidad) {
-        this.listaCatalogoEspecialidad = listaCatalogoEspecialidad;
+    public void setListaPlatoCompleto(List<PlatoCompleto> listaPlatoCompleto) {
+        this.listaPlatoCompleto = listaPlatoCompleto;
     }
 
     public Catalogo getCatalogo() {
