@@ -3,7 +3,8 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./newTemplate.xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
 
@@ -29,7 +30,22 @@
                 <h:form id='da'>
                     
                     <p:panelGrid columns="2" >
-                        <p:outputLabel value="Nombre" for="txtNombre"/>
+                        
+                        <p:outputLabel value="Selecione el Plato" for="cmbPlator"/>
+                    <p:selectOneMenu id="cmbProveedor" value="#{productoproveedorController.proveedor.idproveedor}">
+                        <f:selectItem itemLabel="seleccione el proveedor" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{ProveedorController.listaProveedor}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.idproveedor}" />
+                    </p:selectOneMenu>
+                 
+                        <p:outputLabel value="Selecione el complemento " for="cmbcomplemento"/>
+                    <p:selectOneMenu id="cmbProveedor" value="#{productoproveedorController.proveedor.idproveedor}">
+                        <f:selectItem itemLabel="seleccione el proveedor" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{ProveedorController.listaProveedor}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.idproveedor}" />
+                    </p:selectOneMenu>
+
+                        
+                        
+                        <p:outputLabel value="Precio" for="txtPrecio"/>
                         <p:inputText id="txtNombre"  value="#{especialidadController.especialidad.nombre}"/>
                         
                         <p:commandButton value="Guardar" actionListener="#{especialidadController.insertar()}"
