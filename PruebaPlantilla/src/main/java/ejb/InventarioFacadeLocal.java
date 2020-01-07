@@ -11,7 +11,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author mirian.floresusam
+ * @author josue.vasquezusam
  */
 @Local
 public interface InventarioFacadeLocal {

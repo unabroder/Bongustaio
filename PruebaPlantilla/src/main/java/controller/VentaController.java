@@ -32,6 +32,7 @@ public class VentaController implements Serializable {
         private EmpleadoFacadeLocal empleadoEJB;
         private Empleado empleado;
         private List<Empleado> listaempleado;
+
         
         @EJB
         private VentaDetalleComplementoFacadeLocal vdComplementoEJB;
@@ -39,6 +40,7 @@ public class VentaController implements Serializable {
         private List<VentaDetalleComplemento> listavdComplemento;
         
 
+   
     public Venta getVenta() {
         return venta;
     }
@@ -89,14 +91,16 @@ public class VentaController implements Serializable {
     }
 
     
-    
-//======================================================================================================================
-//======================================================================================================================
+  
         @PostConstruct
         private void init(){
             venta =new Venta();
             empleado = new Empleado();
+
             vdComplemento=new VentaDetalleComplemento();
+
+       
+
         }
         
         public void consultarEmpleado(){
@@ -106,6 +110,7 @@ public class VentaController implements Serializable {
             }
         }
         
+
         public void consultarVDComplemento(){
             try {
                 this.listavdComplemento=vdComplementoEJB.findAll();
@@ -165,6 +170,8 @@ public class VentaController implements Serializable {
             empleado = new Empleado();
             vdComplemento=new VentaDetalleComplemento();
         }
+
+       
         
         
     

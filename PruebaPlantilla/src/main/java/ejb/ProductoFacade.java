@@ -10,22 +10,23 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+/**
+ *
+ * @author josue.vasquezusam
+ */
 @Stateless
 public class ProductoFacade extends AbstractFacade<Producto> implements ProductoFacadeLocal {
-    
-   @PersistenceContext(unitName = "bongustaio")
+
+    @PersistenceContext(unitName = "bongustaio")
     private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {
-
         return em;
     }
 
     public ProductoFacade() {
-
         super(Producto.class);
     }
-
     
 }
