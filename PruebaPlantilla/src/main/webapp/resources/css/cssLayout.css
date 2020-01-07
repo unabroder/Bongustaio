@@ -58,10 +58,10 @@
 }
 
 .left_content {
-    background-color: red;
+    background-color: white;
     padding: 15px;
     margin-left: 205px;
-    height: 90%;
+    height: 87%;width: 95%;
 }
 
 .right_content {

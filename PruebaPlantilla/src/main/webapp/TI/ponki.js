@@ -128,7 +128,7 @@ function ponerTema(x, y, z, p, n, b) {
     }
     for (var q = 0; q < kevin.length; q++) {
         for (var w = 0; w < obEt(kevin[q]).length; w++) {
-            obEt(kevin[q])[w].style.border = "none";
+            obEt(kevin[q])[w].style.border = "2";
             obEt(kevin[q])[w].style.backgroundColor = "rgba(0,0,0,0)";
             obEt(kevin[q])[w].style.backgroundImage = "none";
             obEt(kevin[q])[w].style.boxShadow = "none";
