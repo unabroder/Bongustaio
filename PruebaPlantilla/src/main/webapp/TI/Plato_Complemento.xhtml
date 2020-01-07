@@ -77,11 +77,11 @@
                             <p:commandButton value="Modificar" actionListener="#{plato_CompletoController.leerId(pc)}"
                                              update=":da" oncomplete="PF('plato_completo').show()" styleClass="btnEditar"
                                              onclick="reiniciarTema();editarMSJ();" />
-                        </p:column>
+                        </p:column>-->
                         <p:column headerText="Eliminar">
                             <p:commandButton value="Eliminar" actionListener="#{plato_CompletoController.eliminar(pc)}" update="tabla"
                                              styleClass="btnEliminar" onclick="reiniciarTema();editarMSJ();" />
-                        </p:column>-->
+                        </p:column>
                     </p:dataTable>
                 </h:form>
                 
