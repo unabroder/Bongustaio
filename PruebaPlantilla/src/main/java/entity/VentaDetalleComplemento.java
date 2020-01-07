@@ -10,42 +10,74 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author claudia.santosusam
  */
 @Entity
+@Table(name = "ventadetalle_complemento")
 public class VentaDetalleComplemento implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int idventaDetalle_complemento;
 
-    public Long getId() {
-        return id;
+    @JoinColumn(name = "idventa_detalle", referencedColumnName = "idventa_detalle")
+    @ManyToOne
+    private Venta_Detalle idventa_detalle;
+
+    @JoinColumn(name = "idcomplemento", referencedColumnName = "idcomplemento")
+    @ManyToOne
+    private Complemento idcomplemento;
+
+    public int getIdventaDetalle_complemento() {
+        return idventaDetalle_complemento;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdventaDetalle_complemento(int idventaDetalle_complemento) {
+        this.idventaDetalle_complemento = idventaDetalle_complemento;
+    }
+
+    public Venta_Detalle getIdventa_detalle() {
+        return idventa_detalle;
+    }
+
+    public void setIdventa_detalle(Venta_Detalle idventa_detalle) {
+        this.idventa_detalle = idventa_detalle;
+    }
+
+    public Complemento getIdcomplemento() {
+        return idcomplemento;
+    }
+
+    public void setIdcomplemento(Complemento idcomplemento) {
+        this.idcomplemento = idcomplemento;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 3;
+        hash = 41 * hash + this.idventaDetalle_complemento;
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof VentaDetalleComplemento)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        VentaDetalleComplemento other = (VentaDetalleComplemento) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final VentaDetalleComplemento other = (VentaDetalleComplemento) obj;
+        if (this.idventaDetalle_complemento != other.idventaDetalle_complemento) {
             return false;
         }
         return true;
@@ -53,7 +85,10 @@ public class VentaDetalleComplemento implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.VentaDetalleComplemento[ id=" + id + " ]";
+        return "VentaDetalleComplemento{" + "idventaDetalle_complemento=" + idventaDetalle_complemento + '}';
     }
     
+    
+    
+
 }
