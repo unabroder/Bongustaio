@@ -20,8 +20,8 @@ public class Inventario implements Serializable {
     private int idinventario;
 
     @ManyToOne
-    @JoinColumn(name = "idprod_prov", referencedColumnName = "idproveedor")
-    private OrdenCompra idprod_prov;
+    @JoinColumn(name = "idproducto", referencedColumnName = "idproducto")
+    private Producto idproducto;
 
     @Column(name = "cant_entrada")
     private int cant_entrada;
@@ -32,34 +32,6 @@ public class Inventario implements Serializable {
     @Column(name = "estado")
     private int estado;
 
-    public Inventario() {
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + this.idinventario;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Inventario other = (Inventario) obj;
-        if (this.idinventario != other.idinventario) {
-            return false;
-        }
-        return true;
-    }
-
     public int getIdinventario() {
         return idinventario;
     }
@@ -68,12 +40,12 @@ public class Inventario implements Serializable {
         this.idinventario = idinventario;
     }
 
-    public OrdenCompra getIdprod_prov() {
-        return idprod_prov;
+    public Producto getIdproducto() {
+        return idproducto;
     }
 
-    public void setIdprod_prov(OrdenCompra idprod_prov) {
-        this.idprod_prov = idprod_prov;
+    public void setIdproducto(Producto idproducto) {
+        this.idproducto = idproducto;
     }
 
     public int getCant_entrada() {
@@ -101,8 +73,35 @@ public class Inventario implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "Inventario{" + "idinventario=" + idinventario + ", cant_entrada=" + cant_entrada + ", cant_disponible=" + cant_disponible + ", estado=" + estado + '}';
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + this.idinventario;
+        return hash;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Inventario other = (Inventario) obj;
+        if (this.idinventario != other.idinventario) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Inventario{" + "idinventario=" + idinventario + '}';
+    }
+
+    
+   
 }

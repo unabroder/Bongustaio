@@ -25,7 +25,7 @@
                     <p:outputLabel value="Selecione" for="cmbMenuDelDia"/>
                     <p:selectOneMenu id="cmbMenuDelDia" value="#{inventarioController.productoProveedor.idprod_prov}">
                         <f:selectItem itemLabel="seleccione el menu" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{inventarioController.listaProductoProveedores}" var="pp" itemLabel="#{catalogo.nombre}" itemValue="#{catalogo.idcatalogo}" />
+                        <f:selectItems value="#{inventarioController.listaproducto}" var="pp" itemLabel="#{catalogo.nombre}" itemValue="#{catalogo.idcatalogo}" />
                     </p:selectOneMenu>
                     <p:outputLabel value="Descuento" for="txtDescuento"/>
                     <p:inputText id="txtDescuento"  value="#{inventarioController.productoProveedor.descuento}"/>

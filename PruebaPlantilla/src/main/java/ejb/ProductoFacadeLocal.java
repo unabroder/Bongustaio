@@ -1,9 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ejb;
 
 import entity.Producto;
 import java.util.List;
 import javax.ejb.Local;
 
+/**
+ *
+ * @author josue.vasquezusam
+ */
 @Local
 public interface ProductoFacadeLocal {
 
@@ -20,5 +29,5 @@ public interface ProductoFacadeLocal {
     List<Producto> findRange(int[] range);
 
     int count();
-
+    
 }
