@@ -21,8 +21,6 @@ entity\Roles.class
 entity\TipoEmpleado_.class
 entity\Tiposucursal.class
 ejb\TipoEmpleadoFacade.class
-entity\PlatoCompleto.class
-ejb\PlatoCompletoFacadeLocal.class
 ejb\VentaFacade.class
 entity\Venta.class
 entity\Venta_Detalle_.class
@@ -36,7 +34,6 @@ ejb\ProductoFacade.class
 entity\Complemento_.class
 entity\Especialidad_.class
 entity\Tiposucursal_.class
-ejb\PlatoCompletoFacade.class
 ejb\EmpleadoFacade.class
 .netbeans_automatic_build
 ejb\ComplementoFacade.class
@@ -101,6 +98,5 @@ entity\Plato_Completo_.class
 ejb\EmpleadoFacadeLocal.class
 ejb\EspecialidadFacade.class
 entity\VentaDetalleComplemento.class
-entity\PlatoCompleto_.class
 entity\Catalogo.class
 entity\Inventario.class
