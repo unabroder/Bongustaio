@@ -81,7 +81,6 @@ public class InventarioController implements Serializable {
     public void init() {
         inventario = new Inventario();
         producto = new Producto();
-        
         obtenerTodos();
     }
 
@@ -131,12 +130,11 @@ public class InventarioController implements Serializable {
     public void eliminar(Inventario idInven) {
         this.inventario = idInven;
         try {
-            this.inventario.setIdproducto(producto);
             this.inventarioEJB.remove(idInven);
             this.mensaje = "ELIMINADO";
             listaInventario = inventarioEJB.findAll();
         } catch (Exception e) {
-            this.mensaje = "NO INSERTADO";
+            this.mensaje = "NO ELIMINADO";
         }
         FacesMessage msj = new FacesMessage(this.mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msj);

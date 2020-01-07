@@ -35,13 +35,13 @@
                      <p:outputLabel value="Selecione el Plato Completo " for="cmbMenuDelDia"/>
                      <p:selectOneMenu id="cmbMenuDelDia" value="#{menuDelDiaController.plato_completo.idplato_completo}">
                         <f:selectItem itemLabel="seleccione" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{plato_CompletoController.listapcompleto}" var="plato" itemLabel="#{plato.nombre}" itemValue="#{plato.idcatalogo}" />
+                        <f:selectItems value="#{plato_CompletoController.listapcompleto}" var="plato" itemLabel="#{plato.nombre}" itemValue="#{plato.idplato_completo}" />
                     </p:selectOneMenu>
 
                     <h:outputText value="Estado:" />
                     <p:selectOneMenu id="selEstado" value="#{menuDelDiaController.menuDelDia.estado}">
-                        <f:selectItem itemValue="0" itemLabel="Activo" />
-                        <f:selectItem itemValue="1" itemLabel="Inactivo" />
+                        <f:selectItem itemValue="1" itemLabel="Activo" />
+                        <f:selectItem itemValue="0" itemLabel="Inactivo" />
                     </p:selectOneMenu>          
 
 
