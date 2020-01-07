@@ -39,10 +39,12 @@ insert into inventario(idproducto,cant_entrada,cant_disponible,estado)
 values(1,2,6,1);
 select*from inventario;
 
-create table producto_proveedor(
+create table orden_compra(
 idprod_prov int(11) not null primary key auto_increment,
 idproveedor int(11) not null,
 idproducto int(11) not null,
+cantidad int(11) not null,
+fecha date not null,
 estado int(1) not null default 1,
 CONSTRAINT FOREIGN KEY  (idproveedor) REFERENCES proveedor(idproveedor)ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT FOREIGN KEY  (idproducto) REFERENCES producto(idproducto) ON DELETE CASCADE ON UPDATE CASCADE
