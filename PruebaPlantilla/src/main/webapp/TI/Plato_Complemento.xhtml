@@ -9,7 +9,7 @@
     <ui:define name="content">
         
                 <p:growl id="MSJ"/>
-                <!--
+                
                 <h:form id="d">
                     <p:panelGrid columns="3">
                         <p:commandButton icon="fa fa-fw fa-plus" value="Agregar" oncomplete="PF('plato_completo').show()"
@@ -51,7 +51,7 @@
                         </p:panelGrid>
                     </h:form>
                 </p:dialog>
-                -->
+              
                 <h:form id='Datos'>
                     <p:dataTable id="tabla" value="#{plato_CompletoController.listapcompleto}" var="pc">
                         <p:column headerText="ID">
@@ -72,12 +72,12 @@
                         <p:column headerText="estado">
                             <h:outputText value="#{pc.estado}" />
                         </p:column>
-                        <!--
+                        
                         <p:column headerText="Editar">
                             <p:commandButton value="Modificar" actionListener="#{plato_CompletoController.leerId(pc)}"
                                              update=":da" oncomplete="PF('plato_completo').show()" styleClass="btnEditar"
                                              onclick="reiniciarTema();editarMSJ();" />
-                        </p:column>-->
+                        </p:column>
                         <p:column headerText="Eliminar">
                             <p:commandButton value="Eliminar" actionListener="#{plato_CompletoController.eliminar(pc)}" update="tabla"
                                              styleClass="btnEliminar" onclick="reiniciarTema();editarMSJ();" />
