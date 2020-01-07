@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +34,22 @@ public class VentaDetalleComplemento implements Serializable {
     @JoinColumn(name = "idcomplemento", referencedColumnName = "idcomplemento")
     @ManyToOne
     private Complemento idcomplemento;
+    
+     @Column(name="cantidad")
+    private int cantidad;
+    
+    
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    
+
+    
 
     public int getIdventaDetalle_complemento() {
         return idventaDetalle_complemento;

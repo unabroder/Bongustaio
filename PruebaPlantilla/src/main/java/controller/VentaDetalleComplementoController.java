@@ -53,6 +53,7 @@ public class VentaDetalleComplementoController implements Serializable {
     }
 
     public List<VentaDetalleComplemento> getListavdcomplemento() {
+        this.listavdcomplemento= vdcomplementoEJB.findAll();
         return listavdcomplemento;
     }
 
