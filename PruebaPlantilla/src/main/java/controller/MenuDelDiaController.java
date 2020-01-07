@@ -25,9 +25,7 @@ public class MenuDelDiaController implements Serializable {
     private MenuDelDia menuDelDia;
     private List<MenuDelDia> listaMenuDelDia;
 
-    private CatalogoFacadeLocal catalogoEJB;
-    private Catalogo catalogo;
-    private List<Catalogo> listaCatalogo;
+    
     
     String mensaje;
 
@@ -52,27 +50,13 @@ public class MenuDelDiaController implements Serializable {
         this.listaMenuDelDia = listaMenuDelDia;
     }
 
-    public Catalogo getCatalogo() {
-        return catalogo;
-    }
-
-    public void setCatalogo(Catalogo catalogo) {
-        this.catalogo = catalogo;
-    }
-
-    public List<Catalogo> getListaCatalogo() {
-        this.listaCatalogo=catalogoEJB.findAll();
-        return listaCatalogo;
-    }
-
-    public void setListaCatalogo(List<Catalogo> listaCatalogo) {      
-        this.listaCatalogo = listaCatalogo;
-    }
+    
+  
 
     //PostConstruct
     @PostConstruct
     public void init() {
-        this.catalogo = new Catalogo();
+        this.Plato_completo = new Catalogo();
         this.menuDelDia = new MenuDelDia();
     }
 
@@ -107,7 +91,6 @@ public class MenuDelDiaController implements Serializable {
     
     public void actualizar() {
         try {
-            
             menuDelDiaEJB.edit(menuDelDia);
             this.mensaje = "ACTUALIZADO";
         } catch (Exception e) {
@@ -120,7 +103,6 @@ public class MenuDelDiaController implements Serializable {
     public void eliminar(MenuDelDia mdd) {
         this.menuDelDia = mdd;
         try {
-            
             menuDelDiaEJB.remove(menuDelDia);
             this.mensaje = "ELIMINADO";
             listaMenuDelDia = menuDelDiaEJB.findAll();

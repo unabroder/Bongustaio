@@ -1,10 +1,9 @@
 package controller;
 
 import ejb.InventarioFacadeLocal;
-import ejb.ProductoProveedorFacadeLocal;
-import ejb.ProveedorFacadeLocal;
+import ejb.ProductoFacadeLocal;
 import entity.Inventario;
-import entity.ProductoProveedor;
+import entity.Producto;
 import entity.Proveedor;
 import java.io.Serializable;
 import java.util.List;
@@ -25,9 +24,9 @@ public class InventarioController implements Serializable {
     private Inventario inventario;
     private List<Inventario> listaInventario;
     @EJB
-    private ProductoProveedorFacadeLocal productoProveedorEJB;
-    private ProductoProveedor productoProveedor;
-    private List<ProductoProveedor> listaProductoProveedores;
+    private ProductoFacadeLocal productoEJB;
+    private Producto producto;
+    private List<Producto> listaProducto;
 
     String mensaje;
 
@@ -53,20 +52,21 @@ public class InventarioController implements Serializable {
         this.listaInventario = listaInventario;
     }
 
-    public ProductoProveedor getProductoProveedor() {
-        return productoProveedor;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setProductoProveedor(ProductoProveedor productoProveedor) {
-        this.productoProveedor = productoProveedor;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
-    public List<ProductoProveedor> getListaProductoProveedores() {
-        return listaProductoProveedores;
+    public List<Producto> getListaProducto() {
+        this.listaInventario = inventarioEJB.findAll();
+        return listaProducto;
     }
 
-    public void setListaProductoProveedores(List<ProductoProveedor> listaProductoProveedores) {
-        this.listaProductoProveedores = listaProductoProveedores;
+    public void setListaProducto(List<Producto> listaProducto) {
+        this.listaProducto = listaProducto;
     }
 
     public String getMensaje() {
@@ -80,7 +80,7 @@ public class InventarioController implements Serializable {
      //PostConstructores
     @PostConstruct
     public void init() {
-        productoProveedor = new ProductoProveedor();
+        producto = new Producto();
         inventario = new Inventario();
         obtenerTodos();
     }
@@ -96,7 +96,7 @@ public class InventarioController implements Serializable {
 
     public void obtenerUno(Inventario inventario) {
         try {
-            
+            this.producto.setIdproducto(inventario.getProducto().getIdproducto());
             this.inventario.setEstado(inventario.getEstado());
             this.inventario = inventario;
         } catch (Exception e) {
@@ -105,7 +105,7 @@ public class InventarioController implements Serializable {
 
     public void insertar() {
         try {
-            this.inventario.setProductoProveedor(productoProveedor);
+            this.inventario.setProducto(producto);
             inventarioEJB.create(inventario);
 
             this.mensaje = "INSERTADO";
@@ -119,7 +119,7 @@ public class InventarioController implements Serializable {
 
     public void actualizar() {
         try {
-            this.inventario.setProductoProveedor(productoProveedor);
+            this.inventario.setProducto(producto);
             this.inventarioEJB.edit(inventario);
             this.mensaje = "ACTUALIZADO";
         } catch (Exception e) {
@@ -133,8 +133,7 @@ public class InventarioController implements Serializable {
     public void eliminar(Inventario idInven) {
         this.inventario = idInven;
         try {
-            this.inventario.setProductoProveedor(productoProveedor);
-            this.inventarioEJB.remove(idInven);
+            this.inventarioEJB.remove(inventario);
             this.mensaje = "ELIMINADO";
             listaInventario = inventarioEJB.findAll();
         } catch (Exception e) {
@@ -144,9 +143,9 @@ public class InventarioController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
-    public void listarproductoProveedor() {
+    public void listarproducto() {
         try {
-            this.listaProductoProveedores = productoProveedorEJB.findAll();
+            this.listaProducto = productoEJB.findAll();
         } catch (Exception e) {
         }
     }
@@ -154,7 +153,7 @@ public class InventarioController implements Serializable {
     public void limpiar() {
         try {
             this.inventario = new Inventario();
-            this.productoProveedor = new ProductoProveedor();
+            this.producto = new Producto();
         } catch (Exception e) {
         }
     }

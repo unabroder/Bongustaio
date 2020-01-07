@@ -23,8 +23,8 @@ public class MenuDelDia implements Serializable{
     private double descuento;
     
     @ManyToOne
-    @JoinColumn(name = "idcatalogo", referencedColumnName = "idcatalogo")
-    private Catalogo catalogo;
+    @JoinColumn(name = "idplato_completo", referencedColumnName = "idplato_completo")
+    private Plato_completo platoCompleto;
     
     @Column(name = "estado")
     private int estado;
@@ -73,13 +73,15 @@ public class MenuDelDia implements Serializable{
         this.descuento = descuento;
     }
 
-    public Catalogo getCatalogo() {
-        return catalogo;
+    public Plato_completo getPlatoCompleto() {
+        return platoCompleto;
     }
 
-    public void setCatalogo(Catalogo catalogo) {
-        this.catalogo = catalogo;
+    public void setPlatoCompleto(Plato_completo platoCompleto) {
+        this.platoCompleto = platoCompleto;
     }
+
+    
     
     public int getEstado() {
         return estado;
@@ -93,10 +95,5 @@ public class MenuDelDia implements Serializable{
     public String toString() {
         return "MenuDelDia{" + "idmenu=" + idmenu + '}';
     }
-    
-    
-    
-    
-    
     
 }

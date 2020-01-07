@@ -106,10 +106,35 @@ public class CatalogoEspecialidadController implements Serializable{
         }
     }
     
+    public void editar(){
+        try {
+            catalogoEspecialidad.setIdcatalogo(catalogo);
+            catalogoEspecialidad.setIdespecialidad(especialidad);
+            catalogoEspecialidadEJB.edit(catalogoEspecialidad);
+        } catch (Exception e) {
+        }
+    }
+    
+    public void eliminar(CatalogoEspecialidad catEsp){
+        try {
+            catalogoEspecialidad = catEsp;
+            catalogoEspecialidadEJB.remove(catalogoEspecialidad);
+        } catch (Exception e) {
+        }
+    }
+    
     public void consultar(){
         try {
             listaCatalogoEspecialidad = catalogoEspecialidadEJB.findAll();
         } catch (Exception e) {
         }
+    }
+    
+    public void consultarCatalogoEspecialidad(CatalogoEspecialidad ce){
+        this.catalogoEspecialidad = ce;
+    }
+    
+    public void limpiar(){
+        this.catalogoEspecialidad = new CatalogoEspecialidad();
     }
 }

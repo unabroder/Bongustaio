@@ -64,6 +64,22 @@ public class ProveedorController implements Serializable {
         } catch (Exception e) {
         }
     }
+    
+    public void editar(){
+        try {
+            proveedorEJB.edit(proveedor);
+        } catch (Exception e) {
+        }
+    }
+    
+    public void eliminar(Proveedor prov){
+        try {
+            proveedor = prov;
+            proveedorEJB.remove(proveedor);
+        } catch (Exception e) {
+        }
+    }
+    
 
     public void consultar() {
         try {
@@ -71,5 +87,10 @@ public class ProveedorController implements Serializable {
         } catch (Exception e) {
         }
     }
-
+    
+    public void limpiar(){
+        this.proveedor = new Proveedor();
+    }
 }
+
+

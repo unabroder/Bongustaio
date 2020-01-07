@@ -8,12 +8,12 @@
         <title>Bongustaio</title>
         <h:outputStylesheet  library="css" name="estilos.css" />
         <link rel="icon" href="img/core-img/restaurantes.png" />
-
         <!-- Core Stylesheet -->
         <link href="../style.css" rel="stylesheet" />
-
         <!-- Responsive CSS -->
         <link href="../css/responsive/responsive.css" rel="stylesheet" />
+        <f:event type="preRenderView" listener="#{usuarioController.validacion2()}" />
+        <f:event type="preRenderView" listener="#{usuarioController.validacionRol()}" />
     </h:head>
     <h:body>
         <!-- ****** Superficie Principal de login y iconos ****** -->
@@ -56,26 +56,20 @@
                     <div class="ui-g-4"></div>
                     <div class="ui-g-4">
                         <p:panelGrid columns="2" styleClass="centrar-contenido">
-
                             <p:outputLabel value="USUARIOS"/>
                             <h:link value=">" outcome="/TI/newTemplateClient" />
-
                             <p:outputLabel value="CATALOGO"/>
-
                             <h:link value=">" outcome="/TI/Catalogo" />
                             <p:outputLabel value="VENTA"/>
                             <h:link value=">" outcome="/TI/Venta" />
-
-
                             <p:outputLabel value="VENTA DETALLE"/>
                             <h:link value=">" outcome="/TI/Venta_Detalle" />
-
                             <p:outputLabel value="ROLES"/>
                             <h:link  value=">" />
-
                             <p:outputLabel value="PROVEEDORES"/>
                             <p:commandButton value=">" />
-
+                            <p:outputLabel value="EMPLEADO"/>
+                            <h:link value=">" outcome="/TI/Empleado" />
                             <p:outputLabel value="SUCURSALES"/>
                             <p:commandButton value=">"/>
                         </p:panelGrid>
