@@ -91,15 +91,15 @@ public class PlatoCompletoController implements Serializable{
     
     @PostConstruct
     private void init(){
-        catalogoEspecialidad = new CatalogoEspecialidad();
+        platoCompleto = new PlatoCompleto();
     }    
     
     public void insertar(){
         try {
-            catalogoEspecialidad.setIdcatalogo(catalogo);
-            catalogoEspecialidad.setIdespecialidad(especialidad);
+            platoCompleto.setIdcatalogo(catalogo);
+            platoCompleto.setIdespecialidad(especialidad);
             
-            catalogoEspecialidadEJB.create(catalogoEspecialidad);
+            platoCompletoEJB.create(platoCompleto);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue ingresado", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
@@ -108,33 +108,33 @@ public class PlatoCompletoController implements Serializable{
     
     public void editar(){
         try {
-            catalogoEspecialidad.setIdcatalogo(catalogo);
-            catalogoEspecialidad.setIdespecialidad(especialidad);
-            catalogoEspecialidadEJB.edit(catalogoEspecialidad);
+            platoCompleto.setIdcatalogo(catalogo);
+            platoCompleto.setIdespecialidad(especialidad);
+            platoCompletoEJB.edit(platoCompleto);
         } catch (Exception e) {
         }
     }
     
-    public void eliminar(CatalogoEspecialidad catEsp){
+    public void eliminar(PlatoCompleto platoCompleto){
         try {
-            catalogoEspecialidad = catEsp;
-            catalogoEspecialidadEJB.remove(catalogoEspecialidad);
+            this.platoCompleto = platoCompleto;
+            platoCompletoEJB.remove(platoCompleto);
         } catch (Exception e) {
         }
     }
     
     public void consultar(){
         try {
-            listaCatalogoEspecialidad = catalogoEspecialidadEJB.findAll();
+            listaPlatoCompleto = platoCompletoEJB.findAll();
         } catch (Exception e) {
         }
     }
     
-    public void consultarCatalogoEspecialidad(CatalogoEspecialidad ce){
-        this.catalogoEspecialidad = ce;
+    public void consultarCatalogoEspecialidad(PlatoCompleto platoCompleto){
+        this.platoCompleto = platoCompleto;
     }
     
     public void limpiar(){
-        this.catalogoEspecialidad = new CatalogoEspecialidad();
+        this.platoCompleto = new PlatoCompleto();
     }
 }
