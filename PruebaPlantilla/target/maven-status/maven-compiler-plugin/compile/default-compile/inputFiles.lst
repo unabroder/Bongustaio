@@ -45,14 +45,12 @@ C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\ProductoProveedor.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\Venta_DetalleFacade.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\ProveedorController.java
-C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProductoProveedorFacade.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\VentaFacadeLocal.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacadeLocal.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Sucursal.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProductoFacadeLocal.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Venta_Detalle.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\TipoEmpleadoController.java
-C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProductoProveedorFacadeLocal.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\EmpleadoController.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\InventarioFacadeLocal.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\EspecialidadFacade.java
@@ -69,6 +67,7 @@ C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\MenuDelDia.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Catalogo.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\RolesFacadeLocal.java
+C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\OrdenCompra.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\VentaController.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\CatalogoFacadeLocal.java
 C:\Users\mirian.floresusam\Desktop\proyectoBongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoproductoFacadeLocal.java

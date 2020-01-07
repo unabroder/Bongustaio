@@ -26,6 +26,11 @@ public class MenuDelDiaController implements Serializable {
     private List<MenuDelDia> listaMenuDelDia;
 
     
+    private PlatoCompletoFacadeLocal platoCompletoEJB;
+    private PlatoCompleto platoCompleto;
+    private List<PlatoCompleto> listaPlatoCompleto;
+    
+    
     
     String mensaje;
 
@@ -56,7 +61,7 @@ public class MenuDelDiaController implements Serializable {
     //PostConstruct
     @PostConstruct
     public void init() {
-        this.Plato_completo = new Catalogo();
+        this.Plato_completo = new PlatoCompleto;
         this.menuDelDia = new MenuDelDia();
     }
 
@@ -79,7 +84,7 @@ public class MenuDelDiaController implements Serializable {
 
      public void insertar() {
         try {
-            this.menuDelDia.setCatalogo(catalogo);
+            this.menuDelDia.setCatalogo(                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  );
             menuDelDiaEJB.create(menuDelDia);
             this.mensaje = "INSERTADO";
         } catch (Exception e) {

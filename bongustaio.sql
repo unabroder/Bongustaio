@@ -1,4 +1,4 @@
-CREATE DATABASE bongustaio;
+﻿create DATABASE bongustaio;
 USE bongustaio;
 
 CREATE TABLE proveedor(
@@ -9,6 +9,9 @@ telefono varchar(10) not null,
 correo varchar(50),
 estado int(1) not null default 1
 )ENGINE InnoDB;
+insert into proveedor(nombre,direccion,telefono,correo)
+values('Mario','Calle aledaña condomino #4','2290-2317','Mario9078@gmail.com');
+select*from proveedor;
 
 create table producto(
 idproducto int(11) not null primary key auto_increment,
@@ -18,46 +21,63 @@ cantidad int(11) not null,
 fechavenc date not null,
 estado int(1) not null default 1
 )ENGINE InnoDB;
-
+insert into producto(nombre,precio,cantidad,fechavenc)
+values('Pollo',3.20,12,'2017-09-09');
+select*from producto;
 
 create table inventario(
 idinventario int(11) not null primary key auto_increment,
 idproducto int(11) not null,
 cant_entrada int(11) not null,
 cant_disponible int(11) not null,
-estado int(11) not null,
+estado int(1) not null default 1,
 constraint foreign key (idproducto) references producto(idproducto)
 on delete cascade on update cascade
 )ENGINE InnoDB;
+insert into inventario(idproducto,cant_entrada,cant_disponible,estado)
+values(1,2,6,1);
+select*from inventario;
 
-create table producto_proveedor(
-idprod_prov int(11) not null primary key auto_increment,
+create table orden_compra(
+idorden_compra int(11) not null primary key auto_increment,
 idproveedor int(11) not null,
 idproducto int(11) not null,
+cantidad int(11) not null,
+fecha date not null,
 estado int(1) not null default 1,
 CONSTRAINT FOREIGN KEY  (idproveedor) REFERENCES proveedor(idproveedor)ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT FOREIGN KEY  (idproducto) REFERENCES producto(idproducto) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE InnoDB;
+insert into orden_compra(idproveedor,idproducto,cantidad,fecha)
+values(1,1,12,'2019-08-05');
+select*from orden_compra;
+
+/*TIPO SUCURSAL DEBE ESTAR RELACIONADA CON SUCURSAL */
+CREATE TABLE tiposucursal(
+idtiposucursal int(11) not null primary key auto_increment,
+nombre varchar(50) not null,
+estado int(1) not null default 1
+)ENGINE InnoDB;
+insert into tiposucursal(nombre) values('restaurante');
+select * from tiposucursal; 
+
 
 CREATE TABLE sucursal(
 idsucursal int(11) not null primary key auto_increment,
-idprod_prov int(11) not null,
+idorden_compra int(11) not null,
+idtiposucursal int(11) not null,
 nombre varchar(60) not null,
 telefono varchar(10) not null,
 direccion varchar(100) not null,
 estado int(1) not null default 1,
-CONSTRAINT FOREIGN KEY (idprod_prov) REFERENCES producto_proveedor(idprod_prov)
+CONSTRAINT FOREIGN KEY (idorden_compra) REFERENCES orden_compra(idorden_compra)
+ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT FOREIGN KEY (idtiposucursal) REFERENCES tiposucursal(idtiposucursal)
 ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE InnoDB;
+insert into sucursal(idorden_compra,idtiposucursal,nombre,telefono,direccion)
+values(1,1,'bongustaio_Soyapango','2256-7890','bulevar del ejercito');
 select *from sucursal;
-
-CREATE TABLE tiposucursal(
-idtiposucursal int(11) not null primary key auto_increment,
-idsucursal int(11) not null,
-estado int(1) not null default 1,
-CONSTRAINT FOREIGN KEY (idsucursal) REFERENCES sucursal(idsucursal)
-)ENGINE InnoDB;
-select * from tiposucursal; 
 
 create table tipoempleado(
 idtipoempleado int(11) not null primary key auto_increment,
@@ -78,12 +98,17 @@ dui varchar(10) not null unique,
 correo varchar(70) not null,
 telefono varchar(10) not null,
 idtipoempleado int(11) not null,
-idtiposucursal int(11) not null,
+idsucursal int(11) not null,
 estado int(1) not null default 1,
 constraint foreign key (idtipoempleado) references tipoempleado(idtipoempleado) on delete cascade on update cascade,
-constraint foreign key (idtiposucursal) references tiposucursal(idtiposucursal) on delete cascade on update cascade
+constraint foreign key (idsucursal) references sucursal(idsucursal) on delete cascade on update cascade
 )ENGINE InnoDB;
+insert into empleado(nombres,apellidos,dui,correo,telefono,idtipoempleado,idsucursal)
+values('Alexander','Vasquez','3490102-5','bongustaio@gmail.com','7689-2345',1,1);
 select * from empleado;
+
+select e.nombres,s.nombre from empleado as e inner join sucursal as s
+on e.idsucursal = s.idsucursal;
 
 CREATE TABLE roles(
 idrol int(11) not null primary key auto_increment,
@@ -107,6 +132,8 @@ Estado int(1) not null default 1,
 CONSTRAINT FOREIGN KEY (idtipo) REFERENCES roles(idrol) ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT FOREIGN KEY (idempleado) REFERENCES empleado(idempleado) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE InnoDB;
+insert into usuarios(usuario,clave,idtipo,idempleado)
+values('Josue','123',1,1);
 select*from usuarios;
 
 create table bitacora(
@@ -123,10 +150,11 @@ idespecialidad int(11) not null primary key auto_increment,
 nombre varchar(50) not null,
 estado int(1) not null default 1
 )ENGINE InnoDB;
-
+/*Se agrego el nombre*/
 CREATE TABLE tipoproducto(
 idtipoproducto int(11) not null primary key auto_increment,
 idtiposucursal int(11) not null,
+nombre varchar(50) not null,
 estado int(1) not null default 1,
 constraint foreign key (idtiposucursal) references tiposucursal(idtiposucursal) on delete cascade on update cascade
 )ENGINE InnoDB;
@@ -196,5 +224,3 @@ estado int(1) not null default 1,
 constraint foreign key (idempleado) references empleado(idempleado) on delete cascade on update cascade,
 constraint foreign key (idventaDetalle_complemento) references ventaDetalle_complemento(idventaDetalle_complemento) on delete cascade on update cascade
 )ENGINE InnoDB;
-
-

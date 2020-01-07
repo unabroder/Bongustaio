@@ -20,6 +20,7 @@ public class Inventario implements Serializable {
     private int idinventario;
 
     @ManyToOne
+
     @JoinColumn(name = "idproducto", referencedColumnName = "idproducto")
     private Producto producto;
 
@@ -68,6 +69,7 @@ public class Inventario implements Serializable {
         this.idinventario = idinventario;
     }
 
+
     public Producto getProducto() {
         return producto;
     }
@@ -105,6 +107,7 @@ public class Inventario implements Serializable {
         return "Inventario{" + "idinventario=" + idinventario + ", producto=" + producto + ", cant_entrada=" + cant_entrada + ", cant_disponible=" + cant_disponible + ", estado=" + estado + '}';
     }
 
+    
     
 
 }
