@@ -17,7 +17,7 @@ public class Tiposucursal implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idtiposucursal;
 
-    @Column(name = "tipo", nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String tipo;
 
     @Column(name = "estado", nullable = false)
