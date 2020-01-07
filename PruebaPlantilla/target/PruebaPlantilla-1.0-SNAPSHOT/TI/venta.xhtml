@@ -30,13 +30,20 @@
                         <f:selectItem itemLabel="seleccione persona" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{empleadoController.listaEmpleado}" var="emp" itemLabel="#{emp.nombres}" itemValue="#{emp.idempleado}" />
                     </p:selectOneMenu>
+                    
+                    <p:outputLabel value="Ingrese venta detalle complemento" for="cmbVDComplemento"/>
+                    <p:selectOneMenu id="cmbVDComplemento" value="#{ventaController..vdComplemento.idventaDetalle_complemento}">
+                        <f:selectItem itemLabel="seleccione venta detalle complemento" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{VentaDetalleComplementoController.listavdComplemento}" var="vdc" itemLabel="#{vdc.idventaDetalle_complemento}" itemValue="#{vdc.idventaDetalle_complemento}" />
+                    </p:selectOneMenu>
+                    
                     <p:outputLabel value="Subtotal" for="txtSubtotal"/>
                     <p:inputText id="txtSubtotal" value="#{ventaController.venta.subtotal}" />
                     <p:outputLabel value="Total" for="txtTotal"/>
                     <p:inputText id="txtTotal" value="#{ventaController.venta.total}"/>
                     <p:outputLabel value="Estado" for="txtEstado"/>
                     <p:inputText id="txtEstado" required="true" value="#{ventaController.venta.estado}"/>
-
+                    
                     <p:commandButton value="Guardar" actionListener="#{ventaController.insertar()}"
                                      update=":Datos da :MSJ" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
                                      rendered="#{ventaController.venta.idventa ==0}"  
@@ -59,6 +66,9 @@
                 </p:column>
                 <p:column headerText="Nombre Empleado">
                     <h:outputText value="#{v.idempleado.nombres}" />
+                </p:column>
+                <p:column headerText="# venta detalle complemento">
+                    <h:outputText value="#{v.idventaDetalle_complemento.idventaDetalle_complemento}" />
                 </p:column>
                 <p:column headerText="Fecha">
                     <h:outputText value="#{v.fecha}" />

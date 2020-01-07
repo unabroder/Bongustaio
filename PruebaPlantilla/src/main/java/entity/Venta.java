@@ -24,6 +24,10 @@ public class Venta implements Serializable {
     @ManyToOne
     @JoinColumn(name = "idempleado", referencedColumnName = "idempleado")
     private Empleado idempleado;
+    
+    @ManyToOne
+    @JoinColumn(name="idventaDetalle_complemento",referencedColumnName = "idventaDetalle_complemento")
+    private VentaDetalleComplemento idventaDetalle_complemento;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha")
@@ -86,6 +90,14 @@ public class Venta implements Serializable {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public VentaDetalleComplemento getIdventaDetalle_complemento() {
+        return idventaDetalle_complemento;
+    }
+
+    public void setIdventaDetalle_complemento(VentaDetalleComplemento idventaDetalle_complemento) {
+        this.idventaDetalle_complemento = idventaDetalle_complemento;
     }
 
 //  =======================================================================================================================

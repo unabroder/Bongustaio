@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author claudia.santosusam
  */
 @Stateless
-public class VentaDetalleComplementoFacade extends AbstractFacade<VentaDetalleComplemento> implements VentaDetalleComplemetoFacadeLocal {
+public class VentaDetalleComplementoFacade extends AbstractFacade<VentaDetalleComplemento> implements VentaDetalleComplementoFacadeLocal {
     
     @PersistenceContext(unitName = "bongustaio")
     private EntityManager em;

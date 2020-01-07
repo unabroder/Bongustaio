@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+drop database bongustaio;
 create DATABASE bongustaio;
+=======
+﻿create DATABASE bongustaio;
+>>>>>>> 328645d1e25083079688b013e106caad6e0f63ce
 USE bongustaio;
 
 CREATE TABLE proveedor(
@@ -39,7 +44,7 @@ values(1,2,6,1);
 select*from inventario;
 
 create table orden_compra(
-idprod_prov int(11) not null primary key auto_increment,
+idorden_compra int(11) not null primary key auto_increment,
 idproveedor int(11) not null,
 idproducto int(11) not null,
 cantidad int(11) not null,
@@ -48,26 +53,20 @@ estado int(1) not null default 1,
 CONSTRAINT FOREIGN KEY  (idproveedor) REFERENCES proveedor(idproveedor)ON DELETE CASCADE ON UPDATE CASCADE,
 CONSTRAINT FOREIGN KEY  (idproducto) REFERENCES producto(idproducto) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE InnoDB;
-insert into producto_proveedor(idproveedor,idproducto)
-values(1,1);
-select*from producto_proveedor;
+insert into orden_compra(idproveedor,idproducto,cantidad,fecha)
+values(1,1,12,'2019-08-05');
+select*from orden_compra;
 
-CREATE TABLE sucursal(
-idsucursal int(11) not null primary key auto_increment,
-idprod_prov int(11) not null,
-idtiposucursal int(11) not null,
-nombre varchar(60) not null,
-telefono varchar(10) not null,
-direccion varchar(100) not null,
-estado int(1) not null default 1,
-CONSTRAINT FOREIGN KEY (idprod_prov) REFERENCES producto_proveedor(idprod_prov)
-ON DELETE CASCADE ON UPDATE CASCADE,
-CONSTRAINT FOREIGN KEY (idtiposucursal) REFERENCES tiposucursal(idtiposucursal)
-ON DELETE CASCADE ON UPDATE CASCADE
+/*TIPO SUCURSAL DEBE ESTAR RELACIONADA CON SUCURSAL */
+CREATE TABLE tiposucursal(
+idtiposucursal int(11) not null primary key auto_increment,
+nombre varchar(50) not null,
+estado int(1) not null default 1
 )ENGINE InnoDB;
-insert into sucursal(idprod_prov,nombre,telefono,direccion)
-values(1,'bongustaio_Soyapango','2256-7890','bulevar del ejercito');
-select *from sucursal;
+insert into tiposucursal(nombre) values('restaurante');
+select * from tiposucursal; 
+
+
 
 /*TIPO SUCURSAL DEBE ESTAR RELACIONADA CON SUCURSAL */
 CREATE TABLE tiposucursal(
@@ -78,6 +77,27 @@ estado int(1) not null default 1
 
 select * from tiposucursal; 
 
+CREATE TABLE sucursal(
+idsucursal int(11) not null primary key auto_increment,
+idorden_compra int(11) not null,
+idtiposucursal int(11) not null,
+nombre varchar(60) not null,
+telefono varchar(10) not null,
+direccion varchar(100) not null,
+estado int(1) not null default 1,
+CONSTRAINT FOREIGN KEY (idorden_compra) REFERENCES orden_compra(idorden_compra)
+ON DELETE CASCADE ON UPDATE CASCADE,
+CONSTRAINT FOREIGN KEY (idtiposucursal) REFERENCES tiposucursal(idtiposucursal)
+ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE InnoDB;
+insert into sucursal(idorden_compra,idtiposucursal,nombre,telefono,direccion)
+values(1,1,'bongustaio_Soyapango','2256-7890','bulevar del ejercito');
+select *from sucursal;
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> 328645d1e25083079688b013e106caad6e0f63ce
 create table tipoempleado(
 idtipoempleado int(11) not null primary key auto_increment,
 tipoempleado varchar(25) not null,

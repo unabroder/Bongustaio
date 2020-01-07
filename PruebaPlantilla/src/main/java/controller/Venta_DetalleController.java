@@ -6,9 +6,11 @@
 package controller;
 
 import ejb.CatalogoFacadeLocal;
+import ejb.Plato_CompletoFacadeLocal;
 import ejb.VentaFacadeLocal;
 import ejb.Venta_DetalleFacadeLocal;
 import entity.Catalogo;
+import entity.Plato_Completo;
 import entity.Venta;
 import entity.Venta_Detalle;
 import javax.inject.Named;
@@ -31,17 +33,12 @@ public class Venta_DetalleController implements Serializable {
     private List<Venta_Detalle> listavdetalle;
 
     @EJB
-    private VentaFacadeLocal ventaEJB;
-    private Venta venta;
-    private List<Venta> listaventa;
+    private Plato_CompletoFacadeLocal pcompletoEJB;
+    private Plato_Completo pcompleto;
+    private List<Plato_Completo> listapcompleto;
 
-    @EJB
-    private CatalogoFacadeLocal catalogoEJB;
-    private Catalogo catalogo;
-    private List<Catalogo> listacatalogo;
-
-    
-    
+//=======================================================================================================================
+//=======================================================================================================================
     
     public Venta_Detalle getVdetalle() {
         return vdetalle;
@@ -59,68 +56,44 @@ public class Venta_DetalleController implements Serializable {
     public void setListavdetalle(List<Venta_Detalle> listavdetalle) {
         this.listavdetalle = listavdetalle;
     }
-
-    public Venta getVenta() {
-        return venta;
-    }
-
-    public void setVenta(Venta venta) {
-        this.venta = venta;
-    }
-
-    public List<Venta> getListaventa() {
-        return listaventa;
-    }
-
-    public void setListaventa(List<Venta> listaventa) {
-        this.listaventa = listaventa;
-    }
-
-    public Catalogo getCatalogo() {
-        return catalogo;
-    }
-
-    public void setCatalogo(Catalogo catalogo) {
-        this.catalogo = catalogo;
-    }
-
-    public List<Catalogo> getListacatalogo() {
-        return listacatalogo;
-    }
-
-    public void setListacatalogo(List<Catalogo> listacatalogo) {
-        this.listacatalogo = listacatalogo;
-    }
-
-  
     
+    public Plato_Completo getPcompleto() {
+        return pcompleto;
+    }
+
+    public void setPcompleto(Plato_Completo pcompleto) {
+        this.pcompleto = pcompleto;
+    }
+
+    public List<Plato_Completo> getListapcompleto() {
+        return listapcompleto;
+    }
+
+    public void setListapcompleto(List<Plato_Completo> listapcompleto) {
+        this.listapcompleto = listapcompleto;
+    }
     
+
+//=======================================================================================================================
+//=======================================================================================================================
 
     @PostConstruct
     private void init() {
         vdetalle = new Venta_Detalle();
-        venta = new Venta();
-        catalogo = new Catalogo();
     }
 
-    public void consultarVenta() {
-        try {
-            listaventa = ventaEJB.findAll();
-        } catch (Exception e) {
-        }
-    }
+    
 
-    public void consultarCatalogo() {
+    public void consultarPCompleto() {
         try {
-            listacatalogo = catalogoEJB.findAll();
+            listapcompleto = pcompletoEJB.findAll();
         } catch (Exception e) {
         }
     }
 
     public void insertar() {
         try {
-            vdetalle.setIdventa(venta);
-            vdetalle.setIdcatalogo(catalogo);
+            vdetalle.setIdplato_completo(pcompleto);
 
             vdetalleEJB.create(vdetalle);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
@@ -138,8 +111,7 @@ public class Venta_DetalleController implements Serializable {
 
     public void leerId(Venta_Detalle vdeta) {
         try {
-            this.catalogo.setIdcatalogo(vdeta.getIdcatalogo().getIdcatalogo());
-            this.venta.setIdventa(vdeta.getIdventa().getIdventa());
+            this.pcompleto.setIdplato_completo(vdeta.getIdplato_completo().getIdplato_completo());
             this.vdetalle = vdeta;
         } catch (Exception e) {
         }
@@ -147,8 +119,7 @@ public class Venta_DetalleController implements Serializable {
 
     public void modificar() {
         try {
-            vdetalle.setIdventa(venta);
-            vdetalle.setIdcatalogo(catalogo);
+            vdetalle.setIdplato_completo(pcompleto);
 
             vdetalleEJB.edit(vdetalle);
         } catch (Exception e) {
@@ -166,8 +137,7 @@ public class Venta_DetalleController implements Serializable {
 
     public void limpiar() {
         vdetalle = new Venta_Detalle();
-        venta = new Venta();
-        catalogo = new Catalogo();
+        pcompleto = new Plato_Completo();
     }
 
 }

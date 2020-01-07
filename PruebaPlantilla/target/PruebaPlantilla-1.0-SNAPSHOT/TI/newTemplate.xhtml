@@ -12,7 +12,7 @@
         <h:outputStylesheet name="./css/cssLayout.css"/>
         <title>Facelets Template</title>
         <h:outputStylesheet  library="css" name="estilos.css" />
-        <script src="resource2/js/ponki.js" type="text/javascript"></script>
+      
         <link rel="icon" href="img/core-img/restaurantes.png" />
         <!-- Core Stylesheet -->
         <link href="../style.css" rel="stylesheet" />
@@ -24,7 +24,7 @@
     </h:head>
 
     <h:body >
-        <div style="background-color: #c5e2f6">
+        <div>
             <div id="top">
                 <ui:insert name="top">
                     <!-- ****** Superficie Principal de login y iconos ****** -->
@@ -36,21 +36,21 @@
                                     <div class="top_social_bar">
                                         <i id="cambio">Bongustaio </i>
                                         &nbsp; <a class="btn-outline-warning" href="#">Bienvenido:&nbsp;&nbsp;#{usuarioController.usuarios.usuario}</a>
-                                                
+
                                     </div>
                                 </div>
-                                
+
                                 <!-- Nombre de Usuario -->
                                 <div class="col-md-1">
                                     <div class="signup-search-area d-flex align-items-center justify-content-end">
                                         <div class="login_register_area d-flex">
                                             <div class="login" >
-                                                
+
                                             </div>
-                                           
-                                           
+
+
                                             <div id="cambioAlex">
-                                              
+
                                                 <h:form>
                                                     <h:commandButton value="Cerra Seccion" action="#{usuarioController.cerrar2()}" style="border-radius: 20px;"/>
                                                 </h:form>
@@ -104,35 +104,40 @@
                             <ul>
                                 <li class="block">
                                     <input type="checkbox" name="item" id="item1" />   
-                                    <label for="item1"><i aria-hidden="true" class="icon-users"></i> Usuarios <span> </span></label>
+                                    <label for="item1"><i aria-hidden="true" class="fa fa-user-circle"></i> Usuarios <span>1</span></label>
                                     <ul class="options">
-                                        <li> <h:link value="Usuarios" outcome="/TI/newTemplateClient" /></li>
-                                        
+                                        <li> <h:link value="Empleados" outcome="/TI/Empleado" /></li>
+                                        <li> <h:link value="Tipo Empleados" outcome="/TI/tipoEmpleado" /></li>
+                                        <li> <h:link value="Bitacora" outcome="/TI/Empleado" /></li>
                                     </ul>
                                 </li>
                                 <li class="block">
                                     <input type="checkbox" name="item" id="item2" />   
-                                    <label for="item2"><i aria-hidden="true" class="icon-film"></i> Sucursales <span></span></label>
+                                    <label for="item2"><i aria-hidden="true" class="fa fa-product-hunt"></i>Datos Productos <span>2</span></label>
                                     <ul class="options">
-                                        <li><h:link value="Proveedores" outcome="/TI/Proveedor" /></li>
-                                        <li><a href="#"><i aria-hidden="true" class="icon-download"></i> My Downloaded Videos <span>3</span></a></li>
-                                        <li><a href="#"><i aria-hidden="true" class="icon-warning"></i> My Well Dodgy Videos <span>1,024</span></a></li>
+                                        <li><h:link value="Producto" outcome="/TI/Producto" /></li>
+                                        <li><h:link value="Proveedor" outcome="/TI/Proveedor" /></li>
+                                        <li><h:link value="Inventario" outcome="/TI/Inventario" /></li>
                                     </ul>
                                 </li>
-                                
+
                                 <li class="block">
                                     <input type="checkbox" name="item" id="item4" />   
-                                    <label for="item4"><i aria-hidden="true" class="icon-microphone"></i> Podcasts <span>1</span></label>
+                                    <label for="item4"><i aria-hidden="true" class="fa fa-map-marker"></i> Datos Sucursales <span>3</span></label>
                                     <ul class="options">
-                                        <li><a href="https://css-tricks.com/css-tricks-screencasts-now-on-itunes/" target="_blank"><i aria-hidden="true" class="icon-music"></i> CSS-Tricks</a></li>
+                                        <li><h:link value="Sucursal" outcome="/TI/Sucursal" /></li>
+                                        <li><h:link value="Tipo Sucursal" outcome="/TI/Sucursal" /></li>
+                                        <li><h:link value="Sucursal" outcome="/TI/Sucursal" /></li>
                                     </ul>
                                 </li>
                                 <li class="block">
                                     <input type="checkbox" name="item" id="item5" />   
-                                    <label for="item5"><i aria-hidden="true" class="icon-android"></i> Robots <span>3</span></label>
+                                    <label for="item5"><i aria-hidden="true" class="fa fa-money"></i>  Datos de Ventas <span>4</span></label>
                                     <ul class="options">
-                                        <li><a href="http://en.wikipedia.org/wiki/HAL_9000" target="_blank"><i aria-hidden="true" class="icon-eye"></i> Hal 9000</a></li>
-                                        
+                                        <li><h:link value="Venta" outcome="/TI/Sucursal" /></li>
+                                        <li><h:link value="Venta Detalle" outcome="/TI/Sucursal" /></li>
+                                        <li><h:link value="Complemento" outcome="/TI/Sucursal" /></li>
+                                        <li><h:link value="Venta detalle complementaria" outcome="/TI/Sucursal" /></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -140,7 +145,7 @@
                         </h:form>
                     </ui:insert>
                 </div>
-                <div id="content" style="background-color: #c5e2f6; height: 87%;width: 80%;" class="left_content">
+                <div id="content" style="height: 87%;width: 80%;" class="left_content">
                     <ui:insert name="content">Content</ui:insert>
                 </div>
             </div>
@@ -154,10 +159,10 @@
         <script src="ponki.js" type="text/javascript"></script>
         <script>
             efectoInicio();
-            ponerIcono("");
+            ponerIcono("img/core-img/restaurantes.png");
             arreglarBoton("0.#D88A0A.white.redondo", "borde.si.solid.1", "degradado.si.10.black");
             ponerTema("#F6BF03", "black", "Ocultar", "Mostrar", "0.9", "0.9");
-            arreglarBotonClase("btnEditar.#036fab.white.redondo", "borde.no", "degradado.si.5.black");
+            arreglarBotonClase("btnEditar.#036fab.white.redondo", "borde.si", "degradado.si.5.black");
             arreglarBotonClase("btnEliminar.#C14309.white.redondo", "borde.si", "degradado.si.10.black");
 
         </script>
