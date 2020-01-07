@@ -2,6 +2,7 @@ C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\Pru
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\CatalogoEspecialidadController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Tipoproducto.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Catalogo.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\ComplementoFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoEmpleadoFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\TiposucursalFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\UsuariosFacade.java
@@ -20,7 +21,9 @@ C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\Pru
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\EspecialidadFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProductoProveedorFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\InventarioFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Complemento.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\EmpleadoController.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\ComplementoFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\MenuDelDiaController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\UsuariosFacadeLocal.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\ProductoProveedor.java
@@ -52,6 +55,7 @@ C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\Pru
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\TipoEmpleado.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\ProductoFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\TipoproductoFacade.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\ComplementoController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacade.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Producto.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\BitacoraFacadeLocal.java
@@ -62,6 +66,7 @@ C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\Pru
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Venta_Detalle.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\InventarioController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\ProductoController.java
+C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\VentaDetalleComplemento.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\entity\Bitacora.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\controller\EspecialidadController.java
 C:\Users\claudia.santosusam\Documents\NetBeansProjects\Bongustaio\Bongustaio\PruebaPlantilla\src\main\java\ejb\EspecialidadFacadeLocal.java

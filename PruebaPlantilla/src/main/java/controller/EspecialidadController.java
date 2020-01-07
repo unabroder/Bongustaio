@@ -44,7 +44,7 @@ public class EspecialidadController implements Serializable{
     }
     
     @PostConstruct
-    public void inti(){
+    public void init(){
         especialidad = new Especialidad();
     }
  public void insertar() {      // metodo para insertar 
@@ -61,6 +61,8 @@ public class EspecialidadController implements Serializable{
         } catch (Exception e) {
         }
     }
+     
+     
       public void leerid(Especialidad espe) {
         try {
             this.especialidad = espe;
