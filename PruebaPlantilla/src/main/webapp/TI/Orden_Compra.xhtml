@@ -28,27 +28,34 @@
 
                 <p:panelGrid columns="2" >
 
-                    <p:outputLabel value="Selecione el proveedor " for="cmbProveedor"/>
-                    <p:selectOneMenu id="cmbProveedor" value="#{ordenCompraController.proveedor.idproveedor}">
-                        <f:selectItem itemLabel="seleccione el proveedor" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{ordenCompraController.listaProveedor}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.idproveedor}" />
+                    <p:outputLabel value="Selecione el proveedor "/>
+                    <p:selectOneMenu  value="#{ordenCompraController.proveedor.idproveedor}">
+                        <f:selectItem itemLabel="Seleccione una Proveedor"></f:selectItem>
+                        <f:selectItems value="#{ordenCompraController.listaProveedor}" var="p"
+                                       itemValue="#{p.idproveedor}" itemLabel="#{p.nombre}" >
+                        </f:selectItems>
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="selecione la sucursal" for="cmbSucursal"/>
-                    <p:selectOneMenu id="cmbSucursal" value="#{ordenCompraController.sucursal.idsucursal}">
-                        <f:selectItem itemLabel="seleccione la sucursal " itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{ordenCompraController.listaSucursal}" var="su" itemLabel="#{su.nombre}" itemValue="#{su.idsucursal}" />
+                    <p:outputLabel value="selecione la sucursal"/>
+                    <p:selectOneMenu  value="#{ordenCompraController.sucursal.idsucursal}">
+                        <f:selectItem itemLabel="Seleccione una Sucursal"></f:selectItem>
+                        <f:selectItems value="#{ordenCompraController.listaSucursal}" var="s"
+                                       itemValue="#{s.idsucursal}" itemLabel="#{s.nombre}" >
+                        </f:selectItems>
                     </p:selectOneMenu>
 
 
-                    <p:outputLabel value="selecione el producto" for="cmbProducto"/>
-                    <p:selectOneMenu id="cmbProducto" value="#{ordenCompraController.producto.idproducto}">
-                        <f:selectItem itemLabel="seleccione el producto" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{ordenCompraController.listaproducto}" var="pro" itemLabel="#{pro.nombre}" itemValue="#{pro.idproducto}" />
+                    <p:outputLabel value="selecione el producto" />
+                    <p:selectOneMenu  value="#{ordenCompraController.producto.idproducto}">
+                        <f:selectItem itemLabel="Seleccione una Producto"></f:selectItem>
+                        <f:selectItems value="#{ordenCompraController.listaproducto}" var="pr"
+                                       itemValue="#{pr.idproducto}" itemLabel="#{pr.nombre}" >
+                        </f:selectItems>
                     </p:selectOneMenu>
 
-                     <p:outputLabel value="Fecha" for="txtFecha"/>
-                     <p:inputText id="txtFecha" type="date" value="#{ordenCompraController.ordencompra.fecha}"/>
+
+                     <p:outputLabel value="Fecha"/>
+                     <p:calendar value="#{ordenCompraController.ordencompra.fecha}"/>
 
                     <p:outputLabel value="Cantidad" for="txtCantidad"/>
                     <p:inputText id="txtCantidad" value="#{ordenCompraController.ordencompra.cantidad}"/>

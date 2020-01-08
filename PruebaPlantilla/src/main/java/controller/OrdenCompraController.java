@@ -144,15 +144,6 @@ public class OrdenCompraController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
-    public void listar() {
-        try {
-            listaorden = OrdenEJB.findAll();
-
-        } catch (Exception e) {
-        }
-
-    }
-
     public void modificar() {
         try {
             ordencompra.setIdproveedor(proveedor);
