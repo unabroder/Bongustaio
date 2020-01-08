@@ -1,13 +1,12 @@
 package controller;
 
 import ejb.InventarioFacadeLocal;
-<<<<<<< HEAD
+
 import entity.Inventario;
-=======
 import ejb.ProductoFacadeLocal;
 import entity.Inventario;
 import entity.Producto;
->>>>>>> c4c91e415bf0eee1c73ab9ab7acdab179450e70c
+
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;

@@ -5,6 +5,7 @@
  */
 package controller;
 
+import ejb.OrdenCompraFacadeLocal;
 import ejb.SucursalFacadeLocal;
 import ejb.TiposucursalFacadeLocal;
 import entity.OrdenCompra;
@@ -31,7 +32,7 @@ public class SucursalController implements Serializable {
     private SucursalFacadeLocal sucursalEJB;
     private Sucursal sucursal;
     private List<Sucursal> listaSucursal;
-    
+
     @EJB
     private TiposucursalFacadeLocal tsucursalEJB;
     private Tiposucursal tsucursal;
@@ -71,6 +72,8 @@ public class SucursalController implements Serializable {
     public void setListaTsucursal(List<Tiposucursal> listaTsucursal) {
         this.listaTsucursal = listaTsucursal;
     }
+
+
 
     @PostConstruct
     private void init() {

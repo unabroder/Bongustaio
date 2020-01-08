@@ -1,4 +1,4 @@
-﻿create DATABASE bongustaio;
+﻿CREATE DATABASE bongustaio;
 USE bongustaio;
 
 CREATE TABLE proveedor(
