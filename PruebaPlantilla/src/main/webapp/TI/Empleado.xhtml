@@ -15,7 +15,7 @@
             </p:panelGrid>
         </h:form>
         <!---->
-        <p:dialog style="margin-top: 10; " widgetVar="empleado" modal="false" showEffect="clip" resizable="false" header="Empleado">
+        <p:dialog  widgetVar="empleado" modal="false" showEffect="clip" resizable="false" header="Empleado">
             <p:ajax event="close" listener="#{empleadoController.limpiar}"   update=":da" />
             <h:form id='da'>
                 <p:panelGrid columns="2" >
