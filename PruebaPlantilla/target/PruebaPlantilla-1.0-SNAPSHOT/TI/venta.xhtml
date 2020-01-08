@@ -34,7 +34,7 @@
                     <p:outputLabel value="Ingrese venta detalle complemento" for="cmbVDComplemento"/>
                     <p:selectOneMenu id="cmbVDComplemento" value="#{ventaController.vdComplemento.idventaDetalle_complemento}">
                         <f:selectItem itemLabel="seleccione venta detalle complemento" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{VentaDetalleComplementoController.listavdComplemento}" var="vdc" itemLabel="#{vdc.idventaDetalle_complemento}" itemValue="#{vdc.idventaDetalle_complemento}" />
+                        <f:selectItems value="#{ventaDetalleComplementoController.listavdcomplemento}" var="vdc" itemLabel="#{vdc.idventaDetalle_complemento}" itemValue="#{vdc.idventaDetalle_complemento}" />
                     </p:selectOneMenu>
                     
                     <p:outputLabel value="Subtotal" for="txtSubtotal"/>
