@@ -17,8 +17,8 @@ public class Tiposucursal implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idtiposucursal;
 
-    @Column(name = "tipo", nullable = false)
-    private String tipo;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
     @Column(name = "estado", nullable = false)
     private int estado;
@@ -63,11 +63,11 @@ public class Tiposucursal implements Serializable {
     }
 
     public String getTipo() {
-        return tipo;
+        return nombre;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipo(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getEstado() {

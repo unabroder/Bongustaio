@@ -19,6 +19,10 @@ public class Sucursal implements Serializable {
     private int idsucursal;
 
     @OneToOne
+    @JoinColumn(name = "idorden_compra", referencedColumnName = "idorden_compra")
+    private Tiposucursal idorden_compra;
+    
+    @OneToOne
     @JoinColumn(name = "idtipo", referencedColumnName = "idtiposucursal")
     private Tiposucursal idtipo;
     
@@ -71,6 +75,16 @@ public class Sucursal implements Serializable {
     public void setIdsucursal(int idsucursal) {
         this.idsucursal = idsucursal;
     }
+
+    public Tiposucursal getIdorden_compra() {
+        return idorden_compra;
+    }
+
+    public void setIdorden_compra(Tiposucursal idorden_compra) {
+        this.idorden_compra = idorden_compra;
+    }
+    
+    
 
     public Tiposucursal getIdtipo() {
         return idtipo;

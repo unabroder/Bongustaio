@@ -1,9 +1,7 @@
 package controller;
 
 import ejb.InventarioFacadeLocal;
-import ejb.ProductoProveedorFacadeLocal;
 import entity.Inventario;
-import entity.ProductoProveedor;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;

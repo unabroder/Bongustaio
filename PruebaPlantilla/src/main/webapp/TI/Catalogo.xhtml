@@ -27,10 +27,6 @@
 
                     <p:outputLabel value="Nombre" for="txtNombre"/>
                     <p:inputText id="txtNombre" value="#{catalogoController.catalogo.nombre}"/>
-                    <p:outputLabel value="Precio por unidad" for="txtPreciounit"/>
-                    <p:inputText id="txtPreciounit" value="#{catalogoController.catalogo.preciounit}"/>
-                    <p:outputLabel value="Cantidad" for="txtCantidad"/>
-                    <p:inputText id="txtCantidad" value="#{catalogoController.catalogo.cantidad}"/>
 
                     <p:outputLabel value="Tipo de producto"/>
                     <p:selectOneMenu value="#{catalogoController.tipoproducto.idtipoproducto}">
@@ -58,12 +54,6 @@
                 </p:column>
                 <p:column headerText="Nombre">
                     <h:outputText value="#{x.nombre}"/>
-                </p:column>
-                <p:column headerText="Precio por unidad">
-                    <h:outputText value="#{x.preciounit}"/>
-                </p:column>
-                <p:column headerText="Cantidad">
-                    <h:outputText value="#{x.cantidad}"/>
                 </p:column>
                 <p:column headerText="Tipo de producto">
                     <h:outputText value="#{x.idtipoproduc.tipoproducto}"/>

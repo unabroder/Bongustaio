@@ -7,6 +7,7 @@ package controller;
 
 import ejb.SucursalFacadeLocal;
 import ejb.TiposucursalFacadeLocal;
+import entity.OrdenCompra;
 import entity.Sucursal;
 import entity.Tiposucursal;
 import javax.inject.Named;
@@ -31,6 +32,9 @@ public class SucursalController implements Serializable {
     private Sucursal sucursal;
     private List<Sucursal> listaSucursal;
 
+    @EJB
+    private OrdenCompra  
+    
     @EJB
     private TiposucursalFacadeLocal tsucursalEJB;
     private Tiposucursal tsucursal;
