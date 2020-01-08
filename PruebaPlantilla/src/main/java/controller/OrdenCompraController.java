@@ -44,7 +44,7 @@ public class OrdenCompraController implements Serializable {
     private List<Producto> listaproducto;
 
     String mensaje;
-    
+
     public OrdenCompra getOrdencompra() {
         return ordencompra;
     }
@@ -71,6 +71,7 @@ public class OrdenCompraController implements Serializable {
     }
 
     public List<Proveedor> getListaProveedor() {
+        this.listaProveedor = proveedorEJB.findAll();
         return listaProveedor;
     }
 
@@ -87,6 +88,7 @@ public class OrdenCompraController implements Serializable {
     }
 
     public List<Sucursal> getListaSucursal() {
+        this.listaSucursal = sucursalEJB.findAll();
         return listaSucursal;
     }
 
@@ -103,6 +105,7 @@ public class OrdenCompraController implements Serializable {
     }
 
     public List<Producto> getListaproducto() {
+        this.listaproducto = productoEJB.findAll();
         return listaproducto;
     }
 
@@ -118,14 +121,12 @@ public class OrdenCompraController implements Serializable {
         this.mensaje = mensaje;
     }
 
-    
-
     @PostConstruct
     private void init() {
-        ordencompra = new OrdenCompra();
-        proveedor = new Proveedor();
-        sucursal = new Sucursal();
-        producto = new Producto();
+        this.ordencompra = new OrdenCompra();
+        this.proveedor = new Proveedor();
+        this.sucursal = new Sucursal();
+        this.producto = new Producto();
     }
 
     public void insertar() {
@@ -134,12 +135,12 @@ public class OrdenCompraController implements Serializable {
             ordencompra.setIdproducto(producto);
             ordencompra.setIdsucursal(sucursal);
             OrdenEJB.create(ordencompra);
-           this.mensaje ="Orde de Compra Registrada Exitosamente";
+            this.mensaje = "Orde de Compra Registrada Exitosamente";
         } catch (Exception e) {
-            this.mensaje="Error :"+e.getMessage();
+            this.mensaje = "Error :" + e.getMessage();
             e.printStackTrace();
         }
-         FacesMessage msj = new FacesMessage(mensaje);
+        FacesMessage msj = new FacesMessage(mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 

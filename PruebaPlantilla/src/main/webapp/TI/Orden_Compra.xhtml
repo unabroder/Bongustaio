@@ -31,20 +31,20 @@
                     <p:outputLabel value="Selecione el proveedor " for="cmbProveedor"/>
                     <p:selectOneMenu id="cmbProveedor" value="#{ordenCompraController.proveedor.idproveedor}">
                         <f:selectItem itemLabel="seleccione el proveedor" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{ProveedorController.listaProveedor}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.idproveedor}" />
+                        <f:selectItems value="#{ordenCompraController.listaProveedor}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.idproveedor}" />
                     </p:selectOneMenu>
 
                     <p:outputLabel value="selecione la sucursal" for="cmbSucursal"/>
                     <p:selectOneMenu id="cmbSucursal" value="#{ordenCompraController.sucursal.idsucursal}">
                         <f:selectItem itemLabel="seleccione la sucursal " itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{sucursalController.listaSucursal}" var="su" itemLabel="#{su.nombre}" itemValue="#{su.idsucursal}" />
+                        <f:selectItems value="#{ordenCompraController.listaSucursal}" var="su" itemLabel="#{su.nombre}" itemValue="#{su.idsucursal}" />
                     </p:selectOneMenu>
 
 
                     <p:outputLabel value="selecione el producto" for="cmbProducto"/>
                     <p:selectOneMenu id="cmbProducto" value="#{ordenCompraController.producto.idproducto}">
                         <f:selectItem itemLabel="seleccione el producto" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{productoController.listaproducto}" var="pro" itemLabel="#{pro.nombre}" itemValue="#{pro.idproducto}" />
+                        <f:selectItems value="#{ordenCompraController.listaproducto}" var="pro" itemLabel="#{pro.nombre}" itemValue="#{pro.idproducto}" />
                     </p:selectOneMenu>
 
                      <p:outputLabel value="Fecha" for="txtFecha"/>
