@@ -109,7 +109,7 @@ public class TipoproductoController implements Serializable {
 
     public void leerid(Tipoproducto tipo) {
         try {
-            this.tiposucursal.setIdtiposucursal(tipo.getNombre());
+            this.tiposucursal.setIdtiposucursal(tipo.getIdtipoproducto());
             this.tipoproducto=tipo;
         } catch (Exception e) {
         }

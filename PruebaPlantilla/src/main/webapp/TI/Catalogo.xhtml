@@ -16,7 +16,7 @@
 
                 <p:commandButton  icon="fa fa-fw fa-plus" value="Agregar" oncomplete="PF('catalogo').show()" 
                                   styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()" style="margin-right:  99%;"/>
-                                  
+
             </p:panelGrid>
         </h:form>
 
@@ -31,7 +31,7 @@
                     <p:outputLabel value="Tipo de producto"/>
                     <p:selectOneMenu value="#{catalogoController.tipoproducto.idtipoproducto}">
                         <f:selectItems value="#{catalogoController.listaTipoproducto}" var="x"
-                                       itemLabel="#{x.tipoproducto}" itemValue="#{x.idtipoproducto}"/>
+                                       itemLabel="#{x.nombre}" itemValue="#{x.idtipoproducto}"/>
                     </p:selectOneMenu>
 
                     <p:commandButton value="Guardar" actionListener="#{catalogoController.insertar()}"
@@ -56,7 +56,7 @@
                     <h:outputText value="#{x.nombre}"/>
                 </p:column>
                 <p:column headerText="Tipo de producto">
-                    <h:outputText value="#{x.idtipoproduc.tipoproducto}"/>
+                    <h:outputText value="#{x.idtipoproduc.nombre}"/>
                 </p:column>
                 <p:column headerText="">
                     <p:commandButton value="Modificar" actionListener="#{catalogoController.consultarById(x)}"
