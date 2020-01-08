@@ -101,6 +101,8 @@ public class Venta_DetalleController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro NO fue guardado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void consultar() {

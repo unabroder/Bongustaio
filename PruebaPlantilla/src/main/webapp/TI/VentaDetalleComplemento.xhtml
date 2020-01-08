@@ -49,12 +49,12 @@
                     <p:inputText id="txtCantidad"  value="#{ventaDetalleComplementoController.vdcomplement.cantidad}"/>
 
                     <p:commandButton value="Guardar" actionListener="#{ventaDetalleComplementoController.insertar()}"
-                                     rendered="#{ventaDetalleComplementoController.complemento.idcomplemento ==0}"
+                                     rendered="#{ventaDetalleComplementoController.vdcomplement.idventaDetalle_complemento == 0}"
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
-
                                      onclick="reiniciarTema();editarMSJ()"/>
+                    
                     <p:commandButton value="Editar" actionListener="#{ventaDetalleComplementoController.modificar()}"
-                                     rendered="#{ventaDetalleComplementoController.complemento.idcomplemento !=0}"
+                                     rendered="#{ventaDetalleComplementoController.vdcomplement.idventaDetalle_complemento !=0}"
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
 
                                      onclick="reiniciarTema();editarMSJ()"/>
