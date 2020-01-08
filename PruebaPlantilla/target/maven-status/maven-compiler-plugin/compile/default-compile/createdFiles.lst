@@ -93,6 +93,7 @@ entity\Usuarios_.class
 ejb\Plato_CompletoFacade.class
 controller\ProveedorController.class
 entity\Bitacora.class
+controller\Reporte.class
 entity\Plato_Completo_.class
 ejb\EmpleadoFacadeLocal.class
 ejb\EspecialidadFacade.class
