@@ -22,7 +22,7 @@ public class Sucursal implements Serializable {
 
     
     @OneToOne
-    @JoinColumn(name = "idtipo", referencedColumnName = "idtiposucursal")
+    @JoinColumn(name = "idtiposucursal", referencedColumnName = "idtiposucursal")
 //=======
   //  @JoinColumn(name = "idtiposucursal", referencedColumnName = "idtiposucursal")
     private Tiposucursal idtipo;

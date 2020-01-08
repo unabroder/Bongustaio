@@ -28,7 +28,7 @@ public class Tipoproducto implements Serializable {
     private Tiposucursal idtiposucursal;
 
     @Column(name = "nombre", nullable = true)
-    private int nombre;
+    private String nombre;
 
     @Column(name = "estado", nullable = true)
     private int estado;
@@ -49,11 +49,11 @@ public class Tipoproducto implements Serializable {
         this.idtiposucursal = idtiposucursal;
     }
 
-    public int getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(int nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 

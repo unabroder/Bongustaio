@@ -80,18 +80,20 @@
                                      update=":da" oncomplete="PF('categoria').show()" styleClass="btnEditar" 
                                      onclick="reiniciarTema();editarMSJ()" />
                 </p:column>
-                <p:column headerText="Eliminar">
+                <p:column headerText="">
                     <p:commandButton value="Desactivar"
                                      update=":Datos da :MSJ"
-                                     rendered="#{p.estado ==1}"
+                                     rendered="#{p.estado == 1}"
                                      onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar"
                                      actionListener="#{sucursalController.deshabilitar(p)}"
+                                     
                                      />
                     <p:commandButton value="Activar"
                                      update=":Datos da :MSJ"
-                                     rendered="#{p.estado ==0}"
+                                     rendered="#{p.estado == 0}"
                                      onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar"
                                      actionListener="#{sucursalController.habilitar(p)}"
+                                     
                                      />
                 </p:column>
             </p:dataTable>
