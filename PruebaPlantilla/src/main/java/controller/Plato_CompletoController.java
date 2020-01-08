@@ -45,11 +45,11 @@ public class Plato_CompletoController implements Serializable {
     }
 
     public List<Plato_Completo> getListapcompleto() {
-<<<<<<< HEAD
+
         this.listapcompleto=pcompletoEJB.findAll();
-=======
+
         this.listapcompleto = pcompletoEJB.findAll();
->>>>>>> d3472d356742f83891f5ca5ef8ae6df5530b26f4
+
         return listapcompleto;
     }
 
@@ -89,8 +89,6 @@ public class Plato_CompletoController implements Serializable {
         this.listaespecialidad = listaespecialidad;
     }
 
-//=======================================================================================================
-//=======================================================================================================
     @PostConstruct
     private void init() {
         pcompleto = new Plato_Completo();
