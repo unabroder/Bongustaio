@@ -31,9 +31,6 @@ public class SucursalController implements Serializable {
     private SucursalFacadeLocal sucursalEJB;
     private Sucursal sucursal;
     private List<Sucursal> listaSucursal;
-
-    @EJB
-    private OrdenCompra  
     
     @EJB
     private TiposucursalFacadeLocal tsucursalEJB;
