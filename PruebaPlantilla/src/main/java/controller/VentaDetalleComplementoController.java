@@ -43,9 +43,14 @@ public class VentaDetalleComplementoController implements Serializable {
     private Venta_DetalleFacadeLocal vdetalleEJB;
     private Venta_Detalle vdetalle;
     private List<Venta_Detalle> listavdetalle;
-
+    
+//==============================================================================================
+//==============================================================================================
+    
     public VentaDetalleComplemento getVdcomplement() {
+
         return vdcomplement;
+
     }
 
     public void setVdcomplement(VentaDetalleComplemento vdcomplement) {
@@ -53,7 +58,7 @@ public class VentaDetalleComplementoController implements Serializable {
     }
 
     public List<VentaDetalleComplemento> getListavdcomplemento() {
-        this.listavdcomplemento= vdcomplementoEJB.findAll();
+        this.listavdcomplemento=vdcomplementoEJB.findAll();
         return listavdcomplemento;
     }
 
@@ -93,24 +98,28 @@ public class VentaDetalleComplementoController implements Serializable {
         this.listavdetalle = listavdetalle;
     }
 
+//==============================================================================================
+//==============================================================================================
     @PostConstruct
     private void init() {
-
         vdcomplement = new VentaDetalleComplemento();
         complemento = new Complemento();
         vdetalle = new Venta_Detalle();
-
     }
 
     public void ConsultarComplemento() {
-
-        listaComplemento = complementoEJB.findAll();
+        try {
+            listaComplemento = complementoEJB.findAll();
+        } catch (Exception e) {
+        }
+        
     }
 
     public void ConsultarVentaDetalle() {
-
-        listavdetalle = vdetalleEJB.findAll();
-
+        try {
+             listavdetalle = vdetalleEJB.findAll();
+        } catch (Exception e) {
+        }
     }
 
     public void insertar() {
@@ -170,8 +179,9 @@ public class VentaDetalleComplementoController implements Serializable {
     
     }
      public void limpiar(){
-     vdcomplement=new VentaDetalleComplemento();
-     
+     vdcomplement = new VentaDetalleComplemento();
+        complemento = new Complemento();
+        vdetalle = new Venta_Detalle();
      }
     
 

@@ -145,6 +145,7 @@ idespecialidad int(11) not null primary key auto_increment,
 nombre varchar(50) not null,
 estado int(1) not null default 1
 )ENGINE InnoDB;
+insert into especialidad values (0,"asada con arroz",1);
 /*Se agrego el nombre*/
 CREATE TABLE tipoproducto(
 idtipoproducto int(11) not null primary key auto_increment,
@@ -153,6 +154,7 @@ nombre varchar(50) not null,
 estado int(1) not null default 1,
 constraint foreign key (idtiposucursal) references tiposucursal(idtiposucursal) on delete cascade on update cascade
 )ENGINE InnoDB;
+insert into tipoproducto values (0,1,"almuerzo",1);
 
 CREATE TABLE catalogo(
 idcatalogo int(11) not null primary key auto_increment,
@@ -161,6 +163,7 @@ idtipoproduc int(11) not null,
 CONSTRAINT FOREIGN KEY (idtipoproduc) REFERENCES tipoproducto(idtipoproducto)
 ON DELETE CASCADE ON UPDATE CASCADE 
 )ENGINE InnoDB;
+insert into catalogo values (0,"carnes",1);
 
 create table plato_completo(
 idplato_completo int(11) not null primary key auto_increment,
@@ -172,6 +175,7 @@ estado int(1)not null default 1,
 constraint foreign key(idcatalogo) references catalogo(idcatalogo) on delete cascade on update cascade,
 constraint foreign key(idespecialidad) references especialidad(idespecialidad) on delete cascade on update cascade
 )engine InnoDB;
+select * from plato_completo;
 
 
 create table menu_del_dia(
@@ -191,6 +195,7 @@ cantidad int(11) not null,
 estado int(1) not null default 1,
 constraint foreign key (idplato_completo) references plato_completo(idplato_completo) on delete cascade on update cascade
 )ENGINE InnoDB;
+select * from venta_detalle;
 
 create table complemento(
 idcomplemento int not null primary key auto_increment,
@@ -207,6 +212,8 @@ idcomplemento int(11) not null,
 constraint foreign key (idventa_detalle) references venta_detalle(idventa_detalle) on delete cascade on update cascade,
 constraint foreign key (idcomplemento) references complemento(idcomplemento) on delete cascade on update cascade
 )engine InnoDB;
+insert into ventaDetalle_complemento values (0,2,);
+
 
 create table venta(
 idventa int(11) not null primary key auto_increment,

@@ -27,29 +27,16 @@ public class VentaDetalleComplemento implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idventaDetalle_complemento;
 
-    @JoinColumn(name = "idventa_detalle", referencedColumnName = "idventa_detalle")
     @ManyToOne
+    @JoinColumn(name = "idventa_detalle", referencedColumnName = "idventa_detalle")
     private Venta_Detalle idventa_detalle;
 
-    @JoinColumn(name = "idcomplemento", referencedColumnName = "idcomplemento")
     @ManyToOne
+    @JoinColumn(name = "idcomplemento", referencedColumnName = "idcomplemento")
     private Complemento idcomplemento;
     
-     @Column(name="cantidad")
+    @Column(name="cantidad",nullable = false)
     private int cantidad;
-    
-    
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    
-
-    
 
     public int getIdventaDetalle_complemento() {
         return idventaDetalle_complemento;
@@ -75,6 +62,19 @@ public class VentaDetalleComplemento implements Serializable {
         this.idcomplemento = idcomplemento;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    @Override
+    public String toString() {
+        return "VentaDetalleComplemento{" + "idventaDetalle_complemento=" + idventaDetalle_complemento + '}';
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -98,11 +98,6 @@ public class VentaDetalleComplemento implements Serializable {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "VentaDetalleComplemento{" + "idventaDetalle_complemento=" + idventaDetalle_complemento + '}';
     }
     
     
