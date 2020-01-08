@@ -43,7 +43,7 @@
                                        itemValue="#{lsSuc.idsucursal}" itemLabel="#{lsSuc.nombre}" >
                         </f:selectItems>
                     </p:selectOneMenu>
-                        <p:commandButton value="Guardar" actionListener="#{tipoEmpleadoController.insertar()}"
+                        <p:commandButton value="Guardar" actionListener="#{empleadoController.insertar()}"
                                          update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
                                          rendered="#{empleadoController.empleado.idempleado == 0}"
                                          onclick="reiniciarTema();editarMSJ()"/>
@@ -82,6 +82,10 @@
                 </p:column>
             </p:dataTable>
         </h:form>
+        <h:form>
+            <p:commandButton actionListener="#{reporteController.reporte()}" value="Reporte"/> 
+        </h:form>
+       
     </ui:define>
 
 </ui:composition>

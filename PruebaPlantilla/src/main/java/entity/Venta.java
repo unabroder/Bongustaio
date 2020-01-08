@@ -42,8 +42,6 @@ public class Venta implements Serializable {
     @Column(name = "estado", nullable = false)
     private int estado;
 
-//  =======================================================================================================================
-//  =======================================================================================================================
     public int getIdventa() {
         return idventa;
     }
@@ -100,8 +98,6 @@ public class Venta implements Serializable {
         this.idventaDetalle_complemento = idventaDetalle_complemento;
     }
 
-//  =======================================================================================================================
-//  =======================================================================================================================
     @Override
     public String toString() {
         return "Venta{" + "idventa=" + idventa + '}';

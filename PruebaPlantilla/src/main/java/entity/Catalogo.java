@@ -27,6 +27,10 @@ public class Catalogo implements Serializable{
   
    @Column(name = "nombre", nullable = true)
    private String nombre;
+<<<<<<< HEAD
+=======
+  
+>>>>>>> c4c91e415bf0eee1c73ab9ab7acdab179450e70c
    
    @ManyToOne
    @JoinColumn(name = "idtipoproduc", referencedColumnName = "idtipoproducto")
@@ -48,6 +52,10 @@ public class Catalogo implements Serializable{
         this.nombre = nombre;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c4c91e415bf0eee1c73ab9ab7acdab179450e70c
     public Tipoproducto getIdtipoproduc() {
         return idtipoproduc;
     }

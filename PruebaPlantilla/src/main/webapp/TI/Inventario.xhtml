@@ -23,24 +23,21 @@
 
                 <p:panelGrid columns="2" >
                     <p:outputLabel value="Selecione" for="cmbMenuDelDia"/>
-                    <p:selectOneMenu id="cmbMenuDelDia" value="#{inventarioController.productoProveedor.idprod_prov}">
+                    <p:selectOneMenu id="cmbMenuDelDia" value="#{inventarioController.producto.idproducto}">
                         <f:selectItem itemLabel="seleccione el menu" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{inventarioController.listaProductoProveedores}" var="pp" itemLabel="#{catalogo.nombre}" itemValue="#{catalogo.idcatalogo}" />
+                        <f:selectItems value="#{inventarioController.listaproducto}" var="pp" itemLabel="#{pp.nombre}" itemValue="#{pp.idproducto}" />
                     </p:selectOneMenu>
-                    <p:outputLabel value="Descuento" for="txtDescuento"/>
-                    <p:inputText id="txtDescuento"  value="#{inventarioController.productoProveedor.descuento}"/>
-                    <h:outputText value="Estado:" />
-                    <p:selectOneMenu id="selEstado" value="#{menuDelDia.menuDelDia.estado}">
-                        <f:selectItem itemValue="0" itemLabel="Activo" />
-                        <f:selectItem itemValue="1" itemLabel="Inactivo" />
-                    </p:selectOneMenu>          
-                    <p:commandButton value="Guardar" actionListener="#{menuDelDia.insertar()}"
-                                     rendered="#{menuDelDia.menuDelDia.idmenu ==0}"
+                    <p:outputLabel value="Cantidad Entrante" for="txtCanEnt"/>
+                    <p:inputText id="txtCanEnt"  value="#{inventarioController.inventario.cant_entrada}"/>
+                    <p:outputLabel value="Cantidad Disponible" for="txtCanDis"/>
+                    <p:inputText id="txtCanDis"  value="#{inventarioController.inventario.cant_disponible}"/>
+                    <p:commandButton value="Guardar" actionListener="#{inventarioController.insertar()}"
+                                     rendered="#{inventarioController.inventario.idinventario == 0}"
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
 
                                      onclick="reiniciarTema();editarMSJ()"/>
                     <p:commandButton value="Editar" actionListener="#{menuDelDia.actualizar()}"
-                                     rendered="#{menuDelDia.menuDelDia.idmenu !=0}"
+                                     rendered="#{inventarioController.inventario.idinventario != 0}"
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
                                      onclick="reiniciarTema();editarMSJ()"/>
                 </p:panelGrid>
@@ -48,26 +45,27 @@
         </p:dialog>
 
         <h:form id="Datos">
-            <p:dataTable  value="#{menuDelDia.listaMenuDelDia}" var="menu">
+            <p:dataTable  value="#{inventarioController.listaInventario}" var="inv">
                 <p:column headerText="ID">
-                    <h:outputText value="#{menu.idmenu}" />
+                    <h:outputText value="#{inv.idinventario}" />
                 </p:column>
-                <p:column headerText="Descuento">
-                    <h:outputText value="#{menu.descuento}" />
+                <p:column headerText="Producto">
+                    <h:outputText value="#{inv.idproducto.nombre}" />
                 </p:column>
-                <p:column headerText="Catalogo">
-                    <h:outputText value="#{menu.catalogo.nombre}" />
+                <p:column headerText="Cantidad Entrada">
+                    <h:outputText value="#{inv.cant_entrada}" />
                 </p:column>
-                <p:column headerText="Estado">
-                    <h:outputText value="#{menu.estado}" />
+                <p:column headerText="Cantidad Disponible">
+                    <h:outputText value="#{inv.cant_disponible}" />
                 </p:column>
+
                 <p:column headerText="Editar">
-                    <p:commandButton value="Modificar" actionListener="#{menuDelDia.obtenerUno(mdd)}"
+                    <p:commandButton value="Modificar" actionListener="#{inventarioController.obtenerUno(inv)}"
                                      update=":da" oncomplete="PF('categoria').show()" styleClass="btnEditar" 
                                      onclick="reiniciarTema();editarMSJ()" />
                 </p:column>
                 <p:column headerText="Eliminar">
-                    <p:commandButton value="Eliminar" actionListener="#{menuDelDia.eliminar(mdd)}"
+                    <p:commandButton value="Eliminar" actionListener="#{inventarioController.eliminar(inv)}"
                                      update=":Datos"
                                      onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar" />
                 </p:column>

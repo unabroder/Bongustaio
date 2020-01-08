@@ -139,9 +139,7 @@ public class SucursalController implements Serializable {
 
     public void consultarById(Sucursal sucursal) {
         try {
-           
             this.sucursal = sucursal;
-            
         } catch (Exception e) {
         }
 

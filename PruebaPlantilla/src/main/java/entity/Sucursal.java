@@ -19,11 +19,15 @@ public class Sucursal implements Serializable {
     private int idsucursal;
 
     @OneToOne
+<<<<<<< HEAD
     @JoinColumn(name = "idorden_compra", referencedColumnName = "idorden_compra")
     private Tiposucursal idorden_compra;
     
     @OneToOne
     @JoinColumn(name = "idtipo", referencedColumnName = "idtiposucursal")
+=======
+    @JoinColumn(name = "idtiposucursal", referencedColumnName = "idtiposucursal")
+>>>>>>> c4c91e415bf0eee1c73ab9ab7acdab179450e70c
     private Tiposucursal idtipo;
     
     @Column(name="nombre")

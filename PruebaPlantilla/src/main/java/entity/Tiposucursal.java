@@ -18,7 +18,11 @@ public class Tiposucursal implements Serializable {
     private int idtiposucursal;
 
     @Column(name = "nombre", nullable = false)
+<<<<<<< HEAD
     private String nombre;
+=======
+    private String tipo;
+>>>>>>> c4c91e415bf0eee1c73ab9ab7acdab179450e70c
 
     @Column(name = "estado", nullable = false)
     private int estado;

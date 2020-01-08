@@ -1,7 +1,6 @@
 package controller;
 
 import ejb.ProveedorFacadeLocal;
-import entity.Producto;
 import entity.Proveedor;
 import entity.Sucursal;
 import java.io.Serializable;
@@ -70,6 +69,14 @@ public class ProveedorController implements Serializable {
             proveedorEJB.edit(proveedor);
         } catch (Exception e) {
         }
+    }
+    
+    public void leerid(Proveedor prov) {
+        try {
+            this.proveedor = prov;
+        } catch (Exception e) {
+        }
+
     }
     
     public void eliminar(Proveedor prov){

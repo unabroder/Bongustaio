@@ -6,6 +6,7 @@ import ejb.VentaFacadeLocal;
 import ejb.Venta_DetalleFacadeLocal;
 import entity.Empleado;
 import entity.Venta;
+import entity.VentaDetalleComplemento;
 import entity.Venta_Detalle;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -15,6 +16,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import ejb.VentaDetalleComplementoFacadeLocal;
 
 
 @Named(value = "ventaController")
@@ -30,14 +32,15 @@ public class VentaController implements Serializable {
         private EmpleadoFacadeLocal empleadoEJB;
         private Empleado empleado;
         private List<Empleado> listaempleado;
+
         
         @EJB
         private VentaDetalleComplementoFacadeLocal vdComplementoEJB;
         private VentaDetalleComplemento vdComplemento;
         private List<VentaDetalleComplemento> listavdComplemento;
         
-//======================================================================================================================
-//======================================================================================================================
+
+   
     public Venta getVenta() {
         return venta;
     }
@@ -88,14 +91,16 @@ public class VentaController implements Serializable {
     }
 
     
-    
-//======================================================================================================================
-//======================================================================================================================
+  
         @PostConstruct
         private void init(){
             venta =new Venta();
             empleado = new Empleado();
-            vdComplementoEJB=new VentaDetalleComplemento();
+
+            vdComplemento=new VentaDetalleComplemento();
+
+       
+
         }
         
         public void consultarEmpleado(){
@@ -105,6 +110,7 @@ public class VentaController implements Serializable {
             }
         }
         
+
         public void consultarVDComplemento(){
             try {
                 this.listavdComplemento=vdComplementoEJB.findAll();
@@ -162,8 +168,10 @@ public class VentaController implements Serializable {
         public void limpiar(){
              venta =new Venta();
             empleado = new Empleado();
-            vdComplementoEJB=new VentaDetalleComplemento();
+            vdComplemento=new VentaDetalleComplemento();
         }
+
+       
         
         
     

@@ -19,8 +19,7 @@
         <!-- Responsive CSS -->
         <link href="../css/responsive/responsive.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{usuarioController.validacion1()}" />
-        <f:event type="preRenderView" listener="#{usuarioController.validacionRol()}" />
+        
         <link href="../resources/css/menu.css" rel="stylesheet" type="text/css"/>
     </h:head>
 
@@ -34,9 +33,12 @@
                             <div class="row">
                                 <div class="col-md-10"  >
                                     <!--  Top Social bar start -->
-                                    <div class="top_social_bar">
-                                        <i id="cambio">Bongustaio </i>
-                                        &nbsp; <a class="btn-outline-warning" href="#">Bienvenido:&nbsp;&nbsp;#{usuarioController.usuarios.usuario}</a>
+                                   <div class="top_social_bar">
+                                        
+                                        <a href="../modulos.xhtml" ><i class="fa fa-reply" aria-hidden="false" style="margin-right: 29%;margin-left: -30%;font-size: 20px"></i></a>
+                                        <i id="cambio" >Bongustaio </i>
+                                        &nbsp; <a class="btn-outline-warning" href="#">
+                                        Bienvenido:&nbsp;&nbsp;#{usuarioController.usuarios.usuario}&nbsp;<i class="fa fa-user"></i></a>
 
                                     </div>
                                 </div>
@@ -75,33 +77,7 @@
                                 <p:autoUpdate />
                             </p:growl>
 
-                            <!--
-                            <p:panelMenu styleClass="ulcls">
-                                <p:submenu label="Usuarios" style="licls">
-                                    <p:menuitem value="usuarios" action="#{menuView.save}"  />
-                                    <p:menuitem value="roles" action="#{menuView.save}" />
-                                </p:submenu>
-                                <p:submenu label="Sucursales">
-                                    <p:menuitem value="Proveedores" actionListener="#{ProveedorController.consultar()}" />
-                                    <p:menuitem><p:link href="Sucursal.xhtml">Sucursales</p:link></p:menuitem>
-
-
-
-                                </p:submenu>
-                                <p:submenu label="Reportes">
-                                    <p:menuitem value="Inventario" action="#{menuView.save}" />
-                                    <p:menuitem value="Ventas" action="#{menuView.save}" />
-                                    <p:menuitem value="GAP" action="#{menuView.save}" />
-                                </p:submenu>
-
-                                <p:submenu label="Productos">
-                                    <p:menuitem value="Menu del día" action="#{menuView.save}" />
-                                    <p:menuitem value="Tipo producto" action="#{menuView.save}" />
-                                    <p:menuitem value="Especialidades" action="#{menuView.save}"/>
-
-                                </p:submenu>
-                            </p:panelMenu>
-                            -->
+                           
                             <ul>
                                 <li class="block">
                                     <input type="checkbox" name="item" id="item1" />   
@@ -135,6 +111,7 @@
                                     <input type="checkbox" name="item" id="item5" />   
                                     <label for="item5"><i aria-hidden="true" class="fa fa-money"></i>  Datos de Ventas <span>4</span></label>
                                     <ul class="options">
+                                        <li><h:link value="Compras" outcome="/TI/Orden_Compra" /></li>
                                         <li><h:link value="Venta" outcome="/TI/Sucursal" /></li>
                                         <li><h:link value="Venta Detalle" outcome="/TI/Sucursal" /></li>
                                         <li><h:link value="Complemento" outcome="/TI/Sucursal" /></li>
