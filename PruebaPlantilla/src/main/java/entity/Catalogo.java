@@ -28,11 +28,6 @@ public class Catalogo implements Serializable{
    @Column(name = "nombre", nullable = true)
    private String nombre;
   
-   @Column(name = "preciounit", nullable = true)
-   private double preciounit;
-  
-   @Column(name = "cantidad", nullable = true)
-   private int cantidad;
    
    @ManyToOne
    @JoinColumn(name = "idtipoproduc", referencedColumnName = "idtipoproducto")
@@ -54,21 +49,6 @@ public class Catalogo implements Serializable{
         this.nombre = nombre;
     }
 
-    public double getPreciounit() {
-        return preciounit;
-    }
-
-    public void setPreciounit(double preciounit) {
-        this.preciounit = preciounit;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
 
     public Tipoproducto getIdtipoproduc() {
         return idtipoproduc;

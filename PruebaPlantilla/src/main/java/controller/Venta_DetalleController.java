@@ -80,6 +80,7 @@ public class Venta_DetalleController implements Serializable {
     @PostConstruct
     private void init() {
         vdetalle = new Venta_Detalle();
+        pcompleto = new Plato_Completo();
     }
 
     

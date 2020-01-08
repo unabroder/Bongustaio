@@ -1,4 +1,3 @@
-
 package entity;
 
 import java.io.Serializable;
@@ -16,27 +15,34 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "orden_compra")
-public class OrdenCompra implements Serializable{
-    
+public class OrdenCompra implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idorden_compra")
     private int idorden_compra;
-    
+
     @ManyToOne
     @JoinColumn(name = "idproveedor", referencedColumnName = "idproveedor")
     private Proveedor idproveedor;
-    
+
     @ManyToOne
     @JoinColumn(name = "idproducto", referencedColumnName = "idproducto")
     private Producto idproducto;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "idsucursal", referencedColumnName = "idsucursal")
+    private Sucursal idsucursal;
+
     @Column(name = "cantidad")
     private int cantidad;
-    
+
     @Temporal(TemporalType.DATE)
-    @Column(name="fecha")
+    @Column(name = "fecha")
     private Date fecha;
+
+    @Column(name = "estado")
+    private int estado = 1;
 
     public int getIdorden_compra() {
         return idorden_compra;
@@ -62,6 +68,14 @@ public class OrdenCompra implements Serializable{
         this.idproducto = idproducto;
     }
 
+    public Sucursal getIdsucursal() {
+        return idsucursal;
+    }
+
+    public void setIdsucursal(Sucursal idsucursal) {
+        this.idsucursal = idsucursal;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
@@ -78,10 +92,19 @@ public class OrdenCompra implements Serializable{
         this.fecha = fecha;
     }
 
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 89 * hash + this.idorden_compra;
+
         return hash;
     }
 
@@ -107,6 +130,5 @@ public class OrdenCompra implements Serializable{
     public String toString() {
         return "OrdenCompra{" + "idorden_compra=" + idorden_compra + '}';
     }
-    
-    
+
 }
