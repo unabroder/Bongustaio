@@ -89,8 +89,6 @@ public class Plato_CompletoController implements Serializable {
         this.listaespecialidad = listaespecialidad;
     }
 
-//=======================================================================================================
-//=======================================================================================================
     @PostConstruct
     private void init() {
         pcompleto = new Plato_Completo();

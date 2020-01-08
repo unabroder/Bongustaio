@@ -43,17 +43,23 @@ public class OrdenCompraController implements Serializable {
     private Producto producto;
     private List<Producto> listaproducto;
 
+    String mensaje;
+    
+    public OrdenCompra getOrdencompra() {
+        return ordencompra;
+    }
+
     public void setOrdencompra(OrdenCompra ordencompra) {
         this.ordencompra = ordencompra;
     }
 
     public List<OrdenCompra> getListaorden() {
+        this.listaorden = OrdenEJB.findAll();
         return listaorden;
     }
 
     public void setListaorden(List<OrdenCompra> listaorden) {
         this.listaorden = listaorden;
-
     }
 
     public Proveedor getProveedor() {
@@ -104,6 +110,16 @@ public class OrdenCompraController implements Serializable {
         this.listaproducto = listaproducto;
     }
 
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    
+
     @PostConstruct
     private void init() {
         ordencompra = new OrdenCompra();
@@ -112,38 +128,19 @@ public class OrdenCompraController implements Serializable {
         producto = new Producto();
     }
 
-    public void consultarProvedor() {
-        try {
-            listaProveedor = proveedorEJB.findAll();
-        } catch (Exception e) {
-        }
-
-    }
-
-    public void consultarSucursal() {
-        try {
-            listaSucursal = sucursalEJB.findAll();
-        } catch (Exception e) {
-        }
-
-    }
-
-    public void consultarProducto() {
-        listaproducto = productoEJB.findAll();
-    }
-
     public void insertar() {
         try {
             ordencompra.setIdproveedor(proveedor);
             ordencompra.setIdproducto(producto);
-
+            ordencompra.setIdsucursal(sucursal);
             OrdenEJB.create(ordencompra);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-
+           this.mensaje ="Orde de Compra Registrada Exitosamente";
         } catch (Exception e) {
+            this.mensaje="Error :"+e.getMessage();
+            e.printStackTrace();
         }
-
+         FacesMessage msj = new FacesMessage(mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
     public void listar() {
@@ -159,6 +156,7 @@ public class OrdenCompraController implements Serializable {
         try {
             ordencompra.setIdproveedor(proveedor);
             ordencompra.setIdproducto(producto);
+            ordencompra.setIdsucursal(sucursal);
             OrdenEJB.edit(ordencompra);
 
         } catch (Exception e) {
@@ -170,6 +168,7 @@ public class OrdenCompraController implements Serializable {
         try {
             this.proveedor.setIdproveedor(orden.getIdproveedor().getIdproveedor());
             this.producto.setIdproducto(orden.getIdproducto().getIdproducto());
+            this.sucursal.setIdsucursal(orden.getIdsucursal().getIdsucursal());
             this.ordencompra = orden;
         } catch (Exception e) {
         }
@@ -187,7 +186,9 @@ public class OrdenCompraController implements Serializable {
 
     public void limpiar() {
         ordencompra = new OrdenCompra();
-
+        proveedor = new Proveedor();
+        sucursal = new Sucursal();
+        producto = new Producto();
     }
 
 }
