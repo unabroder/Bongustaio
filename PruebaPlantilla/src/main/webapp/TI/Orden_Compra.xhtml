@@ -53,9 +53,14 @@
                         </f:selectItems>
                     </p:selectOneMenu>
 
+<<<<<<< HEAD
 
                      <p:outputLabel value="Fecha"/>
                      <p:calendar value="#{ordenCompraController.ordencompra.fecha}"/>
+=======
+                    <p:outputLabel value="Fecha" for="txtFecha"/>
+                    <p:calendar id="txtFecha"  value="#{ordenCompraController.ordencompra.fecha}"/>
+>>>>>>> 11a849d3eca8309247f4236b22931a23a1d8bb4e
 
                     <p:outputLabel value="Cantidad" for="txtCantidad"/>
                     <p:inputText id="txtCantidad" value="#{ordenCompraController.ordencompra.cantidad}"/>
@@ -94,12 +99,12 @@
                     <h:outputText value="#{orden.idproducto.nombre}" />
                 </p:column>
 
-                 <p:column headerText="Fecha">
-                     <h:outputText value="#{orden.fecha}" />
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{orden.fecha}" />
                 </p:column>
-                
-                 <p:column headerText="Cantidad">
-                     <h:outputText value="#{orden.cantidad}" />
+
+                <p:column headerText="Cantidad">
+                    <h:outputText value="#{orden.cantidad}" />
                 </p:column>
 
                 <p:column headerText="Editar">

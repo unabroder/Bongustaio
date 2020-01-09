@@ -5,8 +5,12 @@
  */
 package controller;
 
+import ejb.SucursalFacadeLocal;
 import ejb.TipoproductoFacadeLocal;
+import ejb.TiposucursalFacadeLocal;
+import entity.Sucursal;
 import entity.Tipoproducto;
+import entity.Tiposucursal;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -18,12 +22,16 @@ import javax.inject.Named;
 
 @Named(value = "tipoproductoController")
 @SessionScoped
-public class TipoproductoController implements Serializable{
-    
+public class TipoproductoController implements Serializable {
+
     @EJB
     private TipoproductoFacadeLocal tipoproductoEJB;
     private Tipoproducto tipoproducto;
     private List<Tipoproducto> listaTipoproducto;
+    @EJB
+    private TiposucursalFacadeLocal tiposucursalEJB;
+    private Tiposucursal tiposucursal;
+    private List<Tiposucursal> listaTiposucursal;
 
     public Tipoproducto getTipoproducto() {
         return tipoproducto;
@@ -34,79 +42,113 @@ public class TipoproductoController implements Serializable{
     }
 
     public List<Tipoproducto> getListaTipoproducto() {
-        listaTipoproducto=tipoproductoEJB.findAll();
+        listaTipoproducto = tipoproductoEJB.findAll();
         return listaTipoproducto;
     }
+
+    public Tiposucursal getTiposucursal() {
+        return tiposucursal;
+    }
+
+    public void setTiposucursal(Tiposucursal tiposucursal) {
+        this.tiposucursal = tiposucursal;
+    }
+
+    public List<Tiposucursal> getListaTiposucursal() {
+        return listaTiposucursal;
+    }
+
+    public void setListaTiposucursal(List<Tiposucursal> listaTiposucursal) {
+        this.listaTiposucursal = listaTiposucursal;
+    }
+
+    
+    
 
     public void setListaTipoproducto(List<Tipoproducto> listaTipoproducto) {
         this.listaTipoproducto = listaTipoproducto;
     }
-    
+
     @PostConstruct
-    public void init(){
-        tipoproducto= new Tipoproducto();
+    public void init() {
+        tipoproducto = new Tipoproducto();
+        tiposucursal=new Tiposucursal();
     }
-    
-    public void consultarTipoproducto(){
+
+    public void consultarTipoproducto() {
         try {
-            listaTipoproducto=tipoproductoEJB.findAll();
-        } catch (Exception e) {
-        }
-    }
-    
-    public void insertar(){
-        try {
-            tipoproductoEJB.create(tipoproducto);
-            FacesMessage msg =new FacesMessage(FacesMessage.SEVERITY_INFO, "Se guardo exitosamente", null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-            } catch (Exception e) {
-        }
-    }
-    
-    public void consultar(){
-        try {
-            listaTipoproducto=tipoproductoEJB.findAll();
-        } catch (Exception e) {
-        }
-    }
-    
-    public void listar(){
-        try {
-            listaTipoproducto=tipoproductoEJB.findAll();
-        } catch (Exception e) {
-        }
-    }
-    
-    public void leerid(Tipoproducto tipo){
-        try {
-            this.tipoproducto=tipo;
-        } catch (Exception e) {
-        }
-    }
-    
-    public void modificar(){
-        try {
-            tipoproductoEJB.edit(tipoproducto);
-            listaTipoproducto=tipoproductoEJB.findAll();
-        } catch (Exception e) {
-        }
-    }
-    
-    public void eliminar(Tipoproducto tipo){
-    this.tipoproducto=tipo;
-        try {
-            tipoproductoEJB.remove(tipoproducto);
             listaTipoproducto = tipoproductoEJB.findAll();
         } catch (Exception e) {
         }
     }
-    
-    public void consultarActivos(){
+
+    public void insertar() {
         try {
-            listaTipoproducto=tipoproductoEJB.findActivos();
+            tipoproducto.setIdtiposucursal(tiposucursal);
+            tipoproductoEJB.create(tipoproducto);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se guardo exitosamente", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
     }
-    
 
+    public void consultar() {
+        try {
+            listaTiposucursal=tiposucursalEJB.findAll();
+            listaTipoproducto = tipoproductoEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void listar() {
+        try {
+            listaTipoproducto = tipoproductoEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void leerid(Tipoproducto tipo) {
+        try {
+            this.tiposucursal.setIdtiposucursal(tipo.getIdtipoproducto());
+            this.tipoproducto=tipo;
+        } catch (Exception e) {
+        }
+    }
+
+    public void modificar() {
+        try {
+            tipoproductoEJB.edit(tipoproducto);
+            listaTipoproducto = tipoproductoEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void consultarActivos() {
+        try {
+            listaTipoproducto = tipoproductoEJB.findActivos();
+        } catch (Exception e) {
+        }
+    }
+
+    public void deshabilitar(Tipoproducto tipo) {
+        try {
+            tipo.setEstado(0);
+            tipoproductoEJB.Estado(tipo);
+            listaTipoproducto = tipoproductoEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se deshabilitó su registro", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void habilitar(Tipoproducto tipo) {
+        try {
+            tipo.setEstado(1);
+            listaTipoproducto=tipoproductoEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se habilitó su registro", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+        }
+    }
 }

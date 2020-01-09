@@ -32,5 +32,5 @@ public interface TipoproductoFacadeLocal {
 
     int count();
     
-    void removerEstado(Tipoproducto tipo);
+    void Estado(Tipoproducto tipo);
 }

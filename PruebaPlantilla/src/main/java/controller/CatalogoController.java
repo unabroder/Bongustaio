@@ -63,6 +63,7 @@ public class CatalogoController implements Serializable {
     }
 
     public void setListaTipoproducto(List<Tipoproducto> listaTipoproducto) {
+        this.listaTipoproducto = listaTipoproducto;
     }
 
     @PostConstruct
@@ -98,8 +99,8 @@ public class CatalogoController implements Serializable {
 
     public void consultar() {
         try {
-            listaCatalogo = catalogoEJB.findAll(); 
-            listaTipoproducto=tipoproductoEJB.findAll();
+            listaCatalogo = catalogoEJB.findAll();
+            listaTipoproducto = tipoproductoEJB.findAll();
 
         } catch (Exception e) {
         }
@@ -116,7 +117,7 @@ public class CatalogoController implements Serializable {
         try {
             this.tipoproducto.setIdtipoproducto(cata.getIdtipoproduc().getIdtipoproducto());
             this.catalogo = cata;
-            
+
         } catch (Exception e) {
         }
     }
@@ -138,20 +139,20 @@ public class CatalogoController implements Serializable {
         } catch (Exception e) {
         }
     }
-    
-    public void consultarById(Catalogo catalogo){
+
+    public void consultarById(Catalogo catalogo) {
         try {
-            this.catalogo=catalogo;
+            this.catalogo = catalogo;
         } catch (Exception e) {
         }
     }
-    
-    public void limpiar(){
+
+    public void limpiar() {
         try {
             catalogo = new Catalogo();
-        tipoproducto = new Tipoproducto();
+            tipoproducto = new Tipoproducto();
         } catch (Exception e) {
         }
-    
+
     }
 }

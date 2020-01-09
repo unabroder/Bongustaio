@@ -26,9 +26,12 @@ public class Catalogo implements Serializable{
   private int idcatalogo;
   
    @Column(name = "nombre", nullable = true)
-   private String nombre;
-  
-   
+   private String nombre; 
+   /*
+<<<<<<< HEAD
+=======
+
+> */
    @ManyToOne
    @JoinColumn(name = "idtipoproduc", referencedColumnName = "idtipoproducto")
    private Tipoproducto idtipoproduc;
@@ -48,7 +51,10 @@ public class Catalogo implements Serializable{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+/*
+<<<<<<< HEAD
+=======
+*/
 
     public Tipoproducto getIdtipoproduc() {
         return idtipoproduc;

@@ -11,20 +11,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tipoproducto")
-public class Tipoproducto implements Serializable{
-    
+public class Tipoproducto implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idtipoproducto;
-    
-    @Column(name = "tipoproducto", nullable = true)
-    private String tipoproducto;
-    
-    @Column(name = "estado")
+
+    @ManyToOne
+    @JoinColumn(name = "idtiposucursal", referencedColumnName = "idtiposucursal")
+    private Tiposucursal idtiposucursal;
+
+    @Column(name = "nombre", nullable = true)
+    private String nombre;
+
+    @Column(name = "estado", nullable = true)
     private int estado;
 
     public int getIdtipoproducto() {
@@ -35,12 +41,20 @@ public class Tipoproducto implements Serializable{
         this.idtipoproducto = idtipoproducto;
     }
 
-    public String getTipoproducto() {
-        return tipoproducto;
+    public Tiposucursal getIdtiposucursal() {
+        return idtiposucursal;
     }
 
-    public void setTipoproducto(String tipoproducto) {
-        this.tipoproducto = tipoproducto;
+    public void setIdtiposucursal(Tiposucursal idtiposucursal) {
+        this.idtiposucursal = idtiposucursal;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getEstado() {
@@ -80,6 +94,6 @@ public class Tipoproducto implements Serializable{
     public String toString() {
         return "Tipoproducto{" + "idtipoproducto=" + idtipoproducto + '}';
     }
-    
+
     
 }

@@ -47,14 +47,16 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
         return lista;
     }
 
-    public void removerEstado(Tipoproducto tipo) {
+    public void Estado(Tipoproducto tipo) {
         String sql;
         try {
-            sql = "UPDATE tipoproducto x SET estado=0 WHERE idtipoproducto=?1";
+            sql = "UPDATE Tipoproducto x SET estado=?1 WHERE idtipoproducto=?2";
             Query query = em.createQuery(sql);
-            query.setParameter(1, tipo.getIdtipoproducto());
-
+            query.setParameter(1, tipo.getEstado());
+            query.setParameter(2, tipo.getIdtipoproducto());
+            query.executeUpdate();
         } catch (Exception e) {
+            e.printStackTrace();
             throw e;
         }
 

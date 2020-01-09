@@ -18,8 +18,17 @@ public class Sucursal implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idsucursal;
 
+///<<<<<<< HEA
+
+    
     @OneToOne
+<<<<<<< HEAD
     @JoinColumn(name = "idtipo", referencedColumnName = "idtiposucursal")
+=======
+    @JoinColumn(name = "idtiposucursal", referencedColumnName = "idtiposucursal")
+//=======
+  //  @JoinColumn(name = "idtiposucursal", referencedColumnName = "idtiposucursal")
+>>>>>>> 11a849d3eca8309247f4236b22931a23a1d8bb4e
     private Tiposucursal idtipo;
     
     @Column(name="nombre")
@@ -71,6 +80,7 @@ public class Sucursal implements Serializable {
     public void setIdsucursal(int idsucursal) {
         this.idsucursal = idsucursal;
     }
+   
 
     public Tiposucursal getIdtipo() {
         return idtipo;
