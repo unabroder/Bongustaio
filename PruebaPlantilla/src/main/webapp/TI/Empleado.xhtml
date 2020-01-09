@@ -44,16 +44,7 @@
                                        itemValue="#{lsTP.idsucursal}" itemLabel="#{lsTP.nombre}" >
                         </f:selectItems>
                     </p:selectOneMenu>
-<<<<<<< HEAD
-                    <p:commandButton value="Guardar" actionListener="#{empleadoController.insertar()}"
-                                     update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
-                                     rendered="#{empleadoController.empleado.idempleado == 0}"
-                                     onclick="reiniciarTema();editarMSJ()"/>
-                    <p:commandButton value="Editar" actionListener="#{empleadoController.editar()}"
-                                     update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
-                                     rendered="#{empleadoController.empleado.idempleado != 0}"
-                                     onclick="reiniciarTema();editarMSJ()"/>
-=======
+
                         <p:commandButton value="Guardar" actionListener="#{empleadoController.insertar()}"
                                          update=":Datos da :MSJ" oncomplete="PF('empleado').hide()" icon="ui-icon-mail-open" 
                                          rendered="#{empleadoController.empleado.idempleado == 0}"
@@ -62,7 +53,7 @@
                                          update=":Datos da :MSJ" oncomplete="PF('empleado').hide()" 
                                          rendered="#{empleadoController.empleado.idempleado != 0}"
                                          onclick="reiniciarTema();editarMSJ()"/>
->>>>>>> 11a849d3eca8309247f4236b22931a23a1d8bb4e
+
                 </p:panelGrid>
             </h:form>
         </p:dialog>
