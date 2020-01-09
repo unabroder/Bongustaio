@@ -33,19 +33,19 @@
 
                     <p:outputLabel value="Selecione el Plato" for="cmbPlato"/>
                     <p:selectOneMenu id="cmbPlato" value="#{ventaDetalleComplementoController.vdetalle.idventa_detalle}">
-                        <f:selectItem itemLabel="seleccione el proveedor" itemValue="" noSelectionOption="true" />
+                        <f:selectItem itemLabel="seleccione el plato" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{plato_CompletoController.listapcompleto}" var="vend" itemLabel="#{vend.nombre}" itemValue="#{vend.idplato_completo}" />
                     </p:selectOneMenu>
 
                     <p:outputLabel value="Selecione el complemento " for="cmbComplemento"/>
                     <p:selectOneMenu id="cmbComplemento" value="#{ventaDetalleComplementoController.complemento.idcomplemento}">
-                        <f:selectItem itemLabel="seleccione el proveedor" itemValue="" noSelectionOption="true" />
+                        <f:selectItem itemLabel="seleccione el complemento" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{complementoController.listaComplemento}" var="con" itemLabel="#{con.nombre}" itemValue="#{con.idcomplemento}" />
                     </p:selectOneMenu>
 
 
 
-                    <p:outputLabel value="Precio" for="txtCantidad"/>
+                    <p:outputLabel value="Cantidad" for="txtCantidad"/>
                     <p:inputText id="txtCantidad"  value="#{ventaDetalleComplementoController.vdcomplement.cantidad}"/>
 
                     <p:commandButton value="Guardar" actionListener="#{ventaDetalleComplementoController.insertar()}"

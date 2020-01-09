@@ -81,6 +81,14 @@ public class TipoproductoController implements Serializable {
         } catch (Exception e) {
         }
     }
+    
+    public void limpiar(){
+        try {
+            tipoproducto=new Tipoproducto();
+            tiposucursal=new Tiposucursal();
+        } catch (Exception e) {
+        }
+    }
 
     public void insertar() {
         try {
@@ -92,12 +100,11 @@ public class TipoproductoController implements Serializable {
         }
     }
 
-    public void consultar() {
-        try {
-            listaTiposucursal=tiposucursalEJB.findAll();
-            listaTipoproducto = tipoproductoEJB.findAll();
-        } catch (Exception e) {
-        }
+    public List<Tipoproducto> consultar() {
+       
+            this.listaTipoproducto=tipoproductoEJB.findAll();
+            return listaTipoproducto;
+        
     }
 
     public void listar() {
@@ -115,8 +122,10 @@ public class TipoproductoController implements Serializable {
         }
     }
 
-    public void modificar() {
+    public void actualizar() {
         try {
+            tipoproducto.setEstado(1);
+            tipoproducto.setIdtiposucursal(tiposucursal);
             tipoproductoEJB.edit(tipoproducto);
             listaTipoproducto = tipoproductoEJB.findAll();
         } catch (Exception e) {
@@ -145,9 +154,17 @@ public class TipoproductoController implements Serializable {
     public void habilitar(Tipoproducto tipo) {
         try {
             tipo.setEstado(1);
+            tipoproductoEJB.Estado(tipo);
             listaTipoproducto=tipoproductoEJB.findAll();
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se habilitó su registro", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+        }
+    }
+    
+    public void consultarById(Tipoproducto tipo){
+        try {
+            this.tipoproducto=tipo;
         } catch (Exception e) {
         }
     }
