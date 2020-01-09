@@ -340,6 +340,7 @@ li {
 
 .top_header_area .top_social_bar > a:hover {
     color: white;
+    font-size: 20px;
 }
 
 .top_header_area .top_social_bar > a:last-of-type {
