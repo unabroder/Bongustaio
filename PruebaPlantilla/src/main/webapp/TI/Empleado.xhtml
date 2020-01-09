@@ -16,7 +16,7 @@
         </h:form>
         <!---->
         <p:dialog  widgetVar="empleado" modal="false" showEffect="clip" resizable="false" header="Empleado">
-            <p:ajax event="close" listener="#{empleadoController.limpiar}"   update=":da" />
+            <p:ajax event="close" listener="#{empleadoController.limpiar()}"   update=":da" />
             <h:form id='da'>
                 <p:panelGrid columns="2" >
                     <p:outputLabel value="Nombres" for="txtNombres"/>
@@ -29,29 +29,29 @@
                     <p:inputText id="txtCorreo" value="#{empleadoController.empleado.correo}"/>
                     <p:outputLabel value="Telefono" for="txtTel"/>
                     <p:inputText id="txtTel" value="#{empleadoController.empleado.telefono}"/>
-                    
-                    <p:outputLabel value="Tipo Empleado" />
-                    <p:selectOneMenu  value="#{empleadoController.tipoEmp.idtipoempleado}">
-                        <f:selectItem itemLabel="Seleccione un tipo de empleado"></f:selectItem>
+
+                    <p:outputLabel value="Tipo Empleado" for="cboTipoE"/>
+                    <p:selectOneMenu id="cboTipoE" value="#{empleadoController.tipoEmp.idtipoempleado}">
+                        <f:selectItem itemLabel="Seleccione un tipo de empleado" noSelectionOption="true"></f:selectItem>
                         <f:selectItems value="#{empleadoController.lsTipoEmp}" var="lsTP"
                                        itemValue="#{lsTP.idtipoempleado}" itemLabel="#{lsTP.tipoempleado}" >
                         </f:selectItems>
                     </p:selectOneMenu>
-                    <p:outputLabel value="Sucursal" />
-                    <p:selectOneMenu  value="#{empleadoController.sucursal.idsucursal}">
+                    <p:outputLabel value="Sucursal" for="cboSuc"/>
+                    <p:selectOneMenu id="cboSuc" value="#{empleadoController.sucursal.idsucursal}">
                         <f:selectItem itemLabel="Seleccione una sucursal"></f:selectItem>
                         <f:selectItems value="#{empleadoController.listSucursal}" var="lsSuc"
                                        itemValue="#{lsSuc.idsucursal}" itemLabel="#{lsSuc.nombre}" >
                         </f:selectItems>
                     </p:selectOneMenu>
-                        <p:commandButton value="Guardar" actionListener="#{empleadoController.insertar()}"
-                                         update=":Datos da :MSJ" oncomplete="PF('empleado').hide()" icon="ui-icon-mail-open" 
-                                         rendered="#{empleadoController.empleado.idempleado == 0}"
-                                         onclick="reiniciarTema();editarMSJ()"/>
-                        <p:commandButton value="Editar" actionListener="#{empleadoController.editar()}"
-                                         update=":Datos da :MSJ" oncomplete="PF('empleado').hide()" 
-                                         rendered="#{empleadoController.empleado.idempleado != 0}"
-                                         onclick="reiniciarTema();editarMSJ()"/>
+                    <p:commandButton value="Guardar" actionListener="#{empleadoController.insertar()}"
+                                     update=":Datos da :MSJ" oncomplete="PF('empleado').hide()" icon="ui-icon-mail-open" 
+                                     rendered="#{empleadoController.empleado.idempleado == 0}"
+                                     onclick="reiniciarTema();editarMSJ()"/>
+                    <p:commandButton value="Editar" actionListener="#{empleadoController.editar()}"
+                                     update=":Datos da :MSJ" oncomplete="PF('empleado').hide()" 
+                                     rendered="#{empleadoController.empleado.idempleado != 0}"
+                                     onclick="reiniciarTema();editarMSJ()"/>
                 </p:panelGrid>
             </h:form>
         </p:dialog>
@@ -86,7 +86,7 @@
         <h:form>
             <p:commandButton actionListener="#{reporteController.reporte()}" value="Reporte"/> 
         </h:form>
-       
+
     </ui:define>
 
 </ui:composition>
