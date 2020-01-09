@@ -39,6 +39,8 @@
                     <p:inputText id="txtCantidad" value="#{venta_DetalleController.vdetalle.cantidad}" />
                     <p:outputLabel value="Estado" for="txtEstado"/>
                     <p:inputText id="txtEstado" value="#{venta_DetalleController.vdetalle.estado}"/>
+                    <p:outputLabel value="#de orden" for="txtnOrden" />
+                    <p:inputText id="txtnOrden" value="#{venta_DetalleController.vdetalle.codigo}" />
 
                     <p:commandButton value="Guardar" actionListener="#{venta_DetalleController.insertar()}"
                                      update=":Datos da :MSJ" oncomplete="PF('venta_detalle').hide()" icon="ui-icon-mail-open" 
@@ -59,6 +61,9 @@
 
                 <p:column headerText="ID">
                     <h:outputText value="#{vd.idventa_detalle}" />
+                </p:column>
+                <p:column headerText="# de orden">
+                    <h:outputText value="#{vd.codigo}" />
                 </p:column>
                 <p:column headerText="Plato Complemento">
                     <h:outputText value="#{vd.idplato_completo.nombre}" />
