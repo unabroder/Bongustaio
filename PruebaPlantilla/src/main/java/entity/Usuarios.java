@@ -1,4 +1,3 @@
-
 package entity;
 
 import java.io.Serializable;
@@ -12,25 +11,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="usuarios")
-public class Usuarios implements Serializable{
-    
+@Table(name = "usuarios")
+public class Usuarios implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idusuario;
-    
-    @Column(name ="usuario")
+
+    @Column(name = "usuario")
     private String usuario;
-    
-    @Column(name ="clave")
+
+    @Column(name = "clave")
     private String clave;
-    
+
     @ManyToOne
-    @JoinColumn (name ="idtipo", referencedColumnName = "idrol")
+    @JoinColumn(name = "idtipo", referencedColumnName = "idrol")
     private Roles idtipo;
-    
-    @Column(name ="Estado")
-    private int Estado;
+
+    @ManyToOne
+    @JoinColumn(name = "idempleado", referencedColumnName = "idempleado")
+    private Empleado idempleado;
+
+    @Column(name = "Estado")
+    private int Estado = 1;
 
     public int getIdusuario() {
         return idusuario;
@@ -62,6 +65,14 @@ public class Usuarios implements Serializable{
 
     public void setIdtipo(Roles idtipo) {
         this.idtipo = idtipo;
+    }
+
+    public Empleado getIdempleado() {
+        return idempleado;
+    }
+
+    public void setIdempleado(Empleado idempleado) {
+        this.idempleado = idempleado;
     }
 
     public int getEstado() {
@@ -102,6 +113,4 @@ public class Usuarios implements Serializable{
         return "Usuarios{" + "idusuario=" + idusuario + '}';
     }
 
-    
-    
 }
