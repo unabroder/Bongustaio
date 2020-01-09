@@ -12,6 +12,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -26,6 +28,8 @@ public class TipoEmpleadoController implements Serializable {
     private TipoEmpleadoFacadeLocal tipoEmpleadoEJB;
     private TipoEmpleado tipoEmpleado;
     private List<TipoEmpleado> lista;
+
+    private String mensaje;
 
     public TipoEmpleado getTipoEmpleado() {
         return tipoEmpleado;
@@ -55,8 +59,12 @@ public class TipoEmpleadoController implements Serializable {
     public void insertar() {
         try {
             tipoEmpleadoEJB.create(tipoEmpleado);
+            mensaje = "Se guardo Tipo de empleado";
         } catch (Exception e) {
+            mensaje = "No se guardo " + e.getMessage();
         }
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void LeerId(TipoEmpleado idtipo) {
@@ -66,8 +74,12 @@ public class TipoEmpleadoController implements Serializable {
     public void actualizar() {
         try {
             tipoEmpleadoEJB.edit(tipoEmpleado);
+            mensaje = "Se modifico empleado";
         } catch (Exception e) {
+            mensaje = "No se modifico " + e.getMessage();
         }
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void listaTP() {
@@ -81,11 +93,15 @@ public class TipoEmpleadoController implements Serializable {
         try {
             tipoEmpleado = tpEmp;
             tipoEmpleadoEJB.remove(tipoEmpleado);
+            mensaje = "Se elimino tipo empleado";
         } catch (Exception e) {
+            mensaje = "No se elimino " + e.getMessage();
         }
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-    
-    public void limpiar(){
+
+    public void limpiar() {
         tipoEmpleado = new TipoEmpleado();
     }
 }
