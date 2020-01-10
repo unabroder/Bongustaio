@@ -135,11 +135,9 @@ public class OrdenCompraController implements Serializable {
             ordencompra.setIdproducto(producto);
             ordencompra.setIdsucursal(sucursal);
             OrdenEJB.create(ordencompra);
-<<<<<<< HEAD
+
             this.mensaje = "Orde de Compra Registrada Exitosamente";
-=======
-            this.mensaje = "Orden de Compra Registrada Exitosamente";
->>>>>>> 9375ce0e1eb10b6286fbbdfefc34ce6bd1ffd592
+
         } catch (Exception e) {
             this.mensaje = "Error :" + e.getMessage();
             e.printStackTrace();
