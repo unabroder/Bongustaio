@@ -161,7 +161,7 @@ public class usuarioController implements Serializable {
                         FacesContext.getCurrentInstance().getExternalContext().redirect("mantenimiento.xhtml?faces-redirect=true");
                         break;
                     case "Vendedor":
-                        FacesContext.getCurrentInstance().getExternalContext().redirect("Ventas/venta.xhtml");
+                        FacesContext.getCurrentInstance().getExternalContext().redirect("Ventas/venta.xhtml?faces-redirect=true");
                         break;
                     default:
                         System.out.println("Ocurrio un error");
@@ -173,6 +173,25 @@ public class usuarioController implements Serializable {
             e.printStackTrace();
         }
         //return redireccion;
+
+    }
+    
+    public void validacionRolBodega() {
+        Usuarios us;
+        try {
+            us = usuariofacade.Sesion(usuarios);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", us);
+            if (us != null) {
+                String cargo = us.getIdtipo().getRol();
+                System.out.println(cargo);
+                if(cargo.equalsIgnoreCase("Cocinero")){
+                       FacesContext.getCurrentInstance().getExternalContext().redirect("Proveedores/Producto.xhtml?faces-redirect=true");
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

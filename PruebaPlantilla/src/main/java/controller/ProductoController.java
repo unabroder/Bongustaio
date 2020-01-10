@@ -28,7 +28,8 @@ public class ProductoController implements Serializable {
     private ProductoFacadeLocal productoEJB;
     private Producto producto;
     private List<Producto> listaproducto;
-
+    private List<Producto> listaproducto2;
+    
     public Producto getProducto() {
         return producto;
     }
@@ -46,6 +47,9 @@ public class ProductoController implements Serializable {
         this.listaproducto = listaproducto;
     }
 
+    
+
+    
     @PostConstruct
     public void init() {
         producto = new Producto();
@@ -102,6 +106,10 @@ public class ProductoController implements Serializable {
     public void limpiar(){
     producto=new Producto();
     
+    }
+    
+    public void buscarProducto(){
+        this.listaproducto = this.productoEJB.Buscar(producto);
     }
 
 }

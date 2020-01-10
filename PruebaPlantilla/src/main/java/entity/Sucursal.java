@@ -17,16 +17,9 @@ public class Sucursal implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idsucursal;
-
-///<<<<<<< HEA
-
     
     @OneToOne
-
     @JoinColumn(name = "idtiposucursal", referencedColumnName = "idtiposucursal")
-//=======
-  //  @JoinColumn(name = "idtiposucursal", referencedColumnName = "idtiposucursal")
-
     private Tiposucursal idtipo;
     
     @Column(name="nombre")
