@@ -35,6 +35,7 @@ entity\Complemento_.class
 entity\Especialidad_.class
 entity\Tiposucursal_.class
 ejb\EmpleadoFacade.class
+.netbeans_automatic_build
 ejb\ComplementoFacade.class
 entity\Catalogo_.class
 controller\TipoEmpleadoController.class

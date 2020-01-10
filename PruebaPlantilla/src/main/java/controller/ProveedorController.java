@@ -58,16 +58,22 @@ public class ProveedorController implements Serializable {
     public void insertar() {
         try {
             proveedorEJB.create(proveedor);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "el registro fue guardado", null);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se guardo correctamente", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
     
     public void editar(){
         try {
             proveedorEJB.edit(proveedor);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se actualizo correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
     
@@ -83,6 +89,8 @@ public class ProveedorController implements Serializable {
         try {
             proveedor = prov;
             proveedorEJB.remove(proveedor);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se elimino correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
     }
