@@ -144,13 +144,7 @@ public class VentaController implements Serializable {
         }
     }
 
-    public List<Venta> consultar() {
-
-        System.out.println("#####################en el controller##############################");
-//        System.out.println(date1);
-//        this.listaventa = ventaEJB.consultarVenta(this.date1, this.date2);
-        return this.listaventa = ventaEJB.findAll();
-    }
+ 
 
     public void leerId(Venta vent) {
         try {
@@ -167,6 +161,15 @@ public class VentaController implements Serializable {
             venta.setIdventaDetalle_complemento(vdComplemento);
 
             ventaEJB.edit(venta);
+        } catch (Exception e) {
+        }
+    }
+    
+      public void reporte() {
+        try {
+            System.out.println("metodo de reporte ");
+           Reporte reporte = new Reporte();
+           reporte.reporte(this.fecha.getFecha1(), this.fecha.getFecha2());
         } catch (Exception e) {
         }
     }

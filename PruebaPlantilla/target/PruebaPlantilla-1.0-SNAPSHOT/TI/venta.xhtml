@@ -67,7 +67,7 @@
                 <p:calendar value="#{ventaController.fecha.fecha2}" />
             </p:panelGrid>
             <p:panelGrid columns="1">
-                <p:commandButton value="Consultar por fechas" 
+                <p:commandButton value="Consultar por fechas" actionListener="#{ventaController.reporte()}"
                                  update=":DatosT da :MSJ" styleClass="btnEditar" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
                                  rendered="#{ventaController.venta.idventa ==0}"  
                                  onclick="reiniciarTema();editarMSJ()"/> </p:panelGrid>

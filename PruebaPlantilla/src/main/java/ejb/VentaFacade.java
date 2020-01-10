@@ -72,7 +72,7 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
             System.out.println("###################botones vacios ################");
 
             e.printStackTrace();
-            System.out.println(date1 + "////" + date2);
+         
             System.out.println("###################error de vista de venta ################" + e);
             return lista;
         }
