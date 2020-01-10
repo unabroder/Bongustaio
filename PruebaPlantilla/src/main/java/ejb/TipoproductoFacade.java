@@ -50,7 +50,7 @@ public class TipoproductoFacade extends AbstractFacade<Tipoproducto> implements 
     public void Estado(Tipoproducto tipo) {
         String sql;
         try {
-            sql = "UPDATE Tipoproducto x SET estado=?1 WHERE idtipoproducto=?2";
+            sql = "UPDATE Tipoproducto x SET x.estado=?1 WHERE x.idtipoproducto=?2";
             Query query = em.createQuery(sql);
             query.setParameter(1, tipo.getEstado());
             query.setParameter(2, tipo.getIdtipoproducto());

@@ -1,4 +1,5 @@
-﻿CREATE DATABASE bongustaio;
+drop database bongustaio;
+CREATE DATABASE bongustaio;
 USE bongustaio;
 
 CREATE TABLE proveedor(
@@ -30,6 +31,7 @@ idinventario int(11) not null primary key auto_increment,
 idproducto int(11) not null,
 cant_entrada int(11) not null,
 cant_disponible int(11) not null,
+fecha date not null,
 estado int(1) not null default 1,
 constraint foreign key (idproducto) references producto(idproducto)
 on delete cascade on update cascade
@@ -37,6 +39,7 @@ on delete cascade on update cascade
 insert into inventario(idproducto,cant_entrada,cant_disponible,estado)
 values(1,2,6,1);
 select*from inventario;
+
 /*TIPO SUCURSAL DEBE ESTAR RELACIONADA CON SUCURSAL */
 CREATE TABLE tiposucursal(
 idtiposucursal int(11) not null primary key auto_increment,
@@ -191,6 +194,7 @@ on delete cascade on update cascade
 create table venta_detalle(
 idventa_detalle int(11) not null primary key auto_increment,
 idplato_completo int (11) not null,
+codigo varchar(10) not null,
 cantidad int(11) not null,
 estado int(1) not null default 1,
 constraint foreign key (idplato_completo) references plato_completo(idplato_completo) on delete cascade on update cascade
@@ -208,7 +212,7 @@ create table ventaDetalle_complemento(
 idventaDetalle_complemento int(11) not null primary key auto_increment,
 cantidad int not null,
 idventa_detalle int not null,
-idcomplemento int(11) not null,
+idcomplemento int(11),
 constraint foreign key (idventa_detalle) references venta_detalle(idventa_detalle) on delete cascade on update cascade,
 constraint foreign key (idcomplemento) references complemento(idcomplemento) on delete cascade on update cascade
 )engine InnoDB;
