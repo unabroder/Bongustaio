@@ -21,4 +21,6 @@ public interface Plato_CompletoFacadeLocal {
     List<Plato_Completo> findRange(int[] range);
     
     int count();
+    
+    List<Plato_Completo> obtenerPlatoPorTipoProducto(int id);
 }
