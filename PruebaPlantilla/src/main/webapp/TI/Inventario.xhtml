@@ -43,11 +43,28 @@
                 </p:panelGrid>
             </h:form>
         </p:dialog>
+        
+        <h:form id="date">
+            <p:panelGrid columns="2">
+                <h:outputLabel value="Ingrese fecha de inicio"/>
+                <h:outputLabel value="Ingrese fecha final" />
+                <p:calendar  value="#{inventarioController.fecha.fecha1}" />
+                <p:calendar value="#{inventarioController.fecha.fecha2}" />
+            </p:panelGrid>
+            <p:panelGrid columns="1">
+                <p:commandButton actionListener="#{inventarioController.consultar()}" update=":Datos"  value="Consultar por fecha"
+                                  styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()"/>
+            </p:panelGrid>
+        </h:form>
+        
 
         <h:form id="Datos">
             <p:dataTable  value="#{inventarioController.listaInventario}" var="inv">
                 <p:column headerText="ID">
                     <h:outputText value="#{inv.idinventario}" />
+                </p:column>
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{inv.fecha}" />
                 </p:column>
                 <p:column headerText="Producto">
                     <h:outputText value="#{inv.idproducto.nombre}" />

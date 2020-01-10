@@ -45,11 +45,11 @@
                     <p:inputText id="txtEstado" required="true" value="#{ventaController.venta.estado}"/>
 
                     <p:commandButton value="Guardar" actionListener="#{ventaController.insertar()}"
-                                     update=":Datos da :MSJ" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
+                                     update=":DatosT da :MSJ" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
                                      rendered="#{ventaController.venta.idventa ==0}"  
                                      onclick="reiniciarTema();editarMSJ()"/>
                     <p:commandButton value="Editar" actionListener="#{ventaController.modificar()}"
-                                     update=":Datos da :MSJ" oncomplete="PF('venta').hide()" 
+                                     update=":DatosT da :MSJ" oncomplete="PF('venta').hide()" 
                                      rendered="#{ventaController.venta.idventa != 0}"
                                      onclick="reiniciarTema();editarMSJ()" />
 
@@ -66,12 +66,8 @@
                 <p:calendar value="#{ventaController.fecha.fecha2}" />
             </p:panelGrid>
             <p:panelGrid columns="1">
-                <p:commandButton actionListener="#{ventaController.consultar}" update=":DatosT"  value="Consultar" 
+                <p:commandButton  update=":DatosT"  value="Consultar por fecha" 
                                  styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()"/> </p:panelGrid>
-            <p:commandButton value="Guardar" 
-                                     update=":DatosT da :MSJ" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
-                                     rendered="#{ventaController.venta.idventa ==0}"  
-                                     onclick="reiniciarTema();editarMSJ()"/>
         </h:form>
         <h:form id="DatosT">
         <p:dataTable id="tabla"  value="#{ventaController.listaventa}"  var="v" >
@@ -86,7 +82,7 @@
                 <h:outputText value="#{v.idventaDetalle_complemento.idventaDetalle_complemento}" />
             </p:column>
             <p:column headerText="Fecha">
-                <h:outputText value="#{v.fecha}" ><f:convertDateTime pattern="YYYY-MM-dd"/></h:outputText>
+                <h:outputText value="#{v.fecha}" ><f:convertDateTime pattern="dd-MM-YYYY"/></h:outputText>
             </p:column>
             <p:column headerText="SubTotal">
                 <h:outputText value="#{v.subtotal}" />

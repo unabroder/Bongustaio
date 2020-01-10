@@ -1,6 +1,7 @@
 package ejb;
 
 import entity.Venta;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +9,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 
 @Stateless
 public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLocal {
@@ -20,11 +20,6 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
     protected EntityManager getEntityManager() {
         return em;
     }
-    
-  
-    
-    
-    
 
     public VentaFacade() {
         super(Venta.class);
@@ -47,15 +42,24 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
 
     public List<Venta> consultarVenta(Date date1, Date date2) {
 
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         List<Venta> lista = new LinkedList<>();
         try {
             System.out.println(date1);
             if (date1 != null && date2 != null) {
+//                long hora = 24;
+                String date = formato.format(date2);
+                int dia = Integer.parseInt(date.substring(8, 10)) + 1;
+                String resto = date.substring(0, 8) + dia;
+                Date fecha2 = formato.parse(resto);
                 System.out.println("###################botones llenos ################");
                 String sql = "Select v from Venta v where v.fecha between ?1 and ?2";
                 Query q = em.createQuery(sql);
                 q.setParameter(1, date1);
-                q.setParameter(2, date2);
+                q.setParameter(2, fecha2);
+                Venta venta=new Venta();
+               
+                        
                 lista = q.getResultList();
 
             } else {
@@ -71,9 +75,6 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
             lista = q.getResultList();
             System.out.println("###################botones vacios ################");
 
-            e.printStackTrace();
-            System.out.println(date1 + "////" + date2);
-            System.out.println("###################error de vista de venta ################" + e);
             return lista;
         }
     }

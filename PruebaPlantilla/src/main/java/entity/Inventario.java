@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "inventario")
@@ -26,6 +28,10 @@ public class Inventario implements Serializable {
     @Column(name = "cant_entrada")
     private int cant_entrada;
 
+    @Column(name = "fecha")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha;
+    
     @Column(name = "cant_disponible")
     private int cant_disponible;
 
@@ -64,6 +70,16 @@ public class Inventario implements Serializable {
         this.cant_disponible = cant_disponible;
     }
 
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    
+    
     public int getEstado() {
         return estado;
     }

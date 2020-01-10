@@ -6,6 +6,7 @@
 package ejb;
 
 import entity.OrdenCompra;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +30,6 @@ public interface OrdenCompraFacadeLocal {
     List<OrdenCompra> findRange(int[] range);
 
     int count();
+    List<OrdenCompra> consultarOrdenCompra(Date date1, Date date2);
     
 }
