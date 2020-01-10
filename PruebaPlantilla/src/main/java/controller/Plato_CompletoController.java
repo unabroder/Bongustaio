@@ -45,10 +45,12 @@ public class Plato_CompletoController implements Serializable {
     }
 
     public List<Plato_Completo> getListapcompleto() {
-
-        this.listapcompleto=pcompletoEJB.findAll();
-
-        this.listapcompleto = pcompletoEJB.findAll();
+        int tp = 0;
+        try {
+            this.listapcompleto = pcompletoEJB.obtenerPlatoPorTipoProducto(tp);
+        } catch (Exception e) {
+            System.out.println("Error"+e.getMessage());
+        }
 
         return listapcompleto;
     }
