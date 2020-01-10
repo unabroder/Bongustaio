@@ -20,6 +20,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+
 /**
  *
  * @author roberto.alferesusam
@@ -29,7 +30,6 @@ import javax.inject.Named;
 public class EmpleadoController implements Serializable {
 
     private String mensaje;
-
     @EJB
     private EmpleadoFacadeLocal empleadoEJB;
     private Empleado empleado;
@@ -114,12 +114,18 @@ public class EmpleadoController implements Serializable {
 
     public void insertar() {
         try {
-            empleado.setIdsucursal(sucursal);
-            empleado.setIdtipoempleado(tipoEmp);
-            empleadoEJB.create(empleado);
-            mensaje = "Se guardo empleado";
+            boolean res;
+            res = empleadoEJB.verificar(empleado);
+            if (res) {
+                mensaje = "El empleado ya existe";
+            } else {
+                empleado.setIdsucursal(sucursal);
+                empleado.setIdtipoempleado(tipoEmp);
+                empleadoEJB.create(empleado);
+                mensaje = "Se guardo empleado";
+            }
         } catch (Exception e) {
-            mensaje = "No se guardo " + e.getMessage();
+            mensaje = "Eroor al guardar " + e.getMessage();
         }
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null);
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -162,4 +168,5 @@ public class EmpleadoController implements Serializable {
         tipoEmp = new TipoEmpleado();
         sucursal = new Sucursal();
     }
+
 }
