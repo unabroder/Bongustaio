@@ -2,6 +2,7 @@
 package ejb;
 
 import entity.Venta;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -23,6 +24,6 @@ public interface VentaFacadeLocal {
     
     int count();
     
-    
+     public List<Venta> consultarVenta(Date date1, Date date2);
     
 }

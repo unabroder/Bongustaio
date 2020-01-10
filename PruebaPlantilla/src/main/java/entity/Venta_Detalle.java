@@ -29,6 +29,9 @@ public class Venta_Detalle implements Serializable{
     @Column(name="estado",nullable = false)
     private int estado;
     
+    @Column(name = "codigo",nullable = false)
+    private int codigo;
+    
 // =====================================================================================================================
 // =======================================================================================================================
 
@@ -63,6 +66,15 @@ public class Venta_Detalle implements Serializable{
     public void setEstado(int estado) {
         this.estado = estado;
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    
     
 // =====================================================================================================================
 // =======================================================================================================================

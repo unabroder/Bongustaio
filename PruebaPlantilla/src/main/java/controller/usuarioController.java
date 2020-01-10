@@ -1,8 +1,12 @@
 package controller;
 
 import ejb.BitacoraFacadeLocal;
+import ejb.EmpleadoFacadeLocal;
+import ejb.RolesFacadeLocal;
 import ejb.UsuariosFacadeLocal;
 import entity.Bitacora;
+import entity.Empleado;
+import entity.Roles;
 import entity.Usuarios;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -17,6 +21,8 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class usuarioController implements Serializable {
 
+    private String mensaje;
+
     @EJB
     private UsuariosFacadeLocal usuariofacade;
     private Usuarios usuarios;
@@ -26,6 +32,16 @@ public class usuarioController implements Serializable {
     private BitacoraFacadeLocal bitacoraEJB;
     private Bitacora bitacora;
     private List<Bitacora> lsBitacora;
+
+    @EJB
+    private EmpleadoFacadeLocal empleadoEJB;
+    private Empleado empleado;
+    private List<Empleado> lsEmpleado;
+
+    @EJB
+    private RolesFacadeLocal rolEJB;
+    private Roles roles;
+    private List<Roles> lsRoles;
 
     public Bitacora getBitacora() {
         return bitacora;
@@ -52,6 +68,7 @@ public class usuarioController implements Serializable {
     }
 
     public List<Usuarios> getListausuario() {
+        listausuario = usuariofacade.findAll();
         return listausuario;
     }
 
@@ -59,10 +76,46 @@ public class usuarioController implements Serializable {
         this.listausuario = listausuario;
     }
 
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public List<Empleado> getLsEmpleado() {
+        lsEmpleado = empleadoEJB.findAll();
+        return lsEmpleado;
+    }
+
+    public void setLsEmpleado(List<Empleado> lsEmpleado) {
+        this.lsEmpleado = lsEmpleado;
+    }
+
+    public Roles getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Roles roles) {
+        this.roles = roles;
+    }
+
+    public List<Roles> getLsRoles() {
+        lsRoles = rolEJB.findAll();
+        return lsRoles;
+    }
+
+    public void setLsRoles(List<Roles> lsRoles) {
+        this.lsRoles = lsRoles;
+    }
+
     @PostConstruct
     public void inti() {
         usuarios = new Usuarios();
         bitacora = new Bitacora();
+        empleado = new Empleado();
+        roles = new Roles();
     }
 
     public String login() {
@@ -197,11 +250,51 @@ public class usuarioController implements Serializable {
 
     public void guardar() {
         try {
-            bitacora.setAccion("Acaba de iniciar sesion");
-            bitacora.setUsuario(usuarios);
-            bitacoraEJB.create(bitacora);
+            usuarios.setIdtipo(roles);
+            usuarios.setIdempleado(empleado);
+            usuariofacade.create(usuarios);
+            mensaje = "Se guardo el usuario";
         } catch (Exception e) {
+            mensaje = "No se guardo " + e.getMessage();
         }
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
 
+    public void leerId(Usuarios us) {
+        roles.setIdrol(us.getIdtipo().getIdrol());
+        empleado.setIdempleado(us.getIdempleado().getIdempleado());
+        usuarios = us;
+    }
+
+    public void modificar() {
+        try {
+            usuarios.setIdtipo(roles);
+            usuarios.setIdempleado(empleado);
+            usuariofacade.edit(usuarios);
+            mensaje = "Se modifico el usuario";
+        } catch (Exception e) {
+            mensaje = "No se modifico " + e.getMessage();
+        }
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void eliminar(Usuarios us) {
+        try {
+            usuarios = us;
+            usuariofacade.remove(usuarios);
+            mensaje = "Se elimino el usuario";
+        } catch (Exception e) {
+            mensaje = "No se elimino " + e.getMessage();
+        }
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void limpiar() {
+        empleado = new Empleado();
+        usuarios = new Usuarios();
+        roles = new Roles();
     }
 }

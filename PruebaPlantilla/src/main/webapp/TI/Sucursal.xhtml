@@ -29,6 +29,7 @@
                     <p:outputLabel value="Nombre" for="txtNombre"/>
                     <p:inputText id="txtNombre"  value="#{sucursalController.sucursal.nombre}" />
                     <p:outputLabel value="Tipo" for="Tipo"/>
+                    
                     <p:selectOneMenu id="suc" value="#{sucursalController.tsucursal.idtiposucursal}">
                         <f:selectItem itemLabel="Seleccione un tipo de sucursal" itemValue="" noSelectionOption="true"/>
                         <f:selectItems value="#{tiposucursalController.listaTsucursal}" var="tsuc" itemLabel="#{tsuc.tipo}" itemValue="#{tsuc.idtiposucursal}"/>
@@ -85,16 +86,12 @@
                                      update=":Datos da :MSJ"
                                      rendered="#{p.estado == 1}"
                                      onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar"
-                                     actionListener="#{sucursalController.deshabilitar(p)}"
-                                     
-                                     />
+                                     actionListener="#{sucursalController.deshabilitar(p)}"/>
                     <p:commandButton value="Activar"
                                      update=":Datos da :MSJ"
                                      rendered="#{p.estado == 0}"
                                      onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar"
-                                     actionListener="#{sucursalController.habilitar(p)}"
-                                     
-                                     />
+                                     actionListener="#{sucursalController.habilitar(p)}"/>
                 </p:column>
             </p:dataTable>
         </h:form>

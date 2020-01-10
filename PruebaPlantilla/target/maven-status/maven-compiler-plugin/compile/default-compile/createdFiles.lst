@@ -43,6 +43,7 @@ entity\OrdenCompra.class
 ejb\Plato_CompletoFacadeLocal.class
 controller\ComplementoController.class
 ejb\TipoproductoFacade.class
+entity\Fechas.class
 ejb\AbstractFacade.class
 ejb\RolesFacadeLocal.class
 entity\Sucursal.class

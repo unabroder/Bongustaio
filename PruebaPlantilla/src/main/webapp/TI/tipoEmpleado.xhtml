@@ -14,17 +14,17 @@
         </h:form>
         <!---->
         <p:dialog style="margin-top: 10; " widgetVar="tpEmpleado" modal="false" showEffect="clip" resizable="false" header="Tipo Empleado">
-            <p:ajax event="close" update=":da" />
+            <p:ajax event="close" listener="#{tipoEmpleadoController.limpiar()}" update=":da" />
             <h:form id='da'>
                 <p:panelGrid columns="2" >
                     <p:outputLabel value="Tipo de Empleado" for="txtTipo"/>
                     <p:inputText id="txtTipo" value="#{tipoEmpleadoController.tipoEmpleado.tipoempleado}"/>
                     <p:commandButton value="Guardar" actionListener="#{tipoEmpleadoController.insertar()}"
-                                     update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
+                                     update=":Datos da :MSJ" oncomplete="PF('tpEmpleado').hide()" icon="ui-icon-mail-open" 
                                      rendered="#{tipoEmpleadoController.tipoEmpleado.idtipoempleado == 0}"
                                      onclick="reiniciarTema();editarMSJ()"/>
-                    <p:commandButton value="Editar"
-                                     update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
+                    <p:commandButton value="Editar" actionListener="#{tipoEmpleadoController.actualizar()}"
+                                     update=":Datos da :MSJ" oncomplete="PF('tpEmpleado').hide()" 
                                      rendered="#{tipoEmpleadoController.tipoEmpleado.idtipoempleado != 0}"
                                      onclick="reiniciarTema();editarMSJ()"/>
                 </p:panelGrid>
@@ -40,7 +40,7 @@
                 </p:column>
                 <p:column headerText="Editar">
                     <p:commandButton value="Modificar"  actionListener="#{tipoEmpleadoController.LeerId(p)}"
-                                     update=":da" oncomplete="PF('categoria').show()" styleClass="btnEditar" 
+                                     update=":da" oncomplete="PF('tpEmpleado').show()" styleClass="btnEditar" 
                                      onclick="reiniciarTema();editarMSJ()" />
                 </p:column>
                 <p:column headerText="Eliminar">

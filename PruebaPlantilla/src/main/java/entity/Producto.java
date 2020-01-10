@@ -11,32 +11,29 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
-
 @Entity
-@Table(name ="producto")
+@Table(name = "producto")
 public class Producto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idproducto;
-    
-    
-    @Column(name="nombre")
+
+    @Column(name = "nombre")
     private String nombre;
-    
-    @Column(name="precio")
+
+    @Column(name = "precio")
     private double precio;
-    
-    @Column(name="cantidad")
+
+    @Column(name = "cantidad")
     private int cantidad;
-    
-    @Temporal( TemporalType.DATE)
-    @Column(name="fechavenc")
-    private Date fechavenc=new Date();
-    
-    @Column(name="estado")
-    private int estado=1;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "fechavenc")
+    private Date fechavenc;
+
+    @Column(name = "estado")
+    private int estado = 1;
 
     public int getIdproducto() {
         return idproducto;
@@ -110,15 +107,10 @@ public class Producto implements Serializable {
         }
         return true;
     }
-    
-    
 
     @Override
     public String toString() {
         return "Producto{" + "idproducto=" + idproducto + '}';
     }
 
-  
-    
-    
 }

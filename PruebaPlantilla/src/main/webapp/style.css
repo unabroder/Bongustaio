@@ -338,9 +338,14 @@ li {
    
 }
 
+<<<<<<< HEAD
 .top_header_area .top_social_bar > a :hover {
     color: white;
     font-size: 10px;
+=======
+.top_header_area .top_social_bar > a:hover {
+    color: black;
+>>>>>>> c4c6662ed6c79181cf2688c418066586d71248e8
 }
 
 .top_header_area .top_social_bar > a:last-of-type {

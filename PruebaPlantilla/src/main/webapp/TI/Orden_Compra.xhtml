@@ -94,7 +94,9 @@
                 </p:column>
 
                 <p:column headerText="Fecha">
-                    <h:outputText value="#{orden.fecha}" />
+                    <h:outputText value="#{orden.fecha}" >
+                        <f:convertDateTime pattern="YYYY-MM-dd"></f:convertDateTime>
+                    </h:outputText>
                 </p:column>
 
                 <p:column headerText="Cantidad">

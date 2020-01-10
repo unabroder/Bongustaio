@@ -16,7 +16,10 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+
 
 /**
  *
@@ -26,6 +29,7 @@ import javax.inject.Named;
 @SessionScoped
 public class EmpleadoController implements Serializable {
 
+    private String mensaje;
     @EJB
     private EmpleadoFacadeLocal empleadoEJB;
     private Empleado empleado;
@@ -103,16 +107,28 @@ public class EmpleadoController implements Serializable {
     }
 
     public void leerId(Empleado emp) {
+        this.sucursal.setIdsucursal(emp.getIdsucursal().getIdsucursal());
+        this.tipoEmp.setIdtipoempleado(emp.getIdtipoempleado().getIdtipoempleado());
         empleado = emp;
     }
 
     public void insertar() {
         try {
-            empleado.setIdsucursal(sucursal);
-            empleado.setIdtipoempleado(tipoEmp);
-            empleadoEJB.create(empleado);
+            boolean res;
+            res = empleadoEJB.verificar(empleado);
+            if (res) {
+                mensaje = "El empleado ya existe";
+            } else {
+                empleado.setIdsucursal(sucursal);
+                empleado.setIdtipoempleado(tipoEmp);
+                empleadoEJB.create(empleado);
+                mensaje = "Se guardo empleado";
+            }
         } catch (Exception e) {
+            mensaje = "Eroor al guardar " + e.getMessage();
         }
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void editar() {
@@ -120,16 +136,24 @@ public class EmpleadoController implements Serializable {
             empleado.setIdsucursal(sucursal);
             empleado.setIdtipoempleado(tipoEmp);
             empleadoEJB.edit(empleado);
+            mensaje = "Se modifico empleado";
         } catch (Exception e) {
+            mensaje = "No se modifico " + e.getMessage();
         }
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void eliminar(Empleado emp) {
         try {
             empleado = emp;
             empleadoEJB.remove(empleado);
+            mensaje = "Se elimino empleado";
         } catch (Exception e) {
+            mensaje = "No se elimino " + e.getMessage();
         }
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, mensaje, null);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void lisEmp() {
@@ -141,5 +165,8 @@ public class EmpleadoController implements Serializable {
 
     public void limpiar() {
         empleado = new Empleado();
+        tipoEmp = new TipoEmpleado();
+        sucursal = new Sucursal();
     }
+
 }
