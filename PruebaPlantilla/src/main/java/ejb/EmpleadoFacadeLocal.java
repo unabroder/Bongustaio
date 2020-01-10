@@ -29,4 +29,6 @@ public interface EmpleadoFacadeLocal {
     List<Empleado> findRange(int[] range);
 
     int count();
+    
+    boolean verificar(Empleado emp);
 }
