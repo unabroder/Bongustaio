@@ -31,28 +31,25 @@ public class ProductoFacade extends AbstractFacade<Producto> implements Producto
     public ProductoFacade() {
         super(Producto.class);
     }
-    
+
     @Override
-    public List<Producto> Buscar(Producto pro){
-        List<Producto> lista= new LinkedList<>();
+    public List<Producto> Buscar(Producto pro) {
+        List<Producto> lista = new LinkedList<>();
         String sql;
-        try {
-            String n = pro.getNombre();
-            sql ="SELECT p FROM Producto p where nombre like '%"+n+"%'";
-             Query query = em.createQuery(sql);
-             
-             query.setParameter(1, pro.getNombre());
-             lista= query.getResultList();
-             if (!lista.isEmpty()) {
-                lista.get(0);
-            }
-            
-        } catch (Exception e) {
-            throw e;
-            
+        System.out.println("Lo hace");
+
+        String n = pro.getNombre();
+        if (n != null) {
+            sql = "SELECT p FROM Producto p where p.nombre like '%" + n + "%'";
+            Query query = em.createQuery(sql);
+            lista = query.getResultList();
+            System.out.println(lista);
+        } else {
+            System.out.println("Este es el error  ");
+            sql = "SELECT p FROM Producto p ";
+            Query query = em.createQuery(sql);
+            lista = query.getResultList();
         }
-        System.out.println(lista);
         return lista;
-        
     }
 }

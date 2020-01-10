@@ -9,7 +9,7 @@
 
 
 
-    <ui:define name="content"  >
+   <ui:define name="content"  >
 
 
         <p:growl id="MSJ"/>
@@ -54,76 +54,6 @@
 
                 </p:panelGrid>
             </h:form>
-<<<<<<< HEAD
-            
-            <!---->
-            <p:dialog widgetVar="categoria" modal="false" showEffect="clip" resizable="false" header="Categoria">
-                <p:ajax event="close"  listener="#{productoController.limpiar}"  update=":da" />
-                <h:form id='da'>
-                    
-                    <p:panelGrid columns="2" >
-                        <p:outputLabel value="Nombre" for="txtNombre"/>
-                        <p:inputText id="txtNombre"  value="#{productoController.producto.nombre}"/>
-                        
-                        <p:outputLabel value="Precio" for="txtPrecio"/>
-                        <p:inputText id="txtPrecio"  value="#{productoController.producto.precio}"/>
-                        
-                        <p:outputLabel value="Cantidad" for="txtCantidad"/>
-                        <p:inputText id="txtCantidad"  value="#{productoController.producto.cantidad}"/>
-                        
-                        <p:commandButton value="Guardar" actionListener="#{productoController.insertar()}"
-                                         rendered="#{productoController.producto.idproducto ==0}"
-                                         update=":Datos da :MSJ" oncomplete="PF('categoria').hide()"
-                                         onclick="reiniciarTema();editarMSJ()"/>
-                        
-                        <p:commandButton value="Editar" actionListener="#{productoController.modificar()}"
-                                         rendered="#{productoController.producto.idproducto !=0}"
-                                         update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" 
-
-                                         onclick="reiniciarTema();editarMSJ()"/>
-
-                    </p:panelGrid>
-                </h:form>
-            </p:dialog>
-
-            <h:form id="Datos">
-
-                <p:dataTable  value="#{productoController.listaproducto}" var="pro">
-                    <p:column headerText="ID">
-                        <h:outputText value="#{pro.idproducto}" />
-                    </p:column>
-                    <p:column headerText="Nombre Producto">
-                        <h:outputText value="#{pro.nombre}" />
-                    </p:column>
-                    
-                    <p:column headerText="Precio">
-                        <h:outputText value="#{pro.precio}" />
-                    </p:column>
-                    
-                    <p:column headerText="Cantidad">
-                        <h:outputText value="#{pro.cantidad}" />
-                    </p:column>
-                 <p:column headerText="Fecha">
-                     <h:outputText value="#{pro.fechavenc}" />
-                    </p:column>
-                 
-                 
-                 
-                    <p:column headerText="Editar">
-                        <p:commandButton value="Modificar" actionListener="#{productoController.leerid(pro)}"
-                                         update=":da" oncomplete="PF('categoria').show()" styleClass="btnEditar" 
-                                         onclick="reiniciarTema();editarMSJ()" />
-                    </p:column>
-                    <p:column headerText="Eliminar">
-                        <p:commandButton value="Eliminar" actionListener="#{productoController.eliminar(pro)}"
-                                         update=":Datos"
-                                         onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar" />
-                    </p:column>
-                </p:dataTable>
-            </h:form>
-       
-        </ui:define>
-=======
         </p:dialog>
 
         <h:form id="Datos">
@@ -166,7 +96,6 @@
     <ui:define name="bottom">
         preba de sonido
     </ui:define>
->>>>>>> c4c6662ed6c79181cf2688c418066586d71248e8
 
 
 

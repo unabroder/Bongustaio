@@ -38,7 +38,6 @@
                                        itemValue="#{lsTP.idtipoempleado}" itemLabel="#{lsTP.tipoempleado}" >
                         </f:selectItems>
                     </p:selectOneMenu>
-<<<<<<< HEAD
                     <p:outputLabel value="Tipo Sucursal" />
                     <p:selectOneMenu  value="#{empleadoController.sucursal.idsucursal}">
                         <f:selectItem itemLabel="Seleccione un tipo de empleado"></f:selectItem>
@@ -55,8 +54,6 @@
                                          update=":Datos da :MSJ" oncomplete="PF('empleado').hide()" 
                                          rendered="#{empleadoController.empleado.idempleado != 0}"
                                          onclick="reiniciarTema();editarMSJ()"/>
-
-=======
                     <p:outputLabel value="Sucursal" for="cboSuc"/>
                     <p:selectOneMenu id="cboSuc" value="#{empleadoController.sucursal.idsucursal}">
                         <f:selectItem itemLabel="Seleccione una sucursal"></f:selectItem>
@@ -72,7 +69,6 @@
                                      update=":Datos da :MSJ" oncomplete="PF('empleado').hide()" 
                                      rendered="#{empleadoController.empleado.idempleado != 0}"
                                      onclick="reiniciarTema();editarMSJ()"/>
->>>>>>> c4c6662ed6c79181cf2688c418066586d71248e8
                 </p:panelGrid>
             </h:form>
         </p:dialog>
