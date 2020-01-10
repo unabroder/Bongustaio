@@ -135,7 +135,11 @@ public class OrdenCompraController implements Serializable {
             ordencompra.setIdproducto(producto);
             ordencompra.setIdsucursal(sucursal);
             OrdenEJB.create(ordencompra);
+<<<<<<< HEAD
             this.mensaje = "Orde de Compra Registrada Exitosamente";
+=======
+            this.mensaje = "Orden de Compra Registrada Exitosamente";
+>>>>>>> 9375ce0e1eb10b6286fbbdfefc34ce6bd1ffd592
         } catch (Exception e) {
             this.mensaje = "Error :" + e.getMessage();
             e.printStackTrace();
@@ -150,10 +154,13 @@ public class OrdenCompraController implements Serializable {
             ordencompra.setIdproducto(producto);
             ordencompra.setIdsucursal(sucursal);
             OrdenEJB.edit(ordencompra);
-
+            this.mensaje = "Orden de compra modificada";
         } catch (Exception e) {
+            this.mensaje = "Error: " + e.getMessage();
+            e.printStackTrace();
         }
-
+        FacesMessage msj = new FacesMessage(mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
     public void leerid(OrdenCompra orden) {
@@ -164,16 +171,21 @@ public class OrdenCompraController implements Serializable {
             this.ordencompra = orden;
         } catch (Exception e) {
         }
-
+        FacesMessage msj = new FacesMessage(mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
     public void eliminar(OrdenCompra orden) {
         try {
             ordencompra = orden;
             OrdenEJB.remove(ordencompra);
+            this.mensaje = "Orden de compra eliminada";
         } catch (Exception e) {
+            this.mensaje = "Error " + e.getMessage();
+            e.printStackTrace();
         }
-
+        FacesMessage msj = new FacesMessage(mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
     public void limpiar() {

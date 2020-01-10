@@ -21,12 +21,19 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.ZapfDingbatsList;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import ejb.VentaFacadeLocal;
+import entity.Venta;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
+import javax.ejb.EJB;
+
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.ServletContext;
 
 /**
  *
@@ -36,18 +43,25 @@ import javax.servlet.ServletContext;
 @SessionScoped
 public class Reporte implements Serializable {
 
-    public void reporte() {
-        try {
+    @EJB
+    private VentaFacadeLocal ventaEJB;
+    private Venta venta;
+    private ArrayList<Venta> lsventa;
 
+    public void reporte(Date Date1, Date Date2) {
+        try {
+            System.out.println("reporte de pdf ");
             // Creacion del documento con los margenes
             Document document = new Document(PageSize.A4, 35, 30, 50, 50);
             try {
-               //String path= new File(".").;
-               //String File_name=path+"/reporte.pdf";
+                //String path= new File(".").;
+                //String File_name=path+"/reporte.pdf";
                 // El archivo pdf que vamos a generar
-                FileOutputStream fileOutputStream = new FileOutputStream("reporte.pdf");
-                System.out.println();
-                System.out.println(fileOutputStream);
+                Date fecha = new Date();
+
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+                FileOutputStream fileOutputStream = new FileOutputStream("C:/reportes/reporte_" + format.format(fecha) + ".pdf");
 
                 // Obtener la instancia del PdfWriter
                 PdfWriter.getInstance(document, fileOutputStream);
@@ -63,6 +77,19 @@ public class Reporte implements Serializable {
                         FontFactory.TIMES_BOLDITALIC, 11, Font.UNDERLINE,
                         BaseColor.RED);
 
+                LinkedList<Venta> lista;
+                System.out.println("despues de crear lista");
+                lsventa = (ArrayList<Venta>) ventaEJB.consultarVenta(Date1, Date2);
+                System.out.println(lsventa.listIterator());
+
+                Iterator iter = lsventa.listIterator();
+                System.out.println("ANTES DEL WHILE");
+                while (iter.hasNext()) {
+                    System.out.println("while");
+                    venta = (Venta) iter.next();
+                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                    System.out.println("Fecha venta " + formato.format(venta.getFecha()));
+                }
                 // Creacion de una tabla
                 PdfPTable table = new PdfPTable(1);
 
@@ -157,7 +184,7 @@ public class Reporte implements Serializable {
                 document.close();
 
                 // Abrir el archivo
-                File file = new File("reporte.pdf");
+                File file = new File("C:/reportes/reporte_" + format.format(fecha) + ".pdf");
                 System.out.println(file.getAbsolutePath());
             } catch (DocumentException | FileNotFoundException ex) {
                 System.out.println("error " + ex.getMessage());
@@ -170,8 +197,8 @@ public class Reporte implements Serializable {
 
     }
 
-    public static void main(String[] args) {
-        Reporte pdf = new Reporte();
-        pdf.reporte();
-    }
+//    public static void main(String[] args) {
+//        Reporte pdf = new Reporte();
+//        pdf.reporte();
+//    }
 }
