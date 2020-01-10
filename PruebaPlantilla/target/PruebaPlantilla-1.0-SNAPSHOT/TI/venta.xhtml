@@ -2,9 +2,10 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./newTemplate.xhtml"
-                xmlns:p="http://primefaces.org/ui"
+
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
 
@@ -20,7 +21,7 @@
 
 
 
-        <p:dialog style="margin-top: 10; " widgetVar="venta" modal="false" showEffect="clip" resizable="false" header="Venta">
+        <p:dialog style="margin-top: 10%; " widgetVar="venta" modal="false" showEffect="clip" resizable="false" header="Venta">
             <p:ajax event="close" update=":da" listener="#{ventaController.limpiar()}" />
             <h:form id='da'>
                 <p:panelGrid columns="2" >
@@ -66,47 +67,49 @@
                 <p:calendar value="#{ventaController.fecha.fecha2}" />
             </p:panelGrid>
             <p:panelGrid columns="1">
-                <p:commandButton  update=":DatosT"  value="Consultar por fecha" 
-                                 styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()"/> </p:panelGrid>
+
+                <p:commandButton  update=":DatosT" action="#{ventaController.reporte()}"  value="Consultar por fecha" 
+                                  styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()"/> </p:panelGrid>
         </h:form>
         <h:form id="DatosT">
-        <p:dataTable id="tabla"  value="#{ventaController.listaventa}"  var="v" >
+          
+            <p:dataTable id="tabla"  value="#{ventaController.listaventa}"  var="v" >
 
-            <p:column headerText="ID">
-                <h:outputText value="#{v.idventa}" />
-            </p:column>
-            <p:column headerText="Nombre Empleado">
-                <h:outputText value="#{v.idempleado.nombres}" />
-            </p:column>
-            <p:column headerText="# venta detalle complemento">
-                <h:outputText value="#{v.idventaDetalle_complemento.idventaDetalle_complemento}" />
-            </p:column>
-            <p:column headerText="Fecha">
-                <h:outputText value="#{v.fecha}" ><f:convertDateTime pattern="dd-MM-YYYY"/></h:outputText>
-            </p:column>
-            <p:column headerText="SubTotal">
-                <h:outputText value="#{v.subtotal}" />
-            </p:column>
-            <p:column headerText="Total">
-                <h:outputText value="#{v.total}" />
-            </p:column>
-            <p:column headerText="Estado">
-                <h:outputText value="#{v.estado}" />
-            </p:column>
-            <p:column headerText="Editar">
-                <p:commandButton value="Modificar" actionListener="#{ventaController.leerId(v)}"
-                                 update=":da" oncomplete="PF('venta').show()" styleClass="btnEditar" 
-                                 onclick="reiniciarTema();editarMSJ()" />
-            </p:column>
-            <p:column headerText="Eliminar">
-                <p:commandButton value="Eliminar" actionListener="#{ventaController.eliminar(v)}" update="tabla"
-                                 onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar" />
-            </p:column>
-        </p:dataTable>
+                <p:column headerText="ID">
+                    <h:outputText value="#{v.idventa}" />
+                </p:column>
+                <p:column headerText="Nombre Empleado">
+                    <h:outputText value="#{v.idempleado.nombres}" />
+                </p:column>
+                <p:column headerText="# venta detalle complemento">
+                    <h:outputText value="#{v.idventaDetalle_complemento.idventaDetalle_complemento}" />
+                </p:column>
+                <p:column headerText="Fecha">
+                    <h:outputText value="#{v.fecha}" ><f:convertDateTime pattern="dd-MM-YYYY"/></h:outputText>
+                </p:column>
+                <p:column headerText="SubTotal">
+                    <h:outputText value="#{v.subtotal}" />
+                </p:column>
+                <p:column headerText="Total">
+                    <h:outputText value="#{v.total}" />
+                </p:column>
+                <p:column headerText="Estado">
+                    <h:outputText value="#{v.estado}" />
+                </p:column>
+                <p:column headerText="Editar">
+                    <p:commandButton value="Modificar" actionListener="#{ventaController.leerId(v)}"
+                                     update=":da" oncomplete="PF('venta').show()" styleClass="btnEditar" 
+                                     onclick="reiniciarTema();editarMSJ()" />
+                </p:column>
+                <p:column headerText="Eliminar">
+                    <p:commandButton value="Eliminar" actionListener="#{ventaController.eliminar(v)}" update="tabla"
+                                     onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar" />
+                </p:column>
+            </p:dataTable>
+
+         
+
         </h:form>
-
-
-
 
     </ui:define>
 

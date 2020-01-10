@@ -31,9 +31,6 @@ public class OrdenCompraFacade extends AbstractFacade<OrdenCompra> implements Or
         super(OrdenCompra.class);
     }
     
-    public List<OrdenCompra> consultarOrdenCompra(Date date1, Date date2){
     
-    
-    }
     
 }

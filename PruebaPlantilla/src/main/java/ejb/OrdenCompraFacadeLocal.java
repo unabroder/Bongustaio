@@ -30,6 +30,6 @@ public interface OrdenCompraFacadeLocal {
     List<OrdenCompra> findRange(int[] range);
 
     int count();
-    List<OrdenCompra> consultarOrdenCompra(Date date1, Date date2);
+   
     
 }

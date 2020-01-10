@@ -34,7 +34,6 @@ public class VentaController implements Serializable {
     public void setFecha(Fechas fecha) {
         this.fecha = fecha;
     }
-   
 
     @EJB
     private EmpleadoFacadeLocal empleadoEJB;
@@ -55,7 +54,8 @@ public class VentaController implements Serializable {
     }
 
     public List<Venta> getListaventa() {
-        this.listaventa = ventaEJB.consultarVenta(fecha.getFecha1(), fecha.getFecha2() );
+        this.listaventa = ventaEJB.consultarVenta(fecha.getFecha1(), fecha.getFecha2());
+        
         return listaventa;
     }
 
@@ -95,25 +95,21 @@ public class VentaController implements Serializable {
         this.listavdComplemento = listavdComplemento;
     }
 
-    
-  
     @PostConstruct
     private void init() {
         venta = new Venta();
         empleado = new Empleado();
-        fecha=new Fechas();
+        fecha = new Fechas();
 
         vdComplemento = new VentaDetalleComplemento();
 
     }
+
     public void click() {
         PrimeFaces.current().ajax().update("form:display");
         PrimeFaces.current().executeScript("PF('dlg').show()");
     }
 
-  
-
-   
     public EmpleadoFacadeLocal getEmpleadoEJB() {
         return empleadoEJB;
     }
@@ -136,21 +132,16 @@ public class VentaController implements Serializable {
         try {
             venta.setIdempleado(empleado);
             venta.setIdventaDetalle_complemento(vdComplemento);
-
             ventaEJB.create(venta);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error "+e.getMessage(), null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
-    public List<Venta> consultar() {
-
-        System.out.println("#####################en el controller##############################");
-//        System.out.println(date1);
-//        this.listaventa = ventaEJB.consultarVenta(this.date1, this.date2);
-        return this.listaventa = ventaEJB.findAll();
-    }
+ 
 
     public void leerId(Venta vent) {
         try {
@@ -165,8 +156,20 @@ public class VentaController implements Serializable {
         try {
             venta.setIdempleado(empleado);
             venta.setIdventaDetalle_complemento(vdComplemento);
-
             ventaEJB.edit(venta);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se actualizo correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+    
+      public void reporte() {
+        try {
+            System.out.println("metodo de reporte ");
+           Reporte reporte = new Reporte();
+           reporte.reporte(this.listaventa);
         } catch (Exception e) {
         }
     }
@@ -176,7 +179,11 @@ public class VentaController implements Serializable {
         try {
             ventaEJB.remove(venta);
             listaventa = ventaEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se elimino correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 

@@ -75,6 +75,7 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
             lista = q.getResultList();
             System.out.println("###################botones vacios ################");
 
+
             return lista;
         }
     }

@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
+import javax.persistence.TemporalType;
+
 @Entity
 @Table(name = "inventario")
 public class Inventario implements Serializable {
@@ -34,6 +36,8 @@ public class Inventario implements Serializable {
     
     @Column(name = "cant_disponible")
     private int cant_disponible;
+
+   
 
     @Column(name = "estado")
     private int estado;
@@ -78,8 +82,7 @@ public class Inventario implements Serializable {
         this.fecha = fecha;
     }
 
-    
-    
+
     public int getEstado() {
         return estado;
     }
@@ -118,6 +121,4 @@ public class Inventario implements Serializable {
         return "Inventario{" + "idinventario=" + idinventario + '}';
     }
 
-    
-   
 }
