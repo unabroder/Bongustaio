@@ -66,11 +66,12 @@
                 <p:calendar value="#{ventaController.fecha.fecha2}" />
             </p:panelGrid>
             <p:panelGrid columns="1">
-                <p:commandButton value="Consultar por fechas" 
-                                 update=":DatosT da :MSJ" styleClass="btnEditar" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
+                <p:commandButton actionListener="#{ventaController.consultar}" update=":DatosT"  value="Consultar" 
+                                 styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()"/> </p:panelGrid>
+            <p:commandButton value="Guardar" 
+                                     update=":DatosT da :MSJ" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
                                      rendered="#{ventaController.venta.idventa ==0}"  
-                                     onclick="reiniciarTema();editarMSJ()"/> </p:panelGrid>
-            
+                                     onclick="reiniciarTema();editarMSJ()"/>
         </h:form>
         <h:form id="DatosT">
         <p:dataTable id="tabla"  value="#{ventaController.listaventa}"  var="v" >
