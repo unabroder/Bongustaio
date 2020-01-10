@@ -24,10 +24,10 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class TiposucursalController implements Serializable {
 
-   @EJB
-   private TiposucursalFacadeLocal tsucursalEJB;
-   private Tiposucursal tsucursal;
-   private List<Tiposucursal> listaTsucursal;
+    @EJB
+    private TiposucursalFacadeLocal tsucursalEJB;
+    private Tiposucursal tsucursal;
+    private List<Tiposucursal> listaTsucursal;
 
     public Tiposucursal getTsucursal() {
         return tsucursal;
@@ -45,75 +45,81 @@ public class TiposucursalController implements Serializable {
     public void setListaTsucursal(List<Tiposucursal> listaTsucursal) {
         this.listaTsucursal = listaTsucursal;
     }
-   
-   @PostConstruct
-   public void init(){
-   tsucursal= new Tiposucursal();
-   this.listaTsucursal=tsucursalEJB.findAll();
-   }
-   
-   public void consultarById(){
-   
-       try {
-           tsucursal=tsucursalEJB.find(tsucursal);
-       } catch (Exception e) {
-       }
-   }
-   
-   public void consultar(){
-   
 
-           this.listaTsucursal=tsucursalEJB.findAll();
-       
-   }
-   
-   public void consultarActivos(){
-   
-       try {
-           listaTsucursal=tsucursalEJB.findAllActivo();
-       } catch (Exception e) {
-       }
-   }
-   
-   public void insertar(){
-       try {
-           tsucursalEJB.create(tsucursal);
-           FacesMessage msg= new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
-           FacesContext.getCurrentInstance().addMessage(null, msg);
-       } catch (Exception e) {
-       }
-       
-   }
-   
-    public void actualizar(){
-       try {
-           tsucursalEJB.edit(tsucursal);
-           FacesMessage msg= new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
-           FacesContext.getCurrentInstance().addMessage(null, msg);
-       } catch (Exception e) {
-       }
-       
-   }
-    
-     public void eliminar(){
-       try {
-           tsucursalEJB.removeEstado(tsucursal);
-           FacesMessage msg= new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
-           FacesContext.getCurrentInstance().addMessage(null, msg);
-       } catch (Exception e) {
-       }
-       
-   }
-      public void eliminarPermanente(){
-       try {
-           tsucursalEJB.remove(tsucursal);
-           FacesMessage msg= new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
-           FacesContext.getCurrentInstance().addMessage(null, msg);
-       } catch (Exception e) {
-       }
-       
-   }
-   
-   
-   
+    @PostConstruct
+    public void init() {
+        tsucursal = new Tiposucursal();
+        this.listaTsucursal = tsucursalEJB.findAll();
+    }
+
+    public void consultarById() {
+
+        try {
+            tsucursal = tsucursalEJB.find(tsucursal);
+        } catch (Exception e) {
+        }
+    }
+
+    public void consultar() {
+
+        this.listaTsucursal = tsucursalEJB.findAll();
+
+    }
+
+    public void consultarActivos() {
+
+        try {
+            listaTsucursal = tsucursalEJB.findAllActivo();
+        } catch (Exception e) {
+        }
+    }
+
+    public void insertar() {
+        try {
+            tsucursalEJB.create(tsucursal);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error " + e.getMessage(), null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+
+    }
+
+    public void actualizar() {
+        try {
+            tsucursalEJB.edit(tsucursal);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue actualizado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error " + e.getMessage(), null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+
+    }
+
+    public void eliminar() {
+        try {
+            tsucursalEJB.removeEstado(tsucursal);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue eliminado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error " + e.getMessage(), null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+
+    }
+
+    public void eliminarPermanente() {
+        try {
+            tsucursalEJB.remove(tsucursal);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue eliminado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error " + e.getMessage(), null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+
+    }
+
 }

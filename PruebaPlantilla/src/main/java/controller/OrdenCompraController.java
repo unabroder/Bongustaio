@@ -44,7 +44,7 @@ public class OrdenCompraController implements Serializable {
     private List<Producto> listaproducto;
 
     String mensaje;
-    
+
     public OrdenCompra getOrdencompra() {
         return ordencompra;
     }
@@ -118,8 +118,6 @@ public class OrdenCompraController implements Serializable {
         this.mensaje = mensaje;
     }
 
-    
-
     @PostConstruct
     private void init() {
         ordencompra = new OrdenCompra();
@@ -134,12 +132,12 @@ public class OrdenCompraController implements Serializable {
             ordencompra.setIdproducto(producto);
             ordencompra.setIdsucursal(sucursal);
             OrdenEJB.create(ordencompra);
-           this.mensaje ="Orde de Compra Registrada Exitosamente";
+            this.mensaje = "Orden de Compra Registrada Exitosamente";
         } catch (Exception e) {
-            this.mensaje="Error :"+e.getMessage();
+            this.mensaje = "Error :" + e.getMessage();
             e.printStackTrace();
         }
-         FacesMessage msj = new FacesMessage(mensaje);
+        FacesMessage msj = new FacesMessage(mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
@@ -158,10 +156,13 @@ public class OrdenCompraController implements Serializable {
             ordencompra.setIdproducto(producto);
             ordencompra.setIdsucursal(sucursal);
             OrdenEJB.edit(ordencompra);
-
+            this.mensaje = "Orden de compra modificada";
         } catch (Exception e) {
+            this.mensaje = "Error: " + e.getMessage();
+            e.printStackTrace();
         }
-
+        FacesMessage msj = new FacesMessage(mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
     public void leerid(OrdenCompra orden) {
@@ -172,16 +173,21 @@ public class OrdenCompraController implements Serializable {
             this.ordencompra = orden;
         } catch (Exception e) {
         }
-
+        FacesMessage msj = new FacesMessage(mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
     public void eliminar(OrdenCompra orden) {
         try {
             ordencompra = orden;
             OrdenEJB.remove(ordencompra);
+            this.mensaje = "Orden de compra eliminada";
         } catch (Exception e) {
+            this.mensaje = "Error " + e.getMessage();
+            e.printStackTrace();
         }
-
+        FacesMessage msj = new FacesMessage(mensaje);
+        FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
     public void limpiar() {

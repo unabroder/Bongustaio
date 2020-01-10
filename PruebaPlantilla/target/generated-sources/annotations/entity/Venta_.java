@@ -8,7 +8,11 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-01-10T09:48:03")
+=======
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-01-10T10:37:33")
+>>>>>>> 3bdf616082a729b7fe0246a191e6faa641263a3e
 =======
 <<<<<<< HEAD
 @Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-01-10T09:32:02")
