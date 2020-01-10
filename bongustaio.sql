@@ -1,4 +1,5 @@
-﻿CREATE DATABASE bongustaio;
+drop database bongustaio;
+CREATE DATABASE bongustaio;
 USE bongustaio;
 
 CREATE TABLE proveedor(
@@ -38,6 +39,7 @@ on delete cascade on update cascade
 insert into inventario(idproducto,cant_entrada,cant_disponible,estado)
 values(1,2,6,1);
 select*from inventario;
+
 /*TIPO SUCURSAL DEBE ESTAR RELACIONADA CON SUCURSAL */
 CREATE TABLE tiposucursal(
 idtiposucursal int(11) not null primary key auto_increment,

@@ -2,9 +2,10 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./newTemplate.xhtml"
-                xmlns:p="http://primefaces.org/ui"
+
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
 
@@ -12,13 +13,13 @@
 
         <p:growl id="MSJ"/>
         <h:form id="d">
-            <p:panelGrid columns="3">
+
+            <p:panelGrid columns="1">
                 <p:commandButton  icon="fa fa-fw fa-plus" value="Agregar" oncomplete="PF('venta').show()" 
-                                  styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()" style="margin-right:  99%;"/>
-            </p:panelGrid>
+                                  styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()" style="margin-right:  99%;"/> </p:panelGrid>
         </h:form>
 
-        <!---->
+
 
         <p:dialog style="margin-top: 10; " widgetVar="venta" modal="false" showEffect="clip" resizable="false" header="Venta">
             <p:ajax event="close" update=":da" listener="#{ventaController.limpiar()}" />
@@ -30,20 +31,20 @@
                         <f:selectItem itemLabel="seleccione persona" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{empleadoController.listaEmpleado}" var="emp" itemLabel="#{emp.nombres}" itemValue="#{emp.idempleado}" />
                     </p:selectOneMenu>
-                    
+
                     <p:outputLabel value="Ingrese venta detalle complemento" for="cmbVDComplemento"/>
                     <p:selectOneMenu id="cmbVDComplemento" value="#{ventaController.vdComplemento.idventaDetalle_complemento}">
                         <f:selectItem itemLabel="seleccione venta detalle complemento" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{ventaDetalleComplementoController.listavdcomplemento}" var="vdc" itemLabel="#{vdc.idventaDetalle_complemento}" itemValue="#{vdc.idventaDetalle_complemento}" />
                     </p:selectOneMenu>
-                    
+
                     <p:outputLabel value="Subtotal" for="txtSubtotal"/>
                     <p:inputText id="txtSubtotal" value="#{ventaController.venta.subtotal}" />
                     <p:outputLabel value="Total" for="txtTotal"/>
                     <p:inputText id="txtTotal" value="#{ventaController.venta.total}"/>
                     <p:outputLabel value="Estado" for="txtEstado"/>
                     <p:inputText id="txtEstado" required="true" value="#{ventaController.venta.estado}"/>
-                    
+
                     <p:commandButton value="Guardar" actionListener="#{ventaController.insertar()}"
                                      update=":Datos da :MSJ" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
                                      rendered="#{ventaController.venta.idventa ==0}"  
@@ -58,8 +59,22 @@
         </p:dialog>
 
         <h:form id="Datos">
+            <p:panelGrid columns="2">
 
-            <p:dataTable id="tabla" value="#{ventaController.listaventa}"  var="v" >
+                <h:outputLabel value="Ingrese fecha de inicio" />
+                <h:outputLabel value="Ingrese fecha final" />
+                <p:calendar  value="#{ventaController.fecha.fecha1}" />
+                <p:calendar value="#{ventaController.fecha.fecha2}" />
+            </p:panelGrid>
+            <p:panelGrid columns="1">
+                <p:commandButton value="Consultar por fechas" 
+                                 update=":DatosT da :MSJ" styleClass="btnEditar" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
+                                 rendered="#{ventaController.venta.idventa ==0}"  
+                                 onclick="reiniciarTema();editarMSJ()"/> </p:panelGrid>
+
+        </h:form>
+        <h:form id="DatosT">
+            <p:dataTable id="tabla"  value="#{ventaController.listaventa}"  var="v" >
 
                 <p:column headerText="ID">
                     <h:outputText value="#{v.idventa}" />
@@ -71,7 +86,7 @@
                     <h:outputText value="#{v.idventaDetalle_complemento.idventaDetalle_complemento}" />
                 </p:column>
                 <p:column headerText="Fecha">
-                    <h:outputText value="#{v.fecha}" />
+                    <h:outputText value="#{v.fecha}" ><f:convertDateTime pattern="YYYY-MM-dd"/></h:outputText>
                 </p:column>
                 <p:column headerText="SubTotal">
                     <h:outputText value="#{v.subtotal}" />
@@ -93,10 +108,6 @@
                 </p:column>
             </p:dataTable>
         </h:form>
-
-
-
-
     </ui:define>
 
 </ui:composition>

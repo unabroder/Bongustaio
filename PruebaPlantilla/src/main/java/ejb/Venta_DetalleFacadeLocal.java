@@ -1,7 +1,9 @@
 
 package ejb;
 
+import entity.Venta;
 import entity.Venta_Detalle;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -21,4 +23,5 @@ public interface Venta_DetalleFacadeLocal {
     List<Venta_Detalle> findRange(int[] range);
     
     int count();
+   
 }
