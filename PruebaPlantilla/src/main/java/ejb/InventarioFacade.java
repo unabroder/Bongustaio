@@ -7,9 +7,12 @@ package ejb;
 
 import entity.Inventario;
 
+<<<<<<< HEAD
 import entity.Venta;
 
 
+=======
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,9 +42,13 @@ public class InventarioFacade extends AbstractFacade<Inventario> implements Inve
  
     public List<Inventario> consultarVenta(Date date1, Date date2){
     List<Inventario> lista=new LinkedList<>();
+<<<<<<< HEAD
     
 
         try {
+=======
+            try {
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
             if (date1 != null && date2 != null) {
                 String sql = "Select x from Inventario x where x.estado between ?0 and ?1";
                 Query q = em.createQuery(sql);
@@ -63,7 +70,10 @@ public class InventarioFacade extends AbstractFacade<Inventario> implements Inve
         }
         
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
     public List<Inventario> consultarInven(Date date1, Date date2){
         List<Inventario> lista=new LinkedList<>();
         try {
@@ -89,5 +99,8 @@ public class InventarioFacade extends AbstractFacade<Inventario> implements Inve
         }
     }
     
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
 }

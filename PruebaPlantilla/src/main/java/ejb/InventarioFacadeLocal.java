@@ -33,8 +33,12 @@ public interface InventarioFacadeLocal {
 
  
     public List<Inventario> consultarVenta(Date date1, Date date2);
+<<<<<<< HEAD
 
     public List<Inventario> consultarInven(Date date1, Date date2);
     
 
+=======
+    
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
 }

@@ -46,11 +46,17 @@ public class Plato_CompletoController implements Serializable {
     }
 
     public List<Plato_Completo> getListapcompleto() {
+<<<<<<< HEAD
 
         int tp = 3;
 
         this.listapcompleto = pcompletoEJB.findAll();
 
+=======
+        int tp = 3;
+
+        this.listapcompleto = pcompletoEJB.findAll();
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
         try {
             this.listapcompleto = pcompletoEJB.obtenerPlatoPorTipoProducto(tp);
         } catch (Exception e) {
@@ -178,7 +184,11 @@ public class Plato_CompletoController implements Serializable {
     }
 
     public void leerPlato(int tp) {
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
         int tp1 = 0;
         try {
             pcompleto.getIdcatalogo().getIdtipoproduc();

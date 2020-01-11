@@ -28,19 +28,12 @@
 
                 <p:panelGrid columns="2" >
 
-<<<<<<< HEAD
+
                     <p:outputLabel value="Selecione el proveedor" for="cmbProveedor"/>
                     <p:selectOneMenu id="cmbProveedor" value="#{ordenCompraController.proveedor.idproveedor}">
                         <f:selectItem itemLabel="seleccione el proveedor" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{ProveedorController.listaProveedor}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.idproveedor}" />
-=======
                     <p:outputLabel value="Selecione el proveedor "/>
-                    <p:selectOneMenu  value="#{ordenCompraController.proveedor.idproveedor}">
-                        <f:selectItem itemLabel="Seleccione una Proveedor"></f:selectItem>
-                        <f:selectItems value="#{ordenCompraController.listaProveedor}" var="p"
-                                       itemValue="#{p.idproveedor}" itemLabel="#{p.nombre}" >
-                        </f:selectItems>
->>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
                     </p:selectOneMenu>
 
                     <p:outputLabel value="selecione la sucursal"/>
