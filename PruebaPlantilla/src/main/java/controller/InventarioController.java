@@ -26,6 +26,16 @@ public class InventarioController implements Serializable {
     private InventarioFacadeLocal inventarioEJB;
     private Inventario inventario;
     private List<Inventario> listaInventario;
+    private  Fechas fecha;
+
+    public Fechas getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Fechas fecha) {
+        this.fecha = fecha;
+    }
+    
     
     private Fechas fecha;
 
@@ -60,7 +70,7 @@ public class InventarioController implements Serializable {
     }
     
     public List<Inventario> getListaInventario() {
-        this.listaInventario = inventarioEJB.findAll();
+        this.listaInventario = inventarioEJB.consultarInven(fecha.getFecha1(), fecha.getFecha2());
         return listaInventario;
     }
     
@@ -162,6 +172,9 @@ public class InventarioController implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
    
+    public List<Inventario> consultar(){
+    return this.listaInventario=inventarioEJB.findAll();
+    }
     
     public void limpiar() {
         try {

@@ -55,6 +55,7 @@ public class VentaController implements Serializable {
 
     public List<Venta> getListaventa() {
         this.listaventa = ventaEJB.consultarVenta(fecha.getFecha1(), fecha.getFecha2());
+        
         return listaventa;
     }
 
@@ -168,7 +169,7 @@ public class VentaController implements Serializable {
         try {
             System.out.println("metodo de reporte ");
            Reporte reporte = new Reporte();
-           reporte.reporte(this.fecha.getFecha1(), this.fecha.getFecha2());
+           reporte.reporte(this.listaventa);
         } catch (Exception e) {
         }
     }

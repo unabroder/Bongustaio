@@ -83,6 +83,7 @@ public class OrdenCompraController implements Serializable {
     }
 
     public List<Proveedor> getListaProveedor() {
+        this.listaProveedor = proveedorEJB.findAll();
         return listaProveedor;
     }
 
@@ -99,6 +100,7 @@ public class OrdenCompraController implements Serializable {
     }
 
     public List<Sucursal> getListaSucursal() {
+        this.listaSucursal = sucursalEJB.findAll();
         return listaSucursal;
     }
 
@@ -115,6 +117,7 @@ public class OrdenCompraController implements Serializable {
     }
 
     public List<Producto> getListaproducto() {
+        this.listaproducto = productoEJB.findAll();
         return listaproducto;
     }
 
@@ -132,11 +135,18 @@ public class OrdenCompraController implements Serializable {
 
     @PostConstruct
     private void init() {
+<<<<<<< HEAD
         ordencompra = new OrdenCompra();
         proveedor = new Proveedor();
         sucursal = new Sucursal();
         producto = new Producto();
         fecha = new Fechas();
+=======
+        this.ordencompra = new OrdenCompra();
+        this.proveedor = new Proveedor();
+        this.sucursal = new Sucursal();
+        this.producto = new Producto();
+>>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
     }
 
     public void insertar() {
@@ -145,22 +155,15 @@ public class OrdenCompraController implements Serializable {
             ordencompra.setIdproducto(producto);
             ordencompra.setIdsucursal(sucursal);
             OrdenEJB.create(ordencompra);
-            this.mensaje = "Orden de Compra Registrada Exitosamente";
+
+            this.mensaje = "Orde de Compra Registrada Exitosamente";
+
         } catch (Exception e) {
             this.mensaje = "Error :" + e.getMessage();
             e.printStackTrace();
         }
         FacesMessage msj = new FacesMessage(mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msj);
-    }
-
-    public void listar() {
-        try {
-            listaorden = OrdenEJB.findAll();
-
-        } catch (Exception e) {
-        }
-
     }
 
     public void modificar() {

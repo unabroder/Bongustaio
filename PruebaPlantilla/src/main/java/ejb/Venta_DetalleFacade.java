@@ -26,7 +26,7 @@ public class Venta_DetalleFacade extends AbstractFacade<Venta_Detalle> implement
     }
 
     public List<Venta_Detalle> consultaEstado(int estado) {
-        String sql = "SELECT vd FROM venta_detalle where vd.estado = 1";
+        String sql = "SELECT vd FROM venta_detalle where vd.estado =1";
 
         List<Venta_Detalle> lista = new LinkedList<>();
         try {

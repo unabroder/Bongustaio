@@ -30,7 +30,7 @@ public class Venta_Detalle implements Serializable{
     private int estado;
     
     @Column(name = "codigo",nullable = false)
-    private int codigo;
+    private String  codigo;
     
 // =====================================================================================================================
 // =======================================================================================================================
@@ -67,11 +67,11 @@ public class Venta_Detalle implements Serializable{
         this.estado = estado;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
     

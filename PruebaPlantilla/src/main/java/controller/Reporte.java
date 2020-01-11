@@ -13,7 +13,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.List;
+
 import com.itextpdf.text.ListItem;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
@@ -26,10 +26,10 @@ import entity.Venta;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.List;
 import javax.ejb.EJB;
 
 import javax.enterprise.context.SessionScoped;
@@ -46,9 +46,9 @@ public class Reporte implements Serializable {
     @EJB
     private VentaFacadeLocal ventaEJB;
     private Venta venta;
-    private ArrayList<Venta> lsventa;
+    private List<Venta> lsventa;
 
-    public void reporte(Date Date1, Date Date2) {
+    public void reporte(List<Venta> lista2) {
         try {
             System.out.println("reporte de pdf ");
             // Creacion del documento con los margenes
@@ -77,10 +77,21 @@ public class Reporte implements Serializable {
                         FontFactory.TIMES_BOLDITALIC, 11, Font.UNDERLINE,
                         BaseColor.RED);
 
-                LinkedList<Venta> lista;
-                System.out.println("despues de crear lista");
-                lsventa = (ArrayList<Venta>) ventaEJB.consultarVenta(Date1, Date2);
-                System.out.println(lsventa.listIterator());
+                lsventa = lista2;
+
+                Paragraph paragraph = new Paragraph();
+//
+                // Agregar un titulo con su respectiva fuente
+                paragraph.add(new Phrase("Bitacora de ventas", fontTitulos));
+
+                document.add(paragraph);
+                PdfPTable table = new PdfPTable(6);
+                table.addCell("ID de venta");
+                table.addCell("Nombre Empleado");
+                table.addCell("Detalle del complemento");
+                table.addCell("Fecha");
+                table.addCell("Subtotal");
+                table.addCell("Total");
 
                 Iterator iter = lsventa.listIterator();
                 System.out.println("ANTES DEL WHILE");
@@ -88,99 +99,18 @@ public class Reporte implements Serializable {
                     System.out.println("while");
                     venta = (Venta) iter.next();
                     SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                    System.out.println("Fecha venta " + formato.format(venta.getFecha()));
+                    table.addCell("" + venta.getIdventa());
+                    table.addCell(venta.getIdempleado().getNombres());
+                    table.addCell("" + venta.getIdventaDetalle_complemento().getIdventa_detalle().getCodigo());
+                    table.addCell(formato.format(venta.getFecha()));
+                    table.addCell("" + venta.getSubtotal());
+                    table.addCell("" + venta.getTotal());
+                    System.out.println("" + venta.getEstado());
                 }
                 // Creacion de una tabla
-                PdfPTable table = new PdfPTable(1);
 
-                // Agregar la tabla al documento
                 document.add(table);
 
-                // Cargar otra imagen
-                // Agregar la imagen
-                // Creacion del parrafo
-                Paragraph paragraph = new Paragraph();
-
-                // Agregar un titulo con su respectiva fuente
-                paragraph.add(new Phrase("Características:", fontTitulos));
-
-                // Agregar saltos de linea
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-
-                // Agregar contenido con su respectiva fuente
-                paragraph
-                        .add(new Phrase(
-                                "El sensor de la X-E1 presenta el mismo excelente rendimiento que el X-Trans CMOS "
-                                + "de 16 megapíxeles del modelo superior de la serie X, la X-Pro1. Gracias la matriz "
-                                + "de filtro de color con disposición aleatoria de los píxeles, desarrollada originalmente"
-                                + " por Fujifilm, el sensor X-Trans CMOS elimina la necesidad del filtro óptico de paso bajo"
-                                + " que se utiliza en los sistemas convencionales para inhibir el muaré a expensas de la"
-                                + " resolución. Esta matriz innovadora permite al sensor X-Trans CMOS captar la luz sin filtrar"
-                                + " del objetivo y obtener una resolución sin precedentes. La exclusiva disposición aleatoria de"
-                                + " la matriz de filtro de color resulta asimismo muy eficaz para mejorar la separación de ruido"
-                                + " en la fotografía de alta sensibilidad. Otra ventaja del gran sensor APS-C es la capacidad"
-                                + " para crear un hermoso efecto “bokeh”, el estético efecto desenfocado que se crea al disparar"
-                                + " con poca profundidad de campo.",
-                                fontContenido));
-
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                paragraph.add(new Phrase("Otras Caracaterísticas:", fontTitulos));
-
-                // Agregar el parrafo al documento
-                document.add(paragraph);
-
-                // La lista final
-                List listaFinal = new List(List.UNORDERED);
-                ListItem listItem = new ListItem();
-                List list = new List();
-
-                // Crear sangria en la lista
-                list.setListSymbol(new Chunk("   "));
-                ListItem itemNuevo = new ListItem("   ");
-
-                // ZapfDingbatsListm, lista con simbolos
-                List listSymbol = new ZapfDingbatsList(51);
-
-                // Agregar contenido a la lista
-                listSymbol
-                        .add(new ListItem(
-                                "Sensor CMOS X-Trans – Consigue una calidad de imagen superior",
-                                fontContenido));
-                listSymbol
-                        .add(new ListItem(
-                                "Visor electrónico OLED de 2,36 pulgadas de alta resolución y luminosidad",
-                                fontContenido));
-                listSymbol.add(new ListItem("Diseño y accesorios", fontContenido));
-                listSymbol.add(new ListItem("Rápida respuesta", fontContenido));
-
-                itemNuevo.add(listSymbol);
-                list.add(itemNuevo);
-                listItem.add(list);
-
-                // Agregar todo a la lista final
-                listaFinal.add(listItem);
-
-                // Agregar la lista
-                document.add(listaFinal);
-                paragraph = new Paragraph();
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                document.add(paragraph);
-
-                // Crear tabla nueva con dos posiciones
-                table = new PdfPTable(2);
-                float[] longitudes = {5.0f, 5.0f};
-
-                // Establecer posiciones de celdas
-                table.setWidths(longitudes);
-
-                // Agregar la tabla al documento
-                document.add(table);
-
-                // Cerrar el documento
                 document.close();
 
                 // Abrir el archivo

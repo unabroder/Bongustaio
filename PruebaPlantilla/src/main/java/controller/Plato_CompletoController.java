@@ -6,6 +6,7 @@ import ejb.Plato_CompletoFacadeLocal;
 import entity.Catalogo;
 import entity.Especialidad;
 import entity.Plato_Completo;
+import entity.Tipoproducto;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -45,10 +46,14 @@ public class Plato_CompletoController implements Serializable {
     }
 
     public List<Plato_Completo> getListapcompleto() {
+<<<<<<< HEAD
+        int tp = 3;
+=======
 
         this.listapcompleto = pcompletoEJB.findAll();
 
         int tp = 0;
+>>>>>>> 290fef064a1ce95277fc7cddc464c80e356a38b5
         try {
             this.listapcompleto = pcompletoEJB.obtenerPlatoPorTipoProducto(tp);
         } catch (Exception e) {
@@ -174,5 +179,17 @@ public class Plato_CompletoController implements Serializable {
         especialidad = new Especialidad();
         catalogo = new Catalogo();
     }
-
+    
+    public void leerPlato(int tp){
+        tp=Integer.parseInt(s);
+        int tp1 =0;
+        try {
+           pcompleto.getIdcatalogo().getIdtipoproduc();
+           pcompletoEJB.obtenerPlatoPorTipoProducto(tp1);
+        } catch (Exception e) {
+        }
+    }
+    
+    
+  
 }
