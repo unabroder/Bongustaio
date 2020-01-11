@@ -29,6 +29,24 @@ public class InventarioController implements Serializable {
     private Inventario inventario;
     private List<Inventario> listaInventario;
 
+<<<<<<< HEAD
+=======
+    public Fechas getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Fechas fecha) {
+        this.fecha = fecha;
+    }
+    
+<<<<<<< HEAD
+    
+    
+    
+    
+=======
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
+>>>>>>> 31c12ab20074e6ac100a06c44a9a3918b8c78e6f
     @EJB
     private ProductoFacadeLocal productoEJB;
     private Producto producto;
@@ -174,6 +192,7 @@ public class InventarioController implements Serializable {
         } catch (Exception e) {
         }
     }
+<<<<<<< HEAD
 
     public String getFecha(Date f) {
         try {
@@ -183,4 +202,8 @@ public class InventarioController implements Serializable {
             return "Error";
         }
     }
+=======
+    
+    
+>>>>>>> 31c12ab20074e6ac100a06c44a9a3918b8c78e6f
 }

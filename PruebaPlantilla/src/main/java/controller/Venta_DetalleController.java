@@ -50,6 +50,8 @@ public class Venta_DetalleController implements Serializable {
 
     public List<Venta_Detalle> getListavdetalle() {
         listavdetalle = vdetalleEJB.findAll();
+        
+        
         return listavdetalle;
     }
 
@@ -150,5 +152,7 @@ public class Venta_DetalleController implements Serializable {
         vdetalle = new Venta_Detalle();
         pcompleto = new Plato_Completo();
     }
+    
+    
 
 }

@@ -200,44 +200,29 @@
         <section class="categories_area clearfix" id="about">
             <div class="container">
                 <div class="row">
+                    <h:form id="Datos">
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
-                            <img src="../img/catagory-img/1.jpg" alt=""/>
-                            <div class="catagory-title">
-                                <a href="platosDesayunos.xhtml">
+                            <p:dataTable id="tabla" value="#{tipoproductoController.listaTipoproducto}" var="tp" >
+                                <p:column>
+                                    <p:commandButton value="#{tp.nombre}" 
+                                                     actionListener="#{plato_CompletoController.leerPlato(tp)}" 
+                                                     action="platosDesayunos?faces-redirect=true"  />
                                     
-                                    <h5>DESAYUNOS</h5>
-                                </a>
-                                <h:commandButton value="desayunos"  action="platosDesayunos?faces-redirect=true"> traer desayuno</h:commandButton>
-
-                            </div>
+                            </p:column>
+                            </p:dataTable>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="single_catagory wow fadeInUp" data-wow-delay=".6s">
-                            <img src="../img/catagory-img/2.jpg" alt="" />
-                            <div class="catagory-title">
-                                <a href="#">
-                                    <h5>ALMUERZOS</h5>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="single_catagory wow fadeInUp" data-wow-delay=".9s">
-                            <img src="../img/catagory-img/3.jpg" alt=""/>
-                            <div class="catagory-title">
-                                <a href="#">
-                                    <h5>CENAS</h5>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                        </h:form>
+                  
                 </div>
             </div>
         </section>
         <!-- ****** Fin de las Categorias****** -->
-
+        <!-- ************************************** -->
+        <!-- formulario de plato selccionado -->
+        
+        <!-- ************************************** -->
 
     </h:body>
     

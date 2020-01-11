@@ -18,7 +18,7 @@
 
         <!---->
         <p:dialog widgetVar="categoria" modal="false" showEffect="clip" resizable="false" header="Categoria">
-            <p:ajax event="close"  listener="#{inventarioController.limpiar}"  update=":da" />
+            <p:ajax event="close"  listener="#{inventarioController.limpiar()}"  update=":da" />
             <h:form id='da'>
 
                 <p:panelGrid columns="2" >
@@ -31,6 +31,7 @@
                     <p:inputText id="txtCanEnt"  value="#{inventarioController.inventario.cant_entrada}"/>
                     <p:outputLabel value="Cantidad Disponible" for="txtCanDis"/>
                     <p:inputText id="txtCanDis"  value="#{inventarioController.inventario.cant_disponible}"/>
+                    
                     <p:commandButton value="Guardar" actionListener="#{inventarioController.insertar()}"
                                      rendered="#{inventarioController.inventario.idinventario == 0}"
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
@@ -59,16 +60,26 @@
         </h:form>
 
 
+ 
+        
         <h:form id="Datos">
             <p:dataTable  value="#{inventarioController.listaInventario}" var="inv">
                 <p:column headerText="ID">
                     <h:outputText value="#{inv.idinventario}" />
                 </p:column>
+<<<<<<< HEAD
+               <p:column headerText="Producto">
+=======
                 <p:column headerText="Fecha">
                     <h:outputText value="#{inventarioController.getFecha(inv.fecha)}" />
                 </p:column>
                 <p:column headerText="Producto">
+<<<<<<< HEAD
                     <h:outputText  value="#{inv.idproducto.nombre}" />                                               
+=======
+>>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
+                    <h:outputText value="#{inv.idproducto.nombre}" />
+>>>>>>> 31c12ab20074e6ac100a06c44a9a3918b8c78e6f
                 </p:column>
                 <p:column headerText="Cantidad Entrada">
                     <h:outputText value="#{inv.cant_entrada}" />
@@ -92,6 +103,5 @@
     </ui:define>
 
     <ui:define name="bottom">
-        preba de sonido
     </ui:define>
 </ui:composition>

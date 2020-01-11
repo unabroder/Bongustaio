@@ -6,7 +6,18 @@
 package ejb;
 
 import entity.Inventario;
+<<<<<<< HEAD
 import entity.Producto;
+=======
+
+<<<<<<< HEAD
+import entity.Venta;
+
+
+=======
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
+import java.util.Date;
+>>>>>>> 31c12ab20074e6ac100a06c44a9a3918b8c78e6f
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -32,8 +43,46 @@ public class InventarioFacade extends AbstractFacade<Inventario> implements Inve
     public InventarioFacade() {
         super(Inventario.class);
     }
+ 
+    public List<Inventario> consultarVenta(Date date1, Date date2){
+    List<Inventario> lista=new LinkedList<>();
+<<<<<<< HEAD
     
+<<<<<<< HEAD
     public List<Inventario> consultarInvenByNombre(Producto id){
+=======
+
+        try {
+=======
+            try {
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
+            if (date1 != null && date2 != null) {
+                String sql = "Select x from Inventario x where x.estado between ?0 and ?1";
+                Query q = em.createQuery(sql);
+                q.setParameter(1, date1);
+                q.setParameter(2, date2);
+                lista = q.getResultList();
+                
+            } else {
+            }
+                return lista;
+        } catch (Exception e) {
+            
+            String sql = "Select x from Inventario v";
+            Query q = em.createQuery(sql);
+            lista = q.getResultList();
+            e.printStackTrace();
+            
+            return lista;
+        }
+        
+    }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
+    public List<Inventario> consultarInven(Date date1, Date date2){
+>>>>>>> 31c12ab20074e6ac100a06c44a9a3918b8c78e6f
         List<Inventario> lista=new LinkedList<>();
         System.out.println("entro al metodo");
         try {
@@ -57,4 +106,8 @@ public class InventarioFacade extends AbstractFacade<Inventario> implements Inve
         }
     }
     
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
 }

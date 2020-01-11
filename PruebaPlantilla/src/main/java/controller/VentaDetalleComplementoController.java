@@ -48,7 +48,6 @@ public class VentaDetalleComplementoController implements Serializable {
 //==============================================================================================
     
     public VentaDetalleComplemento getVdcomplement() {
-
         return vdcomplement;
 
     }

@@ -6,6 +6,7 @@ import ejb.Plato_CompletoFacadeLocal;
 import entity.Catalogo;
 import entity.Especialidad;
 import entity.Plato_Completo;
+import entity.Tipoproducto;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -45,14 +46,21 @@ public class Plato_CompletoController implements Serializable {
     }
 
     public List<Plato_Completo> getListapcompleto() {
+<<<<<<< HEAD
+
+        int tp = 3;
 
         this.listapcompleto = pcompletoEJB.findAll();
 
-        int tp = 0;
+=======
+        int tp = 3;
+
+        this.listapcompleto = pcompletoEJB.findAll();
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
         try {
             this.listapcompleto = pcompletoEJB.obtenerPlatoPorTipoProducto(tp);
         } catch (Exception e) {
-            System.out.println("Error"+e.getMessage());
+            System.out.println("Error" + e.getMessage());
         }
 
         return listapcompleto;
@@ -150,7 +158,7 @@ public class Plato_CompletoController implements Serializable {
             pcompleto.setIdcatalogo(catalogo);
             pcompleto.setIdespecialidad(especialidad);
             pcompletoEJB.edit(pcompleto);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se actualizo correctamente",null);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se actualizo correctamente", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
@@ -161,10 +169,10 @@ public class Plato_CompletoController implements Serializable {
         try {
             pcompletoEJB.remove(pcompleto);
             listapcompleto = pcompletoEJB.findAll();
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se elimino correctamente",null);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se elimino correctamente", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error " + e.getMessage(), null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
@@ -173,6 +181,20 @@ public class Plato_CompletoController implements Serializable {
         pcompleto = new Plato_Completo();
         especialidad = new Especialidad();
         catalogo = new Catalogo();
+    }
+
+    public void leerPlato(int tp) {
+<<<<<<< HEAD
+        
+=======
+       
+>>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
+        int tp1 = 0;
+        try {
+            pcompleto.getIdcatalogo().getIdtipoproduc();
+            pcompletoEJB.obtenerPlatoPorTipoProducto(tp1);
+        } catch (Exception e) {
+        }
     }
 
 }
