@@ -50,6 +50,8 @@ public class Venta_DetalleController implements Serializable {
 
     public List<Venta_Detalle> getListavdetalle() {
         listavdetalle = vdetalleEJB.findAll();
+        
+        
         return listavdetalle;
     }
 

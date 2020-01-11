@@ -30,12 +30,11 @@ public interface InventarioFacadeLocal {
     List<Inventario> findRange(int[] range);
 
     int count();
-<<<<<<< HEAD
+
  
     public List<Inventario> consultarVenta(Date date1, Date date2);
-=======
-    
+
     public List<Inventario> consultarInven(Date date1, Date date2);
     
->>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
+
 }

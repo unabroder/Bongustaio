@@ -37,15 +37,6 @@ public class InventarioController implements Serializable {
     }
     
     
-    private Fechas fecha;
-
-    public Fechas getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Fechas fecha) {
-        this.fecha = fecha;
-    }
     
     
     
