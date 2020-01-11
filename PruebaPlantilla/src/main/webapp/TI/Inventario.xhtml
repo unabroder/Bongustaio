@@ -18,7 +18,7 @@
 
         <!---->
         <p:dialog widgetVar="categoria" modal="false" showEffect="clip" resizable="false" header="Categoria">
-            <p:ajax event="close"  listener="#{inventarioController.limpiar}"  update=":da" />
+            <p:ajax event="close"  listener="#{inventarioController.limpiar()}"  update=":da" />
             <h:form id='da'>
 
                 <p:panelGrid columns="2" >
@@ -31,6 +31,7 @@
                     <p:inputText id="txtCanEnt"  value="#{inventarioController.inventario.cant_entrada}"/>
                     <p:outputLabel value="Cantidad Disponible" for="txtCanDis"/>
                     <p:inputText id="txtCanDis"  value="#{inventarioController.inventario.cant_disponible}"/>
+                    
                     <p:commandButton value="Guardar" actionListener="#{inventarioController.insertar()}"
                                      rendered="#{inventarioController.inventario.idinventario == 0}"
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
@@ -44,12 +45,14 @@
             </h:form>
         </p:dialog>
 
+ 
+        
         <h:form id="Datos">
             <p:dataTable  value="#{inventarioController.listaInventario}" var="inv">
                 <p:column headerText="ID">
                     <h:outputText value="#{inv.idinventario}" />
                 </p:column>
-                <p:column headerText="Producto">
+               <p:column headerText="Producto">
                     <h:outputText value="#{inv.idproducto.nombre}" />
                 </p:column>
                 <p:column headerText="Cantidad Entrada">
@@ -74,6 +77,5 @@
     </ui:define>
 
     <ui:define name="bottom">
-        preba de sonido
     </ui:define>
 </ui:composition>

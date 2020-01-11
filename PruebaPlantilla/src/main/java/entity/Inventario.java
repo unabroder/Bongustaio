@@ -32,12 +32,8 @@ public class Inventario implements Serializable {
     @Column(name = "cant_disponible")
     private int cant_disponible;
 
-    @Column(name = "fecha")
-    @Temporal(TemporalType.DATE)
-    private Date fecha = new Date();
-
     @Column(name = "estado")
-    private int estado;
+    private int estado=1;
 
     public int getIdinventario() {
         return idinventario;
@@ -71,13 +67,6 @@ public class Inventario implements Serializable {
         this.cant_disponible = cant_disponible;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
 
     public int getEstado() {
         return estado;

@@ -4,6 +4,7 @@ import ejb.OrdenCompraFacadeLocal;
 import ejb.ProductoFacadeLocal;
 import ejb.ProveedorFacadeLocal;
 import ejb.SucursalFacadeLocal;
+import entity.Fechas;
 import entity.OrdenCompra;
 import entity.Producto;
 import entity.Proveedor;
@@ -27,6 +28,18 @@ public class OrdenCompraController implements Serializable {
     private OrdenCompraFacadeLocal OrdenEJB;
     private OrdenCompra ordencompra;
     private List<OrdenCompra> listaorden;
+    
+    private Fechas fecha;
+
+    public Fechas getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Fechas fecha) {
+        this.fecha = fecha;
+    }
+    
+    
 
     @EJB
     private ProveedorFacadeLocal proveedorEJB;
@@ -54,8 +67,7 @@ public class OrdenCompraController implements Serializable {
     }
 
     public List<OrdenCompra> getListaorden() {
-        this.listaorden = OrdenEJB.findAll();
-        return listaorden;
+   return    this.listaorden = OrdenEJB.consultarOrden(fecha.getFecha1(),fecha.getFecha2());
     }
 
     public void setListaorden(List<OrdenCompra> listaorden) {
@@ -124,6 +136,7 @@ public class OrdenCompraController implements Serializable {
         proveedor = new Proveedor();
         sucursal = new Sucursal();
         producto = new Producto();
+        fecha = new Fechas();
     }
 
     public void insertar() {

@@ -2,8 +2,8 @@ package controller;
 
 import ejb.InventarioFacadeLocal;
 
-import entity.Inventario;
 import ejb.ProductoFacadeLocal;
+import entity.Fechas;
 import entity.Inventario;
 import entity.Producto;
 
@@ -15,6 +15,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.primefaces.PrimeFaces;
 
 @Named(value = "inventarioController")
 @SessionScoped
@@ -25,6 +26,18 @@ public class InventarioController implements Serializable {
     private InventarioFacadeLocal inventarioEJB;
     private Inventario inventario;
     private List<Inventario> listaInventario;
+    
+    private Fechas fecha;
+
+    public Fechas getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Fechas fecha) {
+        this.fecha = fecha;
+    }
+    
+    
     
     @EJB
     private ProductoFacadeLocal productoEJB;
@@ -84,7 +97,13 @@ public class InventarioController implements Serializable {
     public void init() {
         inventario = new Inventario();
         producto = new Producto();
+        fecha= new Fechas();
         obtenerTodos();
+    }
+    
+        public void click() {
+        PrimeFaces.current().ajax().update("form:display");
+        PrimeFaces.current().executeScript("PF('dlg').show()");
     }
 
     //metodos 
@@ -151,4 +170,6 @@ public class InventarioController implements Serializable {
         } catch (Exception e) {
         }
     }
+    
+    
 }

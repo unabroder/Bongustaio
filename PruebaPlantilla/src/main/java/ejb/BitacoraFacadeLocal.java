@@ -6,6 +6,7 @@
 package ejb;
 
 import entity.Bitacora;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,4 +30,6 @@ public interface BitacoraFacadeLocal {
     List<Bitacora> findRange(int[] range);
 
     int count();
+    
+    public List<Bitacora> consultarBita(Date date1, Date date2);
 }

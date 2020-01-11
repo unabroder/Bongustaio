@@ -6,9 +6,13 @@
 package ejb;
 
 import entity.OrdenCompra;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +32,31 @@ public class OrdenCompraFacade extends AbstractFacade<OrdenCompra> implements Or
     public OrdenCompraFacade() {
         super(OrdenCompra.class);
     }
-    
+
+    public List<OrdenCompra> consultarOrden(Date date1, Date date2) {
+
+        List<OrdenCompra> lista = new LinkedList<>();
+
+        try {
+            if (date1 != null && date2 != null) {
+
+                String sql = "select v from orden_compra v where v.fecha between ?1 and ?2";
+                Query q = em.createQuery(sql);
+                q.setParameter(1, date1);
+                q.setParameter(2, date2);
+                lista = q.getResultList();
+            } else {
+            }
+            return lista;
+        } catch (Exception e) {
+
+            String sql = "select v from orden_compra v";
+            Query q = em.createQuery(sql);
+            lista = q.getResultList();
+            e.printStackTrace();
+            return lista;
+        }
+
+    }
+
 }

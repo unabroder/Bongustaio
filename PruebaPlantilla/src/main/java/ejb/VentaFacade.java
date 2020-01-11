@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-
 @Stateless
 public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLocal {
 
@@ -20,11 +19,6 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
     protected EntityManager getEntityManager() {
         return em;
     }
-    
-  
-    
-    
-    
 
     public VentaFacade() {
         super(Venta.class);
@@ -49,9 +43,9 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
 
         List<Venta> lista = new LinkedList<>();
         try {
-            System.out.println(date1);
+
             if (date1 != null && date2 != null) {
-                System.out.println("###################botones llenos ################");
+
                 String sql = "Select v from Venta v where v.fecha between ?1 and ?2";
                 Query q = em.createQuery(sql);
                 q.setParameter(1, date1);
@@ -68,12 +62,8 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
 
             String sql = "Select v from Venta v";
             Query q = em.createQuery(sql);
-            lista = q.getResultList();
-            System.out.println("###################botones vacios ################");
-
+            lista = q.getResultList();          
             e.printStackTrace();
-         
-            System.out.println("###################error de vista de venta ################" + e);
             return lista;
         }
     }

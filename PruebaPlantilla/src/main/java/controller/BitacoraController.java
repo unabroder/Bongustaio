@@ -8,6 +8,7 @@ package controller;
 import ejb.BitacoraFacadeLocal;
 import ejb.UsuariosFacadeLocal;
 import entity.Bitacora;
+import entity.Fechas;
 import entity.Usuarios;
 import java.io.Serializable;
 import java.util.List;
@@ -30,6 +31,7 @@ public class BitacoraController implements Serializable{
     private Bitacora bitacora;
     private List<Bitacora> lsBitacora;
 
+    private Fechas fecha;
     @EJB
     private UsuariosFacadeLocal usuariosEJB;
     private Usuarios usuario;
@@ -44,7 +46,7 @@ public class BitacoraController implements Serializable{
     }
 
     public List<Bitacora> getLsBitacora() {
-        return lsBitacora;
+        return this.lsBitacora=bitacoraEJB.consultarBita(fecha.getFecha1(),fecha.getFecha2());
     }
 
     public void setLsBitacora(List<Bitacora> lsBitacora) {
