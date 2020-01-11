@@ -7,7 +7,7 @@
     
 
     <h:head>
-        <title>Facelet Title</title>
+        <title>MODULO DE TI</title>
         <h:outputStylesheet  library="css" name="estilos.css" />
          <link rel="icon" href="img/core-img/restaurantes.png" />
 
@@ -16,17 +16,18 @@
 
         <!-- Responsive CSS -->
         <link href="css/responsive/responsive.css" rel="stylesheet" />
-        <f:event type="preRenderView" listener="#{usuarioController.validacion1()}" />
+        <f:event type="preRenderView" listener="#{usuarioController.validacion2()}" />
         <f:event type="preRenderView" listener="#{usuarioController.validacionRol()}" />
+        <f:event type="preRenderView" listener="#{usuarioController.validacionRolBodega()}" />
     </h:head>
-    
+   
    <h:body style="background-color: #595C5E">
         <!-- ****** Superficie Principal de login y iconos ****** -->
 
         <div class="top_header_area" style="background-color: black">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10"  >
+                    <div class="col-md-8"  >
 
                         <!--  Top Social bar start -->
                         <div class="top_social_bar" style="padding: 10px; margin-left:  -18%">
@@ -40,7 +41,7 @@
                     </div>
 
                     <!-- Nombre de Usuario -->
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <div class="signup-search-area d-flex align-items-center justify-content-end">
                             <div class="login_register_area d-flex">
                                 <div class="login" >

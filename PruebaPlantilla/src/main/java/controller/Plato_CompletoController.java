@@ -46,7 +46,14 @@ public class Plato_CompletoController implements Serializable {
     }
 
     public List<Plato_Completo> getListapcompleto() {
+<<<<<<< HEAD
         int tp = 3;
+=======
+
+        this.listapcompleto = pcompletoEJB.findAll();
+
+        int tp = 0;
+>>>>>>> 290fef064a1ce95277fc7cddc464c80e356a38b5
         try {
             this.listapcompleto = pcompletoEJB.obtenerPlatoPorTipoProducto(tp);
         } catch (Exception e) {
@@ -119,9 +126,11 @@ public class Plato_CompletoController implements Serializable {
             pcompleto.setIdespecialidad(especialidad);
 
             pcompletoEJB.create(pcompleto);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se guardo correctamente", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error " + e.getMessage(), null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
@@ -145,8 +154,9 @@ public class Plato_CompletoController implements Serializable {
         try {
             pcompleto.setIdcatalogo(catalogo);
             pcompleto.setIdespecialidad(especialidad);
-
             pcompletoEJB.edit(pcompleto);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se actualizo correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
     }
@@ -156,7 +166,11 @@ public class Plato_CompletoController implements Serializable {
         try {
             pcompletoEJB.remove(pcompleto);
             listapcompleto = pcompletoEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se elimino correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 

@@ -44,7 +44,9 @@ public class SesionController {
 
                 httpSession.invalidate();
             } else {
-                throw new Exception("Error en el cierre de sesin");
+
+                throw new Exception("Error en el cierre de session");
+
                 // TODO Agregar excepciones de sistema
             }
         } catch (Exception e) {

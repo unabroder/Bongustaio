@@ -94,6 +94,8 @@ public class CatalogoController implements Serializable {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se guardo correctamente", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
@@ -126,7 +128,11 @@ public class CatalogoController implements Serializable {
         try {
             catalogoEJB.edit(catalogo);
             listaCatalogo = catalogoEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se modifico correctamente.",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);            
         }
     }
 
@@ -135,8 +141,11 @@ public class CatalogoController implements Serializable {
         try {
             catalogoEJB.remove(catalogo);
             listaCatalogo = catalogoEJB.findAll();
-
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Eliminado correctamente. ",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);                        
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);                        
         }
     }
 

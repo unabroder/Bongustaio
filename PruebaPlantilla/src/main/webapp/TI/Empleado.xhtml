@@ -7,6 +7,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">  
 
     <ui:define name="content">
+        <p:outputLabel value="Tabla de Empleados" style="margin-left:  35%;font-size: 40px"/>
         <p:growl id="MSJ"/>
         <h:form id="d">
             <p:panelGrid columns="3">
@@ -37,6 +38,22 @@
                                        itemValue="#{lsTP.idtipoempleado}" itemLabel="#{lsTP.tipoempleado}" >
                         </f:selectItems>
                     </p:selectOneMenu>
+                    <p:outputLabel value="Tipo Sucursal" />
+                    <p:selectOneMenu  value="#{empleadoController.sucursal.idsucursal}">
+                        <f:selectItem itemLabel="Seleccione un tipo de empleado"></f:selectItem>
+                        <f:selectItems value="#{empleadoController.listSucursal}" var="lsTP"
+                                       itemValue="#{lsTP.idsucursal}" itemLabel="#{lsTP.nombre}" >
+                        </f:selectItems>
+                    </p:selectOneMenu>
+
+                        <p:commandButton value="Guardar" actionListener="#{empleadoController.insertar()}"
+                                         update=":Datos da :MSJ" oncomplete="PF('empleado').hide()" icon="ui-icon-mail-open" 
+                                         rendered="#{empleadoController.empleado.idempleado == 0}"
+                                         onclick="reiniciarTema();editarMSJ()"/>
+                        <p:commandButton value="Editar" actionListener="#{empleadoController.editar()}"
+                                         update=":Datos da :MSJ" oncomplete="PF('empleado').hide()" 
+                                         rendered="#{empleadoController.empleado.idempleado != 0}"
+                                         onclick="reiniciarTema();editarMSJ()"/>
                     <p:outputLabel value="Sucursal" for="cboSuc"/>
                     <p:selectOneMenu id="cboSuc" value="#{empleadoController.sucursal.idsucursal}">
                         <f:selectItem itemLabel="Seleccione una sucursal"></f:selectItem>

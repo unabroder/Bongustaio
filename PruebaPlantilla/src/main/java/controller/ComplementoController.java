@@ -15,6 +15,8 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -55,7 +57,11 @@ public class ComplementoController implements Serializable {
     public void insertar() {      // metodo para insertar 
         try {
             complementoEJB.create(complemento);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se guardo correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
@@ -78,7 +84,11 @@ public class ComplementoController implements Serializable {
         try {
             complementoEJB.edit(complemento);
             listaComplemento = complementoEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se actualizo correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
@@ -87,8 +97,11 @@ public class ComplementoController implements Serializable {
         try {
             complementoEJB.remove(complemento);
             listaComplemento = complementoEJB.findAll();
-
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se elimino correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 

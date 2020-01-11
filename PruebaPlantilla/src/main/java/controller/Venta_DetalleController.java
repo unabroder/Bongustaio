@@ -124,9 +124,12 @@ public class Venta_DetalleController implements Serializable {
     public void modificar() {
         try {
             vdetalle.setIdplato_completo(pcompleto);
-
             vdetalleEJB.edit(vdetalle);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se actualizo correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
     
@@ -135,7 +138,11 @@ public class Venta_DetalleController implements Serializable {
         try {
             vdetalleEJB.remove(vdetalle);
             listavdetalle=vdetalleEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se elimino correctamente",null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 

@@ -21,7 +21,7 @@
 
 
 
-        <p:dialog style="margin-top: 10; " widgetVar="venta" modal="false" showEffect="clip" resizable="false" header="Venta">
+        <p:dialog style="margin-top: 10%; " widgetVar="venta" modal="false" showEffect="clip" resizable="false" header="Venta">
             <p:ajax event="close" update=":da" listener="#{ventaController.limpiar()}" />
             <h:form id='da'>
                 <p:panelGrid columns="2" >
@@ -46,11 +46,11 @@
                     <p:inputText id="txtEstado" required="true" value="#{ventaController.venta.estado}"/>
 
                     <p:commandButton value="Guardar" actionListener="#{ventaController.insertar()}"
-                                     update=":Datos da :MSJ" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
+                                     update=":DatosT da :MSJ" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
                                      rendered="#{ventaController.venta.idventa ==0}"  
                                      onclick="reiniciarTema();editarMSJ()"/>
                     <p:commandButton value="Editar" actionListener="#{ventaController.modificar()}"
-                                     update=":Datos da :MSJ" oncomplete="PF('venta').hide()" 
+                                     update=":DatosT da :MSJ" oncomplete="PF('venta').hide()" 
                                      rendered="#{ventaController.venta.idventa != 0}"
                                      onclick="reiniciarTema();editarMSJ()" />
 
@@ -67,13 +67,12 @@
                 <p:calendar value="#{ventaController.fecha.fecha2}" />
             </p:panelGrid>
             <p:panelGrid columns="1">
-                <p:commandButton value="Consultar por fechas" 
-                                 update=":DatosT da :MSJ" styleClass="btnEditar" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
-                                 rendered="#{ventaController.venta.idventa ==0}"  
-                                 onclick="reiniciarTema();editarMSJ()"/> </p:panelGrid>
 
+                <p:commandButton  update=":DatosT" action="#{ventaController.reporte()}"  value="Consultar por fecha" 
+                                  styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()"/> </p:panelGrid>
         </h:form>
         <h:form id="DatosT">
+          
             <p:dataTable id="tabla"  value="#{ventaController.listaventa}"  var="v" >
 
                 <p:column headerText="ID">
@@ -86,7 +85,7 @@
                     <h:outputText value="#{v.idventaDetalle_complemento.idventaDetalle_complemento}" />
                 </p:column>
                 <p:column headerText="Fecha">
-                    <h:outputText value="#{v.fecha}" ><f:convertDateTime pattern="YYYY-MM-dd"/></h:outputText>
+                    <h:outputText value="#{v.fecha}" ><f:convertDateTime pattern="dd-MM-YYYY"/></h:outputText>
                 </p:column>
                 <p:column headerText="SubTotal">
                     <h:outputText value="#{v.subtotal}" />
@@ -107,7 +106,11 @@
                                      onclick="reiniciarTema();editarMSJ()" styleClass="btnEliminar" />
                 </p:column>
             </p:dataTable>
+
+         
+
         </h:form>
+
     </ui:define>
 
 </ui:composition>
