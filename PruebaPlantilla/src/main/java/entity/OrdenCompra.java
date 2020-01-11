@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entity;
 
 import java.io.Serializable;
@@ -13,6 +18,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ *
+ * @author josue.vasquezusam
+ */
 @Entity
 @Table(name = "orden_compra")
 public class OrdenCompra implements Serializable {
@@ -132,3 +141,4 @@ public class OrdenCompra implements Serializable {
     }
 
 }
+

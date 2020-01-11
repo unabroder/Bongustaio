@@ -150,5 +150,7 @@ public class Venta_DetalleController implements Serializable {
         vdetalle = new Venta_Detalle();
         pcompleto = new Plato_Completo();
     }
+    
+    
 
 }

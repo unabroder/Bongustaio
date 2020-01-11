@@ -338,8 +338,10 @@ li {
    
 }
 
-.top_header_area .top_social_bar > a:hover {
-    color: black;
+
+.top_header_area .top_social_bar > a :hover {
+    color: white;
+    font-size: 10px;
 }
 
 .top_header_area .top_social_bar > a:last-of-type {

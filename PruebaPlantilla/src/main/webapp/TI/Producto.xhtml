@@ -9,7 +9,7 @@
 
 
 
-    <ui:define name="content"  >
+   <ui:define name="content"  >
 
 
         <p:growl id="MSJ"/>
@@ -38,7 +38,7 @@
 
                     <p:outputLabel value="Cantidad" for="txtCantidad"/>
                     <p:inputText id="txtCantidad"  value="#{productoController.producto.cantidad}"/>
-                    <p:outputLabel value="Fecha Vencimiento" for="txtFecha"></p:outputLabel>
+                    <p:outputLabel value="Fecha de caducidad" for="txtFecha"></p:outputLabel>
                     <p:calendar id="txtFecha" value="#{productoController.producto.fechavenc}"></p:calendar>
                     <p:commandButton value="Guardar" actionListener="#{productoController.insertar()}"
                                      rendered="#{productoController.producto.idproducto == 0}"

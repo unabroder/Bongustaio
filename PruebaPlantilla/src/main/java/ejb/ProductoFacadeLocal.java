@@ -6,6 +6,7 @@
 package ejb;
 
 import entity.Producto;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +30,7 @@ public interface ProductoFacadeLocal {
     List<Producto> findRange(int[] range);
 
     int count();
+    
+    List<Producto> Buscar(Producto pro);
     
 }

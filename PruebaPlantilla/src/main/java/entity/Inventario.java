@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+
 import javax.persistence.TemporalType;
 
 @Entity
@@ -29,12 +30,14 @@ public class Inventario implements Serializable {
     @Column(name = "cant_entrada")
     private int cant_entrada;
 
+    @Column(name = "fecha")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha;
+    
     @Column(name = "cant_disponible")
     private int cant_disponible;
 
-    @Column(name = "fecha")
-    @Temporal(TemporalType.DATE)
-    private Date fecha = new Date();
+   
 
     @Column(name = "estado")
     private int estado;
@@ -78,6 +81,7 @@ public class Inventario implements Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
 
     public int getEstado() {
         return estado;
