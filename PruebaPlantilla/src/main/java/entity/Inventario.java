@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +33,7 @@ public class Inventario implements Serializable {
 
     @Column(name = "fecha")
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha;
+    private Date fecha=new Date();
     
     @Column(name = "cant_disponible")
     private int cant_disponible;
@@ -115,10 +116,13 @@ public class Inventario implements Serializable {
         }
         return true;
     }
+    
+    
 
     @Override
     public String toString() {
         return "Inventario{" + "idinventario=" + idinventario + '}';
     }
 
+    
 }

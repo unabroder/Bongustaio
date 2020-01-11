@@ -25,7 +25,7 @@
                     <p:outputLabel value="Selecione" for="cmbMenuDelDia"/>
                     <p:selectOneMenu id="cmbMenuDelDia" value="#{inventarioController.producto.idproducto}">
                         <f:selectItem itemLabel="seleccione el menu" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{inventarioController.listaproducto}" var="pp" itemLabel="#{pp.nombre}" itemValue="#{pp.idproducto}" />
+                        <f:selectItems value="#{productoController.listaproducto}" var="pp" itemLabel="#{pp.nombre}" itemValue="#{pp.idproducto}" />
                     </p:selectOneMenu>
                     <p:outputLabel value="Cantidad Entrante" for="txtCanEnt"/>
                     <p:inputText id="txtCanEnt"  value="#{inventarioController.inventario.cant_entrada}"/>
@@ -43,20 +43,21 @@
                 </p:panelGrid>
             </h:form>
         </p:dialog>
-        
+
         <h:form id="date">
-            <p:panelGrid columns="2">
-                <h:outputLabel value="Ingrese fecha de inicio"/>
-                <h:outputLabel value="Ingrese fecha final" />
-                <p:calendar  value="#{inventarioController.fecha.fecha1}" />
-                <p:calendar value="#{inventarioController.fecha.fecha2}" />
-            </p:panelGrid>
-            <p:panelGrid columns="1">
-                <p:commandButton actionListener="#{inventarioController.consultar()}" update=":Datos"  value="Consultar por fecha"
-                                  styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()"/>
+
+            <p:panelGrid columns="3">
+                <h:outputText value="Buscar por nombre" />
+
+                <p:selectOneMenu value="#{inventarioController.producto.idproducto}">
+                    <f:selectItem  itemLabel="Nombre del producto" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{productoController.listaproducto}" var="pro" itemLabel="#{pro.nombre}" itemValue="#{pro.idproducto}"/>
+                </p:selectOneMenu>
+                <p:commandButton actionListener="#{inventarioController.obtenerTodos()}" update=":Datos"  value="Consultar"
+                                 styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()"/>
             </p:panelGrid>
         </h:form>
-        
+
 
         <h:form id="Datos">
             <p:dataTable  value="#{inventarioController.listaInventario}" var="inv">
@@ -64,10 +65,10 @@
                     <h:outputText value="#{inv.idinventario}" />
                 </p:column>
                 <p:column headerText="Fecha">
-                    <h:outputText value="#{inv.fecha}" />
+                    <h:outputText value="#{inventarioController.getFecha(inv.fecha)}" />
                 </p:column>
                 <p:column headerText="Producto">
-                    <h:outputText value="#{inv.idproducto.nombre}" />
+                    <h:outputText  value="#{inv.idproducto.nombre}" />                                               
                 </p:column>
                 <p:column headerText="Cantidad Entrada">
                     <h:outputText value="#{inv.cant_entrada}" />

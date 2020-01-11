@@ -6,7 +6,7 @@
 package ejb;
 
 import entity.Inventario;
-import java.util.Date;
+import entity.Producto;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -33,26 +33,25 @@ public class InventarioFacade extends AbstractFacade<Inventario> implements Inve
         super(Inventario.class);
     }
     
-    public List<Inventario> consultarInven(Date date1, Date date2){
+    public List<Inventario> consultarInvenByNombre(Producto id){
         List<Inventario> lista=new LinkedList<>();
+        System.out.println("entro al metodo");
         try {
-            if (date1!=null && date2!=null) {
+           
+                System.out.println("antes de consultar la lista");
+                String sql="SELECT i FROM Inventario i WHERE i.idproducto=?1";
                 
-                String sql="SELECT x FROM Inventario x WHERE x.fecha BETWEEN ?1 AND ?2";
                 Query q= em.createQuery(sql);
-                q.setParameter(1, date1);
-                q.setParameter(2, date2);
+                 System.out.println("lee la query");
+                q.setParameter(1, id);
+                System.out.println("despues de consultar la lista");
                 lista=q.getResultList();
                 
-            }else{
-            
-            }
+           System.out.println("despues de llenar la lista");
             return lista;
         } catch (Exception e) {
             
-            String sql="SELECT  x FROM Inventario x";
-            Query q= em.createQuery(sql);
-            lista= q.getResultList();
+          
             e.printStackTrace();
             return lista;
         }

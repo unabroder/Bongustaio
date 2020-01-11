@@ -82,7 +82,10 @@ public class Reporte implements Serializable {
                 Paragraph paragraph = new Paragraph();
 //
                 // Agregar un titulo con su respectiva fuente
-                paragraph.add(new Phrase("Bitacora de ventas", fontTitulos));
+                paragraph.add(new Phrase("Bitacora de ventas \n \n", fontTitulos));
+                document.add(Chunk.NEWLINE);
+                document.add(Chunk.NEWLINE);
+                document.add(Chunk.NEWLINE);
 
                 document.add(paragraph);
                 PdfPTable table = new PdfPTable(6);

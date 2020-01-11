@@ -6,7 +6,7 @@
 package ejb;
 
 import entity.Inventario;
-import java.util.Date;
+import entity.Producto;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -31,6 +31,6 @@ public interface InventarioFacadeLocal {
 
     int count();
     
-    public List<Inventario> consultarInven(Date date1, Date date2);
+    public List<Inventario> consultarInvenByNombre(Producto id);
     
 }
