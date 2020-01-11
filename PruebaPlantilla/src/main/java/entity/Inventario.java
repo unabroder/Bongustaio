@@ -33,17 +33,12 @@ public class Inventario implements Serializable {
     @Column(name = "fecha")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
-    
+
     @Column(name = "cant_disponible")
     private int cant_disponible;
 
-<<<<<<< HEAD
-=======
-   
-
->>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
     @Column(name = "estado")
-    private int estado=1;
+    private int estado = 1;
 
     public int getIdinventario() {
         return idinventario;
@@ -76,8 +71,6 @@ public class Inventario implements Serializable {
     public void setCant_disponible(int cant_disponible) {
         this.cant_disponible = cant_disponible;
     }
-
-
 
     public int getEstado() {
         return estado;
