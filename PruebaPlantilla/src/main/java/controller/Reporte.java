@@ -77,19 +77,23 @@ public class Reporte implements Serializable {
                         FontFactory.TIMES_BOLDITALIC, 11, Font.UNDERLINE,
                         BaseColor.RED);
 
-                LinkedList<Venta> lista;
                 System.out.println("despues de crear lista");
-                lsventa = (ArrayList<Venta>) ventaEJB.consultarVenta(Date1, Date2);
-                System.out.println(lsventa.listIterator());
+                try {
+                    lsventa = (ArrayList<Venta>) ventaEJB.consultarVenta(Date1, Date2);
+                    System.out.println(lsventa.listIterator());
 
-                Iterator iter = lsventa.listIterator();
-                System.out.println("ANTES DEL WHILE");
-                while (iter.hasNext()) {
-                    System.out.println("while");
-                    venta = (Venta) iter.next();
-                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                    System.out.println("Fecha venta " + formato.format(venta.getFecha()));
+                    Iterator iter = lsventa.listIterator();
+                    System.out.println("ANTES DEL WHILE");
+                    while (iter.hasNext()) {
+                        System.out.println("while");
+                        venta = (Venta) iter.next();
+                        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                        System.out.println("Fecha venta " + formato.format(venta.getFecha()));
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error " + e.getMessage());
                 }
+
                 // Creacion de una tabla
                 PdfPTable table = new PdfPTable(1);
 

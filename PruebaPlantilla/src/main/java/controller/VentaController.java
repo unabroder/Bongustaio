@@ -104,11 +104,6 @@ public class VentaController implements Serializable {
 
     }
 
-    public void click() {
-        PrimeFaces.current().ajax().update("form:display");
-        PrimeFaces.current().executeScript("PF('dlg').show()");
-    }
-
     public EmpleadoFacadeLocal getEmpleadoEJB() {
         return empleadoEJB;
     }
