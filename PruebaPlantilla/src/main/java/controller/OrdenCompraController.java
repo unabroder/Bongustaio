@@ -135,18 +135,11 @@ public class OrdenCompraController implements Serializable {
 
     @PostConstruct
     private void init() {
-<<<<<<< HEAD
         ordencompra = new OrdenCompra();
         proveedor = new Proveedor();
         sucursal = new Sucursal();
         producto = new Producto();
         fecha = new Fechas();
-=======
-        this.ordencompra = new OrdenCompra();
-        this.proveedor = new Proveedor();
-        this.sucursal = new Sucursal();
-        this.producto = new Producto();
->>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
     }
 
     public void insertar() {

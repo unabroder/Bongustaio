@@ -36,19 +36,6 @@ public class InventarioController implements Serializable {
         this.fecha = fecha;
     }
     
-    
-    private Fechas fecha;
-
-    public Fechas getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Fechas fecha) {
-        this.fecha = fecha;
-    }
-    
-    
-    
     @EJB
     private ProductoFacadeLocal productoEJB;
     private Producto producto;
@@ -70,7 +57,6 @@ public class InventarioController implements Serializable {
     }
     
     public List<Inventario> getListaInventario() {
-        this.listaInventario = inventarioEJB.consultarInven(fecha.getFecha1(), fecha.getFecha2());
         return listaInventario;
     }
     

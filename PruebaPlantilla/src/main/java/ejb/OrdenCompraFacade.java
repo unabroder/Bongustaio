@@ -7,10 +7,7 @@ package ejb;
 
 import entity.OrdenCompra;
 import java.util.Date;
-<<<<<<< HEAD
 import java.util.LinkedList;
-=======
->>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -35,7 +32,6 @@ public class OrdenCompraFacade extends AbstractFacade<OrdenCompra> implements Or
     public OrdenCompraFacade() {
         super(OrdenCompra.class);
     }
-<<<<<<< HEAD
 
     public List<OrdenCompra> consultarOrden(Date date1, Date date2) {
 
@@ -63,9 +59,4 @@ public class OrdenCompraFacade extends AbstractFacade<OrdenCompra> implements Or
 
     }
 
-=======
-    
-    
-    
->>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
 }

@@ -47,23 +47,18 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
         try {
 
             if (date1 != null && date2 != null) {
-<<<<<<< HEAD
 
-=======
 //                long hora = 24;
                 String date = formato.format(date2);
                 int dia = Integer.parseInt(date.substring(8, 10)) + 1;
                 String resto = date.substring(0, 8) + dia;
                 Date fecha2 = formato.parse(resto);
-                System.out.println("###################botones llenos ################");
->>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
                 String sql = "Select v from Venta v where v.fecha between ?1 and ?2";
                 Query q = em.createQuery(sql);
                 q.setParameter(1, date1);
                 q.setParameter(2, fecha2);
-                Venta venta=new Venta();
-               
-                        
+                Venta venta = new Venta();
+
                 lista = q.getResultList();
 
             } else {
@@ -76,15 +71,11 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
 
             String sql = "Select v from Venta v";
             Query q = em.createQuery(sql);
-<<<<<<< HEAD
-            lista = q.getResultList();          
+            lista = q.getResultList();
             e.printStackTrace();
-=======
             lista = q.getResultList();
             System.out.println("###################botones vacios ################");
 
-
->>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
             return lista;
         }
     }

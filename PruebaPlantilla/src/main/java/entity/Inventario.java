@@ -37,11 +37,6 @@ public class Inventario implements Serializable {
     @Column(name = "cant_disponible")
     private int cant_disponible;
 
-<<<<<<< HEAD
-=======
-   
-
->>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
     @Column(name = "estado")
     private int estado=1;
 
