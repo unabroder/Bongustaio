@@ -77,7 +77,7 @@ public class Reporte implements Serializable {
                         FontFactory.TIMES_BOLDITALIC, 11, Font.UNDERLINE,
                         BaseColor.RED);
 
-<<<<<<< HEAD
+/*<<<<<<< HEAD
                 System.out.println("despues de crear lista");
                 try {
                     lsventa = (ArrayList<Venta>) ventaEJB.consultarVenta(Date1, Date2);
@@ -93,7 +93,7 @@ public class Reporte implements Serializable {
                     }
                 } catch (Exception e) {
                     System.out.println("Error " + e.getMessage());
-=======
+=======*/
                 lsventa = lista2;
 
                 Paragraph paragraph = new Paragraph();
@@ -123,7 +123,7 @@ public class Reporte implements Serializable {
                     table.addCell("" + venta.getSubtotal());
                     table.addCell("" + venta.getTotal());
                     System.out.println("" + venta.getEstado());
->>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
+//>>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
                 }
 
                 // Creacion de una tabla
