@@ -20,7 +20,7 @@ public class Roles {
     private String rol;
     
     @Column(name = "estado")
-    private int estado=1;
+    private int estado;
 
     public int getIdrol() {
         return idrol;

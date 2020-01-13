@@ -6,12 +6,6 @@
 package ejb;
 
 import entity.OrdenCompra;
-<<<<<<< HEAD
-import entity.Venta;
-=======
->>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
-
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -35,15 +29,5 @@ public interface OrdenCompraFacadeLocal {
     List<OrdenCompra> findRange(int[] range);
 
     int count();
-
-<<<<<<< HEAD
- 
-    public List<OrdenCompra> consultarOrden(Date date1, Date date2);
-
-   
     
-
-=======
-    public List<OrdenCompra> consultarOrden(Date date1, Date date2);
->>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
 }

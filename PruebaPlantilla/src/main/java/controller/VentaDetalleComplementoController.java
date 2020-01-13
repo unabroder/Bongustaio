@@ -48,6 +48,7 @@ public class VentaDetalleComplementoController implements Serializable {
 //==============================================================================================
     
     public VentaDetalleComplemento getVdcomplement() {
+
         return vdcomplement;
 
     }
@@ -126,12 +127,12 @@ public class VentaDetalleComplementoController implements Serializable {
         try {
             vdcomplement.setIdcomplemento(complemento);
             vdcomplement.setIdventa_detalle(vdetalle);
+
             vdcomplementoEJB.create(vdcomplement);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su registro fue guardado", null);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
+
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error "+e.getMessage(), null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
 
     }
@@ -146,14 +147,14 @@ public class VentaDetalleComplementoController implements Serializable {
     public void modificar(){
         try {
             vdcomplement.setIdcomplemento(complemento);
-            vdcomplement.setIdventa_detalle(vdetalle);            
+            vdcomplement.setIdventa_detalle(vdetalle);
+            
             vdcomplementoEJB.edit(vdcomplement);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se modifico correctamente",null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+            
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
+    
+    
     }
     
     public void leerid(VentaDetalleComplemento vdc){
@@ -172,12 +173,8 @@ public class VentaDetalleComplementoController implements Serializable {
         try {
             vdcomplement=vdc;
             vdcomplementoEJB.remove(vdcomplement);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se elimino correctamente",null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        } 
+        }
     
     
     }

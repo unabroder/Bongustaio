@@ -8,15 +8,12 @@ package controller;
 import ejb.BitacoraFacadeLocal;
 import ejb.UsuariosFacadeLocal;
 import entity.Bitacora;
-import entity.Fechas;
 import entity.Usuarios;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -31,7 +28,6 @@ public class BitacoraController implements Serializable{
     private Bitacora bitacora;
     private List<Bitacora> lsBitacora;
 
-    private Fechas fecha;
     @EJB
     private UsuariosFacadeLocal usuariosEJB;
     private Usuarios usuario;
@@ -46,7 +42,7 @@ public class BitacoraController implements Serializable{
     }
 
     public List<Bitacora> getLsBitacora() {
-        return this.lsBitacora=bitacoraEJB.consultarBita(fecha.getFecha1(),fecha.getFecha2());
+        return lsBitacora;
     }
 
     public void setLsBitacora(List<Bitacora> lsBitacora) {
@@ -78,12 +74,7 @@ public class BitacoraController implements Serializable{
         try {
             bitacora.setUsuario(usuario);
             bitacoraEJB.create(bitacora);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se guardo correctamente",null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: "+e.getMessage(),null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-                        
         }
     }
 }

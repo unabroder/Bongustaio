@@ -50,8 +50,6 @@ public class Venta_DetalleController implements Serializable {
 
     public List<Venta_Detalle> getListavdetalle() {
         listavdetalle = vdetalleEJB.findAll();
-        
-        
         return listavdetalle;
     }
 
@@ -94,10 +92,11 @@ public class Venta_DetalleController implements Serializable {
         }
     }
 
-    public void insertar() {
+    public void insertar(Plato_Completo pcompleto) {
+        System.out.println(vdetalle);
+        System.out.println(pcompleto);
         try {
             vdetalle.setIdplato_completo(pcompleto);
-
             vdetalleEJB.create(vdetalle);
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -126,12 +125,9 @@ public class Venta_DetalleController implements Serializable {
     public void modificar() {
         try {
             vdetalle.setIdplato_completo(pcompleto);
+
             vdetalleEJB.edit(vdetalle);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se actualizo correctamente",null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
     
@@ -140,11 +136,7 @@ public class Venta_DetalleController implements Serializable {
         try {
             vdetalleEJB.remove(vdetalle);
             listavdetalle=vdetalleEJB.findAll();
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"Se elimino correctamente",null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
@@ -152,7 +144,5 @@ public class Venta_DetalleController implements Serializable {
         vdetalle = new Venta_Detalle();
         pcompleto = new Plato_Completo();
     }
-    
-    
 
 }

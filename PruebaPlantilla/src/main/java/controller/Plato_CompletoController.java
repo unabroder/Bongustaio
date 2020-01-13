@@ -6,18 +6,17 @@ import ejb.Plato_CompletoFacadeLocal;
 import entity.Catalogo;
 import entity.Especialidad;
 import entity.Plato_Completo;
-import entity.Tipoproducto;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 
 @Named(value = "plato_CompletoController")
-@SessionScoped
+@ViewScoped
 public class Plato_CompletoController implements Serializable {
 
     @EJB
@@ -35,8 +34,19 @@ public class Plato_CompletoController implements Serializable {
     private Especialidad especialidad;
     private List<Especialidad> listaespecialidad;
 
-//=======================================================================================================
-//=======================================================================================================
+    @PostConstruct
+    private void init() {
+        pcompleto = new Plato_Completo();
+        especialidad = new Especialidad();
+        catalogo = new Catalogo();
+        // recogiendo el idTipoProducto que viene desde venta.xhtml
+        String idTipoProductoStr = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idTipoProducto");
+        if(idTipoProductoStr != null && !idTipoProductoStr.isEmpty()){
+            int idTipoProducto = Integer.parseInt(idTipoProductoStr);
+            listapcompleto = pcompletoEJB.obtenerPlatoCompletoPorTipoProducto(idTipoProducto);
+        }
+    }
+    
     public Plato_Completo getPcompleto() {
         return pcompleto;
     }
@@ -46,23 +56,9 @@ public class Plato_CompletoController implements Serializable {
     }
 
     public List<Plato_Completo> getListapcompleto() {
-<<<<<<< HEAD
-
-        int tp = 3;
-
-        this.listapcompleto = pcompletoEJB.findAll();
-
-=======
-        int tp = 3;
-
-        this.listapcompleto = pcompletoEJB.findAll();
->>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
-        try {
-            this.listapcompleto = pcompletoEJB.obtenerPlatoPorTipoProducto(tp);
-        } catch (Exception e) {
-            System.out.println("Error" + e.getMessage());
+        if(listapcompleto == null || listapcompleto.isEmpty()){
+            this.listapcompleto=pcompletoEJB.findAll();
         }
-
         return listapcompleto;
     }
 
@@ -102,13 +98,6 @@ public class Plato_CompletoController implements Serializable {
         this.listaespecialidad = listaespecialidad;
     }
 
-    @PostConstruct
-    private void init() {
-        pcompleto = new Plato_Completo();
-        especialidad = new Especialidad();
-        catalogo = new Catalogo();
-    }
-
     public void consultarEspecialidad() {
         try {
             listaespecialidad = especialidadEJB.findAll();
@@ -129,11 +118,9 @@ public class Plato_CompletoController implements Serializable {
             pcompleto.setIdespecialidad(especialidad);
 
             pcompletoEJB.create(pcompleto);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se guardo correctamente", null);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
             FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error " + e.getMessage(), null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
@@ -157,9 +144,8 @@ public class Plato_CompletoController implements Serializable {
         try {
             pcompleto.setIdcatalogo(catalogo);
             pcompleto.setIdespecialidad(especialidad);
+
             pcompletoEJB.edit(pcompleto);
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se actualizo correctamente", null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
         }
     }
@@ -169,32 +155,15 @@ public class Plato_CompletoController implements Serializable {
         try {
             pcompletoEJB.remove(pcompleto);
             listapcompleto = pcompletoEJB.findAll();
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se elimino correctamente", null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error " + e.getMessage(), null);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
     }
 
     public void limpiar() {
-        pcompleto = new Plato_Completo();
-        especialidad = new Especialidad();
-        catalogo = new Catalogo();
+//        pcompleto = new Plato_Completo();
+//        especialidad = new Especialidad();
+//        catalogo = new Catalogo();
     }
-
-    public void leerPlato(int tp) {
-<<<<<<< HEAD
-        
-=======
-       
->>>>>>> 1ea69ceea18d17b6ddd0fc4392d76bb84fa98f51
-        int tp1 = 0;
-        try {
-            pcompleto.getIdcatalogo().getIdtipoproduc();
-            pcompletoEJB.obtenerPlatoPorTipoProducto(tp1);
-        } catch (Exception e) {
-        }
-    }
-
+    
+    
 }
