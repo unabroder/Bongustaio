@@ -18,19 +18,20 @@
 
         <!---->
         <p:dialog widgetVar="categoria" modal="false" showEffect="clip" resizable="false" header="Categoria">
-            <p:ajax event="close"  listener="#{inventarioController.limpiar}"  update=":da" />
+            <p:ajax event="close"  listener="#{inventarioController.limpiar()}"  update=":da" />
             <h:form id='da'>
 
                 <p:panelGrid columns="2" >
                     <p:outputLabel value="Selecione" for="cmbMenuDelDia"/>
                     <p:selectOneMenu id="cmbMenuDelDia" value="#{inventarioController.producto.idproducto}">
                         <f:selectItem itemLabel="seleccione el menu" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{inventarioController.listaproducto}" var="pp" itemLabel="#{pp.nombre}" itemValue="#{pp.idproducto}" />
+                        <f:selectItems value="#{productoController.listaproducto}" var="pp" itemLabel="#{pp.nombre}" itemValue="#{pp.idproducto}" />
                     </p:selectOneMenu>
                     <p:outputLabel value="Cantidad Entrante" for="txtCanEnt"/>
                     <p:inputText id="txtCanEnt"  value="#{inventarioController.inventario.cant_entrada}"/>
                     <p:outputLabel value="Cantidad Disponible" for="txtCanDis"/>
                     <p:inputText id="txtCanDis"  value="#{inventarioController.inventario.cant_disponible}"/>
+                    
                     <p:commandButton value="Guardar" actionListener="#{inventarioController.insertar()}"
                                      rendered="#{inventarioController.inventario.idinventario == 0}"
                                      update=":Datos da :MSJ" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
@@ -43,31 +44,42 @@
                 </p:panelGrid>
             </h:form>
         </p:dialog>
-        
+
         <h:form id="date">
-            <p:panelGrid columns="2">
-                <h:outputLabel value="Ingrese fecha de inicio"/>
-                <h:outputLabel value="Ingrese fecha final" />
-                <p:calendar  value="#{inventarioController.fecha.fecha1}" />
-                <p:calendar value="#{inventarioController.fecha.fecha2}" />
-            </p:panelGrid>
-            <p:panelGrid columns="1">
-                <p:commandButton actionListener="#{inventarioController.consultar()}" update=":Datos"  value="Consultar por fecha"
-                                  styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()"/>
+
+            <p:panelGrid columns="3">
+                <h:outputText value="Buscar por nombre" />
+
+                <p:selectOneMenu value="#{inventarioController.producto.idproducto}">
+                    <f:selectItem  itemLabel="Nombre del producto" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{productoController.listaproducto}" var="pro" itemLabel="#{pro.nombre}" itemValue="#{pro.idproducto}"/>
+                </p:selectOneMenu>
+                <p:commandButton actionListener="#{inventarioController.obtenerTodos()}" update=":Datos"  value="Consultar"
+                                 styleClass="btnEditar" onclick="reiniciarTema();editarMSJ()"/>
             </p:panelGrid>
         </h:form>
-        
 
+
+ 
+        
         <h:form id="Datos">
             <p:dataTable  value="#{inventarioController.listaInventario}" var="inv">
                 <p:column headerText="ID">
                     <h:outputText value="#{inv.idinventario}" />
                 </p:column>
+<<<<<<< HEAD
+               <p:column headerText="Producto">
+=======
                 <p:column headerText="Fecha">
-                    <h:outputText value="#{inv.fecha}" />
+                    <h:outputText value="#{inventarioController.getFecha(inv.fecha)}" />
                 </p:column>
                 <p:column headerText="Producto">
+<<<<<<< HEAD
+                    <h:outputText  value="#{inv.idproducto.nombre}" />                                               
+=======
+>>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
                     <h:outputText value="#{inv.idproducto.nombre}" />
+>>>>>>> 31c12ab20074e6ac100a06c44a9a3918b8c78e6f
                 </p:column>
                 <p:column headerText="Cantidad Entrada">
                     <h:outputText value="#{inv.cant_entrada}" />
@@ -91,6 +103,5 @@
     </ui:define>
 
     <ui:define name="bottom">
-        preba de sonido
     </ui:define>
 </ui:composition>

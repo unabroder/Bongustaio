@@ -12,11 +12,13 @@ import java.util.Date;
  * @author juan.ruizusam
  */
 public class Fechas {
-    private Date fecha1;
     
+    //variables
+    private Date fecha1;
  
     private Date fecha2;
 
+    //get set
     public Date getFecha1() {
         return fecha1;
     }

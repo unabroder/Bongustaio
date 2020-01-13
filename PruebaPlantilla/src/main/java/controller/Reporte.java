@@ -77,29 +77,15 @@ public class Reporte implements Serializable {
                         FontFactory.TIMES_BOLDITALIC, 11, Font.UNDERLINE,
                         BaseColor.RED);
 
-/*<<<<<<< HEAD
-                System.out.println("despues de crear lista");
-                try {
-                    lsventa = (ArrayList<Venta>) ventaEJB.consultarVenta(Date1, Date2);
-                    System.out.println(lsventa.listIterator());
-
-                    Iterator iter = lsventa.listIterator();
-                    System.out.println("ANTES DEL WHILE");
-                    while (iter.hasNext()) {
-                        System.out.println("while");
-                        venta = (Venta) iter.next();
-                        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-                        System.out.println("Fecha venta " + formato.format(venta.getFecha()));
-                    }
-                } catch (Exception e) {
-                    System.out.println("Error " + e.getMessage());
-=======*/
                 lsventa = lista2;
 
                 Paragraph paragraph = new Paragraph();
 //
                 // Agregar un titulo con su respectiva fuente
-                paragraph.add(new Phrase("Bitacora de ventas", fontTitulos));
+                paragraph.add(new Phrase("Bitacora de ventas \n \n", fontTitulos));
+                document.add(Chunk.NEWLINE);
+                document.add(Chunk.NEWLINE);
+                document.add(Chunk.NEWLINE);
 
                 document.add(paragraph);
                 PdfPTable table = new PdfPTable(6);
@@ -123,9 +109,7 @@ public class Reporte implements Serializable {
                     table.addCell("" + venta.getSubtotal());
                     table.addCell("" + venta.getTotal());
                     System.out.println("" + venta.getEstado());
-//>>>>>>> f4ed72f6a08a7d39008a39a42b901b3721ba8551
                 }
-
                 // Creacion de una tabla
 
                 document.add(table);

@@ -15,6 +15,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import ejb.VentaDetalleComplementoFacadeLocal;
 import entity.Fechas;
+import entity.Sucursal;
 import org.primefaces.PrimeFaces;
 
 @Named(value = "ventaController")
@@ -103,6 +104,37 @@ public class VentaController implements Serializable {
 
         vdComplemento = new VentaDetalleComplemento();
 
+    }
+    
+        public void deshabilitar(Venta venta) {
+        try {
+            venta.setEstado(0);
+            ventaEJB.Estado(venta);
+            listaventa=ventaEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se deshabilitó su registro", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+
+    public void habilitar(Venta venta) {
+        try {
+            venta.setEstado(1);
+            ventaEJB.Estado(venta);
+            listaventa=ventaEJB.findAll();
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se habilitó su registro", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error "+e.getMessage(),null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+    }
+
+    public void click() {
+        PrimeFaces.current().ajax().update("form:display");
+        PrimeFaces.current().executeScript("PF('dlg').show()");
     }
 
     public EmpleadoFacadeLocal getEmpleadoEJB() {

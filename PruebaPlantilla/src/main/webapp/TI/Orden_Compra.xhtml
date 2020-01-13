@@ -28,12 +28,12 @@
 
                 <p:panelGrid columns="2" >
 
+
+                    <p:outputLabel value="Selecione el proveedor" for="cmbProveedor"/>
+                    <p:selectOneMenu id="cmbProveedor" value="#{ordenCompraController.proveedor.idproveedor}">
+                        <f:selectItem itemLabel="seleccione el proveedor" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{ProveedorController.listaProveedor}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.idproveedor}" />
                     <p:outputLabel value="Selecione el proveedor "/>
-                    <p:selectOneMenu  value="#{ordenCompraController.proveedor.idproveedor}">
-                        <f:selectItem itemLabel="Seleccione una Proveedor"></f:selectItem>
-                        <f:selectItems value="#{ordenCompraController.listaProveedor}" var="p"
-                                       itemValue="#{p.idproveedor}" itemLabel="#{p.nombre}" >
-                        </f:selectItems>
                     </p:selectOneMenu>
 
                     <p:outputLabel value="selecione la sucursal"/>
@@ -75,27 +75,43 @@
             </h:form>
         </p:dialog>
 
+        <h:form id="XD">
+            
+            <p:panelGrid columns="2">
+                <h:outputLabel value="Ingrese fecha de inicio"/>
+                <h:outputLabel value="Ingrese fecha final"/>
+                <p:calendar  value="#{ordenCompraController.fecha.fecha1}"/>
+                <p:calendar value="#{ordenCompraController.fecha.fecha2}"/>
+            </p:panelGrid>
+            <p:panelGrid columns="1">
+                <p:commandButton value="Consultar por fechas" 
+                                 update=":Datos da :MSJ" styleClass="btnEditar" oncomplete="PF('categoria').hide()" icon="ui-icon-mail-open" 
+                                 rendered="#{ordenCompraController.ordencompra.idorden_compra ==0}"  
+                                 onclick="reiniciarTema();editarMSJ()"/>
+            </p:panelGrid>
+        </h:form>
+
         <h:form id="Datos">
 
             <p:dataTable  value="#{ordenCompraController.listaorden}" var="orden">
                 <p:column headerText="ID">
-                    <h:outputText value="#{orden.idorden_compra}" />
+                    <h:outputText value="#{orden.idorden_compra}"/>
                 </p:column>
                 <p:column headerText="Nombre Proveedor">
-                    <h:outputText value="#{orden.idproveedor.nombre}" />
+                    <h:outputText value="#{orden.idproveedor.nombre}"/>
                 </p:column>
 
                 <p:column headerText="Nombre Sucursal">
-                    <h:outputText value="#{orden.idsucursal.nombre}" />
+                    <h:outputText value="#{orden.idsucursal.nombre}"/>
                 </p:column>
 
                 <p:column headerText="Nombre Producto">
-                    <h:outputText value="#{orden.idproducto.nombre}" />
+                    <h:outputText value="#{orden.idproducto.nombre}"/>
                 </p:column>
 
                 <p:column headerText="Fecha">
                     <h:outputText value="#{orden.fecha}" >
-                        <f:convertDateTime pattern="YYYY-MM-dd"></f:convertDateTime>
+                        <f:convertDateTime pattern="dd-MM-YYYY"></f:convertDateTime>
                     </h:outputText>
                 </p:column>
 
