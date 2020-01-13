@@ -9,6 +9,9 @@ CREATE TABLE proveedor(
 	correo varchar(50),
 	estado int(1) not null default 1
 );
+insert into proveedor(nombre,direccion,telefono,correo)
+values('Mario','Calle aledaña condomino #4','2290-2317','Mario9078@gmail.com');
+select*from proveedor;
 
 create table producto(
 	idproducto int(11) not null primary key auto_increment,
@@ -18,6 +21,11 @@ create table producto(
 	fechavenc date not null,
 	estado int(1) not null default 1
 );
+insert into producto(nombre,precio,cantidad,fechavenc)
+values('Pollo',3.20,12,'2017-09-09');
+insert into producto(nombre,precio,cantidad,fechavenc)
+values('Carne',6.40,14,'2019-09-09'),('Tomates',1.10,54,'2019-10-09'),('Arroz',0.90,18,'2019-11-09');
+select*from producto;
 
 create table inventario(
 	idinventario int(11) not null primary key auto_increment,
@@ -29,6 +37,9 @@ create table inventario(
 	constraint foreign key (idproducto) references producto(idproducto)
 	on delete cascade on update cascade
 );
+insert into inventario(idproducto,cant_entrada,cant_disponible,fecha)
+values(1,2,6,'2019-08-08'),(2,3,3,'2019-08-08'),(3,5,7,'2019-08-08'),(1,2,6,'2019-08-08');
+select*from inventario;
 
 /*TIPO SUCURSAL DEBE ESTAR RELACIONADA CON SUCURSAL */
 CREATE TABLE tiposucursal(
@@ -36,6 +47,8 @@ CREATE TABLE tiposucursal(
 	nombre varchar(50) not null,
 	estado int(1) not null default 1
 );
+insert into tiposucursal(nombre) values('restaurante'),('snack');
+select * from tiposucursal; 
 
 CREATE TABLE sucursal(
 	idsucursal int(11) not null primary key auto_increment,
@@ -47,6 +60,10 @@ CREATE TABLE sucursal(
 	CONSTRAINT FOREIGN KEY (idtiposucursal) REFERENCES tiposucursal(idtiposucursal)
 	ON DELETE CASCADE ON UPDATE CASCADE
 );
+insert into sucursal(idtiposucursal,nombre,telefono,direccion)
+values(1,'bongustaio_Soyapango','2256-7890','bulevar del ejercito');
+select *from sucursal;
+
 
 create table orden_compra(
 	idorden_compra int(11) not null primary key auto_increment,
@@ -61,12 +78,18 @@ create table orden_compra(
 	CONSTRAINT FOREIGN KEY (idsucursal) REFERENCES sucursal(idsucursal)
 	ON DELETE CASCADE ON UPDATE CASCADE
 );
+insert into orden_compra(idproveedor,idproducto,idsucursal,cantidad,fecha)
+values(1,1,1,12,'2019-08-05');
+select*from orden_compra;
 
 create table tipoempleado(
 	idtipoempleado int(11) not null primary key auto_increment,
 	tipoempleado varchar(25) not null,
 	estado int(1) not null default 1
 );
+insert into  tipoempleado(tipoempleado) values ('Administrador'),('Cajero'),('Cocinero'),('Mesero');
+select * from tipoempleado;
+
 
 create table empleado(
 	idempleado int(11) not null primary key auto_increment,
@@ -81,12 +104,27 @@ create table empleado(
 	constraint foreign key (idtipoempleado) references tipoempleado(idtipoempleado) on delete cascade on update cascade,
 	constraint foreign key (idsucursal) references sucursal(idsucursal) on delete cascade on update cascade
 );
+insert into empleado(nombres,apellidos,dui,correo,telefono,idtipoempleado,idsucursal)
+values('Alexander','Vasquez','3490102-5','bongustaio@gmail.com','7689-2345',1,1);
+insert into empleado(nombres,apellidos,dui,correo,telefono,idtipoempleado,idsucursal)
+values('Juan','Martinez','3490102-4','bongustaio2@gmail.com','7689-2345',2,1);
+insert into empleado(nombres,apellidos,dui,correo,telefono,idtipoempleado,idsucursal)
+values('Claudia','Flores','3490102-3','bongustai3@gmail.com','7689-2345',3,1);
+insert into empleado(nombres,apellidos,dui,correo,telefono,idtipoempleado,idsucursal)
+values('Rene','Hernandez','3490102-2','bongustai4@gmail.com','7689-2345',4,1);
+insert into empleado(nombres,apellidos,dui,correo,telefono,idtipoempleado,idsucursal)
+values('Isacc','Cruz','3490102-1','bongustai4@gmail.com','7689-2345',4,1);
+select * from empleado;
+select*from empleado;
 
 CREATE TABLE roles(
 	idrol int(11) not null primary key auto_increment,
 	rol varchar(50) not null,
 	estado int(1) not null default 1
 );
+insert into roles(rol) value('Administrador'),('TI'),('Gerente'),('Vendedor');
+insert into roles(rol) value('Cocinero');
+select * from roles;
 
 CREATE TABLE usuarios(
 	idusuario int(11) not null primary key auto_increment,
@@ -98,6 +136,14 @@ CREATE TABLE usuarios(
 	CONSTRAINT FOREIGN KEY (idtipo) REFERENCES roles(idrol) ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT FOREIGN KEY (idempleado) REFERENCES empleado(idempleado) ON DELETE CASCADE ON UPDATE CASCADE
 );
+insert into usuarios(usuario,clave,idtipo,idempleado) values('Josue','123',1,1);
+insert into usuarios(usuario,clave,idtipo,idempleado) values ('Juan','123',2,2);
+insert into usuarios(usuario,clave,idtipo,idempleado) values ('Claudia','123',3,3);
+insert into usuarios(usuario,clave,idtipo,idempleado) values ('Rene','123',4,4);
+insert into usuarios(usuario,clave,idtipo,idempleado) values ('Issac','123',5,5);
+/*update usuarios set idtipo=5 where idusuario=5;*/
+select*from usuarios;
+
 
 create table bitacora(
 	idbitacora int(11) not null primary key auto_increment,
