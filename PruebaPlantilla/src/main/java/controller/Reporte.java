@@ -14,16 +14,24 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 
+<<<<<<< HEAD
+=======
+import com.itextpdf.text.ListItem;
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+<<<<<<< HEAD
 import ejb.BitacoraFacadeLocal;
 import ejb.OrdenCompraFacadeLocal;
 import ejb.VentaFacadeLocal;
 import entity.Bitacora;
 import entity.OrdenCompra;
+=======
+import ejb.VentaFacadeLocal;
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
 import entity.Venta;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
@@ -49,6 +57,7 @@ public class Reporte implements Serializable {
     private VentaFacadeLocal ventaEJB;
     private Venta venta;
     private List<Venta> lsventa;
+<<<<<<< HEAD
     
     @EJB
     private BitacoraFacadeLocal BitaEJB;
@@ -60,6 +69,9 @@ public class Reporte implements Serializable {
     private OrdenCompraFacadeLocal ordenEJB;
     private List<OrdenCompra> listaorde;
     
+=======
+
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
     public void reporte(List<Venta> lista2) {
         try {
             System.out.println("reporte de pdf ");
@@ -73,7 +85,11 @@ public class Reporte implements Serializable {
 
                 SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 
+<<<<<<< HEAD
                 FileOutputStream fileOutputStream = new FileOutputStream("C:/reportes/Reporte_Venta_" + format.format(fecha) + ".pdf");
+=======
+                FileOutputStream fileOutputStream = new FileOutputStream("C:/reportes/reporte_" + format.format(fecha) + ".pdf");
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
 
                 // Obtener la instancia del PdfWriter
                 PdfWriter.getInstance(document, fileOutputStream);
@@ -90,6 +106,7 @@ public class Reporte implements Serializable {
                         BaseColor.RED);
 
                 lsventa = lista2;
+<<<<<<< HEAD
 
                 Paragraph paragraph = new Paragraph();
 //
@@ -179,11 +196,19 @@ public class Reporte implements Serializable {
 //
                 // Agregar un titulo con su respectiva fuente
                 paragraph.add(new Phrase("Bitacora de orden de compras \n \n", fontTitulos));
+=======
+
+                Paragraph paragraph = new Paragraph();
+//
+                // Agregar un titulo con su respectiva fuente
+                paragraph.add(new Phrase("Bitacora de ventas \n \n", fontTitulos));
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
                 document.add(Chunk.NEWLINE);
                 document.add(Chunk.NEWLINE);
                 document.add(Chunk.NEWLINE);
 
                 document.add(paragraph);
+<<<<<<< HEAD
                 PdfPTable table = new PdfPTable(6);
                 table.addCell("ID");
                 table.addCell("Nombre Provedor");
@@ -208,12 +233,44 @@ public class Reporte implements Serializable {
                 }
                 // Creacion de una tabla
 
+=======
+                PdfPTable table = new PdfPTable(7);
+                table.addCell("ID");
+                table.addCell("Nombre Empleado");
+                table.addCell("Platillo");
+                table.addCell("Complemento");
+                table.addCell("Cantidad");
+                table.addCell("Fecha");
+                table.addCell("Total");
+
+                Iterator iter = lsventa.listIterator();
+                
+                while (iter.hasNext()) {
+                    System.out.println("while");
+                    venta = (Venta) iter.next();
+                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                    table.addCell("" + venta.getIdventa());
+                    table.addCell(venta.getIdempleado().getNombres()+" \n"+venta.getIdempleado().getApellidos());
+                    table.addCell(venta.getIdplato_completo().getNombre());
+                    table.addCell(venta.getIdcomplemento().getNombre());
+                    table.addCell(formato.format(venta.getFecha()));
+                    table.addCell("" + venta.getCantidad());
+                    table.addCell("" + venta.getTotal());
+                    
+                }
+                // Creacion de una tabla
+
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
                 document.add(table);
 
                 document.close();
 
                 // Abrir el archivo
+<<<<<<< HEAD
                 File file = new File("C:/reportes/reporte/" + format.format(fecha) + ".pdf");
+=======
+                File file = new File("C:/reportes/reporte_" + format.format(fecha) + ".pdf");
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
                 System.out.println(file.getAbsolutePath());
             } catch (DocumentException | FileNotFoundException ex) {
                 System.out.println("error " + ex.getMessage());
@@ -304,6 +361,13 @@ public class Reporte implements Serializable {
             // return false;
         }
 
+<<<<<<< HEAD
     }
 
+=======
+//    public static void main(String[] args) {
+//        Reporte pdf = new Reporte();
+//        pdf.reporte();
+//    }
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
 }

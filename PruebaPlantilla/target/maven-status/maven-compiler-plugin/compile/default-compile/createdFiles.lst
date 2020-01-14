@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 controller\usuarioController.class
 entity\Inventario_.class
 entity\Empleado.class
@@ -91,3 +92,5 @@ entity\Catalogo.class
 entity\Inventario.class
 entity\Sucursal.class
 entity\Tipoproducto_.class
+=======
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9

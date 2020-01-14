@@ -17,12 +17,16 @@ import javax.persistence.TemporalType;
 @Table(name = "venta")
 public class Venta implements Serializable {
 
-    @Id
+ @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idventa;
 
     @ManyToOne
     @JoinColumn(name = "idplato_completo", referencedColumnName = "idplato_completo")
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
     private Plato_Completo idplato_completo;
 
     public Plato_Completo getIdplato_completo() {
@@ -60,15 +64,40 @@ public class Venta implements Serializable {
     @JoinColumn(name = "idempleado", referencedColumnName = "idempleado")
     private Empleado idempleado;
 
+<<<<<<< HEAD
+=======
+=======
+    private Plato_Completo platoCompleto;
+    
+    @Column(name = "cantidad", nullable = false)
+    private int cantidad;
+    
+    @ManyToOne
+    @JoinColumn(name = "idcomplemento", referencedColumnName = "idcomplemento")
+    private Complemento complemento;
+    
+    @ManyToOne
+    @JoinColumn(name = "idempleado", referencedColumnName = "idempleado")
+    private Empleado empleado;
+    
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
     @Column(name = "total", nullable = false)
     private Double total;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha")
     private Date fecha = new Date();
+<<<<<<< HEAD
 
+<<<<<<< HEAD
+=======
+=======
+    
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
     @Column(name = "estado", nullable = false)
-    private int estado;
+    private int estado = 1;
 
     public int getIdventa() {
         return idventa;
@@ -78,12 +107,50 @@ public class Venta implements Serializable {
         this.idventa = idventa;
     }
 
-    public Empleado getIdempleado() {
-        return idempleado;
+    public Plato_Completo getPlatoCompleto() {
+        return platoCompleto;
     }
 
-    public void setIdempleado(Empleado idempleado) {
-        this.idempleado = idempleado;
+    public void setPlatoCompleto(Plato_Completo platoCompleto) {
+        this.platoCompleto = platoCompleto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Complemento getComplemento() {
+        return complemento;
+    }
+
+<<<<<<< HEAD
+=======
+    public void setComplemento(Complemento complemento) {
+        this.complemento = complemento;
+    }
+
+<<<<<<< HEAD
+=======
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
     public Date getFecha() {
@@ -94,14 +161,10 @@ public class Venta implements Serializable {
         this.fecha = fecha;
     }
 
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
     public int getEstado() {
         return estado;
     }
@@ -110,34 +173,11 @@ public class Venta implements Serializable {
         this.estado = estado;
     }
 
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
     @Override
     public String toString() {
-        return "Venta{" + "idventa=" + idventa + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 73 * hash + this.idventa;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Venta other = (Venta) obj;
-        if (this.idventa != other.idventa) {
-            return false;
-        }
-        return true;
+        return "Venta{" + "idventa=" + idventa + ", platoCompleto=" + platoCompleto + ", cantidad=" + cantidad + ", complemento=" + complemento + ", empleado=" + empleado + ", total=" + total + ", fecha=" + fecha + ", estado=" + estado + '}';
     }
 
 }

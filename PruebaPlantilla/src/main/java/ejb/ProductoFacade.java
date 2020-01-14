@@ -6,9 +6,12 @@
 package ejb;
 
 import entity.Producto;
+import java.util.LinkedList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +30,27 @@ public class ProductoFacade extends AbstractFacade<Producto> implements Producto
 
     public ProductoFacade() {
         super(Producto.class);
+    }
+    
+     @Override
+    public List<Producto> Buscar(Producto pro) {
+        List<Producto> lista = new LinkedList<>();
+        String sql;
+        System.out.println("Lo hace");
+
+        String n = pro.getNombre();
+        if (n != null) {
+            sql = "SELECT p FROM Producto p where p.nombre like '%" + n + "%'";
+            Query query = em.createQuery(sql);
+            lista = query.getResultList();
+            System.out.println(lista);
+        } else {
+            System.out.println("Este es el error  ");
+            sql = "SELECT p FROM Producto p ";
+            Query query = em.createQuery(sql);
+            lista = query.getResultList();
+        }
+        return lista;
     }
     
 }

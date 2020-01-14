@@ -51,13 +51,20 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
             String date = formato.format(date2);
             
             int dia = Integer.parseInt(date.substring(8, 10)) + 1;
+<<<<<<< HEAD
             String resto = date.substring(0, 8) + dia;
+=======
+            System.out.println("el sumado es " +dia);
+            String resto = date.substring(0, 8) + dia;
+            System.out.println("resto de la fecha es "+resto);
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
             Date fecha2 = formato.parse(resto);
 
             String sql = "Select v from Venta v where v.fecha between ?1 and ?2";
             Query q = em.createQuery(sql);
             q.setParameter(1, date1);
             q.setParameter(2, fecha2);
+<<<<<<< HEAD
             lista = q.getResultList();
             return lista;
 
@@ -65,6 +72,17 @@ public class VentaFacade extends AbstractFacade<Venta> implements VentaFacadeLoc
             
             String sql = "Select v from Venta v";
             Query q = em.createQuery(sql);
+=======
+
+            lista = q.getResultList();
+
+            return lista;
+
+        } catch (Exception e) {
+            String sql = "Select v from Venta v";
+            Query q = em.createQuery(sql);
+
+>>>>>>> c87746450ee84774dcc8c2338f7edf272cc5e6e9
             lista = q.getResultList();
 
             return lista;

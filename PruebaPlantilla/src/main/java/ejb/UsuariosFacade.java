@@ -52,5 +52,11 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> implements Usuarios
         return user;
     }
     
-    
+   @Override
+    public List<Usuarios> obtenerEmp(Usuarios u) {
+        Query query = em.createQuery("SELECT u FROM Usuarios u join u.idempleado e where u.idusuario = :id");
+        query.setParameter("id", u.getIdusuario());
+        List<Usuarios> lsUsuario = query.getResultList();
+        return lsUsuario;
+    }  
 }
