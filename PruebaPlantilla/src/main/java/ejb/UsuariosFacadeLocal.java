@@ -33,4 +33,5 @@ public interface UsuariosFacadeLocal {
     
     Usuarios Sesion(Usuarios us);
     
+    List<Usuarios> obtenerEmp(Usuarios u);
 }

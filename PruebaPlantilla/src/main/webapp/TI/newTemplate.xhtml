@@ -18,9 +18,7 @@
         <!-- Core Stylesheet -->
         <link href="../style.css" rel="stylesheet" />
         <!-- Responsive CSS -->
-        <link href="../css/responsive/responsive.css" rel="stylesheet" />
-
-        
+        <link href="../css/responsive/responsive.css" rel="stylesheet" />        
         <link href="../resources/css/menu.css" rel="stylesheet" type="text/css"/>
         <f:event type="preRenderView" listener="#{usuarioController.validacion1()}" />
         <f:event type="preRenderView" listener="#{usuarioController.validacionRol()}" />
@@ -54,10 +52,7 @@
                                             <div class="login" >
 
                                             </div>
-
-
                                             <div id="cambioAlex">
-
                                                 <h:form>
                                                     <h:commandButton value="Cerra Seccion" action="#{usuarioController.cerrar2()}" styleClass=" btn-outline-warning"/>
                                                 </h:form>
@@ -80,8 +75,6 @@
                             <p:growl>
                                 <p:autoUpdate />
                             </p:growl>
-
-
                             <ul>
                                 <li class="block" >
                                     <input type="checkbox" name="item" id="item1" />
@@ -132,7 +125,6 @@
                     <ui:insert name="content">Content</ui:insert>
                 </div>
             </div>
-
         </div>
         <div id="bottom">
             <ui:insert name="bottom"></ui:insert>
@@ -147,7 +139,6 @@
             ponerTema("#F6BF03", "black", "Ocultar", "Mostrar", "0.9", "0.9");
             arreglarBotonClase("btnEditar.#036fab.white.redondo", "borde.si", "degradado.si.5.black");
             arreglarBotonClase("btnEliminar.#C14309.white.redondo", "borde.si", "degradado.si.10.black");
-
         </script>
     </headscript>
 </html>

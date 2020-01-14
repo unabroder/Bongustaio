@@ -1,13 +1,12 @@
-
 package controller;
 
+import ejb.ComplementoFacadeLocal;
 import ejb.EmpleadoFacadeLocal;
+import ejb.Plato_CompletoFacadeLocal;
+import ejb.UsuariosFacadeLocal;
 import ejb.VentaFacadeLocal;
-import ejb.Venta_DetalleFacadeLocal;
 import entity.Empleado;
 import entity.Venta;
-import entity.VentaDetalleComplemento;
-import entity.Venta_Detalle;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -16,31 +15,41 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import ejb.VentaDetalleComplementoFacadeLocal;
-
+import entity.Complemento;
+import entity.Plato_Completo;
+import entity.Usuarios;
+import java.util.Iterator;
 
 @Named(value = "ventaController")
 @SessionScoped
 public class VentaController implements Serializable {
 
-        @EJB
-        private VentaFacadeLocal ventaEJB;
-        private Venta venta;
-        private List<Venta> listaventa;
-        
-        @EJB
-        private EmpleadoFacadeLocal empleadoEJB;
-        private Empleado empleado;
-        private List<Empleado> listaempleado;
+    @EJB
+    private VentaFacadeLocal ventaEJB;
+    private Venta venta;
+    private List<Venta> listaventa;
 
-        
-        @EJB
-        private VentaDetalleComplementoFacadeLocal vdComplementoEJB;
-        private VentaDetalleComplemento vdComplemento;
-        private List<VentaDetalleComplemento> listavdComplemento;
-        
+    @EJB
+    private EmpleadoFacadeLocal empleadoEJB;
+    private Empleado empleado;
+    private List<Empleado> listaempleado;
 
-   
+    @EJB
+    private Plato_CompletoFacadeLocal platoCompletoEJB;
+    private Plato_Completo plato_Completo;
+    private List<Plato_Completo> listaPlatoCompleto;
+
+    @EJB
+    private ComplementoFacadeLocal complementoEJB;
+    private Complemento complemento;
+    private List<Complemento> listaComplemento;
+
+     @EJB
+    private UsuariosFacadeLocal usuarioEJB;
+    private Usuarios usuarios;
+    private List<Usuarios> lsUsuarios;
+
+    
     public Venta getVenta() {
         return venta;
     }
@@ -50,7 +59,7 @@ public class VentaController implements Serializable {
     }
 
     public List<Venta> getListaventa() {
-        this.listaventa=ventaEJB.findAll();
+        this.listaventa = ventaEJB.findAll();
         return listaventa;
     }
 
@@ -74,105 +83,153 @@ public class VentaController implements Serializable {
         this.listaempleado = listaempleado;
     }
 
-    public VentaDetalleComplemento getVdComplemento() {
-        return vdComplemento;
+    public Plato_Completo getPlato_Completo() {
+        return plato_Completo;
     }
 
-    public void setVdComplemento(VentaDetalleComplemento vdComplemento) {
-        this.vdComplemento = vdComplemento;
+    public void setPlato_Completo(Plato_Completo plato_Completo) {
+        this.plato_Completo = plato_Completo;
     }
 
-    public List<VentaDetalleComplemento> getListavdComplemento() {
-        return listavdComplemento;
+    public List<Plato_Completo> getListaPlatoCompleto() {
+        return listaPlatoCompleto;
     }
 
-    public void setListavdComplemento(List<VentaDetalleComplemento> listavdComplemento) {
-        this.listavdComplemento = listavdComplemento;
+    public void setListaPlatoCompleto(List<Plato_Completo> listaPlatoCompleto) {
+        this.listaPlatoCompleto = listaPlatoCompleto;
     }
 
-    
-  
-        @PostConstruct
-        private void init(){
-            venta =new Venta();
-            empleado = new Empleado();
+    public Complemento getComplemento() {
+        return complemento;
+    }
 
-            vdComplemento=new VentaDetalleComplemento();
+    public void setComplemento(Complemento complemento) {
+        this.complemento = complemento;
+    }
 
-       
+    public List<Complemento> getListaComplemento() {
+        return listaComplemento;
+    }
 
-        }
-        
-        public void consultarEmpleado(){
-            try {
-                this.listaempleado=empleadoEJB.findAll();
-            } catch (Exception e) {
-            }
-        }
-        
+    public void setListaComplemento(List<Complemento> listaComplemento) {
+        this.listaComplemento = listaComplemento;
+    }
 
-        public void consultarVDComplemento(){
-            try {
-                this.listavdComplemento=vdComplementoEJB.findAll();
-            } catch (Exception e) {
-            }
-        }
-        
-        public void insertar(){
-            try {
-                venta.setIdempleado(empleado);
-                venta.setIdventaDetalle_complemento(vdComplemento);
-                
-                ventaEJB.create(venta);
-                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado",null);
-                FacesContext.getCurrentInstance().addMessage(null, msg);
-            } catch (Exception e) {
-            }
-        }
-        
-        public void consultar(){
-            try {
-                listaventa = ventaEJB.findAll();
-            } catch (Exception e) {
-            }
-        }
-        
-        public void leerId(Venta vent){
-            try {
-                this.empleado.setIdempleado(vent.getIdempleado().getIdempleado());
-                this.vdComplemento.setIdventaDetalle_complemento(vent.getIdventaDetalle_complemento().getIdventaDetalle_complemento());
-                this.venta=vent;
-            } catch (Exception e) {
-            }
-        }
-        
-        public void modificar(){
-            try {
-                venta.setIdempleado(empleado);
-                venta.setIdventaDetalle_complemento(vdComplemento);
-                
-                ventaEJB.edit(venta);
-            } catch (Exception e) {
-            }
-        }
-        
-        public void eliminar(Venta vent){
-            this.venta=vent;
-            try {
-                ventaEJB.remove(venta);
-                listaventa=ventaEJB.findAll();
-            } catch (Exception e) {
-            }
-        }
-        
-        public void limpiar(){
-             venta =new Venta();
-            empleado = new Empleado();
-            vdComplemento=new VentaDetalleComplemento();
-        }
+    public Usuarios getUsuarios() {
+        return usuarios;
+    }
 
-       
-        
-        
-    
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public List<Usuarios> getLsUsuarios() {
+        return lsUsuarios;
+    }
+
+    public void setLsUsuarios(List<Usuarios> lsUsuarios) {
+        this.lsUsuarios = lsUsuarios;
+    }
+
+    @PostConstruct
+    private void init() {
+        venta = new Venta();
+        empleado = new Empleado();
+        plato_Completo = new Plato_Completo();
+        complemento = new Complemento();
+    }
+
+    public void consultarEmpleado() {
+        try {
+            this.listaempleado = empleadoEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void insertar() {
+        try {
+//            plato_Completo = platoCompletoEJB.find(idPlatoCompleto);
+//            complemento = complementoEJB.find(idComplemento);
+//            empleado = empleadoEJB.find(idEmpleado);
+            System.out.println(plato_Completo);
+         
+            venta.setPlatoCompleto(plato_Completo);
+            double precio;
+            double total;
+            this.listaPlatoCompleto = this.platoCompletoEJB.platoPrecio(plato_Completo);
+            Iterator iter = listaPlatoCompleto.iterator();
+            while (iter.hasNext()) {                
+                plato_Completo = (Plato_Completo) iter.next();
+                System.out.println(plato_Completo.getPrecio());
+            }
+            venta.setComplemento(complemento);
+            this.listaComplemento = this.complementoEJB.precioComplemento(complemento);
+            Iterator c = listaComplemento.iterator();
+            while (c.hasNext()) {                
+                complemento = (Complemento) c.next();
+                complemento.getPrecio();
+            }
+            this.lsUsuarios = this.usuarioEJB.obtenerEmp(usuarios);
+            Iterator usu = lsUsuarios.iterator();
+            while (usu.hasNext()) {                
+                usuarios = (Usuarios) usu.next();
+                System.out.println(usuarios.getIdempleado().getIdempleado());
+            }
+            empleado.setIdempleado(usuarios.getIdempleado().getIdempleado());
+            venta.setEmpleado(empleado);
+            precio = plato_Completo.getPrecio();
+            total = (venta.getCantidad() * precio) + complemento.getPrecio();
+            venta.setTotal(total);
+            System.out.println("total " + total);
+            ventaEJB.create(venta);
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "su registro fue guardado", null);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        } catch (Exception e) {
+        }
+    }
+
+    public void consultar() {
+        try {
+            listaventa = ventaEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void leerId(Venta vent) {
+        try {
+            this.empleado.setIdempleado(vent.getEmpleado().getIdempleado());
+            this.plato_Completo.setIdplato_completo(vent.getPlatoCompleto().getIdplato_completo());
+            this.complemento.setIdcomplemento(vent.getComplemento().getIdcomplemento());
+            this.venta = vent;
+        } catch (Exception e) {
+        }
+    }
+
+    public void modificar() {
+        try {
+            venta.setEmpleado(empleado);
+            venta.setPlatoCompleto(plato_Completo);
+            venta.setComplemento(complemento);
+
+            ventaEJB.edit(venta);
+        } catch (Exception e) {
+        }
+    }
+
+    public void eliminar(Venta vent) {
+        this.venta = vent;
+        try {
+            ventaEJB.remove(venta);
+            listaventa = ventaEJB.findAll();
+        } catch (Exception e) {
+        }
+    }
+
+    public void limpiar() {
+        venta = new Venta();
+        empleado = new Empleado();
+        plato_Completo = new Plato_Completo();
+        complemento = new Complemento();
+    }
+
 }

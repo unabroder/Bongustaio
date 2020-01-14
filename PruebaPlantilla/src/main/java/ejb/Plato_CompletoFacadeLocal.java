@@ -22,5 +22,7 @@ public interface Plato_CompletoFacadeLocal {
     
     int count();
     
-    List<Plato_Completo> obtenerPlatoCompletoPorTipoProducto(int idTipoProducto); 
+    List<Plato_Completo> obtenerPlatoCompletoPorTipoProducto(int idTipoProducto);
+    
+    List<Plato_Completo> platoPrecio(Plato_Completo pp);
 }

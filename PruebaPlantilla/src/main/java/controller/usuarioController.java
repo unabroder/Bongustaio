@@ -131,15 +131,11 @@ public class usuarioController implements Serializable {
                 bitacora.setUsuario(us);
                 bitacoraEJB.create(bitacora);
                 redireccion = "modulos?faces-redirect=true";
-
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Usuario o clave incorrecta"));
             }
-
         } catch (Exception e) {
-
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error" + e));
-
         }
         return redireccion;
     }
@@ -220,6 +216,7 @@ public class usuarioController implements Serializable {
                         FacesContext.getCurrentInstance().getExternalContext().redirect("Proveedores/Producto.xhtml?faces-redirect=true");
                         break;
                     default:
+                       FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
                         System.out.println("Ocurrio un error");
                         break;
                 }
