@@ -205,7 +205,7 @@ public class usuarioController implements Serializable {
                 System.out.println(cargo);
                 switch (cargo) {
                     case "Administrador":
-//                       FacesContext.getCurrentInstance().getExternalContext().redirect("modulos.xhtml");
+                       FacesContext.getCurrentInstance().getExternalContext().redirect("Administrador/Venta.xhtml");
                         break;
                     case "TI":
 //                       FacesContext.getCurrentInstance().getExternalContext().redirect("modulos.xhtml");

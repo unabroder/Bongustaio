@@ -6,6 +6,8 @@
 package ejb;
 
 import entity.Inventario;
+import entity.Producto;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -29,5 +31,11 @@ public interface InventarioFacadeLocal {
     List<Inventario> findRange(int[] range);
 
     int count();
+
+    
+    List<Inventario> consultarInvenByNombre(Producto id);
+
+
+ 
     
 }

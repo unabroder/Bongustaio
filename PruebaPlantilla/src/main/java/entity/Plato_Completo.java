@@ -120,7 +120,7 @@ private Especialidad idespecialidad;
 
     @Override
     public String toString() {
-        return "Plato_Completo{" + "idplato_completo=" + idplato_completo + '}';
+        return "Plato_Completo{" + "idplato_completo=" + idplato_completo + ", nombre=" + nombre + ", precio=" + precio + ", estado=" + estado + ", idcatalogo=" + idcatalogo + ", idespecialidad=" + idespecialidad + '}';
     }
 
     

@@ -73,13 +73,8 @@ public class Especialidad implements Serializable{
 
     @Override
     public String toString() {
-        return "Especialidad{" + "idespecialidad=" + idespecialidad + '}';
+        return "Especialidad{" + "idespecialidad=" + idespecialidad + ", nombre=" + nombre + ", estado=" + estado + '}';
     }
 
-    
-    
-    
-    
-    
     
 }

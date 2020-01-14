@@ -7,27 +7,27 @@
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet  library="css" name="estilos.css" />
-         <!-- Poner Icono -->
+        <!-- Poner Icono -->
         <link rel="icon" href="img/core-img/restaurantes.png" />
 
         <!-- Core Stylesheet -->
         <link href="../style.css" rel="stylesheet" />
-       
+
         <!-- Responsive CSS -->
         <link href="../css/responsive/responsive.css" rel="stylesheet" />
         <f:event type="preRenderView" listener="#{usuarioController.validacion1()}" />
     </h:head>
     <h:body>
-       <!--
-        <div id="pattern-switcher">
-            Combo Especial
-        </div>
-        <div id="patter-close">
-            <i class="fa fa-times" aria-hidden="true"></i>
-        </div>-->
+        <!--
+         <div id="pattern-switcher">
+             Combo Especial
+         </div>
+         <div id="patter-close">
+             <i class="fa fa-times" aria-hidden="true"></i>
+         </div>-->
 
         <!-- ****** Superficie Principal de login y iconos ****** -->
-       <div class="top_header_area">
+        <div class="top_header_area">
             <div class="container">
                 <div class="row">
                     <div class="col-5 col-sm-6">
@@ -49,7 +49,7 @@
                                 </div>
                                 <br></br>
                                 <div class="login">
-                                   
+
                                     <h:form>
                                         <h:commandButton value="Cerra Seccion" action="#{usuarioController.cerrar2()}" styleClass="btn-outline-warning"/>
                                     </h:form>
@@ -197,47 +197,43 @@
         <!-- ****** Fin del Carrusel ****** -->
 
         <!-- ****** Categorias Existentes ****** -->
-        <section class="categories_area clearfix" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
-                            <img src="../img/catagory-img/1.jpg" alt=""/>
-                            <div class="catagory-title">
-                                <a href="platosDesayunos.xhtml">
-                                    <h5>DESAYUNOS</h5>
-                                </a>
+        <h:form>
+            <section class="categories_area clearfix" id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
+                                <img src="../img/catagory-img/1.jpg" alt=""/>
+                                <div class="catagory-title">
+                                    <h:link value="DESAYUNOS" outcome="platosCompletos?idTipoProducto=1" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="single_catagory wow fadeInUp" data-wow-delay=".6s">
-                            <img src="../img/catagory-img/2.jpg" alt="" />
-                            <div class="catagory-title">
-                                <a href="#">
-                                    <h5>ALMUERZOS</h5>
-                                </a>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="single_catagory wow fadeInUp" data-wow-delay=".6s">
+                                <img src="../img/catagory-img/2.jpg" alt="" />
+                                <div class="catagory-title">
+                                    <h:link value="ALMUERZOS"  outcome="platosCompletos?idTipoProducto=2" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <div class="single_catagory wow fadeInUp" data-wow-delay=".9s">
-                            <img src="../img/catagory-img/3.jpg" alt=""/>
-                            <div class="catagory-title">
-                                <a href="#">
-                                    <h5>CENAS</h5>
-                                </a>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="single_catagory wow fadeInUp" data-wow-delay=".9s">
+                                <img src="../img/catagory-img/3.jpg" alt=""/>
+                                <div class="catagory-title">
+                                    <h:link value="CENAS"  outcome="platosCompletos?idTipoProducto=3" />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </h:form>
         <!-- ****** Fin de las Categorias****** -->
 
 
     </h:body>
-    
+
     <!-- ****** Importaciones de JavaScript ****** -->
 
     <!-- Jquery-2.2.4 js -->
