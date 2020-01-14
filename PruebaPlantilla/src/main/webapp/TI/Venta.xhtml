@@ -7,10 +7,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-
-
-
-        <p:growl id="MSJ"/>
+ <p:growl id="MSJ"/>
         <h:form id="d">
             <p:panelGrid columns="3">
                 <p:commandButton  icon="fa fa-fw fa-plus" value="Agregar" oncomplete="PF('venta').show()" 
@@ -43,11 +40,17 @@
                         <f:selectItems value="#{complementoController.listaComplemento}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idcomplemento}" />
                     </p:selectOneMenu>
                     
+<<<<<<< HEAD
                     <p:outputLabel value="Total" for="txtTotal"/>
                     <p:inputText id="txtTotal" value="#{ventaController.venta.total}" />
                     
                     <p:outputLabel value="Estado" for="txtEstado"/>
                     <p:inputText id="txtEstado" required="true" value="#{ventaController.venta.estado}"/>
+=======
+                    <p:outputLabel value="Total" for="txtCantidad"/>
+                    <p:inputText id="txtCantidad" value="#{ventaController.venta.cantidad}" />
+                    
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
                     
                     <p:commandButton value="Guardar" actionListener="#{ventaController.insertar()}"
                                      update=":Datos da :MSJ" oncomplete="PF('venta').hide()" icon="ui-icon-mail-open" 
@@ -101,10 +104,6 @@
                 </p:column>
             </p:dataTable>
         </h:form>
-
-
-
-
     </ui:define>
 
 </ui:composition>

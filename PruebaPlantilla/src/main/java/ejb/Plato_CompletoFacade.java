@@ -47,7 +47,16 @@ public class Plato_CompletoFacade extends AbstractFacade<Plato_Completo> impleme
         return platosCompletos;
     }
     
+<<<<<<< HEAD
     public static void main(String[] args) {
         
+=======
+     @Override
+    public List<Plato_Completo> platoPrecio(Plato_Completo pp){
+        Query query = em.createQuery("SELECT pc FROM Plato_Completo pc join pc.idcatalogo ca join ca.idtipoproduc tp where pc.idplato_completo = :idplato");
+        query.setParameter("idplato", pp.getIdplato_completo());
+        List<Plato_Completo> platosCompletos = query.getResultList();
+        return platosCompletos;
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
     }
 }

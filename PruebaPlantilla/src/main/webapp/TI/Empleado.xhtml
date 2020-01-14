@@ -57,7 +57,6 @@
         </p:dialog>
 
         <h:form id="Datos">
-
             <p:dataTable  var="p" value="#{empleadoController.listaEmpleado}">
                 <p:column headerText="ID">
                     <h:outputText  value="#{p.idempleado}"/>
@@ -83,12 +82,7 @@
                 </p:column>
             </p:dataTable>
         </h:form>
-        <h:form>
-            <p:commandButton actionListener="#{reporteController.reporte()}" value="Reporte"/> 
-        </h:form>
-
     </ui:define>
-
 </ui:composition>
 
 

@@ -13,8 +13,11 @@
 
         <!-- Responsive CSS -->
         <link href="../css/responsive/responsive.css" rel="stylesheet" />
+<<<<<<< HEAD
         
         <f:event type="preRenderView" listener="#{usuarioController.validacion1()}" />
+=======
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
     </h:head>
     <h:body>
         <!-- ****** Superficie Principal de login y iconos ****** -->
@@ -36,7 +39,11 @@
                         <div class="signup-search-area d-flex align-items-center justify-content-end">
                             <div class="login_register_area d-flex">
                                 <div class="login">
+<<<<<<< HEAD
                                     <a class="btn-outline-dark" href="#">Bienvenido : #{usuarioController.usuarios.usuario}</a>
+=======
+                                    <a class="btn-outline-dark" href="#">Bienvenido :Nathalia</a>
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
                                 </div>
                                 <div class="register">
                                     <a class="btn-outline-primary" href="#">Sing up</a>
@@ -70,10 +77,17 @@
                             <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
                                 <ul class="navbar-nav" id="yummy-nav">
                                     <li class="nav-item active">
+<<<<<<< HEAD
                                         <a class="nav-link" href="venta.xhtml">REGRESAR AL MENU<span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="ConsultarVentas.xhtml">CONSULTAR VENTAS</a>
+=======
+                                        <a class="nav-link" href="venta.xhtml">Regresar Menu<span class="sr-only">(current)</span></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../TI/VentaDetalle.xhtml">Venta Detalle</a>
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
                                     </li>
                                     <!--<li class="nav-item">
                                          <h:link class="nav-link"  value="Tabla"/>
@@ -121,11 +135,16 @@
                                     <h:outputText value="#{pc.idespecialidad.nombre}" />
                                 </p:column>
                                 <p:column headerText="Cantidad">
+<<<<<<< HEAD
                                     <h:inputText value="#{ventaController.venta.cantidad}" />
+=======
+                                    <h:inputText value="#{venta_DetalleController.vdetalle.cantidad}" />
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
                                 </p:column>
                                 <p:column headerText="Estado">
                                     <h:outputText value="#{pc.estado}" />
                                 </p:column>
+<<<<<<< HEAD
                                 <p:column headerText="Usuario">
                                     <h:outputText value="#{usuarioController.usuarios.usuario}" />
                                 </p:column>
@@ -135,6 +154,30 @@
                                         value="(+) Add" />
                                 </p:column>
                             </p:dataTable>
+=======
+
+                                <p:column headerText="Acciones">
+                                    <p:commandButton
+                                        action="#{venta_DetalleController.insertar(pc)}"
+                                        value="(+) Add" />
+                                </p:column>
+                            </p:dataTable>
+
+                            <!-- Modales -->
+
+                            <p:dialog header="Agregar Plato" widgetVar="dlgAgregarPlato" modal="true" id="dlgAgregarPlato" height="400">
+                                <h:panelGrid columns="2">
+                                    
+                                    <h:outputText value="Cantidad: " />
+                                    <p:inputText value="#{venta_DetalleController.vdetalle.cantidad}" />
+
+
+                                    <h:outputText value="" />
+                                    <p:commandButton value="Agregar" action="#{venta_DetalleController.insertar}" onclick="PF('dlgAgregarPlato').hide();" update=""/>
+                                </h:panelGrid>
+                            </p:dialog> 
+
+>>>>>>> 2452322cca5c236ae20a9fbe316e7e584816dca8
                         </h:form>
                     </div>
 

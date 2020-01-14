@@ -29,5 +29,6 @@ public interface ComplementoFacadeLocal {
     List<Complemento> findRange(int[] range);
 
     int count();
-
+    
+    List<Complemento> precioComplemento(Complemento c);
 }
