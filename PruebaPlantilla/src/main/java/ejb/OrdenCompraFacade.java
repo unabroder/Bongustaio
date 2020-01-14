@@ -6,9 +6,15 @@
 package ejb;
 
 import entity.OrdenCompra;
+import entity.Venta;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +34,34 @@ public class OrdenCompraFacade extends AbstractFacade<OrdenCompra> implements Or
     public OrdenCompraFacade() {
         super(OrdenCompra.class);
     }
-    
+
+    @Override
+    public List<OrdenCompra> consultaOrden(Date date1, Date date2) {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        List<OrdenCompra> lista = new LinkedList<>();
+
+        try {
+            System.out.println("///////////cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
+            String date = formato.format(date2);
+
+            int dia = Integer.parseInt(date.substring(8, 10)) + 1;
+            String resto = date.substring(0, 8) + dia;
+            Date fecha2 = formato.parse(resto);
+
+            String sql = "Select v from OrdenCompra v where v.fecha between ?1 and ?2";
+            Query q = em.createQuery(sql);
+            q.setParameter(1, date1);
+            q.setParameter(2, fecha2);
+            lista = q.getResultList();
+            return lista;
+            
+        } catch (Exception e) {
+            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+            String sql = "Select v from OrdenCompra v";
+            Query q = em.createQuery(sql);
+            lista = q.getResultList();
+            return lista;
+        }
+    }
 }

@@ -2,12 +2,14 @@ package controller;
 
 import ejb.InventarioFacadeLocal;
 
-import entity.Inventario;
 import ejb.ProductoFacadeLocal;
+import entity.Fechas;
 import entity.Inventario;
 import entity.Producto;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -15,6 +17,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import org.primefaces.PrimeFaces;
 
 @Named(value = "inventarioController")
 @SessionScoped
@@ -25,12 +28,13 @@ public class InventarioController implements Serializable {
     private InventarioFacadeLocal inventarioEJB;
     private Inventario inventario;
     private List<Inventario> listaInventario;
-    
+
+
     @EJB
     private ProductoFacadeLocal productoEJB;
     private Producto producto;
     private List<Producto> listaproducto;
-    
+
     String mensaje;
 
     //contrustores
@@ -41,16 +45,15 @@ public class InventarioController implements Serializable {
     public Inventario getInventario() {
         return inventario;
     }
-    
+
     public void setInventario(Inventario inventario) {
         this.inventario = inventario;
     }
-    
+
     public List<Inventario> getListaInventario() {
-        this.listaInventario = inventarioEJB.findAll();
         return listaInventario;
     }
-    
+
     public void setListaInventario(List<Inventario> listaInventario) {
         this.listaInventario = listaInventario;
     }
@@ -70,11 +73,11 @@ public class InventarioController implements Serializable {
     public void setListaproducto(List<Producto> listaproducto) {
         this.listaproducto = listaproducto;
     }
-    
+
     public String getMensaje() {
         return mensaje;
     }
-    
+
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
@@ -84,18 +87,34 @@ public class InventarioController implements Serializable {
     public void init() {
         inventario = new Inventario();
         producto = new Producto();
+
         obtenerTodos();
+    }
+
+    public void click() {
+        PrimeFaces.current().ajax().update("form:display");
+        PrimeFaces.current().executeScript("PF('dlg').show()");
     }
 
     //metodos 
     public void obtenerTodos() {
         try {
-            listaInventario = inventarioEJB.findAll();
-            listaproducto = productoEJB.findAll();
+
+            System.out.println("idproducto=" + producto.getIdproducto());
+            if (producto.getIdproducto() == 0) {
+
+                this.listaInventario = inventarioEJB.findAll();
+
+            } else {
+                this.listaInventario = inventarioEJB.consultarInvenByNombre(producto);
+            }
+
         } catch (Exception e) {
+            System.out.println("en el catch idproducto=" + producto.getIdproducto());
         }
-        
+
     }
+
     public void obtenerUno(Inventario idInven) {
         try {
             this.producto.setIdproducto(idInven.getIdproducto().getIdproducto());
@@ -103,10 +122,12 @@ public class InventarioController implements Serializable {
         } catch (Exception e) {
         }
     }
-    
+
     public void insertar() {
         try {
+
             this.inventario.setIdproducto(producto);
+
             inventarioEJB.create(inventario);
             this.mensaje = "INSERTADO";
         } catch (Exception e) {
@@ -114,9 +135,9 @@ public class InventarioController implements Serializable {
         }
         FacesMessage msj = new FacesMessage(this.mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msj);
-        
+
     }
-    
+
     public void actualizar() {
         try {
             this.inventario.setIdproducto(producto);
@@ -129,7 +150,7 @@ public class InventarioController implements Serializable {
         FacesMessage msj = new FacesMessage(this.mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
-    
+
     public void eliminar(Inventario idInven) {
         this.inventario = idInven;
         try {
@@ -142,8 +163,11 @@ public class InventarioController implements Serializable {
         FacesMessage msj = new FacesMessage(this.mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
-   
-    
+
+    public List<Inventario> consultar() {
+        return this.listaInventario = inventarioEJB.findAll();
+    }
+
     public void limpiar() {
         try {
             this.inventario = new Inventario();
@@ -151,4 +175,14 @@ public class InventarioController implements Serializable {
         } catch (Exception e) {
         }
     }
+
+    public String getFecha(Date f) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
+            return sdf.format(f);
+        } catch (Exception e) {
+            return "Error";
+        }
+    }
+
 }

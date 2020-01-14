@@ -77,4 +77,14 @@ public class BitacoraController implements Serializable{
         } catch (Exception e) {
         }
     }
+    
+    
+    public void reporte() {
+        try {
+            Reporte report = new Reporte();
+            report.reporteBitacora(this.lsBitacora);
+        } catch (Exception e) {
+        }
+
+    }
 }

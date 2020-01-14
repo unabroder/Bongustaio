@@ -13,20 +13,29 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.List;
-import com.itextpdf.text.ListItem;
+
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.ZapfDingbatsList;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import ejb.BitacoraFacadeLocal;
+import ejb.OrdenCompraFacadeLocal;
+import ejb.VentaFacadeLocal;
+import entity.Bitacora;
+import entity.OrdenCompra;
+import entity.Venta;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import javax.ejb.EJB;
+
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.ServletContext;
 
 /**
  *
@@ -36,18 +45,35 @@ import javax.servlet.ServletContext;
 @SessionScoped
 public class Reporte implements Serializable {
 
-    public void reporte() {
-        try {
+    @EJB
+    private VentaFacadeLocal ventaEJB;
+    private Venta venta;
+    private List<Venta> lsventa;
+    
+    @EJB
+    private BitacoraFacadeLocal BitaEJB;
+    private Bitacora bita;
+    private List<Bitacora> lsBitacora;
 
+    @EJB
+    private OrdenCompra orden;
+    private OrdenCompraFacadeLocal ordenEJB;
+    private List<OrdenCompra> listaorde;
+    
+    public void reporte(List<Venta> lista2) {
+        try {
+            System.out.println("reporte de pdf ");
             // Creacion del documento con los margenes
             Document document = new Document(PageSize.A4, 35, 30, 50, 50);
             try {
-               //String path= new File(".").;
-               //String File_name=path+"/reporte.pdf";
+                //String path= new File(".").;
+                //String File_name=path+"/reporte.pdf";
                 // El archivo pdf que vamos a generar
-                FileOutputStream fileOutputStream = new FileOutputStream("reporte.pdf");
-                System.out.println();
-                System.out.println(fileOutputStream);
+                Date fecha = new Date();
+
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+                FileOutputStream fileOutputStream = new FileOutputStream("C:/reportes/Reporte_Venta_" + format.format(fecha) + ".pdf");
 
                 // Obtener la instancia del PdfWriter
                 PdfWriter.getInstance(document, fileOutputStream);
@@ -63,101 +89,49 @@ public class Reporte implements Serializable {
                         FontFactory.TIMES_BOLDITALIC, 11, Font.UNDERLINE,
                         BaseColor.RED);
 
-                // Creacion de una tabla
-                PdfPTable table = new PdfPTable(1);
+                lsventa = lista2;
 
-                // Agregar la tabla al documento
-                document.add(table);
-
-                // Cargar otra imagen
-                // Agregar la imagen
-                // Creacion del parrafo
                 Paragraph paragraph = new Paragraph();
-
+//
                 // Agregar un titulo con su respectiva fuente
-                paragraph.add(new Phrase("Características:", fontTitulos));
+                paragraph.add(new Phrase("Bitacora de ventas \n \n", fontTitulos));
+                document.add(Chunk.NEWLINE);
+                document.add(Chunk.NEWLINE);
+                document.add(Chunk.NEWLINE);
 
-                // Agregar saltos de linea
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-
-                // Agregar contenido con su respectiva fuente
-                paragraph
-                        .add(new Phrase(
-                                "El sensor de la X-E1 presenta el mismo excelente rendimiento que el X-Trans CMOS "
-                                + "de 16 megapíxeles del modelo superior de la serie X, la X-Pro1. Gracias la matriz "
-                                + "de filtro de color con disposición aleatoria de los píxeles, desarrollada originalmente"
-                                + " por Fujifilm, el sensor X-Trans CMOS elimina la necesidad del filtro óptico de paso bajo"
-                                + " que se utiliza en los sistemas convencionales para inhibir el muaré a expensas de la"
-                                + " resolución. Esta matriz innovadora permite al sensor X-Trans CMOS captar la luz sin filtrar"
-                                + " del objetivo y obtener una resolución sin precedentes. La exclusiva disposición aleatoria de"
-                                + " la matriz de filtro de color resulta asimismo muy eficaz para mejorar la separación de ruido"
-                                + " en la fotografía de alta sensibilidad. Otra ventaja del gran sensor APS-C es la capacidad"
-                                + " para crear un hermoso efecto “bokeh”, el estético efecto desenfocado que se crea al disparar"
-                                + " con poca profundidad de campo.",
-                                fontContenido));
-
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                paragraph.add(new Phrase("Otras Caracaterísticas:", fontTitulos));
-
-                // Agregar el parrafo al documento
                 document.add(paragraph);
+                PdfPTable table = new PdfPTable(7);
+                table.addCell("ID");
+                table.addCell("Nombre Empleado");
+                table.addCell("Platillo");
+                table.addCell("Complemento");
+                table.addCell("Cantidad");
+                table.addCell("Fecha");
+                table.addCell("Total");
 
-                // La lista final
-                List listaFinal = new List(List.UNORDERED);
-                ListItem listItem = new ListItem();
-                List list = new List();
+                Iterator iter = lsventa.listIterator();
+                
+                while (iter.hasNext()) {
+                    System.out.println("while");
+                    venta = (Venta) iter.next();
+                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                    table.addCell("" + venta.getIdventa());
+                    table.addCell(venta.getIdempleado().getNombres()+" \n"+venta.getIdempleado().getApellidos());
+                    table.addCell(venta.getIdplato_completo().getNombre());
+                    table.addCell(venta.getIdcomplemento().getNombre());
+                    table.addCell(formato.format(venta.getFecha()));
+                    table.addCell("" + venta.getCantidad());
+                    table.addCell("" + venta.getTotal());
+                    
+                }
+                // Creacion de una tabla
 
-                // Crear sangria en la lista
-                list.setListSymbol(new Chunk("   "));
-                ListItem itemNuevo = new ListItem("   ");
-
-                // ZapfDingbatsListm, lista con simbolos
-                List listSymbol = new ZapfDingbatsList(51);
-
-                // Agregar contenido a la lista
-                listSymbol
-                        .add(new ListItem(
-                                "Sensor CMOS X-Trans – Consigue una calidad de imagen superior",
-                                fontContenido));
-                listSymbol
-                        .add(new ListItem(
-                                "Visor electrónico OLED de 2,36 pulgadas de alta resolución y luminosidad",
-                                fontContenido));
-                listSymbol.add(new ListItem("Diseño y accesorios", fontContenido));
-                listSymbol.add(new ListItem("Rápida respuesta", fontContenido));
-
-                itemNuevo.add(listSymbol);
-                list.add(itemNuevo);
-                listItem.add(list);
-
-                // Agregar todo a la lista final
-                listaFinal.add(listItem);
-
-                // Agregar la lista
-                document.add(listaFinal);
-                paragraph = new Paragraph();
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                paragraph.add(new Phrase(Chunk.NEWLINE));
-                document.add(paragraph);
-
-                // Crear tabla nueva con dos posiciones
-                table = new PdfPTable(2);
-                float[] longitudes = {5.0f, 5.0f};
-
-                // Establecer posiciones de celdas
-                table.setWidths(longitudes);
-
-                // Agregar la tabla al documento
                 document.add(table);
 
-                // Cerrar el documento
                 document.close();
 
                 // Abrir el archivo
-                File file = new File("reporte.pdf");
+                File file = new File("C:/reportes/reporte_" + format.format(fecha) + ".pdf");
                 System.out.println(file.getAbsolutePath());
             } catch (DocumentException | FileNotFoundException ex) {
                 System.out.println("error " + ex.getMessage());
@@ -170,8 +144,166 @@ public class Reporte implements Serializable {
 
     }
 
-    public static void main(String[] args) {
-        Reporte pdf = new Reporte();
-        pdf.reporte();
+    public void reporteOrden(List<OrdenCompra> lista2) {
+        try {
+            System.out.println("reporte de pdf de ordenes");
+            // Creacion del documento con los margenes
+            Document document = new Document(PageSize.A4, 35, 30, 50, 50);
+            try {
+                //String path= new File(".").;
+                //String File_name=path+"/reporte.pdf";
+                // El archivo pdf que vamos a generar
+                Date fecha = new Date();
+
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+                FileOutputStream fileOutputStream = new FileOutputStream("C:/reportes/Reporte_Compra_" + format.format(fecha) + ".pdf");
+
+                // Obtener la instancia del PdfWriter
+                PdfWriter.getInstance(document, fileOutputStream);
+
+                // Abrir el documento
+                document.open();
+
+                // Crear las fuentes para el contenido y los titulos
+                Font fontContenido = FontFactory.getFont(
+                        FontFactory.TIMES_ROMAN.toString(), 11, Font.NORMAL,
+                        BaseColor.DARK_GRAY);
+                Font fontTitulos = FontFactory.getFont(
+                        FontFactory.TIMES_BOLDITALIC, 11, Font.UNDERLINE,
+                        BaseColor.RED);
+
+                listaorde = lista2;
+
+                Paragraph paragraph = new Paragraph();
+//
+                // Agregar un titulo con su respectiva fuente
+                paragraph.add(new Phrase("Bitacora de orden de compras \n \n", fontTitulos));
+                document.add(Chunk.NEWLINE);
+                document.add(Chunk.NEWLINE);
+                document.add(Chunk.NEWLINE);
+
+                document.add(paragraph);
+                PdfPTable table = new PdfPTable(6);
+                table.addCell("ID");
+                table.addCell("Nombre Provedor");
+                table.addCell("Nombre de Producto");
+                table.addCell("Nombre de Sucursal");
+                table.addCell("Cantidad");
+                table.addCell("Fecha");
+
+                Iterator iter = listaorde.listIterator();
+                
+                while (iter.hasNext()) {
+                    System.out.println("while");
+                    orden = (OrdenCompra) iter.next();
+                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                    table.addCell("" + orden.getIdorden_compra());
+                    table.addCell(orden.getIdsucursal().getNombre());
+                    table.addCell(orden.getIdproveedor().getNombre());
+                    table.addCell(orden.getIdproducto().getNombre());
+                    table.addCell("" + orden.getCantidad());
+                    table.addCell(formato.format(orden.getFecha()));
+                          
+                }
+                // Creacion de una tabla
+
+                document.add(table);
+
+                document.close();
+
+                // Abrir el archivo
+                File file = new File("C:/reportes/reporte/" + format.format(fecha) + ".pdf");
+                System.out.println(file.getAbsolutePath());
+            } catch (DocumentException | FileNotFoundException ex) {
+                System.out.println("error " + ex.getMessage());
+            }
+            //return true;
+            System.out.println("se creo el reporte");
+        } catch (Exception e) {
+            // return false;
+        }
+
     }
+    
+    public void reporteBitacora(List<Bitacora> lista2) {
+        try {
+            System.out.println("reporte de pdf de ordenes");
+            // Creacion del documento con los margenes
+            Document document = new Document(PageSize.A4, 35, 30, 50, 50);
+            try {
+                //String path= new File(".").;
+                //String File_name=path+"/reporte.pdf";
+                // El archivo pdf que vamos a generar
+                Date fecha = new Date();
+
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+
+                FileOutputStream fileOutputStream = new FileOutputStream("C:/reportes/Reporte_Bitacora_" + format.format(fecha) + ".pdf");
+
+                // Obtener la instancia del PdfWriter
+                PdfWriter.getInstance(document, fileOutputStream);
+
+                // Abrir el documento
+                document.open();
+
+                // Crear las fuentes para el contenido y los titulos
+                Font fontContenido = FontFactory.getFont(
+                        FontFactory.TIMES_ROMAN.toString(), 11, Font.NORMAL,
+                        BaseColor.DARK_GRAY);
+                Font fontTitulos = FontFactory.getFont(
+                        FontFactory.TIMES_BOLDITALIC, 11, Font.UNDERLINE,
+                        BaseColor.RED);
+
+                lsBitacora = lista2;
+
+                Paragraph paragraph = new Paragraph();
+//
+                // Agregar un titulo con su respectiva fuente
+                paragraph.add(new Phrase("Bitacora de usuarios \n \n", fontTitulos));
+                document.add(Chunk.NEWLINE);
+                document.add(Chunk.NEWLINE);
+                document.add(Chunk.NEWLINE);
+
+                document.add(paragraph);
+                PdfPTable table = new PdfPTable(4);
+                table.addCell("ID");
+                table.addCell("Fecha");
+                table.addCell("Nombre de usuario");
+                table.addCell("Acciones");
+
+                Iterator iter = lsBitacora.listIterator();
+                
+                while (iter.hasNext()) {
+                    System.out.println("while");
+                    bita = (Bitacora) iter.next();
+                    
+                    SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+                    table.addCell("" + bita.getIdbitacora());
+                    table.addCell(formato.format(bita.getFecha()));
+                    table.addCell(bita.getUsuario().getUsuario());
+                    table.addCell(bita.getAccion());
+                    
+                          
+                }
+                // Creacion de una tabla
+
+                document.add(table);
+
+                document.close();
+
+                // Abrir el archivo
+                File file = new File("C:/reportes/reporte/" + format.format(fecha) + ".pdf");
+                System.out.println(file.getAbsolutePath());
+            } catch (DocumentException | FileNotFoundException ex) {
+                System.out.println("error " + ex.getMessage());
+            }
+            //return true;
+            System.out.println("se creo el reporte");
+        } catch (Exception e) {
+            // return false;
+        }
+
+    }
+
 }

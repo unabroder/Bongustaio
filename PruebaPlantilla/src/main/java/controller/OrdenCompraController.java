@@ -4,6 +4,7 @@ import ejb.OrdenCompraFacadeLocal;
 import ejb.ProductoFacadeLocal;
 import ejb.ProveedorFacadeLocal;
 import ejb.SucursalFacadeLocal;
+import entity.Fechas;
 import entity.OrdenCompra;
 import entity.Producto;
 import entity.Proveedor;
@@ -37,6 +38,7 @@ public class OrdenCompraController implements Serializable {
     private SucursalFacadeLocal sucursalEJB;
     private Sucursal sucursal;
     private List<Sucursal> listaSucursal;
+    private Fechas fecha;
 
     @EJB
     private ProductoFacadeLocal productoEJB;
@@ -44,7 +46,15 @@ public class OrdenCompraController implements Serializable {
     private List<Producto> listaproducto;
 
     String mensaje;
-    
+
+    public Fechas getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Fechas fecha) {
+        this.fecha = fecha;
+    }
+
     public OrdenCompra getOrdencompra() {
         return ordencompra;
     }
@@ -54,7 +64,7 @@ public class OrdenCompraController implements Serializable {
     }
 
     public List<OrdenCompra> getListaorden() {
-        this.listaorden = OrdenEJB.findAll();
+        this.listaorden = OrdenEJB.consultaOrden(fecha.getFecha1(), fecha.getFecha2());
         return listaorden;
     }
 
@@ -118,14 +128,13 @@ public class OrdenCompraController implements Serializable {
         this.mensaje = mensaje;
     }
 
-    
-
     @PostConstruct
     private void init() {
         ordencompra = new OrdenCompra();
         proveedor = new Proveedor();
         sucursal = new Sucursal();
         producto = new Producto();
+        fecha = new Fechas();
     }
 
     public void insertar() {
@@ -134,12 +143,12 @@ public class OrdenCompraController implements Serializable {
             ordencompra.setIdproducto(producto);
             ordencompra.setIdsucursal(sucursal);
             OrdenEJB.create(ordencompra);
-           this.mensaje ="Orde de Compra Registrada Exitosamente";
+            this.mensaje = "Orde de Compra Registrada Exitosamente";
         } catch (Exception e) {
-            this.mensaje="Error :"+e.getMessage();
+            this.mensaje = "Error :" + e.getMessage();
             e.printStackTrace();
         }
-         FacesMessage msj = new FacesMessage(mensaje);
+        FacesMessage msj = new FacesMessage(mensaje);
         FacesContext.getCurrentInstance().addMessage(null, msj);
     }
 
@@ -159,6 +168,15 @@ public class OrdenCompraController implements Serializable {
             ordencompra.setIdsucursal(sucursal);
             OrdenEJB.edit(ordencompra);
 
+        } catch (Exception e) {
+        }
+
+    }
+
+    public void reporte() {
+        try {
+            Reporte report = new Reporte();
+            report.reporteOrden(this.listaorden);
         } catch (Exception e) {
         }
 

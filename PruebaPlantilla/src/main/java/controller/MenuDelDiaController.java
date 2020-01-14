@@ -2,11 +2,9 @@ package controller;
 
 import ejb.CatalogoFacadeLocal;
 import ejb.MenuDelDiaFacadeLocal;
-import ejb.Venta_DetalleFacadeLocal;
 import entity.Catalogo;
 import entity.MenuDelDia;
 import entity.Plato_Completo;
-import entity.Venta_Detalle;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;

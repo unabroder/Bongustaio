@@ -22,22 +22,50 @@ public class Venta implements Serializable {
     private int idventa;
 
     @ManyToOne
+    @JoinColumn(name = "idplato_completo", referencedColumnName = "idplato_completo")
+    private Plato_Completo idplato_completo;
+
+    public Plato_Completo getIdplato_completo() {
+        return idplato_completo;
+    }
+
+    public void setIdplato_completo(Plato_Completo idplato_completo) {
+        this.idplato_completo = idplato_completo;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Complemento getIdcomplemento() {
+        return idcomplemento;
+    }
+
+    public void setIdcomplemento(Complemento idcomplemento) {
+        this.idcomplemento = idcomplemento;
+    }
+
+    @Column(name = "cantidad", nullable = false)
+    private int cantidad;
+
+    @ManyToOne
+    @JoinColumn(name = "idcomplemento", referencedColumnName = "idcomplemento")
+    private Complemento idcomplemento;
+
+    @ManyToOne
     @JoinColumn(name = "idempleado", referencedColumnName = "idempleado")
     private Empleado idempleado;
-    
-    @ManyToOne
-    @JoinColumn(name="idventaDetalle_complemento",referencedColumnName = "idventaDetalle_complemento")
-    private VentaDetalleComplemento idventaDetalle_complemento;
+
+    @Column(name = "total", nullable = false)
+    private Double total;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha")
     private Date fecha = new Date();
-
-    @Column(name = "subtotal", nullable = false)
-    private Double subtotal;
-
-    @Column(name = "total", nullable = false)
-    private Double total;
 
     @Column(name = "estado", nullable = false)
     private int estado;
@@ -66,14 +94,6 @@ public class Venta implements Serializable {
         this.fecha = fecha;
     }
 
-    public Double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(Double subtotal) {
-        this.subtotal = subtotal;
-    }
-
     public Double getTotal() {
         return total;
     }
@@ -88,14 +108,6 @@ public class Venta implements Serializable {
 
     public void setEstado(int estado) {
         this.estado = estado;
-    }
-
-    public VentaDetalleComplemento getIdventaDetalle_complemento() {
-        return idventaDetalle_complemento;
-    }
-
-    public void setIdventaDetalle_complemento(VentaDetalleComplemento idventaDetalle_complemento) {
-        this.idventaDetalle_complemento = idventaDetalle_complemento;
     }
 
     @Override

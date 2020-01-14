@@ -91,7 +91,7 @@ public class Catalogo implements Serializable{
 
     @Override
     public String toString() {
-        return "Catalogo{" + "idcatalogo=" + idcatalogo + '}';
+        return "Catalogo{" + "idcatalogo=" + idcatalogo + ", nombre=" + nombre + ", idtipoproduc=" + idtipoproduc + '}';
     }
    
    

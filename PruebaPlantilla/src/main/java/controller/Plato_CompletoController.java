@@ -7,16 +7,16 @@ import entity.Catalogo;
 import entity.Especialidad;
 import entity.Plato_Completo;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 
 @Named(value = "plato_CompletoController")
-@SessionScoped
+@ViewScoped
 public class Plato_CompletoController implements Serializable {
 
     @EJB
@@ -34,8 +34,19 @@ public class Plato_CompletoController implements Serializable {
     private Especialidad especialidad;
     private List<Especialidad> listaespecialidad;
 
-//=======================================================================================================
-//=======================================================================================================
+    @PostConstruct
+    private void init() {
+        pcompleto = new Plato_Completo();
+        especialidad = new Especialidad();
+        catalogo = new Catalogo();
+        // recogiendo el idTipoProducto que viene desde venta.xhtml
+        String idTipoProductoStr = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idTipoProducto");
+        if(idTipoProductoStr != null && !idTipoProductoStr.isEmpty()){
+            int idTipoProducto = Integer.parseInt(idTipoProductoStr);
+            listapcompleto = pcompletoEJB.obtenerPlatoCompletoPorTipoProducto(idTipoProducto);
+        }
+    }
+    
     public Plato_Completo getPcompleto() {
         return pcompleto;
     }
@@ -45,11 +56,9 @@ public class Plato_CompletoController implements Serializable {
     }
 
     public List<Plato_Completo> getListapcompleto() {
-
-        this.listapcompleto=pcompletoEJB.findAll();
-
-        this.listapcompleto = pcompletoEJB.findAll();
-
+        if(listapcompleto == null || listapcompleto.isEmpty()){
+            this.listapcompleto=pcompletoEJB.findAll();
+        }
         return listapcompleto;
     }
 
@@ -87,13 +96,6 @@ public class Plato_CompletoController implements Serializable {
 
     public void setListaespecialidad(List<Especialidad> listaespecialidad) {
         this.listaespecialidad = listaespecialidad;
-    }
-
-    @PostConstruct
-    private void init() {
-        pcompleto = new Plato_Completo();
-        especialidad = new Especialidad();
-        catalogo = new Catalogo();
     }
 
     public void consultarEspecialidad() {
@@ -158,9 +160,10 @@ public class Plato_CompletoController implements Serializable {
     }
 
     public void limpiar() {
-        pcompleto = new Plato_Completo();
-        especialidad = new Especialidad();
-        catalogo = new Catalogo();
+//        pcompleto = new Plato_Completo();
+//        especialidad = new Especialidad();
+//        catalogo = new Catalogo();
     }
-
+    
+    
 }
